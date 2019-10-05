@@ -7,6 +7,7 @@
 </head>
 <body>
 <div class="container">
+    <h1>Volunteer</h1>
     <form>
         <!--Contact Information-->
         <fieldset class="form-group border">
@@ -129,7 +130,40 @@
                     On-going
                 </label>
             </div>
+        </fieldset>
 
+        <!--Skills & Qualifications-->
+        <fieldset class="form-group border">
+            <legend>Skills & Qualifications</legend>
+            <label for="motivation">What makes you motivated to work with us?</label>
+            <div class="input-group">
+                <textarea class="form-control" id="motivation" placeholder=""></textarea>
+            </div>
+            <label for="volunteer-experience">Do you have previous volunteer experience?</label>
+            <div class="input-group">
+                <textarea class="form-control" id="volunteer-experience" placeholder=""></textarea>
+            </div>
+            <label>Do you have previous work experience with youth organizations?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-yes" value="yes" checked>
+                <label class="form-check-label" for="youth-experience-yes">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-no" value="no">
+                <label class="form-check-label" for="youth-experience-no">
+                    No
+                </label>
+            </div>
+            <label for="youth-experience-explanation">If 'Yes' please explain</label>
+            <div class="input-group">
+                <textarea class="form-control" id="youth-experience-explanation" placeholder=""></textarea>
+            </div>
+            <label for="other-experience">Are there any other skills or qualifications you would like to list?</label>
+            <div class="input-group">
+                <textarea class="form-control" id="other-experience" placeholder=""></textarea>
+            </div>
         </fieldset>
     </form>
     </div>
