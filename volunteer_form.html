@@ -168,22 +168,9 @@
 
         <!--Character References-->
         <fieldset class="form-group border">
-            <legend>Character References</legend>
-            <!--Sample reference, in the future we can use JavaScript to add these dynamically-->
-            <div class="reference">
-                <label for="ref-name">Name</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="ref-name" placeholder="Jane Doe">
-                </div>
-                <label for="ref-email">Email</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="ref-email" placeholder="me@someone.com">
-                </div>
-                <label for="ref-relation">Relationship</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="ref-relation" placeholder="Father">
-                </div>
-            </div>
+            <legend>Character References <span id="ref-number">0/3</span></legend>
+            <button type="button" class="btn btn-secondary" id="add-ref">Add Reference</button>
+            <div id="references"></div>
         </fieldset>
 
         <!--Background check-->
