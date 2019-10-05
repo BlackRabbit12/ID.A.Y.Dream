@@ -14,7 +14,7 @@
             <legend>Contact Information</legend>
             <label for="full-name">Full Name</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="full-name" placeholder="Username">
+                <input type="text" class="form-control" id="full-name" placeholder="Jane Doe">
             </div>
             <label for="street-address">Street Address</label>
             <div class="input-group mb-3">
@@ -165,7 +165,88 @@
                 <textarea class="form-control" id="other-experience" placeholder=""></textarea>
             </div>
         </fieldset>
+
+        <!--Character References-->
+        <fieldset class="form-group border">
+            <legend>Character References</legend>
+            <!--Sample reference, in the future we can use JavaScript to add these dynamically-->
+            <div class="reference">
+                <label for="ref-name">Name</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="ref-name" placeholder="Jane Doe">
+                </div>
+                <label for="ref-email">Email</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="ref-email" placeholder="me@someone.com">
+                </div>
+                <label for="ref-relation">Relationship</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="ref-relation" placeholder="Father">
+                </div>
+            </div>
+        </fieldset>
+
+        <!--Background check-->
+        <fieldset class="form-group border">
+            <legend>Background Check</legend>
+            <label>Are you willing to have a background check?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="bg-check" id="bg-check-yes" value="yes" checked>
+                <label class="form-check-label" for="bg-check-yes">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="bg-check" id="bg-check-no" value="no">
+                <label class="form-check-label" for="bg-check-no">
+                    No
+                </label>
+            </div>
+        </fieldset>
+
+        <!--Mailing List-->
+        <fieldset class="form-group border">
+            <legend>Mailing List</legend>
+            <label>Would you like to be added to our mailing list?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-yes" value="yes" checked>
+                <label class="form-check-label" for="mailing-list-yes">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-no" value="no">
+                <label class="form-check-label" for="mailing-list-no">
+                    No
+                </label>
+            </div>
+        </fieldset>
+
+        <!--Sign-->
+        <fieldset class="form-group border">
+            <legend>Sign</legend>
+            <label>The above information is true to the best of my knowledge</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="information-is-true" value="true">
+                <label class="form-check-label" for="information-is-true">Terms & Policy</label>
+            </div>
+            <label for="sign-name">Name</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="sign-name" placeholder="">
+            </div>
+            <label for="e-signature">Name</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="e-signature" placeholder="">
+            </div>
+            <label for="datepicker">Date</label>
+            <div class="input-group mb-3">
+                <input type="text" id="datepicker">
+            </div>
+        </fieldset>
     </form>
     </div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="functions.js"></script>
 </body>
 </html>
