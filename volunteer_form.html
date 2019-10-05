@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Volunteer Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <form>
+        <!--Contact Information-->
+        <fieldset class="form-group border">
+            <legend>Contact Information</legend>
+            <label for="full-name">Full Name</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="full-name" placeholder="Username">
+            </div>
+            <label for="street-address">Street Address</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="street-address" placeholder="11111 SE 11th ST">
+            </div>
+            <label for="zip">ZIP</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="zip" placeholder="11111">
+            </div>
+            <label for="city">City</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="city" placeholder="Seattle">
+            </div>
+            <label for="state">State</label>
+            <div class="input-group mb-3">
+                <select class="custom-select" id="state">
+                    <option selected>Choose...</option>
+                    <option value="CA">CA</option>
+                    <option value="OR">OR</option>
+                    <option value="WA">WA</option>
+                </select>
+            </div>
+            <label for="phone">Phone</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="phone" placeholder="(111) 111-1111">
+            </div>
+            <label for="email">Email</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="email" placeholder="me@example.com">
+            </div>
+            <label for="t-shirt">T-Shirt Size</label>
+            <div class="input-group mb-3">
+                <select class="custom-select" id="t-shirt">
+                    <option selected>Choose...</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!--Interests-->
+        <fieldset class="form-group border">
+            <legend>Interests</legend>
+            <label for="about-us">How did you hear about us?</label>
+            <div class="input-group">
+                <textarea class="form-control" id="about-us" placeholder="our website..."></textarea>
+            </div>
+            <label>Where would you like to help?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="events" id="events">
+                <label class="form-check-label" for="events">
+                    Events/Activities
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="fundraising" id="fundraising">
+                <label class="form-check-label" for="fundraising">
+                    Fundraising
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="newsletter" id="newsletter">
+                <label class="form-check-label" for="newsletter">
+                    Newsletter Production
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="volunteer" id="volunteer">
+                <label class="form-check-label" for="volunteer">
+                    Volunteer Coordination
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="mentoring" id="mentoring">
+                <label class="form-check-label" for="mentoring">
+                    Mentoring
+                </label>
+            </div>
+        </fieldset>
+
+        <!--Availability-->
+        <fieldset class="form-group border">
+            <legend>Availability</legend>
+            <label>I can help...</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="weekend-4hr" id="weekend-4hr">
+                <label class="form-check-label" for="weekend-4hr">
+                    Weekend 4hr shifts
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="weekend-8hr" id="weekend-8hr">
+                <label class="form-check-label" for="weekend-8hr">
+                    Weekend 8hr shifts
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="weekend-workshop" id="weekend-workshop">
+                <label class="form-check-label" for="weekend-workshop">
+                    Weekend workshops
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="summer-camp" id="summer-camp">
+                <label class="form-check-label" for="summer-camp">
+                    1-week summer camp
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="on-going" id="on-going">
+                <label class="form-check-label" for="on-going">
+                    On-going
+                </label>
+            </div>
+
+        </fieldset>
+    </form>
+    </div>
+</body>
+</html>
