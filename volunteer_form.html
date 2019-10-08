@@ -3,234 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <title>Volunteer Form</title>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Abril+Fatface" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+
+        #form-scroll {
+            overflow-y: scroll;
+        }
+
+        /*#header-intro {*/
+        /*    max-width: 250px;*/
+        /*    text-align: center;*/
+        /*    horiz-align: center;*/
+        /*}*/
+
+        @media (max-width: 576px) {
+            #verticalBanner {
+                display: none;
+                visibility: hidden;
+
+            }
+        }
+
+       #verticalBanner,  #volunteer-form {
+           height: 75vh;
+       }
+
+       .form-control {
+           background-color: transparent;
+           color: #eeeeee;
+           outline: none;
+           border-top: none;
+           border-left: none;
+           border-right: none;
+           border-bottom: solid black 4px;
+           /*border-spacing: 0px 20px;*/
+           /*padding: 3px 10px;*/
+       }
+
+
+        #form-title {
+            font-family: "Abril Fatface";
+            font-size: 4em;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 700;
+        }
+
+        .form-padding-styles:first-of-type {
+            padding-top: 2%;
+        }
+
+        .form-padding-styles {
+            padding-right: 25%;
+            padding-left: 2%;
+        }
+
+
+        /*#volunteer-form {*/
+        /*    padding-left: 50px;*/
+        /*}*/
+
+
+
+    </style>
+
 </head>
 <body>
 <div class="container">
-    <h1>Volunteer Form</h1>
-    <form>
-        <!--Contact Information-->
-        <fieldset class="form-group border">
-            <legend>Contact Information</legend>
-            <label for="full-name">Full Name</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="full-name" placeholder="Jane Doe">
-            </div>
-            <label for="street-address">Street Address</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="street-address" placeholder="11111 SE 11th ST">
-            </div>
-            <label for="zip">ZIP</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="zip" placeholder="11111">
-            </div>
-            <label for="city">City</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="city" placeholder="Seattle">
-            </div>
-            <label for="state">State</label>
-            <div class="input-group mb-3">
-                <select class="custom-select" id="state">
-                    <option selected>Choose...</option>
-                    <option value="CA">CA</option>
-                    <option value="OR">OR</option>
-                    <option value="WA">WA</option>
-                </select>
-            </div>
-            <label for="phone">Phone</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="phone" placeholder="(111) 111-1111">
-            </div>
-            <label for="email">Email</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="email" placeholder="me@example.com">
-            </div>
-            <label for="t-shirt">T-Shirt Size</label>
-            <div class="input-group mb-3">
-                <select class="custom-select" id="t-shirt">
-                    <option selected>Choose...</option>
-                    <option value="small">Small</option>
-                    <option value="medium">Medium</option>
-                    <option value="large">Large</option>
-                </select>
-            </div>
-        </fieldset>
+    <h1 id="form-title">Volunteer<br>Form.</h1><br><br>
 
-        <!--Interests-->
-        <fieldset class="form-group border">
-            <legend>Interests</legend>
-            <label for="about-us">How did you hear about us?</label>
-            <div class="input-group">
-                <textarea class="form-control" id="about-us" placeholder="our website..."></textarea>
-            </div>
-            <label>Where would you like to help?</label>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="events" id="events">
-                <label class="form-check-label" for="events">
-                    Events/Activities
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="fundraising" id="fundraising">
-                <label class="form-check-label" for="fundraising">
-                    Fundraising
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="newsletter" id="newsletter">
-                <label class="form-check-label" for="newsletter">
-                    Newsletter Production
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="volunteer" id="volunteer">
-                <label class="form-check-label" for="volunteer">
-                    Volunteer Coordination
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="mentoring" id="mentoring">
-                <label class="form-check-label" for="mentoring">
-                    Mentoring
-                </label>
-            </div>
-        </fieldset>
+<!--    <p class="lead" id="header-intro">There are many ways to get involved with I.D.A.Y.Dream. Our village is only made possible with volunteers. Join us today!</p>-->
 
-        <!--Availability-->
-        <fieldset class="form-group border">
-            <legend>Availability</legend>
-            <label>I can help...</label>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="weekend-4hr" id="weekend-4hr">
-                <label class="form-check-label" for="weekend-4hr">
-                    Weekend 4hr shifts
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="weekend-8hr" id="weekend-8hr">
-                <label class="form-check-label" for="weekend-8hr">
-                    Weekend 8hr shifts
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="weekend-workshop" id="weekend-workshop">
-                <label class="form-check-label" for="weekend-workshop">
-                    Weekend workshops
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="summer-camp" id="summer-camp">
-                <label class="form-check-label" for="summer-camp">
-                    1-week summer camp
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="on-going" id="on-going">
-                <label class="form-check-label" for="on-going">
-                    On-going
-                </label>
-            </div>
-        </fieldset>
 
-        <!--Skills & Qualifications-->
-        <fieldset class="form-group border">
-            <legend>Skills & Qualifications</legend>
-            <label for="motivation">What makes you motivated to work with us?</label>
-            <div class="input-group">
-                <textarea class="form-control" id="motivation" placeholder=""></textarea>
-            </div>
-            <label for="volunteer-experience">Do you have previous volunteer experience?</label>
-            <div class="input-group">
-                <textarea class="form-control" id="volunteer-experience" placeholder=""></textarea>
-            </div>
-            <label>Do you have previous work experience with youth organizations?</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-yes" value="yes" checked>
-                <label class="form-check-label" for="youth-experience-yes">
-                    Yes
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-no" value="no">
-                <label class="form-check-label" for="youth-experience-no">
-                    No
-                </label>
-            </div>
-            <label for="youth-experience-explanation">If 'Yes' please explain</label>
-            <div class="input-group">
-                <textarea class="form-control" id="youth-experience-explanation" placeholder=""></textarea>
-            </div>
-            <label for="other-experience">Are there any other skills or qualifications you would like to list?</label>
-            <div class="input-group">
-                <textarea class="form-control" id="other-experience" placeholder=""></textarea>
-            </div>
-        </fieldset>
 
-        <!--Character References-->
-        <fieldset class="form-group border">
-            <legend>Character References <span id="ref-number">0/3</span></legend>
-            <button type="button" class="btn btn-secondary" id="add-ref">Add Reference</button>
-            <div id="references"></div>
-        </fieldset>
 
-        <!--Background check-->
-        <fieldset class="form-group border">
-            <legend>Background Check</legend>
-            <label>Are you willing to have a background check?</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="bg-check" id="bg-check-yes" value="yes" checked>
-                <label class="form-check-label" for="bg-check-yes">
-                    Yes
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="bg-check" id="bg-check-no" value="no">
-                <label class="form-check-label" for="bg-check-no">
-                    No
-                </label>
-            </div>
-        </fieldset>
+    <div class="row" id="form-and-image">
 
-        <!--Mailing List-->
-        <fieldset class="form-group border">
-            <legend>Mailing List</legend>
-            <label>Would you like to be added to our mailing list?</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-yes" value="yes" checked>
-                <label class="form-check-label" for="mailing-list-yes">
-                    Yes
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-no" value="no">
-                <label class="form-check-label" for="mailing-list-no">
-                    No
-                </label>
-            </div>
-        </fieldset>
+        <div class="col col-md-9" id="form-scroll">
+        <form id="volunteer-form">
 
-        <!--Sign-->
-        <fieldset class="form-group border">
-            <legend>Sign</legend>
-            <label>The above information is true to the best of my knowledge</label>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="information-is-true" value="true">
-                <label class="form-check-label" for="information-is-true">Terms & Policy</label>
-            </div>
-            <label for="sign-name">Name</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="sign-name" placeholder="">
-            </div>
-            <label for="e-signature">Name</label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="e-signature" placeholder="">
-            </div>
-            <label for="datepicker">Date</label>
-            <div class="input-group mb-3">
-                <input type="text" id="datepicker">
-            </div>
-        </fieldset>
-    </form>
+            <!--Contact Information-->
+            <fieldset class="form-group border">
+                <legend>Contact Information</legend>
+                <div class="form-padding-styles">
+                    <label for="full-name">Full Name</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="full-name" placeholder="Jane Doe">
+                    </div>
+                </div>
+                <div class="form-padding-styles">
+                    <label for="street-address">Street Address</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="street-address" placeholder="11111 SE 11th ST">
+                    </div>
+                </div>
+                <label for="zip">ZIP</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="zip" placeholder="11111">
+                </div>
+                <label for="city">City</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="city" placeholder="Seattle">
+                </div>
+                <label for="state">State</label>
+                <div class="input-group mb-3">
+                    <select class="custom-select" id="state">
+                        <option selected>Choose...</option>
+                        <option value="CA">CA</option>
+                        <option value="OR">OR</option>
+                        <option value="WA">WA</option>
+                    </select>
+                </div>
+                <label for="phone">Phone</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="phone" placeholder="(111) 111-1111">
+                </div>
+                <label for="email">Email</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="email" placeholder="me@example.com">
+                </div>
+                <label for="t-shirt">T-Shirt Size</label>
+                <div class="input-group mb-3">
+                    <select class="custom-select" id="t-shirt">
+                        <option selected>Choose...</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <!--Interests-->
+            <fieldset class="form-group border">
+                <legend>Interests</legend>
+                <label for="about-us">How did you hear about us?</label>
+                <div class="input-group">
+                    <textarea class="form-control" id="about-us" placeholder="our website..."></textarea>
+                </div>
+                <label>Where would you like to help?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="events" id="events">
+                    <label class="form-check-label" for="events">
+                        Events/Activities
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="fundraising" id="fundraising">
+                    <label class="form-check-label" for="fundraising">
+                        Fundraising
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="newsletter" id="newsletter">
+                    <label class="form-check-label" for="newsletter">
+                        Newsletter Production
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="volunteer" id="volunteer">
+                    <label class="form-check-label" for="volunteer">
+                        Volunteer Coordination
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="mentoring" id="mentoring">
+                    <label class="form-check-label" for="mentoring">
+                        Mentoring
+                    </label>
+                </div>
+            </fieldset>
+
+            <!--Availability-->
+            <fieldset class="form-group border">
+                <legend>Availability</legend>
+                <label>I can help...</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="weekend-4hr" id="weekend-4hr">
+                    <label class="form-check-label" for="weekend-4hr">
+                        Weekend 4hr shifts
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="weekend-8hr" id="weekend-8hr">
+                    <label class="form-check-label" for="weekend-8hr">
+                        Weekend 8hr shifts
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="weekend-workshop" id="weekend-workshop">
+                    <label class="form-check-label" for="weekend-workshop">
+                        Weekend workshops
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="summer-camp" id="summer-camp">
+                    <label class="form-check-label" for="summer-camp">
+                        1-week summer camp
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="on-going" id="on-going">
+                    <label class="form-check-label" for="on-going">
+                        On-going
+                    </label>
+                </div>
+            </fieldset>
+
+            <!--Skills & Qualifications-->
+            <fieldset class="form-group border">
+                <legend>Skills & Qualifications</legend>
+                <label for="motivation">What makes you motivated to work with us?</label>
+                <div class="input-group">
+                    <textarea class="form-control" id="motivation" placeholder=""></textarea>
+                </div>
+                <label for="volunteer-experience">Do you have previous volunteer experience?</label>
+                <div class="input-group">
+                    <textarea class="form-control" id="volunteer-experience" placeholder=""></textarea>
+                </div>
+                <label>Do you have previous work experience with youth organizations?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-yes" value="yes" checked>
+                    <label class="form-check-label" for="youth-experience-yes">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-no" value="no">
+                    <label class="form-check-label" for="youth-experience-no">
+                        No
+                    </label>
+                </div>
+                <label for="youth-experience-explanation">If 'Yes' please explain</label>
+                <div class="input-group">
+                    <textarea class="form-control" id="youth-experience-explanation" placeholder=""></textarea>
+                </div>
+                <label for="other-experience">Are there any other skills or qualifications you would like to list?</label>
+                <div class="input-group">
+                    <textarea class="form-control" id="other-experience" placeholder=""></textarea>
+                </div>
+            </fieldset>
+
+            <!--Character References-->
+            <fieldset class="form-group border">
+                <legend>Character References <span id="ref-number">0/3</span></legend>
+                <button type="button" class="btn btn-secondary" id="add-ref">Add Reference</button>
+                <div id="references"></div>
+            </fieldset>
+
+            <!--Background check-->
+            <fieldset class="form-group border">
+                <legend>Background Check</legend>
+                <label>Are you willing to have a background check?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bg-check" id="bg-check-yes" value="yes" checked>
+                    <label class="form-check-label" for="bg-check-yes">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bg-check" id="bg-check-no" value="no">
+                    <label class="form-check-label" for="bg-check-no">
+                        No
+                    </label>
+                </div>
+            </fieldset>
+
+            <!--Mailing List-->
+            <fieldset class="form-group border">
+                <legend>Mailing List</legend>
+                <label>Would you like to be added to our mailing list?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-yes" value="yes" checked>
+                    <label class="form-check-label" for="mailing-list-yes">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-no" value="no">
+                    <label class="form-check-label" for="mailing-list-no">
+                        No
+                    </label>
+                </div>
+            </fieldset>
+
+            <!--Sign-->
+            <fieldset class="form-group border">
+                <legend>Sign</legend>
+                <label>The above information is true to the best of my knowledge</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="information-is-true" value="true">
+                    <label class="form-check-label" for="information-is-true">Terms & Policy</label>
+                </div>
+                <label for="sign-name">Name</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="sign-name" placeholder="">
+                </div>
+                <label for="e-signature">Name</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="e-signature" placeholder="">
+                </div>
+                <label for="datepicker">Date</label>
+                <div class="input-group mb-3">
+                    <input type="text" id="datepicker">
+                </div>
+            </fieldset>
+        </form>
+        </div>
+
+        <div class="col col-md-3 d-none d-md-block">
+            <img src="images/form_image.png" alt="hello" class="img" id="verticalBanner">
+        </div>
+
+
+    </div>
+
+
+
     </div>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
