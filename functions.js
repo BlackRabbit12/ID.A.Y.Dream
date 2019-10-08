@@ -24,17 +24,24 @@ $("#add-ref").on("click", function(){
         '                </div>'
     );
 
-    // Removes this reference div on click
+    // Removes this element's reference div on click
     $("#btn-remove" + $ref_count).on("click", function() {
         $(this).parent().remove();
-        console.log(this);
         $ref_count--;
-        $("#ref-number").html($ref_count + "/3");
+        updateRefs();
     });
 
     $ref_count++;
-
-    // update number of references
-    $("#ref-number").html( $ref_count + "/3");
+    updateRefs();
 });
 
+function updateRefs() {
+    if ($ref_count < 3) {
+        $("#ref-number").addClass("text-danger");
+        $("#ref-number").removeClass("text-success");
+    } else {
+        $("#ref-number").addClass("text-success");
+        $("#ref-number").removeClass("text-danger");
+    }
+    $("#ref-number").html($ref_count + "/3");
+}
