@@ -1,5 +1,6 @@
 let $max_refs = 6;
 let $ref_count = 0;
+let $ref_id = 0;
 
 $( function() {
     $( "#datepicker" ).datepicker();
@@ -22,23 +23,25 @@ $("#add-ref").on("click", function(){
             '                    <div class="input-group mb-3">\n' +
             '                        <input type="text" class="form-control" id="ref-relation" placeholder="Father">\n' +
             '                    </div>\n' +
-            '                    <button type="button" id="btn-remove' + $ref_count + '" class="btn btn-secondary btn-remove">Remove Reference</button>\n' +
+            '                    <button type="button" id="btn-remove' + $ref_id + '" class="btn btn-secondary btn-remove">Remove Reference</button>\n' +
             '                </div>'
         );
 
 
         // Removes this element's reference div on click
-        $("#btn-remove" + $ref_count).on("click", function () {
+        $("#btn-remove" + $ref_id).on("click", function () {
             $(this).parent().remove();
             $ref_count--;
             updateRefs();
         });
 
         $ref_count++;
+        $ref_id++;
         updateRefs();
     }
 });
 
+// updates color and text for number of references
 function updateRefs() {
     if ($ref_count < 3) {
         $("#ref-number").addClass("text-danger");
