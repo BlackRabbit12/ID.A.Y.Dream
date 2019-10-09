@@ -1,7 +1,52 @@
 @charset "utf-8";
 
+/*media queries for stuff that can't be accomplished with bootstrap'*/
+
+@media (max-width: 576px) {
+    #form-title {
+        font-size: 2em;
+    }
+
+    #title-volunteer, #title-form {
+        font-size: 3em !important;
+    }
+
+    /*#volunteer-description {*/
+    /*    display: none;*/
+    /*    visibility: hidden;*/
+    /*}*/
+
+    #verticalBanner {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 768px) {
+    #form-title {
+        font-size: 3em;
+    }
+
+    #title-volunteer, #title-form {
+        font-size: 3em !important;
+    }
+
+    /*#volunteer-description {*/
+    /*    display: none;*/
+    /*    visibility: hidden;*/
+    /*}*/
+}
+
+
 fieldset {
     border: 0;
+}
+
+footer {
+    background-color: #5DDEFA;
+    margin-top: 175px;
+    height: 100px;
+    width: auto;
 }
 
 .form-control {
@@ -19,7 +64,7 @@ fieldset {
 }
 
 .form-padding-styles {
-    padding-right: 25%;
+    padding-right: 2%;
     padding-left: 2%;
 }
 
@@ -35,6 +80,20 @@ fieldset {
     font-size: 4em;
     line-height: 1.1em;
     color: #666666;
+}
+
+.jumbotron {
+    font-family: 'Quicksand', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    line-height: 1.1em !important;
+    background: #5DDEFA !important;
+    color: white !important;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    width: 100vw;
+}
+
+.text-white {
+    font-size: 4em !important;
 }
 
 label {
@@ -60,13 +119,6 @@ legend {
     line-height: 1.1em;
 }
 
-@media (max-width: 576px) {
-    #verticalBanner {
-        display: none;
-        visibility: hidden;
-    }
-}
-
 textarea:hover,
 input:hover,
 textarea:active,
@@ -79,7 +131,18 @@ input:focus {
     border-bottom: solid #5DDEFA 4px;
 }
 
-#verticalBanner,  #volunteer-form {
+#verticalBanner {
+    /*overflow-x: scroll;*/
+    height: 75vh;
+    width: auto;
+    object-fit: cover;
+}
+
+/*#volunteer-description {*/
+/*    width: 300px;*/
+/*}*/
+
+#volunteer-form {
     height: 75vh;
 }
 

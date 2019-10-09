@@ -2,28 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Volunteer Form</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
 </head>
 <body>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="text-white" id="title-volunteer">VOLUNTEER</h1>
+        <h1 class="text-white" id="title-form">FORM.</h1>
+<!--        <p class="lead" id="volunteer-description">There are many ways to get involved with I.D.A.Y.Dream. Our village is only made possible with volunteers. Join us today!</p><br>-->
+    </div>
+</div><!-- ending section for the jumbotron -->
+
 <div class="container">
-    <h1 id="form-title">Volunteer<br>Form.</h1><br><br>
-
-<!--    <p class="lead" id="header-intro">There are many ways to get involved with I.D.A.Y.Dream. Our village is only made possible with volunteers. Join us today!</p>-->
-
-
-
-
     <div class="row" id="form-and-image">
 
-        <div class="col col-md-8" id="form-scroll">
+        <div class="col col-md-6" id="form-scroll">
         <form id="volunteer-form">
 
+
             <!--Contact Information-->
+
             <fieldset class="form-group">
                 <legend>Contact Us</legend>
+
                 <div class="form-padding-styles">
                     <label for="full-name">Full Name</label>
                     <div class="input-group mb-3">
@@ -290,16 +296,21 @@
         </form>
         </div>
 
-        <div class="d-none d-md-inline-block col-md-4">
-            <img src="images/form_image.png" alt="hello" class="img" id="verticalBanner">
+        <div class="d-none d-md-inline-block col-md-6">
+            <img src="images/kids_img.png" alt="hello" class="img img-fluid" id="verticalBanner">
         </div>
 
 
     </div>
+<!--    end of form and image row-->
 
 
 
-    </div>
+
+    </div> <!--    end of entire body div-->
+
+<footer id="footer"></footer>
+
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="functions.js"></script>
