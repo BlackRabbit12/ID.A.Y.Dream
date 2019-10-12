@@ -57,27 +57,33 @@ footer {
     width: auto;
 }
 
-.form-control {
-    background-color: transparent;
-    color: #eeeeee;
-    outline: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: solid #5DDEFA 3px;
-}
+
+/* this is for the borders */
+/*.form-control {*/
+/*    background-color: transparent;*/
+/*    color: #eeeeee;*/
+/*    outline: none;*/
+/*    border-top: none;*/
+/*    border-left: none;*/
+/*    border-right: none;*/
+/*    border-bottom: solid black 1px;*/
+/*}*/
 
 .form-padding-styles:first-of-type {
     padding-top: 2%;
 }
 
-.form-padding-styles {
-    padding-right: 2%;
-    padding-left: 2%;
-}
+/*.form-padding-styles {*/
+/*    padding-right: 2%;*/
+/*    !*padding-left: 2%;*!*/
+/*}*/
 
 #form-scroll {
     overflow-y: scroll;
+    /*padding: 20px 20px;*/
+    /*border: 1px solid whitesmoke;*/
+    /*background-color: whitesmoke;*/
+    /*border-radius: 2%;*/
 }
 
 #form-title {
@@ -88,6 +94,19 @@ footer {
     font-size: 4em;
     line-height: 1.1em;
     color: #666666;
+}
+
+input[type="text"] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+input[type="text"]:focus {
+    -webkit-box-shadow: none;
 }
 
 .jumbotron {
@@ -125,18 +144,12 @@ legend {
     font-family: 'Quicksand', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 2em;
     line-height: 1.1em;
+    margin-bottom: 3% !important;
 }
 
-textarea:hover,
-input:hover,
-textarea:active,
-input:active,
-textarea:focus,
-input:focus {
-    outline:0px !important;
-    -webkit-appearance:none;
-    box-shadow: none !important;
-    border-bottom: solid #5DDEFA 4px;
+.row {
+    padding-right: 2% !important;
+    margin-bottom: 3% !important;
 }
 
 #verticalBanner {

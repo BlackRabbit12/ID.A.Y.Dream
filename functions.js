@@ -7,6 +7,7 @@ $( function() {
 } );
 
 // adds reference div on click
+// add comment to test
 $("#add-ref").on("click", function(){
     if ($ref_count + 1 <= $max_refs) {
         $("#references").append(
