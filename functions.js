@@ -10,21 +10,21 @@ $( function() {
 $("#add-ref").on("click", function(){
     if ($ref_count + 1 <= $max_refs) {
         $("#references").append(
-            '<div class="reference">\n' +
-            '                    <label for="ref-name">Name</label>\n' +
-            '                    <div class="input-group mb-3">\n' +
-            '                        <input type="text" class="form-control" id="ref-name" placeholder="Jane Doe">\n' +
-            '                    </div>\n' +
-            '                    <label for="ref-email">Email</label>\n' +
-            '                    <div class="input-group mb-3">\n' +
-            '                        <input type="text" class="form-control" id="ref-email" placeholder="me@someone.com">\n' +
-            '                    </div>\n' +
-            '                    <label for="ref-relation">Relationship</label>\n' +
-            '                    <div class="input-group mb-3">\n' +
-            '                        <input type="text" class="form-control" id="ref-relation" placeholder="Father">\n' +
-            '                    </div>\n' +
-            '                    <button type="button" id="btn-remove' + $ref_id + '" class="btn btn-secondary btn-remove">Remove Reference</button>\n' +
-            '                </div>'
+            '<div class="reference border">\n' +
+            '    <label for="ref-name">Name</label>\n' +
+            '    <button type="button" id="btn-remove' + $ref_id + '" class="btn btn-secondary btn-remove float-right">Remove Reference</button>\n' +
+            '    <div class="input-group mb-3">\n' +
+            '        <input type="text" class="form-control" id="ref-name" placeholder="Jane Doe">\n' +
+            '    </div>\n' +
+            '    <label for="ref-email">Email</label>\n' +
+            '    <div class="input-group mb-3">\n' +
+            '        <input type="text" class="form-control" id="ref-email" placeholder="me@someone.com">\n' +
+            '    </div>\n' +
+            '    <label for="ref-relation">Relationship</label>\n' +
+            '    <div class="input-group mb-3">\n' +
+            '        <input type="text" class="form-control" id="ref-relation" placeholder="Father">\n' +
+            '    </div>\n' +
+            ' </div>'
         );
 
 
