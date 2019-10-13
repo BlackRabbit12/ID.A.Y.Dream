@@ -53,3 +53,24 @@ function updateRefs() {
     }
     $("#ref-number").html($ref_count + "/3");
 }
+
+
+
+
+
+
+
+
+document.getElementById("volunteer-form").onsubmit = validate;
+
+function validate() {
+    var isTrue = true;
+
+    var fullName = document.getElementById("full-name").value;
+
+    if (fullName == "") {
+        var errFullName;
+    }
+
+    return isTrue;
+}
