@@ -132,10 +132,39 @@ legend {
     height: 75vh;
 }
 
+/*
+************************** NOT CURRENTLY WORKING ***********
+* change the icon from default triangle to calendar image
+*/
 input[type=date]::-webkit-calendar-picker-indicator {
 /*    THIS IS WHERE THE ICON GOES    */
+    background-image: url("../images/favicon-32x32.png");
+    z-index: 1;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
+/*
+* removes the visible date spinner-button in the date input box
+*/
 input[type="date"]::-webkit-inner-spin-button {
     display: none;
+}
+
+/*
+* removes the diagonal lines in lower right corner of textarea boxes on Chrome 26 on OS X
+*/
+input[type="textarea"]::-webkit-resizer{
+    display: none;
+}
+
+input[type="text"]::-webkit-validation-bubble-arrow {
+    background: black;
+    border-color: #444;
+    box-shadow: none;
+}
+
+input[type="text"]::-webkit-validation-bubble {
+    color: #eee;
+    background: black;
 }
