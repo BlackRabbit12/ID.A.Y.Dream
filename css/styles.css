@@ -155,12 +155,12 @@ input[type="textarea"]::-webkit-resizer{
 }
 
 input[type="text"]::-webkit-validation-bubble-arrow {
-    background: black;
+    background: #5DDEFA;
     border-color: #444;
     box-shadow: none;
 }
 
 input[type="text"]::-webkit-validation-bubble {
     color: #eee;
-    background: black;
+    background: #5DDEFA;
 }
