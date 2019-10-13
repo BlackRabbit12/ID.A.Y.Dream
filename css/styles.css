@@ -30,21 +30,12 @@
     #title-volunteer, #title-form {
         font-size: 3em !important;
     }
-
-    /*#volunteer-description {*/
-    /*    display: none;*/
-    /*    visibility: hidden;*/
-    /*}*/
 }
 
-/*#back-to-top-btn {*/
-/*    background: #5DDEFA !important;*/
-/*    color: white;*/
-/*    margin-top: 25px;*/
-/*    width: 50px;*/
-/*    height: 50px;*/
-/*    border-radius: 50%;*/
-/*}*/
+button {
+    background-color: #5DDEFA !important;
+    border-color: #5DDEFA !important;
+}
 
 fieldset {
     border: 0;
@@ -57,33 +48,8 @@ footer {
     width: auto;
 }
 
-
-/* this is for the borders */
-/*.form-control {*/
-/*    background-color: transparent;*/
-/*    color: #eeeeee;*/
-/*    outline: none;*/
-/*    border-top: none;*/
-/*    border-left: none;*/
-/*    border-right: none;*/
-/*    border-bottom: solid black 1px;*/
-/*}*/
-
-.form-padding-styles:first-of-type {
-    padding-top: 2%;
-}
-
-/*.form-padding-styles {*/
-/*    padding-right: 2%;*/
-/*    !*padding-left: 2%;*!*/
-/*}*/
-
 #form-scroll {
     overflow-y: scroll;
-    /*padding: 20px 20px;*/
-    /*border: 1px solid whitesmoke;*/
-    /*background-color: whitesmoke;*/
-    /*border-radius: 2%;*/
 }
 
 #form-title {
@@ -153,23 +119,31 @@ legend {
 }
 
 #verticalBanner {
-    /*overflow-x: scroll;*/
     height: 75vh;
     width: auto;
     object-fit: cover;
 }
 
-/*#volunteer-description {*/
-/*    width: 300px;*/
-/*}*/
-
 #volunteer-form {
     height: 75vh;
 }
 
-::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0,0,0,.5);
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-}
+/*::-webkit-scrollbar-thumb {*/
+/*    border-radius: 4px;*/
+/*    background-color: rgba(0,0,0,.5);*/
+/*    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);*/
+/*}*/
 
+/*.inner-addon {*/
+/*    position: relative;*/
+/*}*/
+
+/*.inner-addon, .glyphicon {*/
+/*    position: absolute;*/
+/*    padding: 10px;*/
+/*    pointer-events: none;*/
+/*}*/
+
+/*.right-addon, .glyphicon {*/
+/*    left: 0px;*/
+/*}*/

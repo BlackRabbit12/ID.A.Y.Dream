@@ -21,7 +21,7 @@
 <div class="container">
     <div class="row" id="form-and-image">
         <div class="col col-md-7 modal-open" id="form-scroll">
-        <form id="volunteer-form">
+        <form id="volunteer-form" action="volunteer_success_splash_page.html" method="post">
             <!--Contact Information-->
             <fieldset class="form-group">
                 <legend>Contact Us</legend>
@@ -80,51 +80,57 @@
                     </div>
                 </div> <!-- end of row with select a t-shirt size -->
             </fieldset> <!-- end of fieldset with initial user information name, email, t-shirt, etc -->
-
-            <!--Interests-->
             <fieldset class="form-group">
                 <legend>Interests</legend>
-                <div class="form-padding-styles">
-
-                    <label for="about-us">How did you hear about us?</label>
-                    <div class="input-group">
-                        <textarea class="form-control" id="about-us" placeholder="our website..."></textarea>
-                    </div>
-                </div>
-                <div class="form-padding-styles">
-                    <label>Where would you like to help?</label>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="about-us" class="col-form-label">How did you hear about us?</label>
+                            <div class="input-group">
+                                <textarea class="form-control" id="about-us" placeholder="I heard about you..." rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div> <!-- end of row that has the how did you hear about us text box -->
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="col-form-label">Where would you like to help?</label>
+                        </div>
+                    </div> <!-- end of row that has the interests description -->
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="events" id="events">
-                        <label class="form-check-label" for="events">
-                            Events/Activities
-                        </label>
-                    </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="fundraising" id="fundraising">
-                    <label class="form-check-label" for="fundraising">
-                        Fundraising
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="newsletter" id="newsletter">
-                    <label class="form-check-label" for="newsletter">
-                        Newsletter Production
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="volunteer" id="volunteer">
-                    <label class="form-check-label" for="volunteer">
-                        Volunteer Coordination
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="mentoring" id="mentoring">
-                    <label class="form-check-label" for="mentoring">
-                        Mentoring
-                    </label>
-                </div>
-                </div>
-            </fieldset>
+                            <input class="form-check-input" type="checkbox" value="events" id="events">
+                            <label class="form-check-label" for="events">Events/Activities</label>
+                    </div> <!-- end of div that has the events/activities check box -->
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="fundraising" id="fundraising">
+                                <label class="col-form-label" for="fundraising">Fundraising</label>
+                            </div>
+                        </div>
+                    </div> <!-- end of row that contains the first interests check box-->
+
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="newsletter" id="newsletter">
+                                <label class="form-check-label" for="newsletter">
+                                    Newsletter Production
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="volunteer" id="volunteer">
+                                <label class="form-check-label" for="volunteer">
+                                    Volunteer Coordination
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="mentoring" id="mentoring">
+                                <label class="form-check-label" for="mentoring">
+                                    Mentoring
+                                </label>
+                            </div>
+
+
+            </fieldset> <!-- end of fieldset that contains Interests section -->
 
             <!--Availability-->
             <fieldset class="form-group">
@@ -258,40 +264,45 @@
 
             <!--Sign-->
             <fieldset class="form-group">
-                <legend>Sign</legend>
-
-                    <label>The above information is true to the best of my knowledge</label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="information-is-true" value="true">
-                        <label class="form-check-label" for="information-is-true">Terms & Policy</label>
-                    </div>
+                <legend>E-Signature</legend>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="information-is-true" value="true">
+                                <label class="col-form-label" for="information-is-true">I agree to the Terms and Conditions.</label>
+                            </div>
+                        </div>
+                    </div> <!-- end of row that has the checkbox for agreeing to terms and conditions -->
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="col-form-label">The above information is true to the best of my knowledge.</label>
+                        </div>
+                    </div> <!-- end of row that contains our signature explanation -->
                     <div class="row">
                         <div class="col-12">
                             <label for="sign-name" class="col-form-label">Full Name</label>
                             <input type="text" class="form-control" id="sign-name" placeholder="">
                         </div>
                     </div> <!-- end of row asking for user full name to confirm -->
-                <div class=" row">
+                <div class="row">
                     <div class="col-12">
-                        <label for="datepicker" class="col-form-label">Date</label>
-                        <input type="text" id="datepicker">
+                        <label for="datepicker" class="col-form-label">Today's Date</label>
+                        <input type="date" class=form-control id="datepicker">
                     </div>
                 </div> <!-- end of row that contains our date picker -->
+                <div class="row">
+                    <div class="col-12">
+                        <button class="btn btn-lg btn-primary" type="submit">Submit</button>
+                    </div>
+                </div> <!-- end of row that has our submit button -->
             </fieldset> <!-- end of fieldset that contains electronic signature, and acceptance of policy -->
         </form> <!-- end of the entire form that the user fills out -->
-        </div> <!-- ending section for the jumbotron -->
-
+        </div> <!-- ending section for scrolling area -->
         <div class="d-none d-md-inline-block col-md-5">
             <img src="images/kids_img.png" alt="hello" class="img img-fluid" id="verticalBanner">
-        </div>
-
-
-    </div>
-<!--    end of form and image row-->
-
-
+        </div> <!-- end of img area -->
+    </div> <!--    end of form and image row-->
     </div> <!--    end of entire body div-->
-
 <footer id="footer"></footer>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
