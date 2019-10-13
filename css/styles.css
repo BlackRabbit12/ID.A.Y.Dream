@@ -55,6 +55,11 @@ button[type="submit"] {
     border: none !important;
 }
 
+/*
+http://www.okler.net/forums/topic/check-box-change-color/
+Followed some setup and class selection from a post by Jonas at the above link.
+Using custom checkbox classes here and in the HTML allowed us to change the color of a checked box.
+*/
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #3c9cc6;
     border-color: #3c9cc6;
