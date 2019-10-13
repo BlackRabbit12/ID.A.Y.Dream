@@ -41,11 +41,11 @@
                     <div class="col-md-4">
                         <label for="zip" class="col-form-label">ZIP</label>
                         <input type="text" class="form-control" id="zip" placeholder="">
-                    </div>
+                    </div> <!-- end of column with zip information -->
                     <div class="col-md-4">
                         <label for="city" class="col-form-label">City</label>
                         <input type="text" class="form-control" id="city" placeholder="">
-                    </div>
+                    </div> <!-- end of column with city information -->
                     <div class="col-md-4">
                         <label for="state" class="col-form-label">State</label>
                             <select class="custom-select" id="state">
@@ -54,18 +54,18 @@
                                 <option value="OR">OR</option>
                                 <option value="WA">WA</option>
                             </select>
-                    </div>
+                    </div> <!-- end of column with state information -->
                 </div> <!-- end of row with zip, city, state content -->
                 <div class="row">
                     <div class="col-12">
                         <label for="phone" class="col-form-label">Phone</label>
-                            <input type="text" class="form-control" id="phone" placeholder="(111) 111-1111">
+                            <input type="text" class="form-control" id="phone" placeholder="">
                     </div>
                 </div> <!-- end of row with phone number entry -->
                 <div class="row">
                     <div class="col-12">
                         <label for="email" class="col-form-label">Email</label>
-                        <input type="text" class="form-control" id="email" placeholder="me@example.com">
+                        <input type="text" class="form-control" id="email" placeholder="">
                     </div>
                 </div> <!-- end of row with email entry -->
                 <div class="row">
@@ -90,88 +90,52 @@
                             </div>
                         </div>
                     </div> <!-- end of row that has the how did you hear about us text box -->
-                    <div class="row">
-                        <div class="col-12">
-                            <label class="col-form-label">Where would you like to help?</label>
-                        </div>
-                    </div> <!-- end of row that has the interests description -->
+                    <label class="col-form-label">Where would you like to help?</label>
                     <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="events" id="events">
                             <label class="form-check-label" for="events">Events/Activities</label>
                     </div> <!-- end of div that has the events/activities check box -->
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="fundraising" id="fundraising">
-                                <label class="col-form-label" for="fundraising">Fundraising</label>
-                            </div>
-                        </div>
-                    </div> <!-- end of row that contains the first interests check box-->
-
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="newsletter" id="newsletter">
-                                <label class="form-check-label" for="newsletter">
-                                    Newsletter Production
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="volunteer" id="volunteer">
-                                <label class="form-check-label" for="volunteer">
-                                    Volunteer Coordination
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="mentoring" id="mentoring">
-                                <label class="form-check-label" for="mentoring">
-                                    Mentoring
-                                </label>
-                            </div>
-
-
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="fundraising" id="fundraising">
+                        <label class="form-check-label" for="fundraising">Fundraising</label>
+                    </div> <!-- end of div that has the fundraising check box -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="newsletter" id="newsletter">
+                        <label class="form-check-label" for="newsletter">Newsletter Production</label>
+                    </div> <!-- end of div that has the newsletter check box -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="volunteer" id="volunteer">
+                        <label class="form-check-label" for="volunteer">Volunteer Coordination</label>
+                    </div> <!-- end of div that has the volunteer coordination check box -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="mentoring" id="mentoring">
+                    <label class="form-check-label" for="mentoring">Mentoring</label>
+                </div> <!-- end of div that has the mentoring check box -->
             </fieldset> <!-- end of fieldset that contains Interests section -->
-
-            <!--Availability-->
             <fieldset class="form-group">
                 <legend>Availability</legend>
-                <div class="form-padding-styles">
-
                     <label>I can help...</label>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="weekend-4hr" id="weekend-4hr">
-                        <label class="form-check-label" for="weekend-4hr">
-                            Weekend 4hr shifts
-                        </label>
-                    </div>
+                        <label class="form-check-label" for="weekend-4hr">Weekend 4hr shifts</label>
+                    </div> <!-- end of div that has the 4hr shifts check box -->
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="weekend-8hr" id="weekend-8hr">
-                        <label class="form-check-label" for="weekend-8hr">
-                            Weekend 8hr shifts
-                        </label>
-                    </div>
+                        <label class="form-check-label" for="weekend-8hr">Weekend 8hr shifts</label>
+                    </div> <!-- end of div that has the 8hr shits check box -->
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="weekend-workshop" id="weekend-workshop">
-                        <label class="form-check-label" for="weekend-workshop">
-                            Weekend workshops
-                        </label>
-                    </div>
+                        <label class="form-check-label" for="weekend-workshop">Weekend workshops</label>
+                    </div> <!-- end of div that has the weekend workshops check box -->
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="summer-camp" id="summer-camp">
-                        <label class="form-check-label" for="summer-camp">
-                            1-week summer camp
-                        </label>
-                    </div>
+                        <label class="form-check-label" for="summer-camp">1-week summer camp</label>
+                    </div> <!-- end of div that has the summer camp check box -->
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="on-going" id="on-going">
-                        <label class="form-check-label" for="on-going">
-                            On-going
-                        </label>
-                    </div>
-                </div>
-            </fieldset>
-
-            <!--Skills & Qualifications-->
+                        <label class="form-check-label" for="on-going">On-going</label>
+                    </div> <!-- end of div that has the on going check box -->
+            </fieldset> <!-- end of fieldset  -->
             <fieldset class="form-group">
                 <legend>Skills & Qualifications</legend>
                     <div class="form-padding-styles">
@@ -222,26 +186,18 @@
                 </div>
             </fieldset>
 
-            <!--Background check-->
             <fieldset class="form-group">
                 <legend>Background Check</legend>
-                <div class="form-padding-styles">
                     <label>Are you willing to have a background check?</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="bg-check" id="bg-check-yes" value="yes" checked>
-                        <label class="form-check-label" for="bg-check-yes">
-                            Yes
-                        </label>
-                    </div>
+                        <label class="form-check-label" for="bg-check-yes">Yes</label>
+                    </div> <!-- end of div for "yes" to background check -->
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="bg-check" id="bg-check-no" value="no">
-                        <label class="form-check-label" for="bg-check-no">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </fieldset>
-
+                        <label class="form-check-label" for="bg-check-no">No</label>
+                    </div> <!-- end of div for "no" to background check -->
+            </fieldset> <!-- end of fieldset that contains background check information -->
             <!--Mailing List-->
             <fieldset class="form-group">
                 <legend>Mailing List</legend>
