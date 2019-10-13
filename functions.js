@@ -11,23 +11,30 @@ let $ref_id = 0;
 $("#add-ref").on("click", function(){
     if ($ref_count + 1 <= $max_refs) {
         $("#references").append(
-            '<div class="reference border">\n' +
-            '    <label for="ref-name">Name</label>\n' +
-            '    <button type="button" id="btn-remove' + $ref_id + '" class="btn btn-secondary btn-remove float-right">Remove Reference</button>\n' +
-            '    <div class="input-group mb-3">\n' +
-            '        <input type="text" class="form-control" id="ref-name" placeholder="Jane Doe">\n' +
+            '<div>\n' +
+            '    <div class="row">\n' +
+            '        <div class="col-12">\n' +
+            '            <label for="ref-name" class="col-form-label">Full Name</label><button type="button" id="btn-remove' + $ref_id + '" class="btn btn-secondary btn-remove float-right">Remove Reference</button>\n' +
+            '            <input type="text" class="form-control" id="ref-name" placeholder="">\n' +
+            '        </div>\n' +
             '    </div>\n' +
-            '    <label for="ref-email">Email</label>\n' +
-            '    <div class="input-group mb-3">\n' +
-            '        <input type="text" class="form-control" id="ref-email" placeholder="me@someone.com">\n' +
+            '    <div class="row">\n' +
+            '        <div class="col-12">\n' +
+            '            <label for="ref-email" class="col-form-label">Email</label>\n' +
+            '            <input type="text" class="form-control" id="ref-email" placeholder="">\n' +
+            '        </div>\n' +
             '    </div>\n' +
-            '    <label for="ref-relation">Relationship</label>\n' +
-            '    <div class="input-group mb-3">\n' +
-            '        <input type="text" class="form-control" id="ref-relation" placeholder="Father">\n' +
+            '    <div class="row">\n' +
+            '        <div class="col-12">\n' +
+            '            <label for="ref-relation" class="col-form-label">Relationship</label>\n' +
+            '            <input type="text" class="form-control" id="ref-relation" placeholder="">\n' +
+            '        </div>\n' +
             '    </div>\n' +
-            ' </div>'
+            ' </div>\n'
         );
 
+        // BUTTON THAT SHOULD BE IMPLEMENTED BACK IN TO REMOVE A REFERENCE
+        // '    <button type="button" id="btn-remove' + $ref_id + '" class="btn btn-secondary btn-remove float-right">Remove Reference</button>\n' +
 
         // Removes this element's reference div on click
         $("#btn-remove" + $ref_id).on("click", function () {
