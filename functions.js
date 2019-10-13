@@ -2,9 +2,9 @@ let $max_refs = 6;
 let $ref_count = 0;
 let $ref_id = 0;
 
-$( function() {
-    $( "#datepicker" ).datepicker();
-} );
+// $(function() {
+//     $("#datepicker").datepicker();
+// } );
 
 // adds reference div on click
 // add comment to test
