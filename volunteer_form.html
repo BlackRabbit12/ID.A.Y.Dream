@@ -135,57 +135,44 @@
                         <input class="form-check-input" type="checkbox" value="on-going" id="on-going">
                         <label class="form-check-label" for="on-going">On-going</label>
                     </div> <!-- end of div that has the on going check box -->
-            </fieldset> <!-- end of fieldset  -->
+            </fieldset> <!-- end of fieldset that contains availability information-->
             <fieldset class="form-group">
                 <legend>Skills & Qualifications</legend>
-                    <div class="form-padding-styles">
-                    <label for="motivation">What makes you motivated to work with us?</label>
-                    <div class="input-group">
-                        <textarea class="form-control" id="motivation" placeholder=""></textarea>
-                    </div>
-                </div>
-                <div class="form-padding-styles">
-                    <label for="volunteer-experience">Do you have previous volunteer experience?</label>
-                    <div class="input-group">
-                        <textarea class="form-control" id="volunteer-experience" placeholder=""></textarea>
-                    </div>
-                </div>
-                <div class="form-padding-styles">
-                    <label>Do you have previous work experience with youth organizations?</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-yes" value="yes" checked>
-                        <label class="form-check-label" for="youth-experience-yes">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-no" value="no">
-                        <label class="form-check-label" for="youth-experience-no">
-                            No
-                        </label>
-                    </div>
-                </div>
-                <div class="form-padding-styles">
-                    <label for="youth-experience-explanation">If 'Yes' please explain</label>
+                <label for="motivation">What makes you motivated to work with us?</label>
+                <div class="input-group">
+                    <textarea class="form-control" id="motivation" placeholder=""></textarea>
+                </div> <!-- end of text area for why they are motivated to work for us -->
+                <label for="volunteer-experience">Do you have previous volunteer experience?</label>
+                <div class="input-group">
+                    <textarea class="form-control" id="volunteer-experience" placeholder=""></textarea>
+                </div> <!-- end of text area for if they have previous volunteer experience -->
+                <label>Do you have previous work experience with youth organizations?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-yes" value="yes">
+                    <label class="form-check-label" for="youth-experience-yes">Yes</label>
+                </div> <!-- end of div for checkbox of if they have experience with youth "yes" -->
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-no" value="no">
+                    <label class="form-check-label" for="youth-experience-no">No</label>
+                </div> <!-- end of div for checkbox of if they have experience with youth "no" -->
+                <div id="toggle-please-explain">
+                    <label for="youth-experience-explanation">Please explain:</label>
                     <div class="input-group">
                         <textarea class="form-control" id="youth-experience-explanation" placeholder=""></textarea>
-                    </div>
-                    <label for="other-experience">Are there any other skills or qualifications you would like to list?</label>
-                    <div class="input-group">
-                        <textarea class="form-control" id="other-experience" placeholder=""></textarea>
-                    </div>
-                </div>
-            </fieldset>
-
-            <!--Character References-->
+                    </div> <!-- area where the user explains the volunteer experience that they have with youth -->
+                </div> <!-- end of div that holds the toggle for if user needs to explain their youth volunteer experience -->
+                <label for="other-experience">Any other skills or qualifications you would like to list:</label>
+                <div class="input-group">
+                    <textarea class="form-control" id="other-experience" placeholder=""></textarea>
+                </div> <!-- end of div for user listing any other skills or qualifications that they have -->
+            </fieldset> <!-- end of fieldset that contains skills and qualification information -->
             <fieldset class="form-group">
                 <legend>Character References <span class="text-danger" id="ref-number">0/3</span></legend>
                 <div class="form-padding-styles">
                     <button type="button" class="btn btn-secondary" id="add-ref">Add Reference</button>
                     <div id="references"></div>
                 </div>
-            </fieldset>
-
+            </fieldset> <!-- end of fieldset that contains the information for user skills and qualifications -->
             <fieldset class="form-group">
                 <legend>Background Check</legend>
                     <label>Are you willing to have a background check?</label>
@@ -198,27 +185,18 @@
                         <label class="form-check-label" for="bg-check-no">No</label>
                     </div> <!-- end of div for "no" to background check -->
             </fieldset> <!-- end of fieldset that contains background check information -->
-            <!--Mailing List-->
             <fieldset class="form-group">
                 <legend>Mailing List</legend>
-                <div class="form-padding-styles">
                     <label>Would you like to be added to our mailing list?</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-yes" value="yes" checked>
-                        <label class="form-check-label" for="mailing-list-yes">
-                            Yes
-                        </label>
-                    </div>
+                        <label class="form-check-label" for="mailing-list-yes">Yes</label>
+                    </div> <!-- end of div for "yes" to mailing list check -->
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-no" value="no">
-                        <label class="form-check-label" for="mailing-list-no">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </fieldset>
-
-            <!--Sign-->
+                        <label class="form-check-label" for="mailing-list-no">No</label>
+                    </div> <!-- end of div for "no" to mailing list check -->
+            </fieldset> <!-- end of fieldset that contains mailing list information -->
             <fieldset class="form-group">
                 <legend>E-Signature</legend>
                     <div class="row">
