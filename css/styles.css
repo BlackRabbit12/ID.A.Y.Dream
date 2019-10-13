@@ -27,18 +27,42 @@
     }
 }
 
-button {
-    background-color: #5DDEFA !important;
-    border-color: #5DDEFA !important;
+button[type="button"] {
+    text-decoration: none !important;
+    color: white !important;
+    font-size: larger;
+}
+
+button[type="button"]:active, button[type="button"]:hover {
+    text-decoration: underline !important;
+}
+
+button[type="submit"] {
+    background-color: #3c9cc6 !important;
+    border-color: #3c9cc6 !important;
     margin-bottom: 3%;
 }
+
+.card-body {
+    border-top: none !important;
+    border-left: 1px solid black !important;
+    border-right: 1px solid black !important;
+    border-bottom: none !important;
+}
+
+.card-header {
+    background-color: #6bb4d4 !important;
+    border: none !important;
+}
+
+/*5DDEFA OLD BLUE COLOR*/
 
 fieldset {
     border: 0;
 }
 
 footer {
-    background-color: #5DDEFA;
+    background-color: #3c9cc6;
     margin-top: 175px;
     height: 100px;
     width: auto;
@@ -58,6 +82,27 @@ footer {
     color: #666666;
 }
 
+/*
+https://stackoverflow.com/questions/22406661/how-to-make-one-circle-inside-of-another-using-css
+Used logic from misterManSam on Stack overflow to put smaller circle inside of larger circle to override
+browser rendering of radio buttons.
+*/
+input[type='radio']:before {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius:50%;
+    top: 50%;
+    left: 50%;
+    margin: -4px 0px 0px -4px;
+}
+
+input[type='radio']:checked:before {
+    background: #3c9cc6;
+}
+
 input[type="text"] {
     background: transparent;
     border: none;
@@ -74,7 +119,9 @@ input[type="text"]:focus {
 .jumbotron {
     font-family: 'Quicksand', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
     line-height: 1.1em !important;
-    background: #5DDEFA !important;
+    /*background: #5DDEFA !important; */
+    background-image: url("../images/bg_gradient_up_down.png");
+    background-size: cover;
     color: white !important;
     padding-bottom: 1rem;
     padding-top: 1rem;
@@ -163,4 +210,14 @@ input[type="text"]::-webkit-validation-bubble-arrow {
 input[type="text"]::-webkit-validation-bubble {
     color: #eee;
     background: #5DDEFA;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    border: 2px solid gray;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 0px gray inset;
 }
