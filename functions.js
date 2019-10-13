@@ -61,23 +61,26 @@ function updateRefs() {
     $("#ref-number").html($ref_count + "/3");
 }
 
-
-
-
-
-
-
-
-document.getElementById("volunteer-form").onsubmit = validate;
-
-function validate() {
-    var isTrue = true;
-
-    var fullName = document.getElementById("full-name").value;
-
-    if (fullName == "") {
-        var errFullName;
+/*
+* Question: Do you have previous work experience with youth organizations?
+* Gets both radio buttons 'Yes' and 'No', when they experience a change the function executes
+* var experienced gets the length of how many radio buttons are named 'youth-experience'
+* for loop walks through the length of the radio list, var showy gets the text area by it's
+*       div id "toggle-please-explain".
+*           If the second radio button 'yes' is checked then it turns the default div css
+*               from display: none to display: block
+*           If the first radio button 'no' is checked then it ensures the default div css
+*               is re-enstated as display: none.
+ */
+$('input[name="youth-experience"]').on('change', function(){
+    var experienced = document.getElementsByName('youth-experience');
+    for (i=0; i < experienced.length; i++) {
+        var showy = document.getElementById("toggle-please-explain");
+        if (experienced[i].checked){
+            showy.style.display = 'block';
+        }
+        else {
+            showy.style.display = 'none';
+        }
     }
-
-    return isTrue;
-}
+});
