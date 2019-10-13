@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/*media queries for stuff that can't be accomplished with bootstrap'*/
+/* media queries for stuff that can't be accomplished with bootstrap */
 
 @media (max-width: 576px) {
     #form-title {
@@ -38,9 +38,10 @@ button[type="button"]:active, button[type="button"]:hover {
 }
 
 button[type="submit"] {
-    background-color: #3c9cc6 !important;
-    border-color: #3c9cc6 !important;
-    margin-bottom: 3%;
+    background-color: #6bb4d4 !important;
+    border-color: #6bb4d4 !important;
+    margin-bottom: 2%;
+    margin-top: 1%;
 }
 
 .card-body {
@@ -61,19 +62,17 @@ Followed some setup and class selection from a post by Jonas at the above link.
 Using custom checkbox classes here and in the HTML allowed us to change the color of a checked box.
 */
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #3c9cc6;
-    border-color: #3c9cc6;
+    background-color: #6bb4d4;
+    border-color: #6bb4d4;
 }
-
-/*5DDEFA OLD BLUE COLOR*/
 
 fieldset {
     border: 0;
 }
 
 footer {
-    background-color: #3c9cc6;
-    margin-top: 175px;
+    background-color: #6bb4d4;
+    margin-top: 150px;
     height: 100px;
     width: auto;
 }
@@ -120,7 +119,7 @@ input[type="radio"] {
 }
 
 input[type='radio']:checked:before {
-    background: #3c9cc6;
+    background: #6bb4d4;
 }
 
 input[type="text"] {
@@ -139,13 +138,16 @@ input[type="text"]:focus {
 .jumbotron {
     font-family: 'Quicksand', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
     line-height: 1.1em !important;
-    /*background: #5DDEFA !important; */
     background-image: url("../images/bg_gradient_up_down.png");
     background-size: cover;
     color: white !important;
     padding-bottom: 1rem;
     padding-top: 1rem;
     width: 100vw;
+}
+
+#jumbo-heart {
+    font-size: 40%;
 }
 
 .text-white {
@@ -222,14 +224,14 @@ input[type="textarea"]::-webkit-resizer{
 }
 
 input[type="text"]::-webkit-validation-bubble-arrow {
-    background: #5DDEFA;
+    background: #6bb4d4;
     border-color: #444;
     box-shadow: none;
 }
 
 input[type="text"]::-webkit-validation-bubble {
     color: #eee;
-    background: #5DDEFA;
+    background: #6bb4d4;
 }
 
 
@@ -238,5 +240,6 @@ input[data-state="invalid"] {
     border-bottom: darkred;;
 }
 
+/*5DDEFA OLD BLUE COLOR*/
 
 
