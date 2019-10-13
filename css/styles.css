@@ -128,22 +128,10 @@ legend {
     height: 75vh;
 }
 
-/*::-webkit-scrollbar-thumb {*/
-/*    border-radius: 4px;*/
-/*    background-color: rgba(0,0,0,.5);*/
-/*    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);*/
-/*}*/
+input[type=date]::-webkit-calendar-picker-indicator {
+/*    THIS IS WHERE THE ICON GOES    */
+}
 
-/*.inner-addon {*/
-/*    position: relative;*/
-/*}*/
-
-/*.inner-addon, .glyphicon {*/
-/*    position: absolute;*/
-/*    padding: 10px;*/
-/*    pointer-events: none;*/
-/*}*/
-
-/*.right-addon, .glyphicon {*/
-/*    left: 0px;*/
-/*}*/
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
