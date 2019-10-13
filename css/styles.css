@@ -55,6 +55,11 @@ button[type="submit"] {
     border: none !important;
 }
 
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #3c9cc6;
+    border-color: #3c9cc6;
+}
+
 /*5DDEFA OLD BLUE COLOR*/
 
 fieldset {
@@ -97,6 +102,16 @@ input[type='radio']:before {
     top: 50%;
     left: 50%;
     margin: -4px 0px 0px -4px;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    border: 2px solid gray;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 0px gray inset;
 }
 
 input[type='radio']:checked:before {
@@ -212,12 +227,11 @@ input[type="text"]::-webkit-validation-bubble {
     background: #5DDEFA;
 }
 
-input[type="radio"] {
-    -webkit-appearance: none;
-    border: 2px solid gray;
-    width: 16px;
-    height: 16px;
-    position: relative;
-    border-radius: 50%;
-    box-shadow: 0 0 2px 0px gray inset;
+
+/* new bridget stuff */
+input[data-state="invalid"] {
+    border-bottom: darkred;;
 }
+
+
+
