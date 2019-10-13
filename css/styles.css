@@ -118,6 +118,10 @@ legend {
     margin-bottom: 3% !important;
 }
 
+#toggle-please-explain {
+    display: none;
+}
+
 #verticalBanner {
     height: 75vh;
     width: auto;
