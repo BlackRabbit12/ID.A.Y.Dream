@@ -239,4 +239,7 @@ input[data-state="invalid"] {
 
 /*5DDEFA OLD BLUE COLOR*/
 
-
+/* dropdown border for invalid */
+.red-border-drop {
+    border: 1px solid red !important;
+}
