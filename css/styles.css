@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/* media queries for stuff that can't be accomplished with bootstrap */
+/* Media queries for stuff that can't be accomplished with bootstrap */
 
 @media (max-width: 576px) {
     #form-title {
