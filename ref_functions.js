@@ -5,3 +5,5 @@ $(".clear-reference").on("click", function() {
         $inputs[i].value = "";
     }
 });
+
+// hi

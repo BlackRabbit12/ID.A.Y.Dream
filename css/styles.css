@@ -141,13 +141,10 @@ input[type="text"]:focus {
     background-image: url("../images/bg_gradient_up_down.png");
     background-size: cover;
     color: white !important;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
+    max-height: 140px;
+    /*padding-bottom: 1rem;*/
+    padding-top: 0px;
     width: 100vw;
-}
-
-#jumbo-heart {
-    font-size: 40%;
 }
 
 .text-white {
@@ -188,13 +185,13 @@ legend {
 }
 
 #verticalBanner {
-    height: 75vh;
+    height: 100vh;
     width: auto;
     object-fit: cover;
 }
 
 #volunteer-form {
-    height: 75vh;
+    height: 100vh;
 }
 
 /*
