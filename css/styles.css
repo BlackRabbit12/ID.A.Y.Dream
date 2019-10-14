@@ -214,7 +214,7 @@ input[type="date"]::-webkit-inner-spin-button {
 }
 
 /*
-* removes the diagonal lines in lower right corner of textarea boxes on Chrome 26 on OS X
+* Removes the diagonal lines in lower right corner of textarea boxes on Chrome 26 on OS X
 */
 input[type="textarea"]::-webkit-resizer{
     display: none;

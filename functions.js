@@ -3,11 +3,11 @@
  * Gets both radio buttons 'Yes' and 'No', when they experience a change the function executes
  * var experienced gets the length of how many radio buttons are named 'youth-experience'
  * for loop walks through the length of the radio list, var showy gets the text area by it's
- *       div id "toggle-please-explain".
+ *       div id "toggle-please-explain" .
  *           If the second radio button 'yes' is checked then it turns the default div css
  *               from display: none to display: block
  *           If the first radio button 'no' is checked then it ensures the default div css
- *               is reinstated as display: none.
+ *               is reinstated as display: none  .
  */
 
 $('input[name="youth-experience"]').on('change', function(){
