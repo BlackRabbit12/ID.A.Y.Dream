@@ -4,5 +4,4 @@ $(".clear-reference").on("click", function() {
     for (let i = 0; i < $inputs.length; i++) {
         $inputs[i].value = "";
     }
-
 });
