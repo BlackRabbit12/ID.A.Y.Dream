@@ -90,7 +90,8 @@ function validate() {
     let mentoringValue = document.forms["volunteer-form"]["mentoring"].checked;
     if(!eventsValue && !fundraisingValue && !newsletterValue && !volunteerValue && !mentoringValue) {
         document.forms["volunteer-form"]["events"].focus();
-        /* **********SOME STYLE TO INDICATE THE ERROR****************************************** */
+        let whereToHelpSpanElem = document.getElementById('where-to-help');
+        whereToHelpSpanElem.classList.add("err-checkbox");
         setTrue = false;
     } //end events, fundraising, newsletter, volunteer, mentoring
 
@@ -102,7 +103,8 @@ function validate() {
     let onGoingValue = document.forms["volunteer-form"]["on-going"].checked;
     if(!weekend4HrValue && !weekend8HrValue && !weekendWorkshopValue && !summerCampValue && !onGoingValue){
         document.forms["volunteer-form"]["weekend-4hr"].focus();
-        /* **********SOME STYLE TO INDICATE THE ERROR****************************************** */
+        let iCanHelpSpanElem = document.getElementById('i-can-help');
+        iCanHelpSpanElem.classList.add("err-checkbox");
         setTrue = false;
     }
 
