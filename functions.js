@@ -23,6 +23,7 @@ $('input[name="youth-experience"]').on('change', function(){
     }
 });
 
+
 /*
  * Client side validation checks on all <input>, <select>, <textarea> elements
  * by capturing their respective value then sends the value to be client side validated
@@ -93,7 +94,7 @@ $(document).ready(function(){
      * Looks at the <select> <options> when a user chooses id="state" and
      * id="t-shirt" size drop down menus
      */
-    $("select").on("click", function(event){
+    $("select").on("change", function(event) {
         let valueSelect = event.target;
         var valueOption = ($(this).find('option:selected').attr('value'));
         console.log(valueOption);
@@ -183,3 +184,30 @@ $(".clear-reference").on("click", function() {
 //     //console.log(char + "  ");
 // }
 //console.log(valueInput);
+
+/*
+$("select").on("click", function(event) {
+    let valueSelect = event.target;
+    var valueOption = ($(this).find('option:selected').attr('value'));
+    console.log(valueOption);
+
+    //client side validate a state is chosen
+    if (valueSelect.id === 'state') {
+        if (valueOption === ''){
+            valueSelect.classList.add("red-border-drop");
+        }
+        else {
+            valueSelect.classList.remove("red-border-drop");
+        }
+    }
+    //client side validate a t-shirt size is chosen
+    else if (valueSelect.id === 't-shirt') {
+        if (valueOption === ''){
+            valueSelect.classList.add("red-border-drop");
+        }
+        else {
+            valueSelect.classList.remove("red-border-drop");
+        }
+    }
+}); //end $("select").on("change", function(event)
+*/

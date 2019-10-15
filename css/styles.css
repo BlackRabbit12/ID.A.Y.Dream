@@ -185,13 +185,13 @@ legend {
 }
 
 #verticalBanner {
-    height: 100vh;
+    height: 75vh;
     width: auto;
     object-fit: cover;
 }
 
 #volunteer-form {
-    height: 100vh;
+    height: 75vh;
 }
 
 /*
