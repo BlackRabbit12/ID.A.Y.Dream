@@ -206,10 +206,10 @@ function validate() {
     } //end information-is-true
 
     /* ***SIGN-NAME*** */
-    let signNameValue = document.forms["volunteer-form"]["sign-value"].value;
+    let signNameValue = document.forms["volunteer-form"]["sign-name"].value;
     if(signNameValue === ""){
-        document.forms["volunteer-form"]["sign-value"].focus();
-        document.forms["volunteer-form"]["sign-value"].style.borderBottom = "1px solid red";
+        document.forms["volunteer-form"]["sign-name"].focus();
+        document.forms["volunteer-form"]["sign-name"].style.borderBottom = "1px solid red";
         setTrue = false;
     } //end sign-name
 
