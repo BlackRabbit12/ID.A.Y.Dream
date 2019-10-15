@@ -75,7 +75,7 @@ $(document).ready(function(){
      * Looks at the <input> type 'checkbox' as user inputs each 'click'
      */
     $("input[type='checkbox']").click(function(event){
-        var valueChecked = event.target;
+        let valueChecked = event.target;
         valueChecked = valueChecked.checked;
         console.log(valueChecked);
     }); //end $("input[type='checkbox']").click(function(event)
@@ -84,7 +84,7 @@ $(document).ready(function(){
      * Looks at the <input> type 'radio' as a user inputs each 'click'
      */
     $("input[type='radio']").click(function(event){
-        var valueButton = event.target;
+        let valueButton = event.target;
         valueButton = valueButton.checked;
         console.log(valueButton);
     }); //end $("input[type='radio']").click(function(event)
@@ -95,7 +95,7 @@ $(document).ready(function(){
      */
     $("select").on("change", function(event){
         let valueSelect = event.target;
-        var valueOption = ($(this).find('option:selected').attr('value'));
+        let valueOption = ($(this).find('option:selected').attr('value'));
         console.log(valueOption);
 
         //client side validate a state is chosen
