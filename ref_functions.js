@@ -41,7 +41,13 @@ function validate() {
     } //end city
 
     /* ***STATE*** */
-    /********************FINISH dropdown */
+    let stateValue = document.getElementById('state');
+    stateValue = stateValue.options[stateValue.selectedIndex].value;
+    if(stateValue === ""){
+        document.forms["volunteer-form"]["state"].focus();
+        document.forms["volunteer-form"]["state"].classList.add("red-border-drop");
+        setTrue = false;
+    } //end state
 
     /* ***PHONE*** */
     let phoneValue = document.forms["volunteer-form"]["phone"].value;
@@ -60,7 +66,13 @@ function validate() {
     } //end email
 
     /* ***T-SHIRT*** */
-    /********************FINISH dropdown */
+    let tShirtValue = document.getElementById('t-shirt');
+    tShirtValue = tShirtValue.options[tShirtValue.selectedIndex].value;
+    if(tShirtValue === ""){
+        document.forms["volunteer-form"]["t-shirt"].focus();
+        document.forms["volunteer-form"]["t-shirt"].classList.add("red-border-drop");
+        setTrue = false;
+    } //end t-shirt
 
     /* ***ABOUT-US*** */
     let aboutUsValue = document.forms["volunteer-form"]["about-us"].value;
