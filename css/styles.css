@@ -198,13 +198,13 @@ legend {
 ************************** NOT CURRENTLY WORKING ***********
 * change the icon from default triangle to calendar image
 */
-input[type="date"]::-webkit-calendar-picker-indicator {
-/*    THIS IS WHERE THE ICON GOES    */
-    background-image: url("../images/favicon-32x32.png");
-    z-index: 1;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+/*input[type="date"]::-webkit-calendar-picker-indicator {*/
+/*!*    THIS IS WHERE THE ICON GOES    *!*/
+/*    background-image: url("../images/favicon-32x32.png");*/
+/*    z-index: 1;*/
+/*    background-position: center;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
 
 /*
 * removes the visible date spinner-button in the date input box
