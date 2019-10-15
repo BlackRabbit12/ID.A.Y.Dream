@@ -93,7 +93,7 @@ $(document).ready(function(){
      * Looks at the <select> <options> when a user chooses id="state" and
      * id="t-shirt" size drop down menus
      */
-    $("select").on("click", function(event){
+    $("select").on("change", function(event){
         let valueSelect = event.target;
         var valueOption = ($(this).find('option:selected').attr('value'));
         console.log(valueOption);
