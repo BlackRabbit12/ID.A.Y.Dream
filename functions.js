@@ -3,7 +3,7 @@
  * Gets both radio buttons 'Yes' and 'No', when they experience a change the function executes
  * var experienced gets the length of how many radio buttons are named 'youth-experience'
  * for loop walks through the length of the radio list, var showy gets the text area by it's
- *       div id "toggle-please-explain" .
+ *       div id "toggle-please-explain".
  *           If the second radio button 'yes' is checked then it turns the default div css
  *               from display: none to display: block
  *           If the first radio button 'no' is checked then it ensures the default div css
@@ -22,7 +22,6 @@ $('input[name="youth-experience"]').on('change', function(){
         }
     }
 });
-
 
 /*
  * Client side validation checks on all <input>, <select>, <textarea> elements
@@ -94,11 +93,7 @@ $(document).ready(function(){
      * Looks at the <select> <options> when a user chooses id="state" and
      * id="t-shirt" size drop down menus
      */
-<<<<<<< HEAD
-    $("select").on("change", function(event) {
-=======
     $("select").on("change", function(event){
->>>>>>> 99f60b93ce6cc16faad92603aa1f7b7a2ec064b5
         let valueSelect = event.target;
         let valueOption = ($(this).find('option:selected').attr('value'));
         console.log(valueOption);
@@ -188,30 +183,3 @@ $(".clear-reference").on("click", function() {
 //     //console.log(char + "  ");
 // }
 //console.log(valueInput);
-
-/*
-$("select").on("click", function(event) {
-    let valueSelect = event.target;
-    var valueOption = ($(this).find('option:selected').attr('value'));
-    console.log(valueOption);
-
-    //client side validate a state is chosen
-    if (valueSelect.id === 'state') {
-        if (valueOption === ''){
-            valueSelect.classList.add("red-border-drop");
-        }
-        else {
-            valueSelect.classList.remove("red-border-drop");
-        }
-    }
-    //client side validate a t-shirt size is chosen
-    else if (valueSelect.id === 't-shirt') {
-        if (valueOption === ''){
-            valueSelect.classList.add("red-border-drop");
-        }
-        else {
-            valueSelect.classList.remove("red-border-drop");
-        }
-    }
-}); //end $("select").on("change", function(event)
-*/

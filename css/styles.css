@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/* Media queries for stuff that can't be accomplished with bootstrap */
+/* Media queries for stuff that can't be accomplished with Bootstrap */
 
 @media (max-width: 576px) {
     #form-title {
@@ -38,10 +38,8 @@ button[type="button"]:active, button[type="button"]:hover {
 }
 
 button[type="submit"] {
-    background-color: #6bb4d4 !important;
-    border-color: #6bb4d4 !important;
-    margin-bottom: 2%;
-    margin-top: 1%;
+    background-color: #8de8fb !important;
+    border-color: #8de8fb !important;
 }
 
 .card-body {
@@ -52,8 +50,12 @@ button[type="submit"] {
 }
 
 .card-header {
-    background-color: #6bb4d4 !important;
+    background-color: #8de8fb !important;
     border: none !important;
+}
+
+.clear-reference:hover, .clear-reference:active {
+    border-bottom: 1px solid black;
 }
 
 /*
@@ -62,8 +64,8 @@ Followed some setup and class selection from a post by Jonas at the above link.
 Using custom checkbox classes here and in the HTML allowed us to change the color of a checked box.
 */
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #6bb4d4;
-    border-color: #6bb4d4;
+    background-color: #8de8fb;
+    border-color: #8de8fb;
 }
 
 fieldset {
@@ -71,8 +73,8 @@ fieldset {
 }
 
 footer {
-    background-color: #6bb4d4;
-    margin-top: 150px;
+    background-image: url("../images/final_gradient_bg.png");
+    margin-top: 100px;
     height: 100px;
     width: auto;
 }
@@ -89,6 +91,12 @@ footer {
     font-size: 4em;
     line-height: 1.1em;
     color: #666666;
+}
+
+.hide-me {
+    color: red;
+    font-size: smaller;
+    margin-bottom: 8px;
 }
 
 /*
@@ -119,7 +127,7 @@ input[type="radio"] {
 }
 
 input[type='radio']:checked:before {
-    background: #6bb4d4;
+    background: #8de8fb;
 }
 
 input[type="text"] {
@@ -138,26 +146,16 @@ input[type="text"]:focus {
 .jumbotron {
     font-family: 'Quicksand', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
     line-height: 1.1em !important;
-    background-image: url("../images/bg_gradient_up_down.png");
+    background-image: url("../images/final_gradient_bg.png");
     background-size: cover;
     color: white !important;
-    max-height: 140px;
-    /*padding-bottom: 1rem;*/
+    max-height: 120px;
     padding-top: 0px;
     width: 100vw;
 }
 
-.text-white {
-    font-size: 4em !important;
-}
-
 label {
     color: #666666;
-}
-
-label::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: black;
-    opacity: 1; /* Firefox */
 }
 
 label:-ms-input-placeholder { /* Internet Explorer 10-11 */
@@ -168,16 +166,44 @@ label::-ms-input-placeholder { /* Microsoft Edge */
     color: black;
 }
 
+label::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 1; /* Firefox */
+}
+
 legend {
     font-family: 'Quicksand', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #515151 !important;
     font-size: 2em;
     line-height: 1.1em;
     margin-bottom: 3% !important;
 }
 
+/* hiding the span to count references until it has functionality */
+#ref-number {
+    display: none;
+}
+
 .row {
     padding-right: 2% !important;
     margin-bottom: 3% !important;
+}
+
+#row-holds-submit-button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#submit-policy {
+    font-size: smaller;
+}
+
+.text-white {
+    font-size: 4em !important;
+}
+
+#title-volunteer {
+    padding-top: 2%;
 }
 
 #toggle-please-explain {
@@ -221,20 +247,20 @@ input[type="textarea"]::-webkit-resizer{
 }
 
 input[type="text"]::-webkit-validation-bubble-arrow {
-    background: #6bb4d4;
+    background: #5edffa;
     border-color: #444;
     box-shadow: none;
 }
 
 input[type="text"]::-webkit-validation-bubble {
     color: #eee;
-    background: #6bb4d4;
+    background: #8de8fb;
 }
 
 
 /* new bridget stuff */
 input[data-state="invalid"] {
-    border-bottom: darkred;;
+    border-bottom: red;
 }
 
 /*5DDEFA OLD BLUE COLOR*/
@@ -253,3 +279,4 @@ input[data-state="invalid"] {
 .err-checkbox {
     display: block;
 }
+
