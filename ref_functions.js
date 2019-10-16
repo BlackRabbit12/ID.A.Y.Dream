@@ -211,7 +211,7 @@ function validate() {
     /* ***MAILING-LIST*** */
     /********************FINISH radio button */
 
-    /* ***INFORMATION-IS-TRUE*** */
+    /* ***INFORMATION-IS-TRUE***  */
     let informationIsTrueValue = document.forms["volunteer-form"]["information-is-true"].checked;
     if(!informationIsTrueValue){
         document.forms["volunteer-form"]["weekend-4hr"].focus();

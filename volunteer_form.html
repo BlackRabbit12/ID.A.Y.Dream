@@ -18,11 +18,8 @@
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="text-white" id="title-volunteer">VOLUNTEER</h1>
-        <h1 class="text-white" id="title-form">FORM<span id="jumbo-heart">&hearts;</span></h1>
+        <h1 class="text-white" id="title-volunteer">VOLUNTEER.</h1>
     </div>
-
-    <!--        <p class="lead" id="volunteer-description">There are many ways to get involved with I.D.A.Y.Dream. Our village is only made possible with volunteers. Join us today!</p><br>-->
 </div> <!-- ending section for the jumbotron -->
 
 <div class="container">
@@ -195,7 +192,7 @@
                                             <input type="text" class="form-control" id="ref-name-1" placeholder="">
                                         </div> <!-- end of div that holds the name label for reference 1 -->
                                         <div class="col1"> <!-- HERE IS WHERE WE PUT THE ICON -->
-                                            <p class="clear-reference">X</p>
+                                            <p class="clear-reference">clear</p>
                                         </div> <!-- end of div that will hold our icon for clearing the information -->
                                     </div> <!-- end of row with reference 1 full name slot and clear button -->
                                     <div class="row">
@@ -229,7 +226,7 @@
                                             <input type="text" class="form-control" id="ref-name-2" placeholder="">
                                         </div> <!-- end of div that holds the name label for reference 2 -->
                                         <div class="col1"> <!-- HERE IS WHERE WE PUT THE ICON -->
-                                            <p class="clear-reference">X</p>
+                                            <p class="clear-reference">clear</p>
                                         </div> <!-- end of div that will hold our icon for clearing the information -->
                                     </div> <!-- end of row with reference 2 full name slot and clear button -->
                                     <div class="row">
@@ -262,7 +259,7 @@
                                             <input type="text" class="form-control" id="ref-name-3" placeholder="">
                                         </div> <!-- end of div that holds the name label for reference 3 -->
                                         <div class="col1"> <!-- HERE IS WHERE WE PUT THE ICON -->
-                                            <p class="clear-reference">X</p>
+                                            <p class="clear-reference">clear</p>
                                         </div> <!-- end of div that will hold our icon for clearing the information -->
                                     </div> <!-- end of row with reference 3 full name slot and clear button -->
                                     <div class="row">
@@ -319,13 +316,13 @@
                             <!--form-check form-check-inline  for div and for input form-check-input  and for label  col-form-label -->
                             <div class="custom-control custom-checkbox">
                                 <input class="custom-control-input" type="checkbox" id="information-is-true" value="true">
-                                <label class="custom-control-label" for="information-is-true">I agree to the Terms and Conditions.</label>
+                                <label class="custom-control-label" for="information-is-true">I agree to the Terms and Conditions</label>
                             </div>
                         </div>
                     </div> <!-- end of row that has the checkbox for agreeing to terms and conditions -->
                     <div class="row">
                         <div class="col-12">
-                            <label class="col-form-label">The above information is true to the best of my knowledge.</label>
+                            <label class="col-form-label" id="submit-policy">By submitting this application, I affirm that the facts set forth in it are true and complete. I understand that if I am accepted as a volunteer, any false statements, omissions, or other misrepresentations made by me on this application may result in my immediate dismissal.</label>
                         </div>
                     </div> <!-- end of row that contains our signature explanation -->
                     <div class="row input">
@@ -340,7 +337,7 @@
                             <input type="date" class=form-control id="datepicker">
                         </div>
                     </div> <!-- end of row that contains our date picker -->
-                    <div class="row">
+                    <div class="row" id="row-holds-submit-button">
                         <div class="col-12">
                             <button class="btn btn-lg btn-primary" type="submit" id="submit-btn">Submit</button>
                         </div>
@@ -352,7 +349,7 @@
             <img src="images/kids_img.png" alt="hello" class="img img-fluid" id="verticalBanner">
         </div> <!-- end of img area -->
     </div> <!--    end of form and image row-->
-</div> <!--    end of entire body div -->
+</div> <!--    end of entire body div  -->
 <footer id="footer"></footer>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -368,10 +365,3 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 </html>
-
-<!-- LEAVING CODE SNIPPETS HERE THAT MAY COME INTO PLAY LATER ON -->
-<!-- COMMENTING OUT UNTIL WE HAVE E-SIGNATURE CAPABILITY (looks odd with two name fields) -->
-<!--                    <label for="e-signature">Name</label>-->
-<!--                    <div class="input-group mb-3">-->
-<!--                        <input type="text" class="form-control" id="e-signature" placeholder="">-->
-<!--                    </div>-->
