@@ -1,5 +1,11 @@
 @charset "utf-8";
 
+
+/*Authors: Shayna Jamieson, Bridget Black, Keller Flint*/
+/*Version: 1.0*/
+/*File Name: styles.css */
+
+
 /* Media queries for stuff that can't be accomplished with Bootstrap */
 
 @media (max-width: 576px) {
