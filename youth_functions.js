@@ -1,0 +1,148 @@
+/*
+Authors: Shayna Jamieson, Bridget Black, Keller Flint
+Version: 1.0
+File Name: youth_functions.js
+*/
+
+// 2D  function array with input element ids
+let validateEmptyArray = [
+    "fname",
+    "lname",
+];
+
+// *** event listeners ***
+// Form on submit event listener
+$("#youth-form").on("submit", validateForm);
+
+// assign check if empty function on all input elements in validateEmptyArray
+for (let i = 0; i < validateEmptyArray.length; i++) {
+    $("#" + validateEmptyArray[i]).on("mousedown keydown keyup", function() {
+        validate_empty(validateEmptyArray[i]);
+    });
+}
+
+$("#phone").on("mousedown keydown keyup", function() {
+    validate_phone();
+});
+
+$("#email").on("mousedown keydown keyup", function() {
+    validate_email();
+});
+
+$("#gender").on("blur", function() {
+    validate_gender();
+});
+
+$("#ethnicity").on("blur", function() {
+    validate_ethnicity();
+});
+
+
+// *** validation functions ***
+// checks if all form data is valid on submit
+function validateForm() {
+    let isValid = true;
+    // checks if input fields are empty
+    for (let i = 0; i < validateEmptyArray.length; i++) {
+        if (!validate_empty(validateEmptyArray[i])) {
+            isValid = false;
+        }
+    }
+
+    if (!validate_phone()) {
+        isValid = false;
+    }
+
+    if (!validate_email()) {
+        isValid = false;
+    }
+
+    if (!validate_gender()) {
+        isValid = false;
+    }
+
+    if (!validate_ethnicity()) {
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+// checks if given id input is empty
+function validate_empty(id) {
+    if (!isEmpty($("#" + id).val())) {
+        $("#err-" + id).addClass("d-none");
+        $("#" + id).removeClass("red-border-drop");
+        return true;
+    } else {
+        $("#err-" + id).removeClass("d-none");
+        $("#" + id).addClass("red-border-drop");
+        return false;
+    }
+}
+
+// forces valid phone number and returns true if the phone number contains 10 or 11 characters. Displays errors
+function validate_phone() {
+    // formats phone number
+    let str = $("#phone").val();
+    str = str.replace(/\D/g, "");
+
+    if (str.length > 11) {
+        str = str.substring(0, 11);
+    }
+
+    $("#phone").val(str);
+
+    if (str.length <= 10) {
+        $("#err-phone").removeClass("d-none");
+        $("#phone").addClass("red-border-drop");
+        return false;
+    } else {
+        $("#err-phone").addClass("d-none");
+        $("#phone").removeClass("red-border-drop");
+        return true;
+    }
+}
+
+// returns true if email is valid and false otherwise. Displays errors
+function validate_email() {
+    let expression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!expression.test(String($("#email").val()).toLocaleLowerCase())) {
+        $("#err-email").removeClass("d-none");
+        $("#email").addClass("red-border-drop");
+        return false;
+    } else {
+        $("#err-email").addClass("d-none");
+        $("#email").removeClass("red-border-drop");
+        return true;
+    }
+}
+
+function validate_gender() {
+    if (document.getElementById("gender-none").selected) {
+        $("#err-gender").removeClass("d-none");
+        $("#gender").addClass("red-border-drop");
+        return false;
+    } else {
+        $("#err-gender").addClass("d-none");
+        $("#gender").removeClass("red-border-drop");
+        return true;
+    }
+}
+
+function validate_ethnicity() {
+    if (document.getElementById("ethnicity-none").selected) {
+        $("#err-ethnicity").removeClass("d-none");
+        $("#ethnicity").addClass("red-border-drop");
+        return false;
+    } else {
+        $("#err-ethnicity").addClass("d-none");
+        $("#ethnicity").removeClass("red-border-drop");
+        return true;
+    }
+}
+// utility functions
+
+function isEmpty(str) {
+    return str.trim() == "";
+}

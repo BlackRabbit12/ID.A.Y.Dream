@@ -39,6 +39,14 @@
         </div> <!-- end of row that asks for the users first and last names -->
         <div class="row">
             <div class="col-md-6">
+                <span id="err-fname" class="text-danger d-none">First name is a required field</span>
+            </div>
+            <div class="col-md-6">
+                <span id="err-lname" class="text-danger d-none">Last name is a required field</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
                 <label for="email" class="col-form-label">*Email</label>
                 <input type="text" class="form-control" id="email" placeholder="">
             </div>
@@ -46,7 +54,16 @@
                 <label for="phone" class="col-form-label">*Phone Number</label>
                 <input type="text" class="form-control" id="phone" placeholder="">
             </div>
-        </div> <!-- end of row that asks for the users email and phone number -->
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <span id="err-email" class="text-danger d-none">Email is required and must be valid address</span>
+            </div>
+            <div class="col-md-6">
+                <span id="err-phone" class="text-danger d-none">Phone is required and must contain 10-11 digits</span>
+            </div>
+        </div>
+        <!-- end of row that asks for the users email and phone number -->
         <div class="row">
             <div class="col-md-6">
                 <label for="college-interest" class="col-form-label">College of Interest</label>
@@ -68,7 +85,7 @@
                     <div class="col-md-6">
                         <label for="gender" class="col-form-label">*Gender</label>
                         <select class="custom-select" id="gender">
-                            <option selected value="">select</option>
+                            <option selected value="" id="gender-none">select</option>
                             <option value="M">M</option>
                             <option value="F">F</option>
                             <option value="other">Other</option>
@@ -89,7 +106,7 @@
             <div class="col-md-6">
                 <label for="ethnicity" class="col-form-label">*Ethnicity</label>
                 <select class="custom-select" id="ethnicity">
-                    <option selected value="">select</option>
+                    <option selected id="ethnicity-none" value="">select</option>
                     <option value="american-indian">American Indian or Alaska Native</option>
                     <option value="asian">Asian or Asian American</option>
                     <option value="african-american">Black or African American</option>
@@ -103,6 +120,14 @@
                 </select>
             </div> <!-- end of row that asks for the user's  and ethnicity -->
         </div> <!-- end of row that asks for the user's birth date, gender, and ethnicity -->
+        <div class="row">
+            <div class="col-md-6">
+                <span id="err-gender" class="text-danger d-none">Must select a value for gender</span>
+            </div>
+            <div class="col-md-6">
+                <span id="err-ethnicity" class="text-danger d-none">Must select a value for ethnicity</span>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <label for="fav-snacks" class="col-form-label">What are some of your favorite food/snacks?</label>
@@ -137,5 +162,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <!-- jQuery for input validation -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="youth_functions.js"></script>
 </body>
 </html>
