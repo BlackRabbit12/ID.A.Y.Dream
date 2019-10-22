@@ -1,8 +1,8 @@
-<!--
+/*
 Authors: Shayna Jamieson, Bridget Black, Keller Flint
 Version: 1.0
 File Name: functions.js
--->
+*/
 
 /*
  * Question: Do you have previous work experience with youth organizations?
