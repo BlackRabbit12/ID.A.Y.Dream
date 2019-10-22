@@ -1,8 +1,8 @@
-<!--
+/*
 Authors: Shayna Jamieson, Bridget Black, Keller Flint
 Version: 1.0
 File Name: ref_functions.js
--->
+*/
 
 /*
  * Server side validation
