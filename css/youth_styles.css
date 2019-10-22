@@ -69,6 +69,10 @@ input[type="text"]:focus {
     z-index: 1;
 }
 
+.red-border-drop {
+    border-bottom: 1px solid red !important;
+}
+
 .row {
     margin-bottom: 3% !important;
 }
