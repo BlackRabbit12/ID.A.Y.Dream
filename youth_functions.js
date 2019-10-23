@@ -37,6 +37,10 @@ $("#ethnicity").on("input focus blur", function () {
     validate_ethnicity();
 });
 
+$("#dob").on("input focus blur", function() {
+    validate_dob();
+});
+
 
 // *** validation functions ***
 // checks if all form data is valid on submit
@@ -62,6 +66,10 @@ function validateForm() {
     }
 
     if (!validate_ethnicity()) {
+        isValid = false;
+    }
+
+    if (!validate_dob()) {
         isValid = false;
     }
 
@@ -97,7 +105,7 @@ function validate_phone() {
 
     $("#phone").val(str);
 
-    if (str.length <= 10) {
+    if (str.length != 14) {
         $("#err-phone").removeClass("d-none");
         $("#phone").addClass("red-border-drop");
         return false;
@@ -142,6 +150,32 @@ function validate_ethnicity() {
     } else {
         $("#err-ethnicity").addClass("d-none");
         $("#ethnicity").removeClass("red-border-drop");
+        return true;
+    }
+}
+
+//
+function validate_dob() {
+    let str = $("#dob").val();
+    str = str.replace(/\D/g, "");
+
+    if (str.length < 3) {
+        // do nothing
+    } else if (str.length < 5) {
+        str = str.substring(0,2) + "/" + str.substring(2,4);
+    } else {
+        str = str.substring(0,2) + "/" + str.substring(2,4) + "/" + str.substring(4,8);
+    }
+
+    $("#dob").val(str);
+
+    if (str.length != 10) {
+        $("#err-dob").removeClass("d-none");
+        $("#dob").addClass("red-border-drop");
+        return false;
+    } else {
+        $("#err-dob").addClass("d-none");
+        $("#dob").removeClass("red-border-drop");
         return true;
     }
 }
