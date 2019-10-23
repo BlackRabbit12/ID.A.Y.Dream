@@ -16,24 +16,24 @@ $("#youth-form").on("submit", validateForm);
 
 // assign check if empty function on all input elements in validateEmptyArray
 for (let i = 0; i < validateEmptyArray.length; i++) {
-    $("#" + validateEmptyArray[i]).on("mousedown keydown keyup", function () {
+    $("#" + validateEmptyArray[i]).on("input focus blur", function () {
         validate_empty(validateEmptyArray[i]);
     });
 }
 
-$("#phone").on("mousedown keydown keyup", function () {
+$("#phone").on("input focus blur", function () {
     validate_phone();
 });
 
-$("#email").on("mousedown keydown keyup", function () {
+$("#email").on("input focus blur", function () {
     validate_email();
 });
 
-$("#gender").on("blur", function () {
+$("#gender").on("input focus blur", function () {
     validate_gender();
 });
 
-$("#ethnicity").on("blur", function () {
+$("#ethnicity").on("input focus blur", function () {
     validate_ethnicity();
 });
 
@@ -87,8 +87,12 @@ function validate_phone() {
     let str = $("#phone").val();
     str = str.replace(/\D/g, "");
 
-    if (str.length > 11) {
-        str = str.substring(0, 11);
+    if (str.length < 4) {
+        // do nothing
+    } else if (str.length < 7) {
+        str =  "(" + str.substring(0, 3) + ") " + str.substring(3, 6);
+    } else {
+        str =  "(" + str.substring(0, 3) + ") " + str.substring(3, 6) + "-" + str.substring(6, 10);
     }
 
     $("#phone").val(str);
