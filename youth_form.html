@@ -50,11 +50,11 @@
         <div class="row">
             <div class="col-md-6">
                 <label for="email" class="col-form-label">*Email</label>
-                <input type="text" class="form-control" id="email" placeholder="">
+                <input type="text" class="form-control" id="email" placeholder="someone@example.com">
             </div>
             <div class="col-md-6">
                 <label for="phone" class="col-form-label">*Phone Number</label>
-                <input type="text" class="form-control" id="phone" placeholder="">
+                <input type="text" class="form-control" id="phone" placeholder="1234567890">
             </div>
         </div>
         <div class="row">
@@ -95,13 +95,8 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="birth-date" class="col-form-label">*Birth Date</label>
-                        <select class="custom-select" id="birth-date">
-                            <option selected value="">select</option>
-                            <option value="M"></option>
-                            <option value="F">F</option>
-                            <option value="other">Other</option>
-                        </select>
+                        <label for="dob" class="col-form-label">*Date of Birth</label>
+                        <input type="text" class="form-control" id="dob" placeholder="01/01/2001">
                     </div>
                 </div> <!--   end of inception row that contains the birthday and gender selections -->
             </div>
@@ -124,7 +119,14 @@
         </div> <!-- end of row that asks for the user's birth date, gender, and ethnicity -->
         <div class="row">
             <div class="col-md-6">
-                <span id="err-gender" class="text-danger d-none">Gender is required</span>
+                <div class="row">
+                    <div class="col-md-6">
+                        <span id="err-gender" class="text-danger d-none">Gender is required</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span id="err-dob" class="text-danger d-none">Date of Birth is required</span>
+                    </div>
+                </div>
             </div>
             <div class="col-md-6">
                 <span id="err-ethnicity" class="text-danger d-none">Ethnicity is required</span>
