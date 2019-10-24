@@ -1,3 +1,9 @@
+/*
+Authors: Shayna Jamieson, Bridget Black, Keller Flint
+Version: 1.0
+File Name: youth_styles.css
+*/
+
 @charset "utf-8";
 
 .btn {
@@ -11,29 +17,37 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 16px;
-    width: 50%;
+    width: 55%;
+    letter-spacing: 0.3vw;
 }
 
 #container-form-intro {
     background-color: #6cb1c1;
-    margin-top: -5% !important;
+    margin-top: -4% !important;
     position: relative;
     z-index: 2;
     color: white;
-    max-width: 40vw;
     height: auto;
+    max-width: 80vw;
+}
+
+footer {
+    height: 150px;
+    width: auto;
+    background-color: #202020 !important;
 }
 
 #form-container {
     margin-top: 5%;
-    margin-bottom: 10%;
+    margin-bottom: 6%;
 }
 
-#form-intro {
-    text-align: center;
+.form-intro {
+    text-align: center !important;
     font-size: 3vw;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     font-weight: lighter;
+    letter-spacing: 0.3vw;
 }
 
 input[type="text"] {
@@ -50,8 +64,10 @@ input[type="text"]:focus {
 }
 
 .jumbotron {
-    max-width: 100%;
-    height: auto;
+    background-image: url("../images/IDAYDREAM YOUTH_LOGO.png");
+    background-size: cover;
+    width: auto;
+    height: 400px;
     padding-top: 0;
     padding-bottom: 0;
     margin-bottom: 0;
@@ -59,24 +75,32 @@ input[type="text"]:focus {
     z-index: 0;
 }
 
-#jumbotron-image {
-    max-width: 100%;
-    height: auto;
-    padding-bottom: 0;
-    padding-top: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    z-index: 1;
-}
-
 .red-border-drop {
-    border-bottom: 1px solid red !important;
+    border-bottom: 1px solid #c16062 !important;
 }
 
 .row {
     margin-bottom: 3% !important;
 }
 
+
 #row-holds-submit-button {
-    margin-top: 4%;
+    margin-top: 5% !important;
+}
+
+span {
+    color: #c16062;
+    font-size: smaller;
+}
+
+#thank-you-message {
+    margin-top: 8% !important;
+    text-align: center !important;
+}
+
+#youth-volunteer-title {
+    color: white;
+    text-align: center !important;
+    font-size: 7vw !important;
+    white-space: nowrap;
 }

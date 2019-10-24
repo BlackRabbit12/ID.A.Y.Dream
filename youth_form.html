@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Youth Volunteer</title>
+    <title>Youth - ID.A.Y.Dream</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/youth_styles.css" type="text/css">
@@ -19,12 +19,16 @@
 
 <body>
 
-<div class="jumbotron jumbotron-fluid">
-    <img class="img-responsive" id="jumbotron-image" alt="Youth Volunteer Form" src="images/IDAYDREAMYOUTH.png">
+<!--<div class="jumbotron jumbotron-fluid">-->
+<div class="jumbotron d-flex align-items-center">
+    <div class="container">
+        <h1 id="youth-volunteer-title">YOUTH VOLUNTEER</h1>
+    </div>
 </div> <!-- ending section for the jumbotron -->
 
 <div class="container" id="container-form-intro">
-    <h2 id="form-intro">Looking to get involved? Tell us about yourself!</h2>
+    <h2 class="form-intro">Looking to get involved?</h2>
+    <h2 class="form-intro">Tell us about yourself!</h2>
 </div>
 
 <div class="container" id="form-container">
@@ -33,39 +37,26 @@
             <div class="col-md-6">
                 <label for="fname" class="col-form-label">*First</label>
                 <input type="text" class="form-control" id="fname" placeholder="">
+                <span id="err-fname" class="d-none">please enter a valid first name</span>
             </div> <!-- end of  div that holds the first name row -->
             <div class="col-md-6">
                 <label for="lname" class="col-form-label">*Last</label>
                 <input type="text" class="form-control" id="lname" placeholder="">
+                <span id="err-lname" class="d-none">please enter a valid last name</span>
             </div>
         </div> <!-- end of row that asks for the users first and last names -->
         <div class="row">
             <div class="col-md-6">
-                <span id="err-fname" class="text-danger d-none">First name is required</span>
-            </div>
-            <div class="col-md-6">
-                <span id="err-lname" class="text-danger d-none">Last name is required </span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
                 <label for="email" class="col-form-label">*Email</label>
                 <input type="text" class="form-control" id="email" placeholder="someone@example.com">
+                <span id="err-email" class="d-none">please enter a valid email</span>
             </div>
             <div class="col-md-6">
                 <label for="phone" class="col-form-label">*Phone Number</label>
-                <input type="text" class="form-control" id="phone" placeholder="1234567890">
+                <input type="text" class="form-control" id="phone" placeholder="(123) 456-7890">
+                <span id="err-phone" class="d-none">please enter a valid phone number</span>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <span id="err-email" class="text-danger d-none">Valid email address required</span>
-            </div>
-            <div class="col-md-6">
-                <span id="err-phone" class="text-danger d-none">Valid phone number required</span>
-            </div>
-        </div>
-        <!-- end of row that asks for the users email and phone number -->
+        </div> <!-- end of row that asks for the users email and phone number -->
         <div class="row">
             <div class="col-md-6">
                 <label for="college-interest" class="col-form-label">College of Interest</label>
@@ -74,16 +65,27 @@
             <div class="col-md-6">
                 <label for="graduation-year" class="col-form-label">Graduation Year</label>
                 <select class="custom-select" id="graduation-year">
-                    <option selected value="">c/o</option>
+                    <option selected value="">select</option>
                     <option value="2020">2020</option>
                     <option value="2021">2021</option>
                     <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
                 </select>
             </div>
         </div> <!-- end of row that asks for the users college of interest and graduation year  -->
         <div class="row">
             <div class="col-md-6">
                 <div class="row">
+                    <div class="col-md-6">
+                        <label for="dob" class="col-form-label">*Date of Birth</label>
+                        <input type="text" class="form-control" id="dob" placeholder="01/01/2001">
+                        <span id="err-dob" class="d-none">please enter your date of birth</span>
+                    </div>
                     <div class="col-md-6">
                         <label for="gender" class="col-form-label">*Gender</label>
                         <select class="custom-select" id="gender">
@@ -93,10 +95,7 @@
                             <option value="other">Other</option>
                             <option value="prefer-not-to-say">Prefer Not to Say</option>
                         </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="dob" class="col-form-label">*Date of Birth</label>
-                        <input type="text" class="form-control" id="dob" placeholder="01/01/2001">
+                        <span id="err-gender" class="d-none">please select an option</span>
                     </div>
                 </div> <!--   end of inception row that contains the birthday and gender selections -->
             </div>
@@ -115,23 +114,9 @@
                     <option value="multiracial">Bi/Multiracial</option>
                     <option value="prefer-not-to-say">Prefer Not to Say</option>
                 </select>
+                <span id="err-ethnicity" class="d-none">please select an option</span>
             </div> <!-- end of row that asks for the user's  and ethnicity -->
         </div> <!-- end of row that asks for the user's birth date, gender, and ethnicity -->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-6">
-                        <span id="err-gender" class="text-danger d-none">Gender is required</span>
-                    </div>
-                    <div class="col-md-6">
-                        <span id="err-dob" class="text-danger d-none">Date of Birth is required</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <span id="err-ethnicity" class="text-danger d-none">Ethnicity is required</span>
-            </div>
-        </div>
         <div class="row">
             <div class="col-md-12">
                 <label for="fav-snacks" class="col-form-label">What are some of your favorite food/snacks?</label>
@@ -139,10 +124,10 @@
                     <textarea class="form-control" id="fav-snacks" placeholder="" rows="3"></textarea>
                 </div>
             </div>
-        </div> <!-- end of row that has the user list their favorite snacks and foods -->
+        </div> <!-- end of row that has the user list their favorite snacks and foods  -->
         <div class="row">
             <div class="col-md-12">
-                <label for="aspirations" class="col-form-label">What are your career aspirations/goals?</label>
+                <label for="aspirations" class="col-form-label">What are your career aspirations and goals?</label>
                 <div class="input-group">
                     <textarea class="form-control" id="aspirations" placeholder="" rows="3"></textarea>
                 </div>
@@ -150,11 +135,14 @@
         </div> <!-- end of row that has the user list their career aspirations -->
         <div class="row" id="row-holds-submit-button">
             <div class="col text-center">
-                <button class="btn btn-lg" type="submit" id="submit-btn">Submit</button>
+                <button class="btn btn-lg" type="submit" id="submit-btn">SUBMIT</button>
             </div>
         </div> <!-- end of row that has our submit button -->
     </form> <!-- end of youth volunteer form -->
 </div> <!-- end of container that holds the form -->
+<footer>
+
+</footer>
 
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
