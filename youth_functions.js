@@ -10,8 +10,8 @@ let validateEmptyArray = [
     "lname",
 ];
 
-// *** event listeners ***
-// Form on submit event listener
+// *** event listeners  ***
+//  form on submit event listener
 $("#youth-form").on("submit", validateForm);
 
 // assign check if empty function on all input elements in validateEmptyArray
