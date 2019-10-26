@@ -66,7 +66,7 @@
         $email_body .= "Phone: $phone\r\n";
         echo "<p><strong>Date of Birth:</strong> $dob</p>";
         $email_body .= "Date of Birth: $dob\r\n";
-        echo "<p><strong>Ethnicity: $ethnicity</strong></p>";
+        echo "<p><strong>Ethnicity:</strong> $ethnicity</p>";
         $email_body .= "Ethnicity: $ethnicity\r\n";
 
         // these can be intentionally left blank -- must check if they are before displaying no information
