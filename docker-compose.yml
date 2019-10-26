@@ -1,0 +1,21 @@
+version: '3'
+services:
+  database:
+    image: mysql:8.0.17
+    command: 
+      --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: idaydream
+    volumes:
+      - ..\storage\docker\IDAYDream-mysql-data:/var/lib/mysql
+    ports:
+      - 3309:3306
+  web_app:
+    build: .
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 5002:80
+    depends_on:
+      - database
