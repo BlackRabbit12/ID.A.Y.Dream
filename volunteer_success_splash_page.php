@@ -3,7 +3,7 @@
 <!--
 Authors: Shayna Jamieson, Bridget Black, Keller Flint
 Version: 1.0
-File Name: volunteer_success_splash_page.html
+File Name: volunteer_success_splash_page.php
 -->
 
 <html lang="en">
