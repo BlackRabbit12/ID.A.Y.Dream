@@ -31,6 +31,10 @@ File Name: youth_styles.css
     max-width: 80vw;
 }
 
+em {
+    color: #c16062;
+}
+
 footer {
     height: 150px;
     width: auto;
@@ -40,11 +44,13 @@ footer {
 #form-container {
     margin-top: 5%;
     margin-bottom: 6%;
+    color: #202020 !important;
 }
 
 .form-intro {
     text-align: center !important;
-    font-size: 3vw;
+    /*font-size: 2vw;*/
+    font-size: 1em !important;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     font-weight: lighter;
     letter-spacing: 0.3vw;
@@ -79,7 +85,7 @@ input[type="text"]:focus {
     border-bottom: 1px solid #c16062 !important;
 }
 
-.row {
+.padding {
     margin-bottom: 3% !important;
 }
 
@@ -93,14 +99,30 @@ span {
     font-size: smaller;
 }
 
+#summary {
+    margin-top: 5% !important;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    text-align: center;
+    display: none;
+    border: 3px solid #6cb1c1;
+    padding: 5% !important;
+    margin-bottom: 5% !important;
+}
+
+#summary-button {
+    width: 45% !important;
+    margin-top: 4% !important;
+}
+
 #thank-you-message {
-    margin-top: 8% !important;
+    margin-top: 2% !important;
     text-align: center !important;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
 
 #youth-volunteer-title {
     color: white;
     text-align: center !important;
-    font-size: 7vw !important;
+    font-size: 5vw !important;
     white-space: nowrap;
 }
