@@ -57,11 +57,13 @@ button[type="submit"] {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    /*margin: 4px 2px;*/
     margin-top: 4%;
     cursor: pointer;
     border-radius: 16px;
     width: 50%;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-weight: lighter;
+    letter-spacing: 0.3vw;
 }
 
 .card-body {
@@ -191,10 +193,11 @@ label::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
 }
 
 .legend-text {
-    text-align: center;
-    font-size: 3vw;
+    text-align: center !important;
+    font-size: 2em !important;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     font-weight: lighter;
+    letter-spacing: 0.3vw;
 }
 
 .legend-container {
@@ -204,7 +207,7 @@ label::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: white;
 }
 
-/* hiding the span to count references until it has functionality */
+/* hiding the span to count references until it has functionality  */
 #ref-number {
     display: none;
 }

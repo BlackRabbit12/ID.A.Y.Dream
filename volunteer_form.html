@@ -69,17 +69,19 @@ File Name: volunteer_form.html
                 <div class="col-12">
                     <label for="street-address" class="col-form-label"><em>*</em> Street Address</label>
                     <input type="text" class="form-control" id="street-address" placeholder="">
-                    <span id="err-address" class="d-none">please enter a valid address</span>
+                    <span id="err-street-address" class="d-none">please enter a valid address</span>
                 </div>
             </div> <!-- end of row with address-->
             <div class="row">
                 <div class="col-md-4">
                     <label for="zip" class="col-form-label"><em>*</em> ZIP</label>
                     <input type="text" class="form-control" id="zip" placeholder="">
+                    <span id="err-zip" class="d-none">please enter a valid zip code</span>
                 </div> <!-- end of column with zip information -->
                 <div class="col-md-4">
                     <label for="city" class="col-form-label"><em>*</em> City</label>
                     <input type="text" class="form-control" id="city" placeholder="">
+                    <span id="err-city" class="d-none">please enter a valid city name</span>
                 </div> <!-- end of column with city information -->
                 <div class="col-md-4">
                     <label for="state" class="col-form-label"><em>*</em> State</label>
@@ -94,10 +96,12 @@ File Name: volunteer_form.html
                 <div class="col-md-4">
                     <label for="email" class="col-form-label"><em>*</em> Email</label>
                     <input type="text" class="form-control" id="email" placeholder="">
+                    <span id="err-email" class="d-none">please enter a valid email</span>
                 </div>
                 <div class="col-md-4">
                     <label for="phone" class="col-form-label"><em>*</em> Phone</label>
                     <input type="text" class="form-control" id="phone" placeholder="">
+                    <span id="err-phone" class="d-none">please enter a valid phone number</span>
                 </div>
                 <div class="col-md-4">
                     <label for="t-shirt" class="col-form-label"><em>*</em> T-Shirt Size</label>
@@ -197,10 +201,11 @@ File Name: volunteer_form.html
             <div class="input-group">
                 <textarea class="form-control" id="motivation" placeholder=""></textarea>
             </div> <!-- end of text area for why they are motivated to work for us -->
+            <span id="err-motivation" class="d-none">please describe your motivation for working with us</span><br>
             <label for="volunteer-experience">What previous volunteer experience do you have?</label>
             <div class="input-group">
                 <textarea class="form-control" id="volunteer-experience" placeholder=""></textarea>
-            </div> <!-- end of text area for if they have previous volunteer experience -->
+            </div><br> <!-- end of text area for if they have previous volunteer experience -->
             <label>Do you have previous work experience with youth organizations?</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-yes" value="yes">
@@ -215,7 +220,7 @@ File Name: volunteer_form.html
                 <div class="input-group">
                     <textarea class="form-control" id="youth-experience-explanation" name="youth-experience-explanation" placeholder=""></textarea>
                 </div> <!-- area where the user explains the volunteer experience that they have with youth -->
-            </div> <!-- end of div that holds the toggle for if user needs to explain their youth volunteer experience -->
+            </div><br> <!-- end of div that holds the toggle for if user needs to explain their youth volunteer experience -->
             <label for="other-experience">Any other skills or qualifications you would like to list:</label>
             <div class="input-group">
                 <textarea class="form-control" id="other-experience" placeholder=""></textarea>
@@ -383,7 +388,7 @@ File Name: volunteer_form.html
             <!--                    </div> &lt;!&ndash; end of row that contains our date picker &ndash;&gt;-->
             <div class="row" id="row-holds-submit-button">
                 <div class="col text-center">
-                    <button class="btn btn-lg" type="submit" id="submit-btn">Submit</button>
+                    <button class="btn btn-lg" type="submit" id="submit-btn">SUBMIT</button>
                 </div>
             </div> <!-- end of row that has our submit button -->
         </fieldset> <!-- end of fieldset that contains electronic signature, and acceptance of policy -->
