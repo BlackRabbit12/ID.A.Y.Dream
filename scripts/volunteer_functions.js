@@ -19,12 +19,7 @@ function displayForm() {
 
 // assigning form event listeners
 
-<<<<<<< HEAD:volunteer_functions_new.js
-
-// Show textbox if "other" is  selected for "Where would you like to help?"
-=======
 // Show textbox if "other" is selected for "Where would you like to help?"
->>>>>>> 21628db6ea60945ddcaa1e4579d3f1fdb26d3ac6:scripts/volunteer_functions.js
 
 // Show textbox if "weekends" is selected for "I can help..." in the availability section for specific hours
 
