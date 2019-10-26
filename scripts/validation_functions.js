@@ -107,6 +107,18 @@ function validate_ethnicity() {
     }
 }
 
+function validate_graduation() {
+    if (document.getElementById("graduation-none").selected) {
+        $("#err-graduation-year").removeClass("d-none");
+        $("#graduation-year").addClass("red-border-drop");
+        return false;
+    } else {
+        $("#err-graduation-year").addClass("d-none");
+        $("#graduation-year").removeClass("red-border-drop");
+        return true;
+    }
+}
+
 //
 function validate_dob() {
     let str = $("#dob").val();

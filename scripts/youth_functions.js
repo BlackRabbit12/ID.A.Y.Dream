@@ -41,6 +41,9 @@ $("#dob").on("input focus blur", function() {
     validate_dob();
 });
 
+$("#graduation-year").on("input focus blur", function() {
+    validate_graduation();
+});
 
 // *** validation functions ***
 // checks if all form data is valid on submit
@@ -70,6 +73,10 @@ function validateForm() {
     }
 
     if (!validate_dob()) {
+        isValid = false;
+    }
+
+    if (!validate_graduation()) {
         isValid = false;
     }
 

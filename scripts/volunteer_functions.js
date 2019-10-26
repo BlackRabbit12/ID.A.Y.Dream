@@ -1,3 +1,7 @@
+/* --- Globals --- */
+let otherChecked = false;
+let weekendChecked  = false;
+
 /* --- Background Check Question  --- */
 let bgCheckNo = document.getElementById("bg-check-btn-no");
 let bgCheckYes = document.getElementById("bg-check-btn-yes");
@@ -31,17 +35,22 @@ function toggleWeekendExplanation() {
     let wkndDisplay = document.getElementById("toggle-weekend-availability");
     if(weekendAvail.checked) {
         wkndDisplay.style.display = "block";
+        weekendChecked = true;
     } else {
         wkndDisplay.style.display = "none";
+        weekendChecked = false;
     }
+
 }
 
 function toggleInterestExplanation() {
     let interestDisplay = document.getElementById("toggle-other-interests");
     if(otherInterest.checked) {
         interestDisplay.style.display = "block";
+        otherChecked = true;
     } else {
         interestDisplay.style.display = "none";
+        otherChecked = false;
     }
 }
 
@@ -55,16 +64,6 @@ function toggleYouthExplanationHide() {
     youthDisplay.style.display = "none";
 }
 
-
-/* --- Form functions --- */
-
-// assigning form event listeners
-
-// Show textbox if "other" is selected for "Where would you like to help?"
-
-// Show textbox if "weekends" is selected for "I can help..." in the availability section for specific hours
-
-// Show text box for youth experience explanation if Yes is selected
 
 
 // Clears Reference Fields when 'Clear' button is clicked
@@ -90,7 +89,10 @@ let validateEmptyArray = [
     "ref-name-3",
     "ref-relationship-1",
     "ref-relationship-2",
-    "ref-relationship-3"
+    "ref-relationship-3",
+    "other-interests-explanation",
+    "weekend-availability-explanation"
+
 ];
 
 // Array for the ids of inputs that required a valid email
@@ -145,11 +147,23 @@ $("#zip").on("input focus blur", function() {
 // checks if all form data is valid on submit
 function validateForm() {
     let isValid = true;
+    console.log("otherchecked: " + otherChecked);
+    console.log("weekenedchecked: " + weekendChecked);
 
     // checks if input fields are empty
     for (let i = 0; i < validateEmptyArray.length; i++) {
         if (!validate_empty(validateEmptyArray[i])) {
-            isValid = false;
+            if (validateEmptyArray[i] == "other-interests-explanation") {
+                if (otherChecked && !validate_empty(validateEmptyArray[i])) {
+                    isValid = false;
+                }
+            } else if (validateEmptyArray[i] == validate_empty("weekend-availability-explanation")) {
+                if (weekendChecked && !validateEmptyArray[i]) {
+                    isValid = false;
+                }
+            } else {
+                isValid = false;
+            }
         }
     }
 
