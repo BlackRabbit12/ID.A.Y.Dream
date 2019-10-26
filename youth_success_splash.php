@@ -1,21 +1,19 @@
 <?php
 // Authors: Shayna Jamieson, Keller Flint, Bridget Black
-
- ini_set('display_errors', 1);
- error_reporting(E_ALL);
-
-    // declare variables here to use throughout this page & w/ email functionality
-    $firstName = $_POST['fname'];
-    $lastName = $_POST['lname'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $collegeInterest = $_POST['college-interest'];
-    $graduationYear = $_POST['graduation-year'];
-    $dob = $_POST['dob'];
-    $gender = $_POST['gender'];
-    $ethnicity = $_POST['ethnicity'];
-    $favSnacks = $_POST['fav-snacks'];
-    $aspirations = $_POST['aspirations'];
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+// declare variables here to use throughout this page & w/ email functionality
+$firstName = $_POST['fname'];
+$lastName = $_POST['lname'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
+$collegeInterest = $_POST['college-interest'];
+$graduationYear = $_POST['graduation-year'];
+$dob = $_POST['dob'];
+$gender = $_POST['gender'];
+$ethnicity = $_POST['ethnicity'];
+$favSnacks = $_POST['fav-snacks'];
+$aspirations = $_POST['aspirations'];
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +44,7 @@
 
 <div class="container" id="thank-you-message">
     <?php
-        echo "<h2>Thank you for your submission $firstName!</h2>"
+    echo "<h2>Thank you for your submission $firstName!</h2>"
     ?>
     <h3>Click to see a summary of your information.</h3>
     <button class="btn btn-lg" type="button" id="summary-button">CLICK ME</button>
@@ -54,48 +52,42 @@
 
 <div class="container" id="summary">
     <?php
-        // start putting together email as we are also displaying their information
-        $email_body = "Youth Information:\r\n\r\n";
-        $email_subject = "ID.A.Y.Dream Youth Sign-Up Information";
-
-        echo "<p><strong>Full Name</strong>: $firstName $lastName</p>";
-        $email_body .= "Name: $firstName $lastName\r\n";
-        echo "<p><strong>Email:</strong> $email</p>";
-        $email_body .= "Email: $email\r\n";
-        echo "<p><strong>Phone Number:</strong> $phone</p>";
-        $email_body .= "Phone: $phone\r\n";
-        echo "<p><strong>Date of Birth:</strong> $dob</p>";
-        $email_body .= "Date of Birth: $dob\r\n";
-        echo "<p><strong>Ethnicity:</strong> $ethnicity</p>";
-        $email_body .= "Ethnicity: $ethnicity\r\n";
-
-        // these can be intentionally left blank -- must check if they are before displaying no information
-        if(!$collegeInterest == "") {
-            echo "<p><strong>College of Interest:</strong> $collegeInterest</p>";
-            $email_body .= "College of Interest: $collegeInterest\r\n";
-        }
-        if(!$graduationYear == "") {
-            echo "<p><strong>Graduation Year:</strong> $graduationYear</p>";
-            $email_body .= "Graduation Year: $graduationYear\r\n";
-        }
-        if(!$favSnacks == "") {
-            echo "<p><strong>Favorite Foods/Snacks:</strong> $favSnacks</p>";
-            $email_body .= "Favorite Foods/Snacks: $favSnacks\r\n";
-        }
-        if(!$aspirations == "") {
-            echo "<p><strong>Aspirations/Goals:</strong> $aspirations</p>";
-            $email_body .= "Aspirations/Goals: $aspirations\r\n";
-        }
-
-
-        // now we send an email to show that we can send her the information
-        $sendToBrandy = "jamieson.shayna@gmail.com";
-        $to = $sendToBrandy;
-
-        $headers = "From: $email\r\n";
-        $headers .= "Reply-To: $email\r\n";
-
-        $success = mail($to, $email_subject, $email_body, $headers);
+    // start putting together email as we are also displaying their information
+    $email_body = "Youth Information:\r\n\r\n";
+    $email_subject = "ID.A.Y.Dream Youth Sign-Up Information";
+    echo "<p><strong>Full Name</strong>: $firstName $lastName</p>";
+    $email_body .= "Name: $firstName $lastName\r\n";
+    echo "<p><strong>Email:</strong> $email</p>";
+    $email_body .= "Email: $email\r\n";
+    echo "<p><strong>Phone Number:</strong> $phone</p>";
+    $email_body .= "Phone: $phone\r\n";
+    echo "<p><strong>Date of Birth:</strong> $dob</p>";
+    $email_body .= "Date of Birth: $dob\r\n";
+    echo "<p><strong>Ethnicity:</strong> $ethnicity</p>";
+    $email_body .= "Ethnicity: $ethnicity\r\n";
+    // these can be intentionally left blank -- must check if they are before displaying no information
+    if(!$collegeInterest == "") {
+        echo "<p><strong>College of Interest:</strong> $collegeInterest</p>";
+        $email_body .= "College of Interest: $collegeInterest\r\n";
+    }
+    if(!$graduationYear == "") {
+        echo "<p><strong>Graduation Year:</strong> $graduationYear</p>";
+        $email_body .= "Graduation Year: $graduationYear\r\n";
+    }
+    if(!$favSnacks == "") {
+        echo "<p><strong>Favorite Foods/Snacks:</strong> $favSnacks</p>";
+        $email_body .= "Favorite Foods/Snacks: $favSnacks\r\n";
+    }
+    if(!$aspirations == "") {
+        echo "<p><strong>Aspirations/Goals:</strong> $aspirations</p>";
+        $email_body .= "Aspirations/Goals: $aspirations\r\n";
+    }
+    // now we send an email to show that we can send her the information
+    $sendToBrandy = "jamieson.shayna@gmail.com";
+    $to = $sendToBrandy;
+    $headers = "From: $email\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $success = mail($to, $email_subject, $email_body, $headers);
     ?>
 </div>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -110,7 +102,6 @@
 <script src="scripts/youth_functions.js"></script>
 <script>
     document.getElementById("summary-button").onclick = toggleSummary;
-
     function toggleSummary() {
         document.getElementById("summary-button").style.display = "none";
         document.getElementById("summary").style.display = "block";
