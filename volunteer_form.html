@@ -102,7 +102,7 @@ File Name: volunteer_form.html
                         <div class="col-12">
                             <label for="t-shirt" class="col-form-label">*T-Shirt Size</label>
                             <select class="custom-select" id="t-shirt">
-                                <option selected value="">Adult Unisex</option>
+                                <option selected value="" id="t-shirt-none">Select...</option>
                                 <option value="small">Small</option>
                                 <option value="medium">Medium</option>
                                 <option value="large">Large</option>
@@ -247,6 +247,12 @@ File Name: volunteer_form.html
                                     </div> <!-- end of row that will hold reference 1 email information -->
                                     <div class="row">
                                         <div class="col-11">
+                                            <label for="ref-phone-1" class="col-form-label">Phone</label>
+                                            <input type="text" class="form-control" id="ref-phone-1" placeholder="">
+                                        </div> <!-- end of div that holds phone information for reference 1 -->
+                                    </div> <!-- end of row that will hold reference 1 phone information -->
+                                    <div class="row">
+                                        <div class="col-11">
                                             <label for="ref-relationship-1" class="col-form-label">Relationship</label>
                                             <input type="text" class="form-control" id="ref-relationship-1" placeholder="">
                                         </div>
@@ -281,6 +287,12 @@ File Name: volunteer_form.html
                                     </div> <!-- end of row that will hold reference 2 email information -->
                                     <div class="row">
                                         <div class="col-11">
+                                            <label for="ref-phone-2" class="col-form-label">Phone</label>
+                                            <input type="text" class="form-control" id="ref-phone-2" placeholder="">
+                                        </div> <!-- end of div that holds phone information for reference 2 -->
+                                    </div> <!-- end of row that will hold reference 2 phone information -->
+                                    <div class="row">
+                                        <div class="col-11">
                                             <label for="ref-relationship-2" class="col-form-label">Relationship</label>
                                             <input type="text" class="form-control" id="ref-relationship-2" placeholder="">
                                         </div>
@@ -312,6 +324,12 @@ File Name: volunteer_form.html
                                             <input type="text" class="form-control" id="ref-email-3" placeholder="">
                                         </div> <!-- end of div that holds email information for reference 3 -->
                                     </div> <!-- end of row that will hold reference 3 email information -->
+                                    <div class="row">
+                                        <div class="col-11">
+                                            <label for="ref-phone-3" class="col-form-label">Phone</label>
+                                            <input type="text" class="form-control" id="ref-phone-3" placeholder="">
+                                        </div> <!-- end of div that holds phone information for reference 3 -->
+                                    </div> <!-- end of row that will hold reference 3 phone information -->
                                     <div class="row">
                                         <div class="col-11">
                                             <label for="ref-relationship-3" class="col-form-label">Relationship</label>
@@ -382,7 +400,7 @@ File Name: volunteer_form.html
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="volunteer_functions.js"></script>
+<script src="volunteer_functions_new.js"></script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -390,26 +408,5 @@ File Name: volunteer_form.html
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <!-- jQuery for input validation -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-// script for displaying the form or not after the user clicks background check buttons
-
-    // get element buttons
-    let bgCheckNo = document.getElementById("bg-check-btn-no");
-    let bgCheckYes = document.getElementById("bg-check-btn-yes");
-
-    bgCheckNo.onclick = displayDecline;
-    bgCheckYes.onclick = displayForm;
-
-    function displayDecline() {
-        document.getElementById("background-check-container").style.display = "none";
-        document.getElementById("bg-check-no-container").style.display = "block";
-    }
-
-function displayForm() {
-    document.getElementById("background-check-container").style.display = "none";
-    document.getElementById("entire-form-container").style.display = "block";
-}
-
-</script>
 </body>
 </html>
