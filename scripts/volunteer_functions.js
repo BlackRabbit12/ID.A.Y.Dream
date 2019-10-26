@@ -13,7 +13,48 @@ function displayDecline() {
 function displayForm() {
     document.getElementById("background-check-container").style.display = "none";
     document.getElementById("entire-form-container").style.display = "block";
+    document.getElementById("footer").style.display = "block";
 }
+
+/* --- Toggling availability, areas of interest, and youth experience explanation blocks --- */
+let weekendAvail = document.getElementById("weekend-availability");
+let otherInterest = document.getElementById("other-interest");
+let youthExperienceYes = document.getElementById("youth-experience-yes");
+let youthExperienceNo = document.getElementById("youth-experience-no");
+
+weekendAvail.onclick = toggleWeekendExplanation;
+otherInterest.onclick = toggleInterestExplanation;
+youthExperienceYes.onchange = toggleYouthExplanationShow;
+youthExperienceNo.onchange = toggleYouthExplanationHide;
+
+function toggleWeekendExplanation() {
+    let wkndDisplay = document.getElementById("toggle-weekend-availability");
+    if(weekendAvail.checked) {
+        wkndDisplay.style.display = "block";
+    } else {
+        wkndDisplay.style.display = "none";
+    }
+}
+
+function toggleInterestExplanation() {
+    let interestDisplay = document.getElementById("toggle-other-interests");
+    if(otherInterest.checked) {
+        interestDisplay.style.display = "block";
+    } else {
+        interestDisplay.style.display = "none";
+    }
+}
+
+function toggleYouthExplanationShow() {
+    let youthDisplay = document.getElementById("toggle-please-explain");
+    youthDisplay.style.display = "block";
+}
+
+function toggleYouthExplanationHide() {
+    let youthDisplay = document.getElementById("toggle-please-explain");
+    youthDisplay.style.display = "none";
+}
+
 
 /* --- Form functions --- */
 

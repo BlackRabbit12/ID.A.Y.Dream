@@ -10,7 +10,7 @@ File Name: volunteer_form.html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>I.D.A.Y.Dream</title>
+    <title>Volunteer - iD.A.Y.Dream</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
@@ -22,21 +22,22 @@ File Name: volunteer_form.html
     <link rel="manifest" href="images/site.webmanifest_title">
 </head>
 <body>
-
-<div class="jumbotron jumbotron-fluid">
-    <img class="img-responsive" id="jumbotron-image" alt="Youth Volunteer Form" src="images/VOLUNTEER.png">
+<div class="jumbotron d-flex align-items-center">
+    <div class="container">
+        <h1 id="volunteer-title">VOLUNTEER</h1>
+    </div>
 </div> <!-- ending section for the jumbotron -->
 
 <div class="container" id="background-check-container">
-    <h3 id="bgc-sentence1">To volunteer with IDAYDREAM you must undergo a background check.</h3>
+    <h3 id="bgc-sentence1">To volunteer with iD.A.Y.DREAM you must undergo a background check.</h3>
     <h4>Are you willing to have a background check?</h4>
 
     <div class="row" id="background-check-buttons">
         <div class="col-6 text-center">
-            <button class="btn btn-lg" type="button" id="bg-check-btn-yes">Yes</button>
+            <button class="btn btn-lg" type="button" id="bg-check-btn-yes">YES</button>
         </div>
         <div class="col-6 text-center">
-            <button class="btn btn-lg" type="button" id="bg-check-btn-no">No</button>
+            <button class="btn btn-lg" type="button" id="bg-check-btn-no">NO</button>
         </div>
     </div> <!-- end of row that has background check buttons -->
 </div>
@@ -54,31 +55,34 @@ File Name: volunteer_form.html
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <label for="fname" class="col-form-label">*First</label>
+                    <label for="fname" class="col-form-label"><em>*</em> First</label>
                     <input type="text" class="form-control" id="fname" placeholder="">
+                    <span id="err-fname" class="d-none">please enter a valid first name</span>
                 </div>
                 <div class="col-md-6">
-                    <label for="lname" class="col-form-label">*Last</label>
+                    <label for="lname" class="col-form-label"><em>*</em> Last</label>
                     <input type="text" class="form-control" id="lname" placeholder="">
+                    <span id="err-lname" class="d-none">please enter a valid last name</span>
                 </div>
             </div> <!-- end of row with full name -->
             <div class="row">
                 <div class="col-12">
-                    <label for="street-address" class="col-form-label">*Street Address</label>
+                    <label for="street-address" class="col-form-label"><em>*</em> Street Address</label>
                     <input type="text" class="form-control" id="street-address" placeholder="">
+                    <span id="err-address" class="d-none">please enter a valid address</span>
                 </div>
             </div> <!-- end of row with address-->
             <div class="row">
                 <div class="col-md-4">
-                    <label for="zip" class="col-form-label">*ZIP</label>
+                    <label for="zip" class="col-form-label"><em>*</em> ZIP</label>
                     <input type="text" class="form-control" id="zip" placeholder="">
                 </div> <!-- end of column with zip information -->
                 <div class="col-md-4">
-                    <label for="city" class="col-form-label">*City</label>
+                    <label for="city" class="col-form-label"><em>*</em> City</label>
                     <input type="text" class="form-control" id="city" placeholder="">
                 </div> <!-- end of column with city information -->
                 <div class="col-md-4">
-                    <label for="state" class="col-form-label">*State</label>
+                    <label for="state" class="col-form-label"><em>*</em> State</label>
                     <select class="custom-select" id="state">
                         <option selected value="WA">WA</option>
                         <option value="CA">CA</option>
@@ -87,33 +91,32 @@ File Name: volunteer_form.html
                 </div> <!-- end of column with state information -->
             </div> <!-- end of row with zip, city, state content -->
             <div class="row">
-                <div class="col-12">
-                    <label for="phone" class="col-form-label">*Phone</label>
-                    <input type="text" class="form-control" id="phone" placeholder="">
-                </div>
-            </div> <!-- end of row with phone number entry -->
-            <div class="row">
-                <div class="col-12">
-                    <label for="email" class="col-form-label">*Email</label>
+                <div class="col-md-4">
+                    <label for="email" class="col-form-label"><em>*</em> Email</label>
                     <input type="text" class="form-control" id="email" placeholder="">
                 </div>
-            </div> <!-- end of row with email entry -->
-            <div class="row">
-                <div class="col-12">
-                    <label for="t-shirt" class="col-form-label">*T-Shirt Size</label>
+                <div class="col-md-4">
+                    <label for="phone" class="col-form-label"><em>*</em> Phone</label>
+                    <input type="text" class="form-control" id="phone" placeholder="">
+                </div>
+                <div class="col-md-4">
+                    <label for="t-shirt" class="col-form-label"><em>*</em> T-Shirt Size</label>
                     <select class="custom-select" id="t-shirt">
-                        <option selected value="" id="t-shirt-none">Select...</option>
+                        <option selected value="" id="t-shirt-none">Adult Unisex</option>
                         <option value="small">Small</option>
                         <option value="medium">Medium</option>
                         <option value="large">Large</option>
                         <option value="xLarge">X-Large</option>
                     </select>
                 </div>
+            </div> <!-- end of row with phone number entry and email -->
+            <div class="row">
+
             </div> <!-- end of row with select a t-shirt size -->
         </fieldset> <!-- end of fieldset with initial user information name, email, t-shirt, etc -->
         <fieldset class="form-group">
             <div class="container legend-container">
-                <h2 class="legend-text">Interests</h2>
+                <h2 class="legend-text">Interests & Availability</h2>
             </div>
             <div class="row">
                 <div class="col-12">
@@ -123,73 +126,74 @@ File Name: volunteer_form.html
                     </div>
                 </div>
             </div> <!-- end of row that has the how did you hear about us text box -->
-            <label class="col-form-label">Where would you like to help?</label>
-            <span class="hide-me" id="where-to-help">Please select one of the ways you'd like to help:</span>
-            <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" type="checkbox" value="events" id="events">
-                <label class="custom-control-label" for="events">Events/Activities</label>
-            </div> <!-- end of div that has the events/activities check box -->
-            <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" type="checkbox" value="fundraising" id="fundraising">
-                <label class="custom-control-label" for="fundraising">Fundraising</label>
-            </div> <!-- end of div that has the fundraising check box -->
-            <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" type="checkbox" value="newsletter" id="newsletter">
-                <label class="custom-control-label" for="newsletter">Newsletter Production</label>
-            </div> <!-- end of div that has the newsletter check box -->
-            <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" type="checkbox" value="volunteer" id="volunteer">
-                <label class="custom-control-label" for="volunteer">Volunteer Coordination</label>
-            </div> <!-- end of div that has the volunteer coordination check box -->
-            <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" type="checkbox" value="mentoring" id="mentoring">
-                <label class="custom-control-label" for="mentoring">Mentoring</label>
-            </div> <!-- end of div that has the mentoring check box -->
-            <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" type="checkbox" value="mentoring" id="other-interest">
-                <label class="custom-control-label" for="other-interest">Other</label>
-            </div> <!-- end of div that has the mentoring check box -->
-            <div id="toggle-other-interests">
-                <label for="other-interests-explanation">Please explain:</label>
-                <div class="input-group">
-                    <textarea class="form-control" id="other-interests-explanation" name="other-interests-explain" placeholder=""></textarea>
-                </div> <!-- area where the user explains their other interests if chosen other -->
-            </div> <!-- end of div that holds the toggle for if user needs to explain their interests -->
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="col-form-label">Where would you like to help?</label>
+                    <span class="hide-me" id="where-to-help">Please select one of the ways you'd like to help:</span>
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="events" id="events">
+                        <label class="custom-control-label" for="events">Events/Activities</label>
+                    </div> <!-- end of div that has the events/activities check box -->
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="fundraising" id="fundraising">
+                        <label class="custom-control-label" for="fundraising">Fundraising</label>
+                    </div> <!-- end of div that has the fundraising check box -->
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="newsletter" id="newsletter">
+                        <label class="custom-control-label" for="newsletter">Newsletter Production</label>
+                    </div> <!-- end of div that has the newsletter check box -->
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="volunteer" id="volunteer">
+                        <label class="custom-control-label" for="volunteer">Volunteer Coordination</label>
+                    </div> <!-- end of div that has the volunteer coordination check box -->
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="mentoring" id="mentoring">
+                        <label class="custom-control-label" for="mentoring">Mentoring</label>
+                    </div> <!-- end of div that has the mentoring check box -->
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="mentoring" id="other-interest">
+                        <label class="custom-control-label" for="other-interest">Other</label>
+                    </div> <!-- end of div that has the mentoring check box -->
+                    <div id="toggle-other-interests">
+                        <label for="other-interests-explanation">Please explain other areas of interest:</label>
+                        <div class="input-group">
+                            <textarea class="form-control" id="other-interests-explanation" name="other-interests-explain" placeholder=""></textarea>
+                        </div> <!-- area where the user explains their other interests if chosen other -->
+                    </div> <!-- end of div that holds the toggle for if user needs to explain their interests -->
+                </div> <!-- end of row that holds the events and activities check boxes -->
+                <div class="col-md-6">
+                    <label>I can help...</label>
+                    <span class="hide-me" id="i-can-help">Please select when you can help:</span>
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="weekend-availability" id="weekend-availability">
+                        <label class="custom-control-label" for="weekend-availability">Weekends</label>
+                    </div> <!-- end of div that has the weekend check box -->
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="summer-camp" id="summer-camp">
+                        <label class="custom-control-label" for="summer-camp">Summer Camp (1 week)</label>
+                    </div> <!-- end of div that has the summer camp check box -->
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="both-availability" id="both-availability">
+                        <label class="custom-control-label" for="both-availability">Both</label>
+                    </div> <!-- end of div that has the both check box -->
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="neither-availability" id="neither-availability">
+                        <label class="custom-control-label" for="neither-availability">Neither</label>
+                    </div> <!-- end of div that has the neither check box -->
+                    <div id="toggle-weekend-availability">
+                        <label for="weekend-availability-explanation">Please list weekend dates/times that you are available:</label>
+                        <div class="input-group">
+                            <textarea class="form-control" id="weekend-availability-explanation" name="weekend-availability-explain" placeholder=""></textarea>
+                        </div> <!-- area where the user explains their other interests if chosen other -->
+                    </div> <!-- end of div that holds the toggle for if user needs to explain their interests -->
+                </div>
+            </div> <!-- end of row that holds the columns for choosing availability and areas of interest -->
         </fieldset> <!-- end of fieldset that contains Interests section -->
-        <fieldset class="form-group">
-            <div class="container legend-container">
-                <h2 class="legend-text">Availability</h2>
-            </div>
-            <label>I can help...</label>
-            <span class="hide-me" id="i-can-help">Please select when you can help:</span>
-            <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" type="checkbox" value="weekend-availability" id="weekend-availability">
-                <label class="custom-control-label" for="weekend-availability">Weekends</label>
-            </div> <!-- end of div that has the weekend check box -->
-            <div id="toggle-weekend-availability">
-                <label for="weekend-availability-explanation">Please explain:</label>
-                <div class="input-group">
-                    <textarea class="form-control" id="weekend-availability-explanation" name="weekend-availability-explain" placeholder=""></textarea>
-                </div> <!-- area where the user explains their other interests if chosen other -->
-            </div> <!-- end of div that holds the toggle for if user needs to explain their interests -->
-            <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" type="checkbox" value="summer-camp" id="summer-camp">
-                <label class="custom-control-label" for="summer-camp">Summer Camp (1 week)</label>
-            </div> <!-- end of div that has the summer camp check box -->
-            <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" type="checkbox" value="both-availability" id="both-availability">
-                <label class="custom-control-label" for="both-availability">Both</label>
-            </div> <!-- end of div that has the both check box -->
-            <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" type="checkbox" value="neither-availability" id="neither-availability">
-                <label class="custom-control-label" for="neither-availability">Neither</label>
-            </div> <!-- end of div that has the neither check box -->
-        </fieldset> <!-- end of fieldset that contains availability information-->
         <fieldset class="form-group">
             <div class="container legend-container">
                 <h2 class="legend-text">Skills & Qualifications</h2>
             </div>
-            <label for="motivation">*Why are you motivated to work with us?</label>
+            <label for="motivation"><em>*</em> Why are you motivated to work with us?</label>
             <div class="input-group">
                 <textarea class="form-control" id="motivation" placeholder=""></textarea>
             </div> <!-- end of text area for why they are motivated to work for us -->
@@ -199,15 +203,15 @@ File Name: volunteer_form.html
             </div> <!-- end of text area for if they have previous volunteer experience -->
             <label>Do you have previous work experience with youth organizations?</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-no" value="no">
-                <label class="form-check-label" for="youth-experience-no">No</label>
-            </div> <!-- end of div for checkbox of if they have experience with youth "no"  -->
-            <div class="form-check">
                 <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-yes" value="yes">
                 <label class="form-check-label" for="youth-experience-yes">Yes</label>
             </div> <!-- end of div for checkbox of if they have experience with youth "yes" -->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-no" value="no">
+                <label class="form-check-label" for="youth-experience-no">No</label>
+            </div> <!-- end of div for checkbox of if they have experience with youth "no"  -->
             <div id="toggle-please-explain">
-                <label for="youth-experience-explanation">Please explain:</label>
+                <label for="youth-experience-explanation">Please elaborate on your work with youth:</label>
                 <div class="input-group">
                     <textarea class="form-control" id="youth-experience-explanation" name="youth-experience-explanation" placeholder=""></textarea>
                 </div> <!-- area where the user explains the volunteer experience that they have with youth -->
@@ -225,38 +229,34 @@ File Name: volunteer_form.html
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0"> <!-- ***********************STYLE CHOICE ********* -->
-                            <button id="ref-btn-one" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" type="button">*Reference One</button>
+                            <button id="ref-btn-one" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" type="button"><em>*</em> Reference One</button>
                         </h5>
                     </div> <!-- ref#1 .card-header -->
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-11">
+                                <div class="col-md-6 col-lg-6">
                                     <label for="ref-name-1" class="col-form-label">Full Name</label>
                                     <input type="text" class="form-control" id="ref-name-1" placeholder="">
                                 </div> <!-- end of div that holds the name label for reference 1 -->
-                                <div class="col1"> <!-- HERE IS WHERE WE PUT THE ICON -->
+                                <div class="col-md-6 col-lg-5">
+                                    <label for="ref-relationship-1" class="col-form-label">Relationship</label>
+                                    <input type="text" class="form-control" id="ref-relationship-1" placeholder="">
+                                </div>
+                                <div class="d-none d-sm-none d-md-none d-lg-block col-lg-1"> <!-- HERE IS WHERE WE PUT THE ICON -->
                                     <p class="clear-reference">clear</p>
                                 </div> <!-- end of div that will hold our icon for clearing the information -->
                             </div> <!-- end of row with reference 1 full name slot and clear button -->
                             <div class="row">
-                                <div class="col-11">
+                                <div class="col-md-6 col-lg-6">
                                     <label for="ref-email-1" class="col-form-label">Email</label>
                                     <input type="text" class="form-control" id="ref-email-1" placeholder="">
                                 </div> <!-- end of div that holds email information for reference 1 -->
-                            </div> <!-- end of row that will hold reference 1 email information -->
-                            <div class="row">
-                                <div class="col-11">
+                                <div class="col-md-6 col-lg-5">
                                     <label for="ref-phone-1" class="col-form-label">Phone</label>
                                     <input type="text" class="form-control" id="ref-phone-1" placeholder="">
                                 </div> <!-- end of div that holds phone information for reference 1 -->
-                            </div> <!-- end of row that will hold reference 1 phone information -->
-                            <div class="row">
-                                <div class="col-11">
-                                    <label for="ref-relationship-1" class="col-form-label">Relationship</label>
-                                    <input type="text" class="form-control" id="ref-relationship-1" placeholder="">
-                                </div>
-                            </div> <!-- end of row that holds the reference relationship for reference 1 -->
+                            </div> <!-- end of row that will hold reference 1 email information -->
                         </div> <!-- ref#1 .card-body -->
                     </div>
                 </div> <!-- ref#1 .card -->
@@ -265,38 +265,34 @@ File Name: volunteer_form.html
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h5 class="mb-0"> <!-- ***********************STYLE CHOICE ********* -->
-                            <button id="ref-btn-two" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" type="button">*Reference Two</button>
+                            <button id="ref-btn-two" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" type="button"><em>*</em> Reference Two</button>
                         </h5>
                     </div> <!-- ref#2 .card-header -->
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-11">
+                                <div class="col-md-6 col-lg-6">
                                     <label for="ref-name-2" class="col-form-label">Full Name</label>
                                     <input type="text" class="form-control" id="ref-name-2" placeholder="">
                                 </div> <!-- end of div that holds the name label for reference 2 -->
-                                <div class="col1"> <!-- HERE IS WHERE WE PUT THE ICON -->
+                                <div class="col-md-6 col-lg-5">
+                                    <label for="ref-relationship-2" class="col-form-label">Relationship</label>
+                                    <input type="text" class="form-control" id="ref-relationship-2" placeholder="">
+                                </div>
+                                <div class="d-none d-sm-none d-md-none d-lg-block col-lg-1"> <!-- HERE IS WHERE WE PUT THE ICON -->
                                     <p class="clear-reference">clear</p>
                                 </div> <!-- end of div that will hold our icon for clearing the information -->
                             </div> <!-- end of row with reference 2 full name slot and clear button -->
                             <div class="row">
-                                <div class="col-11">
+                                <div class="col-md-6 col-lg-6">
                                     <label for="ref-email-2" class="col-form-label">Email</label>
                                     <input type="text" class="form-control" id="ref-email-2" placeholder="">
                                 </div> <!-- end of div that holds email information for reference 2 -->
-                            </div> <!-- end of row that will hold reference 2 email information -->
-                            <div class="row">
-                                <div class="col-11">
+                                <div class="col-md-6 col-lg-5">
                                     <label for="ref-phone-2" class="col-form-label">Phone</label>
                                     <input type="text" class="form-control" id="ref-phone-2" placeholder="">
                                 </div> <!-- end of div that holds phone information for reference 2 -->
-                            </div> <!-- end of row that will hold reference 2 phone information -->
-                            <div class="row">
-                                <div class="col-11">
-                                    <label for="ref-relationship-2" class="col-form-label">Relationship</label>
-                                    <input type="text" class="form-control" id="ref-relationship-2" placeholder="">
-                                </div>
-                            </div> <!-- end of row that holds the reference relationship for reference 2 -->
+                            </div> <!-- end of row that will hold reference 2 email information -->
                         </div> <!-- ref#2 .card-body -->
                     </div>
                 </div> <!-- ref#2 .card -->
@@ -304,38 +300,34 @@ File Name: volunteer_form.html
                 <div class="card">
                     <div class="card-header" id="headingThree">
                         <h5 class="mb-0"> <!-- ***********************STYLE CHOICE ********* -->
-                            <button id="ref-btn-three" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" type="button">*Reference Three</button>
+                            <button id="ref-btn-three" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" type="button"><em>*</em> Reference Three</button>
                         </h5>
                     </div> <!-- ref#3 .card-header -->
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-11">
+                                <div class="col-md-6 col-lg-6">
                                     <label for="ref-name-3" class="col-form-label">Full Name</label>
                                     <input type="text" class="form-control" id="ref-name-3" placeholder="">
                                 </div> <!-- end of div that holds the name label for reference 3 -->
-                                <div class="col1"> <!-- HERE IS WHERE WE PUT THE ICON -->
+                                <div class="col-md-6 col-lg-5">
+                                    <label for="ref-relationship-3" class="col-form-label">Relationship</label>
+                                    <input type="text" class="form-control" id="ref-relationship-3" placeholder="">
+                                </div>
+                                <div class="d-none d-sm-none d-md-none d-lg-block col-lg-1"> <!-- HERE IS WHERE WE PUT THE ICON -->
                                     <p class="clear-reference">clear</p>
                                 </div> <!-- end of div that will hold our icon for clearing the information -->
                             </div> <!-- end of row with reference 3 full name slot and clear button -->
                             <div class="row">
-                                <div class="col-11">
+                                <div class="col-md-6 col-lg-6">
                                     <label for="ref-email-3" class="col-form-label">Email</label>
                                     <input type="text" class="form-control" id="ref-email-3" placeholder="">
                                 </div> <!-- end of div that holds email information for reference 3 -->
-                            </div> <!-- end of row that will hold reference 3 email information -->
-                            <div class="row">
-                                <div class="col-11">
+                                <div class="col-md-6 col-lg-5">
                                     <label for="ref-phone-3" class="col-form-label">Phone</label>
                                     <input type="text" class="form-control" id="ref-phone-3" placeholder="">
                                 </div> <!-- end of div that holds phone information for reference 3 -->
-                            </div> <!-- end of row that will hold reference 3 phone information -->
-                            <div class="row">
-                                <div class="col-11">
-                                    <label for="ref-relationship-3" class="col-form-label">Relationship</label>
-                                    <input type="text" class="form-control" id="ref-relationship-3" placeholder="">
-                                </div>
-                            </div> <!-- end of row that holds the reference relationship for reference 3 -->
+                            </div> <!-- end of row that will hold reference 3 email information -->
                         </div> <!-- ref#3 .card-body -->
                     </div>
                 </div> <!-- ref#3 .card -->
@@ -349,7 +341,7 @@ File Name: volunteer_form.html
             <div class="container legend-container">
                 <h2 class="legend-text">Mailing List</h2>
             </div>
-            <label>*Would you like to be added to our mailing list?</label>
+            <label><em>*</em> Would you like to be added to our mailing list?</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-yes" value="yes" checked>
                 <label class="form-check-label" for="mailing-list-yes">Yes</label>
@@ -397,6 +389,7 @@ File Name: volunteer_form.html
         </fieldset> <!-- end of fieldset that contains electronic signature, and acceptance of policy -->
     </form> <!-- end of the entire form that the user fills out -->
 </div> <!--    end of entire body div  -->
+<footer id="footer"></footer>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
