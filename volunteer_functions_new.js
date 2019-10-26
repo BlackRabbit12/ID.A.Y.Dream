@@ -20,7 +20,7 @@ function displayForm() {
 // assigning form event listeners
 
 
-// Show textbox if "other" is selected for "Where would you like to help?"
+// Show textbox if "other" is  selected for "Where would you like to help?"
 
 // Show textbox if "weekends" is selected for "I can help..." in the availability section for specific hours
 

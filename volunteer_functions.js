@@ -13,7 +13,7 @@ File Name: volunteer_functions.js
  *           If the second radio button 'yes' is checked then it turns the default div css
  *               from display: none to display: block
  *           If the first radio button 'no' is checked then it ensures the default div css
- *               is reinstated as display: none  .
+ *               is reinstated as display: none.
  */
 
 $('input[name="youth-experience"]').on('change', function(){
