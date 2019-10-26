@@ -179,8 +179,8 @@ function validate_dob() {
         return true;
     }
 }
-// utility functions
 
+// Returns true if string is empty
 function isEmpty(str) {
     return str.trim() == "";
 }
