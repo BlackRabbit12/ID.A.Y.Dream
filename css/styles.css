@@ -1,23 +1,26 @@
 @charset "utf-8";
 
-
 /*Authors: Shayna Jamieson, Bridget Black, Keller Flint */
 /*Version: 1.0*/
 /*File Name: styles.css */
 
 #background-check-buttons {
     margin-top: 10%;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    letter-spacing: 0.3vw !important;
 }
 
 #background-check-container {
-    margin-top: 8%;
+    margin-top: 5% !important;
     text-align: center;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
 
 #bg-check-no-container {
     margin-top: 5%;
     display: none;
     text-align: center;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
 
 #bgc-sentence1 {
@@ -87,12 +90,24 @@ Using custom checkbox classes here and in the HTML allowed us to change the colo
     border-color: #5b7978;
 }
 
+em {
+    color: #c16062;
+}
+
 #entire-form-container {
     display: none;
 }
 
 fieldset {
     border: 0;
+}
+
+footer {
+    height: 150px;
+    width: auto;
+    background-color: #202020 !important;
+    display: none;
+    margin-top: 7% !important;
 }
 
 .hide-me {
@@ -147,23 +162,15 @@ input[type="text"]:focus {
 }
 
 .jumbotron {
-    max-width: 100%;
-    height: auto;
+    background-image: url("../images/VOLUNTEER_LOGO.png");
+    background-size: cover;
+    width: auto;
+    height: 400px;
     padding-top: 0;
     padding-bottom: 0;
     margin-bottom: 0;
     margin-top: 0;
     z-index: 0;
-}
-
-#jumbotron-image {
-    max-width: 100%;
-    height: auto;
-    padding-bottom: 0;
-    padding-top: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    z-index: 1;
 }
 
 label {
@@ -206,13 +213,36 @@ label::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     margin-bottom: 2% !important;
 }
 
+span {
+    color: #c16062;
+    font-size: smaller;
+}
+
 #submit-policy {
     font-size: smaller;
+}
+
+#toggle-other-interests {
+    display: none;
 }
 
 #toggle-please-explain {
     display: none;
 }
+
+#toggle-weekend-availability {
+    display: none;
+}
+
+#volunteer-title {
+    color: white;
+    text-align: center !important;
+    font-size: 5vw !important;
+    white-space: nowrap;
+}
+
+
+
 
 /*
 ************************** NOT CURRENTLY WORKING ***********
@@ -254,14 +284,14 @@ input[type="text"]::-webkit-validation-bubble {
 
 /* new bridget stuff */
 input[data-state="invalid"] {
-    border-bottom: red;
+    border-bottom: #c16062;
 }
 
 /*5DDEFA OLD BLUE COLOR*/
 
 /* dropdown border for invalid */
 .red-border-drop {
-    border: 1px solid red !important;
+    border-bottom: 1px solid #c16062 !important;
 }
 
 /* hides the <span> above checkboxes */
