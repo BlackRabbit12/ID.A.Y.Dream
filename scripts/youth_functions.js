@@ -3,7 +3,6 @@ Authors: Shayna Jamieson, Bridget Black, Keller Flint
 Version: 1.0
 File Name: youth_functions.js
 */
-
 // 2D  function array with input element ids
 let validateEmptyArray = [
     "fname",
@@ -49,6 +48,7 @@ $("#graduation-year").on("input focus blur", function() {
 // checks if all form data is valid on submit
 function validateForm() {
     let isValid = true;
+
     // checks if input fields are empty
     for (let i = 0; i < validateEmptyArray.length; i++) {
         if (!validate_empty(validateEmptyArray[i])) {
@@ -56,11 +56,11 @@ function validateForm() {
         }
     }
 
-    if (!validate_phone()) {
+    if (!validate_phone("phone")) {
         isValid = false;
     }
 
-    if (!validate_email()) {
+    if (!validate_email("email")) {
         isValid = false;
     }
 
