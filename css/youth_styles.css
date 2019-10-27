@@ -49,11 +49,18 @@ footer {
 
 .form-intro {
     text-align: center !important;
-    /*font-size: 2vw;*/
     font-size: 1em !important;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     font-weight: lighter;
     letter-spacing: 0.3vw;
+}
+
+#form-intro-1 {
+    padding-top: 8px !important;
+}
+
+#form-intro-2 {
+    padding-bottom: 8px !important;
 }
 
 input[type="text"] {
