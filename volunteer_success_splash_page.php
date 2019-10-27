@@ -1,10 +1,10 @@
-<!DOCTYPE html>
 
-<!--
-Authors: Shayna Jamieson, Bridget Black, Keller Flint
-Version: 1.0
-File Name: volunteer_success_splash_page.php
--->
+<?php
+// Authors: Shayna Jamieson, Keller Flint, Bridget Black
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+?>
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -22,7 +22,26 @@ File Name: volunteer_success_splash_page.php
     <link rel="manifest" href="images/site.webmanifest_title">
 </head>
 <body>
-<h1>Thank you for your interest in volunteering with iD.A.Y.dream. We’re investing in an entire region of youth. Youth seeking success through higher education, mentoring…………..</h1>
+<h1>Thank you for your interest in volunteering with iD.A.Y.dream <?php echo $_POST[""]?>. We’re investing in an entire region of youth. Youth seeking success through higher education, mentoring…………..</h1>
 <!-- HERE IS WHERE WE NEED TO THANK THEM AND THEN DISPLAY THE INFORMATION THAT THEY SUBMITTED -->
+<?php
+// start putting together email as we are also displaying their information
+$email_body = "Youth Information:\r\n\r\n";
+$email_subject = "ID.A.Y.Dream Youth Sign-Up Information";
+
+foreach($_POST as $key => $value) {
+    $key_text = htmlspecialchars($key);
+    $value_text = htmlspecialchars($value);
+    $email_body .= "$key: $value \r\n";
+    echo "<p><strong>$key:</strong> $value</p>";
+}
+
+// now we send an email to show that we can send her the information
+$sendToBrandy = "kflint0068@gmail.com";
+$to = $sendToBrandy;
+$headers = "From: $email\r\n";
+$headers .= "Reply-To: $email\r\n";
+$success = mail($to, $email_subject, $email_body, $headers);
+?>
 </body>
 </html>
