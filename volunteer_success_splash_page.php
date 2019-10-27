@@ -32,19 +32,24 @@ $email_subject = "ID.A.Y.Dream Youth Sign-Up Information";
 
 foreach($_POST as $key => $value) {
     if (is_array($value)) {
-        echo "<p><strong>$key:</strong></p>";
+        $key_text = htmlspecialchars($key);
+        $key_text = str_replace("-", " ", $key_text);
+        $key_text = ucfirst($key_text);
+        echo "<p><strong>$key_text:</strong></p>";
         echo "<ul>";
         foreach($value as $child_key => $child_value) {
             $value_text = htmlspecialchars($child_value);
-            $email_body .= "\t$child_value \r\n";
+            $email_body .= "$child_value \r\n";
             echo "<li>$child_value</li>";
         }
         echo "</ul>";
     } else if ($value != "") {
         $key_text = htmlspecialchars($key);
+        $key_text = ucfirst($key_text);
         $value_text = htmlspecialchars($value);
-        $email_body .= "$key: $value \r\n";
-        echo "<p><strong>$key:</strong> $value</p>";
+        $key_text = str_replace("-", " ", $key_text);
+        $email_body .= "$key_text: $value_text \r\n";
+        echo "<p><strong>$key_text:</strong> $value_text</p>";
     }
 }
 
