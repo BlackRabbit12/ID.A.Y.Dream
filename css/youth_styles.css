@@ -1,10 +1,10 @@
+@charset "utf-8";
+
 /*
 Authors: Shayna Jamieson, Bridget Black, Keller Flint
 Version: 1.0
 File Name: youth_styles.css
 */
-
-@charset "utf-8";
 
 .btn {
     background-color: #6cb1c1;
@@ -50,7 +50,7 @@ footer {
 .form-intro {
     text-align: center !important;
     font-size: 1em !important;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
     font-weight: lighter;
     letter-spacing: 0.3vw;
 }
@@ -108,7 +108,7 @@ span {
 
 #summary {
     margin-top: 5% !important;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
     text-align: center;
     display: none;
     border: 3px solid #6cb1c1;
@@ -124,7 +124,7 @@ span {
 #thank-you-message {
     margin-top: 2% !important;
     text-align: center !important;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
 }
 
 #youth-volunteer-title {
