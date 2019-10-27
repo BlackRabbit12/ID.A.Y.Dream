@@ -155,13 +155,16 @@ function validateForm() {
         if (!validate_empty(validateEmptyArray[i])) {
             if (validateEmptyArray[i] == "other-interests-explanation") {
                 if (otherChecked && !validate_empty(validateEmptyArray[i])) {
+                    console.log("OTHER SET FALSE");
                     isValid = false;
                 }
-            } else if (validateEmptyArray[i] == validate_empty("weekend-availability-explanation")) {
-                if (weekendChecked && !validateEmptyArray[i]) {
+            } else if (validateEmptyArray[i] == "weekend-availability-explanation") {
+                if (weekendChecked && !validate_empty(validateEmptyArray[i])) {
+                    console.log("WEEKEND SET FALSE");
                     isValid = false;
                 }
             } else {
+                console.log(validateEmptyArray[i] + " SET FALSE");
                 isValid = false;
             }
         }
@@ -169,21 +172,25 @@ function validateForm() {
 
     for (let i = 0; i < validatePhoneArray.length; i++) {
         if (!validate_phone(validatePhoneArray[i])) {
+            console.log(validatePhoneArray[i] + " SET FALSE");
             isValid = false;
         }
     }
 
     for (let i = 0; i < validateEmailArray.length; i++) {
         if (!validate_email(validateEmailArray[i])) {
+            console.log(validateEmailArray[i] + " SET FALSE");
             isValid = false;
         }
     }
 
     if (!validate_zip()) {
+        console.log("zip set false");
         isValid = false;
     }
 
     if (!validate_tshirt()) {
+        console.log("tshirt set false");
         isValid = false;
     }
 

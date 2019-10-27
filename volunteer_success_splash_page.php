@@ -24,24 +24,38 @@ error_reporting(E_ALL);
 <body>
 <h1>Thank you for your interest in volunteering with iD.A.Y.dream <?php echo $_POST[""]?>. We’re investing in an entire region of youth. Youth seeking success through higher education, mentoring…………..</h1>
 <!-- HERE IS WHERE WE NEED TO THANK THEM AND THEN DISPLAY THE INFORMATION THAT THEY SUBMITTED -->
+<div class="container" id="summary">
 <?php
 // start putting together email as we are also displaying their information
 $email_body = "Youth Information:\r\n\r\n";
 $email_subject = "ID.A.Y.Dream Youth Sign-Up Information";
 
 foreach($_POST as $key => $value) {
-    $key_text = htmlspecialchars($key);
-    $value_text = htmlspecialchars($value);
-    $email_body .= "$key: $value \r\n";
-    echo "<p><strong>$key:</strong> $value</p>";
+    if (is_array($value)) {
+        echo "<p><strong>$key:</strong></p>";
+        echo "<ul>";
+        foreach($value as $child_key => $child_value) {
+            $value_text = htmlspecialchars($child_value);
+            $email_body .= "\t$child_value \r\n";
+            echo "<li>$child_value</li>";
+        }
+        echo "</ul>";
+    } else if ($value != "") {
+        $key_text = htmlspecialchars($key);
+        $value_text = htmlspecialchars($value);
+        $email_body .= "$key: $value \r\n";
+        echo "<p><strong>$key:</strong> $value</p>";
+    }
 }
 
 // now we send an email to show that we can send her the information
-$sendToBrandy = "kflint0068@gmail.com";
-$to = $sendToBrandy;
-$headers = "From: $email\r\n";
-$headers .= "Reply-To: $email\r\n";
+$sendTo = "kflint0068@gmail.com";
+$to = $sendTo;
+$headers = "From: " . $_POST["email"] . " \r\n";
+$headers .= "Reply-To: " . $_POST["email"] . "\r\n";
 $success = mail($to, $email_subject, $email_body, $headers);
+echo "emailed for real: " . (int) $success;
 ?>
+</div>
 </body>
 </html>
