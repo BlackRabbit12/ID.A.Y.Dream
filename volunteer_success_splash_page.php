@@ -54,7 +54,7 @@ $to = $sendTo;
 $headers = "From: " . $_POST["email"] . " \r\n";
 $headers .= "Reply-To: " . $_POST["email"] . "\r\n";
 $success = mail($to, $email_subject, $email_body, $headers);
-echo "emailed for real: " . (int) $success;
+echo "Sent email: " . (int) $success;
 ?>
 </div>
 </body>
