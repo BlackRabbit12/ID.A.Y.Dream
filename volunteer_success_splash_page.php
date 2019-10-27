@@ -23,7 +23,7 @@ error_reporting(E_ALL);
 </head>
 <body>
 <h1>Thank you for your interest in volunteering with iD.A.Y.dream <?php echo $_POST["first-name"]?>. We’re investing in an entire region of youth. Youth seeking success through higher education, mentoring…………..</h1>
-<!-- HERE IS WHERE WE NEED TO THANK THEM AND THEN DISPLAY THE INFORMATION THAT THEY SUBMITTED -->
+<!-- HERE IS WHERE WE NEED TO THANK THEM AND THEN DISPLAY THE INFORMATION THAT THEY SUBMITTED  -->
 <div class="container" id="summary">
 <?php
 // start putting together email as we are also displaying their information
