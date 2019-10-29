@@ -9,74 +9,79 @@ let validateEmptyArray = [
     "lname",
 ];
 
+// *** Functions ***
+
 // *** event listeners  ***
+
 //  form on submit event listener
 $("#youth-form").on("submit", validateForm);
 
 // assign check if empty function on all input elements in validateEmptyArray
 for (let i = 0; i < validateEmptyArray.length; i++) {
     $("#" + validateEmptyArray[i]).on("input focus blur", function () {
-        validate_empty(validateEmptyArray[i]);
+        validateEmpty(validateEmptyArray[i]);
     });
 }
 
+// Event listeners for input elements in the form that require immediate validation
 $("#phone").on("input focus blur", function () {
-    validate_phone("phone");
+    validatePhone("phone");
 });
 
 $("#email").on("input focus blur", function () {
-    validate_email("email");
+    validateEmail("email");
 });
 
 $("#gender").on("input focus blur", function () {
-    validate_gender();
+    validateGender();
 });
 
 $("#ethnicity").on("input focus blur", function () {
-    validate_ethnicity();
+    validateEthnicity();
 });
 
 $("#dob").on("input focus blur", function() {
-    validate_dob();
+    validateDOB();
 });
 
 $("#graduation-year").on("input focus blur", function() {
-    validate_graduation();
+    validateGraduation();
 });
 
 // *** validation functions ***
+
 // checks if all form data is valid on submit
 function validateForm() {
     let isValid = true;
 
     // checks if input fields are empty
     for (let i = 0; i < validateEmptyArray.length; i++) {
-        if (!validate_empty(validateEmptyArray[i])) {
+        if (!validateEmpty(validateEmptyArray[i])) {
             isValid = false;
         }
     }
 
-    if (!validate_phone("phone")) {
+    if (!validatePhone("phone")) {
         isValid = false;
     }
 
-    if (!validate_email("email")) {
+    if (!validateEmail("email")) {
         isValid = false;
     }
 
-    if (!validate_gender()) {
+    if (!validateGender()) {
         isValid = false;
     }
 
-    if (!validate_ethnicity()) {
+    if (!validateEthnicity()) {
         isValid = false;
     }
 
-    if (!validate_dob()) {
+    if (!validateDOB()) {
         isValid = false;
     }
 
-    if (!validate_graduation()) {
+    if (!validateGraduation()) {
         isValid = false;
     }
 

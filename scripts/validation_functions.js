@@ -1,7 +1,7 @@
 
 // Validates phone numbers and adds formatting
-// forces valid phone number and returns true if the phone number contains 10 or 11 characters. Displays errors
-function validate_phone(id) {
+// forces phone input and displays errors if invalid
+function validatePhone(id) {
     console.log("validate phone");
     // formats phone number
     let str = $("#" + id).val();
@@ -28,8 +28,8 @@ function validate_phone(id) {
     }
 }
 
-// checks if given inputs are empty
-function validate_empty(id) {
+// Checks for empty inputs and displays errors if invalid
+function validateEmpty(id) {
     if (!isEmpty($("#" + id).val())) {
         $("#err-" + id).addClass("d-none");
         $("#" + id).removeClass("red-border-drop");
@@ -41,8 +41,8 @@ function validate_empty(id) {
     }
 }
 
-// returns true if email is valid and false otherwise. Displays errors
-function validate_email(id) {
+// Checks for valid email input and displays errors if invalid
+function validateEmail(id) {
     let expression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!expression.test(String($("#" + id).val()).toLocaleLowerCase())) {
         $("#err-" + id).removeClass("d-none");
@@ -56,7 +56,7 @@ function validate_email(id) {
 }
 
 // Validates zip code and adds formatting
-function validate_zip() {
+function validateZip() {
     $("#zip").val($("#zip").val().trim().substring(0, 5));
     if ($("#zip").val().trim().length < 5) {
         $("#err-zip").removeClass("d-none");
@@ -70,7 +70,7 @@ function validate_zip() {
 }
 
 // Validates that a T-Shirt size is selected
-function validate_tshirt() {
+function validateTshirt() {
     if (document.getElementById("t-shirt-none").selected) {
         $("#err-t-shirt").removeClass("d-none");
         $("#t-shirt").addClass("red-border-drop");
@@ -82,8 +82,8 @@ function validate_tshirt() {
     }
 }
 
-
-function validate_gender() {
+// Displays errors if gender has invalid input
+function validateGender() {
     if (document.getElementById("gender-none").selected) {
         $("#err-gender").removeClass("d-none");
         $("#gender").addClass("red-border-drop");
@@ -95,7 +95,8 @@ function validate_gender() {
     }
 }
 
-function validate_ethnicity() {
+// Displays errors if ethnicity has invalid input
+function validateEthnicity() {
     if (document.getElementById("ethnicity-none").selected) {
         $("#err-ethnicity").removeClass("d-none");
         $("#ethnicity").addClass("red-border-drop");
@@ -107,7 +108,8 @@ function validate_ethnicity() {
     }
 }
 
-function validate_graduation() {
+// Displays errors if graduation has invalid input
+function validateGraduation() {
     if (document.getElementById("graduation-none").selected) {
         $("#err-graduation-year").removeClass("d-none");
         $("#graduation-year").addClass("red-border-drop");
@@ -119,8 +121,8 @@ function validate_graduation() {
     }
 }
 
-//
-function validate_dob() {
+// Displays errors if date of birth has invalid input
+function validateDOB() {
     let str = $("#dob").val();
     str = str.replace(/\D/g, "");
 

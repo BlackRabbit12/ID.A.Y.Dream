@@ -53,41 +53,41 @@ $aspirations = $_POST['aspirations'];
 <div class="container" id="summary">
     <?php
     // start putting together email as we are also displaying their information
-    $email_body = "Youth Information:\r\n\r\n";
-    $email_subject = "ID.A.Y.Dream Youth Sign-Up Information";
+    $emailBody = "Youth Information:\r\n\r\n";
+    $emailSubject = "ID.A.Y.Dream Youth Sign-Up Information";
     echo "<p><strong>Full Name</strong>: $firstName $lastName</p>";
-    $email_body .= "Name: $firstName $lastName\r\n";
+    $emailBody .= "Name: $firstName $lastName\r\n";
     echo "<p><strong>Email:</strong> $email</p>";
-    $email_body .= "Email: $email\r\n";
+    $emailBody .= "Email: $email\r\n";
     echo "<p><strong>Phone Number:</strong> $phone</p>";
-    $email_body .= "Phone: $phone\r\n";
+    $emailBody .= "Phone: $phone\r\n";
     echo "<p><strong>Date of Birth:</strong> $dob</p>";
-    $email_body .= "Date of Birth: $dob\r\n";
+    $emailBody .= "Date of Birth: $dob\r\n";
     echo "<p><strong>Ethnicity:</strong> $ethnicity</p>";
-    $email_body .= "Ethnicity: $ethnicity\r\n";
+    $emailBody .= "Ethnicity: $ethnicity\r\n";
     // these can be intentionally left blank -- must check if they are before displaying no information
     if(!$collegeInterest == "") {
         echo "<p><strong>College of Interest:</strong> $collegeInterest</p>";
-        $email_body .= "College of Interest: $collegeInterest\r\n";
+        $emailBody .= "College of Interest: $collegeInterest\r\n";
     }
     if(!$graduationYear == "") {
         echo "<p><strong>Graduation Year:</strong> $graduationYear</p>";
-        $email_body .= "Graduation Year: $graduationYear\r\n";
+        $emailBody .= "Graduation Year: $graduationYear\r\n";
     }
     if(!$favSnacks == "") {
         echo "<p><strong>Favorite Foods/Snacks:</strong> $favSnacks</p>";
-        $email_body .= "Favorite Foods/Snacks: $favSnacks\r\n";
+        $emailBody .= "Favorite Foods/Snacks: $favSnacks\r\n";
     }
     if(!$aspirations == "") {
         echo "<p><strong>Aspirations/Goals:</strong> $aspirations</p>";
-        $email_body .= "Aspirations/Goals: $aspirations\r\n";
+        $emailBody .= "Aspirations/Goals: $aspirations\r\n";
     }
     // now we send an email to show that we can send her the information
     $sendToBrandy = "jamieson.shayna@gmail.com";
     $to = $sendToBrandy;
     $headers = "From: $email\r\n";
     $headers .= "Reply-To: $email\r\n";
-    $success = mail($to, $email_subject, $email_body, $headers);
+    $success = mail($to, $emailSubject, $emailBody, $headers);
     ?>
 </div>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -99,13 +99,6 @@ $aspirations = $_POST['aspirations'];
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <!-- jQuery for input validation -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="scripts/youth_functions.js"></script>
-<script>
-    document.getElementById("summary-button").onclick = toggleSummary;
-    function toggleSummary() {
-        document.getElementById("summary-button").style.display = "none";
-        document.getElementById("summary").style.display = "block";
-    }
-</script>
+<script src="scripts/youth_splash_functions.js"></script>
 </body>
 </html>
