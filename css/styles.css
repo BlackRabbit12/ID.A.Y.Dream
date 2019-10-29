@@ -1,19 +1,19 @@
 @charset "utf-8";
 
-/*Authors: Shayna Jamieson, Bridget Black, Keller Flint */
-/*Version: 1.0*/
-/*File Name: styles.css */
+/* Authors: Shayna Jamieson, Bridget Black, Keller Flint */
+/* Version: 2.0*/
+/* File Name: styles.css */
 
 #background-check-buttons {
     margin-top: 10%;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-family: Avantgarde, "Tex Gyre Adventor", "URW Gothic L", sans-serif;
     letter-spacing: 0.3vw !important;
 }
 
 #background-check-container {
     margin-top: 5% !important;
     text-align: center;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-family: Avantgarde, "Tex Gyre Adventor", "URW Gothic L", sans-serif;
     color: #202020 !important;
 }
 
@@ -21,7 +21,7 @@
     margin-top: 5%;
     display: none;
     text-align: center;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-family: Avantgarde, "Tex Gyre Adventor", "URW Gothic L", sans-serif;
 }
 
 #bgc-sentence1 {
@@ -39,8 +39,7 @@ button[type="button"]:active, button[type="button"]:hover {
 }
 
 #bg-check-btn-no, #bg-check-btn-no:active, #bg-check-btn-no:hover, #bg-check-btn-yes, #bg-check-btn-yes:active, #bg-check-btn-yes:hover {
-    /*background-color: #f8bd45;*/
-    background-color: #f8bd45;
+    background-color: #5b7978;
     color: white;
     padding: 10px 20px;
     text-align: center;
@@ -50,13 +49,17 @@ button[type="button"]:active, button[type="button"]:hover {
     cursor: pointer;
     border-radius: 16px;
     width: 100%;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-family: Avantgarde, "Tex Gyre Adventor", "URW Gothic L", sans-serif;
     font-weight: lighter;
     letter-spacing: 0.3vw;
 }
 
+#bg-check-btn-yes:active, #bg-check-btn-yes:hover, #bg-check-btn-no:active, #bg-check-btn-no:hover {
+    color: black !important;
+}
+
 button[type="submit"] {
-    background-color: #f8bd45;
+    background-color: #5b7978;
     color: white;
     padding: 10px 20px;
     text-align: center;
@@ -66,7 +69,7 @@ button[type="submit"] {
     cursor: pointer;
     border-radius: 16px;
     width: 50%;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-family: Avantgarde, "Tex Gyre Adventor", "URW Gothic L", sans-serif;
     font-weight: lighter;
     letter-spacing: 0.3vw;
 }
@@ -87,14 +90,20 @@ button[type="submit"] {
     border-bottom: 1px solid black;
 }
 
+#container-for-ref-1, #container-for-ref-2, #container-for-ref-3 {
+    border: 3px solid #202020;
+    border-radius: 3px;
+    padding: 10px !important;
+}
+
 /*
 http://www.okler.net/forums/topic/check-box-change-color/
 Followed some setup and class selection from a post by Jonas at the above link.
 Using custom checkbox classes here and in the HTML allowed us to change the color of a checked box.
 */
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #f8bd45;
-    border-color: #f8bd45;
+    background-color: #5b7978;
+    border-color: #5b7978;
 }
 
 em {
@@ -103,6 +112,11 @@ em {
 
 #entire-form-container {
     display: none;
+}
+
+/* shows the <span> above checkboxes */
+.err-checkbox {
+    display: block;
 }
 
 fieldset {
@@ -123,12 +137,21 @@ footer {
     margin-bottom: 8px;
 }
 
+/* hides the <span> above checkboxes */
+.hide-me {
+    display: none;
+}
+
+/* new bridget stuff */
+input[data-state="invalid"] {
+    border-bottom: #c16062;
+}
+
 /*
 https://stackoverflow.com/questions/22406661/how-to-make-one-circle-inside-of-another-using-css
 Used logic from misterManSam on Stack overflow to put smaller circle inside of larger circle to override
 browser rendering of radio buttons.
 */
-
 input[type="radio"] {
     -webkit-appearance: none;
     border: 2px solid gray;
@@ -152,7 +175,7 @@ input[type='radio']:before {
 }
 
 input[type='radio']:checked:before {
-    background: #f8bd45;
+    background: #5b7978;
 }
 
 input[type="text"] {
@@ -166,6 +189,24 @@ input[type="text"] {
 
 input[type="text"]:focus {
     -webkit-box-shadow: none;
+}
+
+input[type="text"]::-webkit-validation-bubble-arrow {
+    background: white;
+    border-color: #444;
+    box-shadow: none;
+}
+
+input[type="text"]::-webkit-validation-bubble {
+    color: #eee;
+    background: white;
+}
+
+/*
+* Removes the diagonal lines in lower right corner of textarea boxes on Chrome 26 on OS X
+*/
+input[type="textarea"]::-webkit-resizer{
+    display: none;
 }
 
 .jumbotron {
@@ -200,26 +241,32 @@ label::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
 .legend-text {
     text-align: center !important;
     font-size: 2em !important;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-family: Avantgarde, "Tex Gyre Adventor", "URW Gothic L", sans-serif;
     font-weight: lighter;
     letter-spacing: 0.3vw;
 }
 
 .legend-container {
-    background-color: #6cb1c1;
+    background-color: #5b7978;
+    border-radius: 3px;
     margin-top: 3%;
     margin-bottom: 2%;
-    /*color: #202020;*/
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
-    /*background-color: rgba(248, 189, 69, 0.05);*/
-    /*border: 3px solid #f8bd45;*/
 }
 
-/* Hiding the span to count references until it has functionality */
-#ref-number {
-    display: none;
+.padding {
+    margin-bottom: 3% !important;
+}
+
+/* dropdown border for invalid */
+.red-border-drop {
+    border-bottom: 1px solid #c16062 !important;
+}
+
+.ref-title {
+    color: #5b7978;
 }
 
 .row {
@@ -233,6 +280,44 @@ span {
 
 #submit-policy {
     font-size: smaller;
+}
+
+#summary {
+    margin-top: 5% !important;
+    font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
+    text-align: center;
+    display: none;
+    border: 3px solid #5b7978;
+    padding: 5% !important;
+    margin-bottom: 5% !important;
+}
+
+#summary-button {
+    width: 45% !important;
+    margin-top: 3% !important;
+    text-decoration: none;
+    background-color: #5b7978;
+    color: white !important;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    width: 55%;
+    letter-spacing: 0.3vw;
+}
+
+#summary-button:hover, #summary-button:active {
+    color: black !important;
+    text-decoration: none !important;
+}
+
+#thank-you-message {
+    margin-top: 2% !important;
+    text-align: center !important;
+    font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
 }
 
 #toggle-other-interests {
@@ -253,107 +338,3 @@ span {
     font-size: 5vw !important;
     white-space: nowrap;
 }
-
-
-
-
-/*
-************************** NOT CURRENTLY WORKING ***********
-* change the icon from default triangle to calendar image
-*/
-/*input[type="date"]::-webkit-calendar-picker-indicator {*/
-/*!*    THIS IS WHERE THE ICON GOES    *!*/
-/*    background-image: url("../images/favicon-32x32.png");*/
-/*    z-index: 1;*/
-/*    background-position: center;*/
-/*    background-repeat: no-repeat;*/
-/*}*/
-
-/*
-* removes the visible date spinner-button in the date input box
-*/
-input[type="date"]::-webkit-inner-spin-button {
-    display: none;
-}
-
-/*
-* Removes the diagonal lines in lower right corner of textarea boxes on Chrome 26 on OS X
-*/
-input[type="textarea"]::-webkit-resizer{
-    display: none;
-}
-
-input[type="text"]::-webkit-validation-bubble-arrow {
-    background: #5edffa;
-    border-color: #444;
-    box-shadow: none;
-}
-
-input[type="text"]::-webkit-validation-bubble {
-    color: #eee;
-    background: #8de8fb;
-}
-
-
-/* new bridget stuff */
-input[data-state="invalid"] {
-    border-bottom: #c16062;
-}
-
-/*5DDEFA OLD BLUE COLOR*/
-
-/* dropdown border for invalid */
-.red-border-drop {
-    border-bottom: 1px solid #c16062 !important;
-}
-
-/* hides the <span> above checkboxes */
-.hide-me {
-    display: none;
-}
-
-/* shows the <span> above checkboxes */
-.err-checkbox {
-    display: block;
-}
-
-
-/*.char-ref-bg1 {*/
-/*    background-color: #f8bd45;*/
-/*    border-radius: 3px;*/
-/*    padding-left: 15px !important;*/
-/*    padding-right: 15px !important;*/
-/*}*/
-
-/*.char-ref-bg2 {*/
-/*    background-color: #6cb1c1;*/
-/*    border-radius: 3px;*/
-/*    padding-left: 15px !important;*/
-/*    padding-right: 15px !important;*/
-/*}*/
-
-/*.char-ref-bg3 {*/
-/*    background-color: #5b7978;*/
-/*    border-radius: 3px;*/
-/*    padding-left: 15px !important;*/
-/*    padding-right: 15px !important;*/
-/*}*/
-
-#container-for-ref-1 {
-    border: 3px solid #f8bd45;
-    border-radius: 3px;
-    padding: 10px !important;
-}
-
-#container-for-ref-2 {
-    border: 3px solid #6cb1c1;
-    border-radius: 3px;
-    padding: 10px !important;
-}
-
-#container-for-ref-3 {
-    border: 3px solid #5b7978;
-    border-radius: 3px;
-    padding: 10px !important;
-}
-
