@@ -9,11 +9,13 @@ let bgCheckYes = document.getElementById("bg-check-btn-yes");
 bgCheckNo.onclick = displayDecline;
 bgCheckYes.onclick = displayForm;
 
+// Displays warning if consent to background check isn't given
 function displayDecline() {
     document.getElementById("background-check-container").style.display = "none";
     document.getElementById("bg-check-no-container").style.display = "block";
 }
 
+// Displays form if consent to background check is given
 function displayForm() {
     document.getElementById("background-check-container").style.display = "none";
     document.getElementById("entire-form-container").style.display = "block";
@@ -26,11 +28,13 @@ let otherInterest = document.getElementById("other-interest");
 let youthExperienceYes = document.getElementById("youth-experience-yes");
 let youthExperienceNo = document.getElementById("youth-experience-no");
 
+// Event listeners for toggling availability, areas of interest, and youth experience explanation blocks
 weekendAvail.onclick = toggleWeekendExplanation;
 otherInterest.onclick = toggleInterestExplanation;
 youthExperienceYes.onchange = toggleYouthExplanationShow;
 youthExperienceNo.onchange = toggleYouthExplanationHide;
 
+// Displays or removes the weekend times explanation textarea
 function toggleWeekendExplanation() {
     let wkndDisplay = document.getElementById("toggle-weekend-availability");
     if(weekendAvail.checked) {
@@ -43,6 +47,7 @@ function toggleWeekendExplanation() {
 
 }
 
+// Displays or removes the interest explanations textarea
 function toggleInterestExplanation() {
     let interestDisplay = document.getElementById("toggle-other-interests");
     if(otherInterest.checked) {
@@ -54,17 +59,17 @@ function toggleInterestExplanation() {
     }
 }
 
+// Displays the youth explanation textarea
 function toggleYouthExplanationShow() {
     let youthDisplay = document.getElementById("toggle-please-explain");
     youthDisplay.style.display = "block";
 }
 
+// Hides the youth explanation text area
 function toggleYouthExplanationHide() {
     let youthDisplay = document.getElementById("toggle-please-explain");
     youthDisplay.style.display = "none";
 }
-
-
 
 // Clears Reference Fields when 'Clear' button is clicked
 $(".clear-reference").on("click", function() {
@@ -118,79 +123,76 @@ $("#volunteer-form").on("submit", validateForm);
 // assign check if empty function on all input elements in validateEmptyArray
 for (let i = 0; i < validateEmptyArray.length; i++) {
     $("#" + validateEmptyArray[i]).on("input focus blur", function () {
-        validate_empty(validateEmptyArray[i]);
+        validateEmpty(validateEmptyArray[i]);
     });
 }
 
 // assign validate email on all input elements in validateEmailArray
 for (let i = 0; i < validateEmailArray.length; i++) {
     $("#" + validateEmailArray[i]).on("input focus blur", function () {
-        validate_email(validateEmailArray[i]);
+        validateEmail(validateEmailArray[i]);
     });
 }
 
 // assign validate phone on all input elements in validatePhoneArray
 for (let i = 0; i < validatePhoneArray.length; i++) {
     $("#" + validatePhoneArray[i]).on("input focus blur", function () {
-        validate_phone(validatePhoneArray[i]);
+        validatePhone(validatePhoneArray[i]);
     });
 }
 
+// Assigning other event listeners on page
+
 $("#t-shirt").on("input focus blur", function() {
-    validate_tshirt();
+    validateTshirt();
 });
 
 $("#zip").on("input focus blur", function() {
-    validate_zip();
+    validateZip();
 });
 
 // checks if all form data is valid on submit
 function validateForm() {
     let isValid = true;
-    console.log("otherchecked: " + otherChecked);
-    console.log("weekenedchecked: " + weekendChecked);
 
     // checks if input fields are empty
     for (let i = 0; i < validateEmptyArray.length; i++) {
-        if (!validate_empty(validateEmptyArray[i])) {
+        if (!validateEmpty(validateEmptyArray[i])) {
             if (validateEmptyArray[i] == "other-interests-explanation") {
-                if (otherChecked && !validate_empty(validateEmptyArray[i])) {
-                    console.log("OTHER SET FALSE");
+                // if other interests box is checked, does not need to have data
+                if (otherChecked && !validateEmpty(validateEmptyArray[i])) {
                     isValid = false;
                 }
             } else if (validateEmptyArray[i] == "weekend-availability-explanation") {
-                if (weekendChecked && !validate_empty(validateEmptyArray[i])) {
-                    console.log("WEEKEND SET FALSE");
+                // if weekend box is checked, does not need to have data
+                if (weekendChecked && !validateEmpty(validateEmptyArray[i])) {
                     isValid = false;
                 }
             } else {
-                console.log(validateEmptyArray[i] + " SET FALSE");
                 isValid = false;
             }
         }
     }
 
+    // Checks all phone values on form are valid
     for (let i = 0; i < validatePhoneArray.length; i++) {
-        if (!validate_phone(validatePhoneArray[i])) {
-            console.log(validatePhoneArray[i] + " SET FALSE");
+        if (!validatePhone(validatePhoneArray[i])) {
             isValid = false;
         }
     }
 
+    // Checks all email values on form are valid
     for (let i = 0; i < validateEmailArray.length; i++) {
-        if (!validate_email(validateEmailArray[i])) {
-            console.log(validateEmailArray[i] + " SET FALSE");
+        if (!validateEmail(validateEmailArray[i])) {
             isValid = false;
         }
     }
 
-    if (!validate_zip()) {
-        console.log("zip set false");
+    if (!validateZip()) {
         isValid = false;
     }
 
-    if (!validate_tshirt()) {
-        console.log("tshirt set false");
+    if (!validateTshirt()) {
         isValid = false;
     }
 

@@ -37,11 +37,13 @@ error_reporting(E_ALL);
     <!-- HERE IS WHERE WE NEED TO THANK THEM AND THEN DISPLAY THE INFORMATION THAT THEY SUBMITTED  -->
 <div class="container" id="summary">
 <?php
-// start putting together email as we are also displaying their information
+// building email content
 $email_body = "Youth Information:\r\n\r\n";
 $email_subject = "ID.A.Y.Dream Youth Sign-Up Information";
 
+// iterates over items posted, displays each as html on page and builds email string
 foreach($_POST as $key => $value) {
+    // When the value is an array where each item in the array must be displayed
     if (is_array($value)) {
         $key_text = htmlspecialchars($key);
         $key_text = str_replace("-", " ", $key_text);
@@ -54,6 +56,7 @@ foreach($_POST as $key => $value) {
             echo "<li>$child_value</li>";
         }
         echo "</ul>";
+        // As long as the value isn't empty, display results and add to email
     } else if ($value != "") {
         $key_text = htmlspecialchars($key);
         $key_text = ucfirst($key_text);
@@ -64,13 +67,12 @@ foreach($_POST as $key => $value) {
     }
 }
 
-// now we send an email to show that we can send her the information
+// sending email to client
 $sendTo = "kflint0068@gmail.com";
 $to = $sendTo;
 $headers = "From: " . $_POST["email"] . " \r\n";
 $headers .= "Reply-To: " . $_POST["email"] . "\r\n";
 $success = mail($to, $email_subject, $email_body, $headers);
-echo "Sent email: " . (int) $success;
 ?>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -81,13 +83,7 @@ echo "Sent email: " . (int) $success;
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- jQuery for input validation -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-        document.getElementById("summary-button").onclick = toggleSummary;
-        function toggleSummary() {
-            document.getElementById("summary-button").style.display = "none";
-            document.getElementById("summary").style.display = "block";
-        }
-    </script>
+    <script src="scripts/volunteer_splash_functions.js"></script>
 </div>
 </body>
 </html>
