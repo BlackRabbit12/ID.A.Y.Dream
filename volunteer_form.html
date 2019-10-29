@@ -54,36 +54,36 @@ File Name: volunteer_form.html
                 <h2 class="legend-text">Contact Us</h2>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 padding">
                     <label for="fname" class="col-form-label"><em>*</em> First</label>
                     <input type="text" class="form-control" id="fname" name="first-name" placeholder="">
                     <span id="err-fname" class="d-none">please enter a valid first name</span>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 padding">
                     <label for="lname" class="col-form-label"><em>*</em> Last</label>
                     <input type="text" class="form-control" id="lname" name="last-name" placeholder="">
                     <span id="err-lname" class="d-none">please enter a valid last name</span>
                 </div>
             </div> <!-- end of row with full name -->
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 padding">
                     <label for="street-address" class="col-form-label"><em>*</em> Street Address</label>
                     <input type="text" class="form-control" id="street-address" name="address" placeholder="">
                     <span id="err-street-address" class="d-none">please enter a valid address</span>
                 </div>
             </div> <!-- end of row with address-->
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 padding">
                     <label for="zip" class="col-form-label"><em>*</em> ZIP</label>
                     <input type="text" class="form-control" id="zip" name="zip" placeholder="">
                     <span id="err-zip" class="d-none">please enter a valid zip code</span>
                 </div> <!-- end of column with zip information -->
-                <div class="col-md-4">
+                <div class="col-md-4 padding">
                     <label for="city" class="col-form-label"><em>*</em> City</label>
                     <input type="text" class="form-control" name="city" id="city" placeholder="">
                     <span id="err-city" class="d-none">please enter a valid city name</span>
                 </div> <!-- end of column with city information -->
-                <div class="col-md-4">
+                <div class="col-md-4 padding">
                     <label for="state" class="col-form-label"><em>*</em> State</label>
                     <select class="custom-select" name="state" id="state">
                         <option selected value="WA">WA</option>
@@ -93,17 +93,17 @@ File Name: volunteer_form.html
                 </div> <!-- end of column with state information -->
             </div> <!-- end of row with zip, city, state content -->
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 padding">
                     <label for="email" class="col-form-label"><em>*</em> Email</label>
                     <input type="text" class="form-control" id="email" name="email" placeholder="">
                     <span id="err-email" class="d-none">please enter a valid email</span>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 padding">
                     <label for="phone" class="col-form-label"><em>*</em> Phone</label>
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="">
                     <span id="err-phone" class="d-none">please enter a valid phone number</span>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 padding">
                     <label for="t-shirt" class="col-form-label"><em>*</em> T-Shirt Size</label>
                     <select class="custom-select" id="t-shirt" name="shirt">
                         <option selected value="" id="t-shirt-none">Adult Unisex</option>
@@ -163,7 +163,7 @@ File Name: volunteer_form.html
                         <div class="input-group">
                             <textarea class="form-control" id="other-interests-explanation" name="interests-explain" placeholder=""></textarea>
                         </div> <!-- area where the user explains their other interests if chosen other -->
-                    </div> <!-- end of div that holds the toggle for if user needs to explain their interests -->
+                    </div><br> <!-- end of div that holds the toggle for if user needs to explain their interests -->
                 </div> <!-- end of row that holds the events and activities check boxes -->
                 <div class="col-md-6">
                     <label class="col-form-label">My availability is...</label>
@@ -207,7 +207,7 @@ File Name: volunteer_form.html
                 <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-no" value="no">
                 <label class="form-check-label" for="youth-experience-no">No</label>
             </div> <!-- end of div for checkbox of if they have experience with youth "no"  -->
-            <div id="toggle-please-explain">
+            <div id="toggle-please-explain"><br>
                 <label for="youth-experience-explanation">Please elaborate on your work with youth:</label>
                 <div class="input-group">
                     <textarea class="form-control" id="youth-experience-explanation" name="youth-experience-explanation" placeholder=""></textarea>
@@ -220,9 +220,9 @@ File Name: volunteer_form.html
         </fieldset> <!-- end of fieldset that contains skills and qualification information -->
         <fieldset class="form-group">
             <div class="container legend-container">
-                <h2 class="legend-text">Character References<span class="text-muted" id="ref-number">0/3</span></h2>
+                <h2 class="legend-text">Character References</h2>
             </div>
-
+            <h4 class="ref-title"><em>*</em> Reference 1</h4>
             <div id="container-for-ref-1">
                 <div class="row">
                     <div class="col-md-6">
@@ -245,7 +245,7 @@ File Name: volunteer_form.html
                     </div>
                 </div>
             </div><br> <!--  end of a single char reference-->
-
+            <h4 class="ref-title"><em>*</em> Reference 2</h4>
             <div id="container-for-ref-2">
                 <div class="row">
                     <div class="col-md-6">
@@ -268,7 +268,7 @@ File Name: volunteer_form.html
                     </div>
                 </div>
             </div><br> <!--  end of a single char reference -->
-
+            <h4 class="ref-title"><em>*</em> Reference 3</h4>
             <div id="container-for-ref-3">
                 <div class="row">
                     <div class="col-md-6">
@@ -291,118 +291,6 @@ File Name: volunteer_form.html
                     </div>
                 </div>
             </div> <!--  end of a single char reference-->
-
-            <!--            <div class="accordion" id="accordion">-->
-            <!--&lt;!&ndash;                <div class="card">&ndash;&gt;-->
-            <!--&lt;!&ndash;                    <div class="card-header" id="headingOne">&ndash;&gt;-->
-            <!--&lt;!&ndash;                        <h5 class="mb-0"> &lt;!&ndash; ***********************STYLE CHOICE ********* &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;                            <button id="ref-btn-one" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" type="button"><em>*</em> Reference One</button>&ndash;&gt;-->
-            <!--&lt;!&ndash;                        </h5>&ndash;&gt;-->
-            <!--&lt;!&ndash;                    </div> &lt;!&ndash; ref#1 .card-header &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">&ndash;&gt;-->
-            <!--&lt;!&ndash;                        <div class="card-body">&ndash;&gt;-->
-            <!--&lt;!&ndash;                            <div class="row">&ndash;&gt;-->
-            <!--&lt;!&ndash;                                <div class="col-md-6 col-lg-6">&ndash;&gt;-->
-            <!--&lt;!&ndash;                                    <label for="ref-name-1" class="col-form-label">Full Name</label>&ndash;&gt;-->
-            <!--&lt;!&ndash;                                    <input type="text" class="form-control" id="ref-name-1" placeholder="">&ndash;&gt;-->
-            <!--&lt;!&ndash;                                </div> &lt;!&ndash; end of div that holds the name label for reference 1 &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;                                <div class="col-md-6 col-lg-5">&ndash;&gt;-->
-            <!--&lt;!&ndash;                                    <label for="ref-relationship-1" class="col-form-label">Relationship</label>&ndash;&gt;-->
-            <!--&lt;!&ndash;                                    <input type="text" class="form-control" id="ref-relationship-1" placeholder="">&ndash;&gt;-->
-            <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-            <!--&lt;!&ndash;                                <div class="d-none d-sm-none d-md-none d-lg-block col-lg-1"> &lt;!&ndash; HERE IS WHERE WE PUT THE ICON &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;                                    <p class="clear-reference">clear</p>&ndash;&gt;-->
-            <!--&lt;!&ndash;                                </div> &lt;!&ndash; end of div that will hold our icon for clearing the information &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;                            </div> &lt;!&ndash; end of row with reference 1 full name slot and clear button &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;                            <div class="row">&ndash;&gt;-->
-            <!--&lt;!&ndash;                                <div class="col-md-6 col-lg-6">&ndash;&gt;-->
-            <!--&lt;!&ndash;                                    <label for="ref-email-1" class="col-form-label">Email</label>&ndash;&gt;-->
-            <!--&lt;!&ndash;                                    <input type="text" class="form-control" id="ref-email-1" placeholder="">&ndash;&gt;-->
-            <!--&lt;!&ndash;                                </div> &lt;!&ndash; end of div that holds email information for reference 1 &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;                                <div class="col-md-6 col-lg-5">&ndash;&gt;-->
-            <!--&lt;!&ndash;                                    <label for="ref-phone-1" class="col-form-label">Phone</label>&ndash;&gt;-->
-            <!--&lt;!&ndash;                                    <input type="text" class="form-control" id="ref-phone-1" placeholder="">&ndash;&gt;-->
-            <!--&lt;!&ndash;                                </div> &lt;!&ndash; end of div that holds phone information for reference 1 &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;                            </div> &lt;!&ndash; end of row that will hold reference 1 email information &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;                        </div> &lt;!&ndash; ref#1 .card-body &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-            <!--&lt;!&ndash;                </div> &lt;!&ndash; ref#1 .card &ndash;&gt;&ndash;&gt;-->
-
-
-            <!--                <div class="card">-->
-            <!--                    <div class="card-header" id="headingTwo">-->
-            <!--                        <h5 class="mb-0"> &lt;!&ndash; ***********************STYLE CHOICE ********* &ndash;&gt;-->
-            <!--                            <button id="ref-btn-two" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" type="button"><em>*</em> Reference Two</button>-->
-            <!--                        </h5>-->
-            <!--                    </div> &lt;!&ndash; ref#2 .card-header &ndash;&gt;-->
-            <!--                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">-->
-            <!--                        <div class="card-body">-->
-            <!--                            <div class="row">-->
-            <!--                                <div class="col-md-6 col-lg-6">-->
-            <!--                                    <label for="ref-name-2" class="col-form-label">Full Name</label>-->
-            <!--                                    <input type="text" class="form-control" id="ref-name-2" placeholder="">-->
-            <!--                                </div> &lt;!&ndash; end of div that holds the name label for reference 2 &ndash;&gt;-->
-            <!--                                <div class="col-md-6 col-lg-5">-->
-            <!--                                    <label for="ref-relationship-2" class="col-form-label">Relationship</label>-->
-            <!--                                    <input type="text" class="form-control" id="ref-relationship-2" placeholder="">-->
-            <!--                                </div>-->
-            <!--                                <div class="d-none d-sm-none d-md-none d-lg-block col-lg-1"> &lt;!&ndash; HERE IS WHERE WE PUT THE ICON &ndash;&gt;-->
-            <!--                                    <p class="clear-reference">clear</p>-->
-            <!--                                </div> &lt;!&ndash; end of div that will hold our icon for clearing the information &ndash;&gt;-->
-            <!--                            </div> &lt;!&ndash; end of row with reference 2 full name slot and clear button &ndash;&gt;-->
-            <!--                            <div class="row">-->
-            <!--                                <div class="col-md-6 col-lg-6">-->
-            <!--                                    <label for="ref-email-2" class="col-form-label">Email</label>-->
-            <!--                                    <input type="text" class="form-control" id="ref-email-2" placeholder="">-->
-            <!--                                </div> &lt;!&ndash; end of div that holds email information for reference 2 &ndash;&gt;-->
-            <!--                                <div class="col-md-6 col-lg-5">-->
-            <!--                                    <label for="ref-phone-2" class="col-form-label">Phone</label>-->
-            <!--                                    <input type="text" class="form-control" id="ref-phone-2" placeholder="">-->
-            <!--                                </div> &lt;!&ndash; end of div that holds phone information for reference 2 &ndash;&gt;-->
-            <!--                            </div> &lt;!&ndash; end of row that will hold reference 2 email information &ndash;&gt;-->
-            <!--                        </div> &lt;!&ndash; ref#2 .card-body &ndash;&gt;-->
-            <!--                    </div>-->
-            <!--                </div> &lt;!&ndash; ref#2 .card &ndash;&gt;-->
-
-            <!--                <div class="card">-->
-            <!--                    <div class="card-header" id="headingThree">-->
-            <!--                        <h5 class="mb-0"> &lt;!&ndash; ***********************STYLE CHOICE ********* &ndash;&gt;-->
-            <!--                            <button id="ref-btn-three" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" type="button"><em>*</em> Reference Three</button>-->
-            <!--                        </h5>-->
-            <!--                    </div> &lt;!&ndash; ref#3 .card-header &ndash;&gt;-->
-            <!--                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">-->
-            <!--                        <div class="card-body">-->
-            <!--                            <div class="row">-->
-            <!--                                <div class="col-md-6 col-lg-6">-->
-            <!--                                    <label for="ref-name-3" class="col-form-label">Full Name</label>-->
-            <!--                                    <input type="text" class="form-control" id="ref-name-3" placeholder="">-->
-            <!--                                </div> &lt;!&ndash; end of div that holds the name label for reference 3 &ndash;&gt;-->
-            <!--                                <div class="col-md-6 col-lg-5">-->
-            <!--                                    <label for="ref-relationship-3" class="col-form-label">Relationship</label>-->
-            <!--                                    <input type="text" class="form-control" id="ref-relationship-3" placeholder="">-->
-            <!--                                </div>-->
-            <!--                                <div class="d-none d-sm-none d-md-none d-lg-block col-lg-1"> &lt;!&ndash; HERE IS WHERE WE PUT THE ICON &ndash;&gt;-->
-            <!--                                    <p class="clear-reference">clear</p>-->
-            <!--                                </div> &lt;!&ndash; end of div that will hold our icon for clearing the information &ndash;&gt;-->
-            <!--                            </div> &lt;!&ndash; end of row with reference 3 full name slot and clear button &ndash;&gt;-->
-            <!--                            <div class="row">-->
-            <!--                                <div class="col-md-6 col-lg-6">-->
-            <!--                                    <label for="ref-email-3" class="col-form-label">Email</label>-->
-            <!--                                    <input type="text" class="form-control" id="ref-email-3" placeholder="">-->
-            <!--                                </div> &lt;!&ndash; end of div that holds email information for reference 3 &ndash;&gt;-->
-            <!--                                <div class="col-md-6 col-lg-5">-->
-            <!--                                    <label for="ref-phone-3" class="col-form-label">Phone</label>-->
-            <!--                                    <input type="text" class="form-control" id="ref-phone-3" placeholder="">-->
-            <!--                                </div> &lt;!&ndash; end of div that holds phone information for reference 3 &ndash;&gt;-->
-            <!--                            </div> &lt;!&ndash; end of row that will hold reference 3 email information &ndash;&gt;-->
-            <!--                        </div> &lt;!&ndash; ref#3 .card-body &ndash;&gt;-->
-            <!--                    </div>-->
-            <!--                </div> &lt;!&ndash; ref#3 .card &ndash;&gt;-->
-
-            <!--            </div> &lt;!&ndash; div #accordion &ndash;&gt;-->
-
-            <!--                    <button type="button" class="btn btn-secondary" id="add-ref">Add Reference</button>-->
-            <!--                    <div id="references"></div>-->
         </fieldset> <!-- end of fieldset that contains the character references information  -->
         <fieldset class="form-group">
             <div class="container legend-container">
