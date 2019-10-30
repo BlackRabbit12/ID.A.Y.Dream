@@ -1,4 +1,12 @@
-
+/*
+Authors: Shayna Jamieson, Bridget Black, Keller Flint
+2019-10-29
+Last Update: 2019-10-29
+Version: 1.0
+File Name: validation_functions.js
+Associated File: volunteer_form.html
+                youth_form.html
+*/
 // Validates phone numbers and adds formatting
 // forces phone input and displays errors if invalid
 function validatePhone(id) {
