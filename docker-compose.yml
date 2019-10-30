@@ -1,3 +1,9 @@
+# Authors: Shayna Jamieson, Keller Flint, Bridget Black
+# 2019-10-16
+# Last Updated: 2019-10-29
+# File: Dockerfile
+# Associated Files: volunteer_form.html
+#                  youth_form.html
 version: '3'
 services:
   database:
