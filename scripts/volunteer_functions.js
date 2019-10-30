@@ -1,3 +1,12 @@
+/*
+Authors: Shayna Jamieson, Bridget Black, Keller Flint
+2019-10-29
+Last Update: 2019-10-29
+Version: 1.0
+File Name: volunteer_functions.js
+Associated File: volunteer_form.html
+                youth_form.html
+*/
 /* --- Globals --- */
 let otherChecked = false;
 let weekendChecked  = false;
