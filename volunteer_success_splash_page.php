@@ -32,7 +32,7 @@ error_reporting(E_ALL);
 <div class="container" id="thank-you-message">
     <h2>Thank you for your interest in volunteering with iD.A.Y.Dream <?php echo $_POST["first-name"]?>. We’re investing in an entire region of youth. Youth seeking success through higher education, mentoring, etc.</h2>
     <br><h3>Click to see a summary of your information.</h3>
-    <button class="btn btn-lg" type="button" id="summary-button">CLICK ME</button>
+    <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>
 </div>
     <!-- HERE IS WHERE WE NEED TO THANK THEM AND THEN DISPLAY THE INFORMATION THAT THEY SUBMITTED  -->
 <div class="container" id="summary">
