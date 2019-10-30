@@ -1,5 +1,13 @@
 <?php
-// Authors: Shayna Jamieson, Keller Flint, Bridget Black
+/*
+ * Authors: Shayna Jamieson, Keller Flint, Bridget Black
+ * 2019-10-02
+ * Last Updated: 2019-10-29
+ * Version 1.0
+ * File name: volunteer_success_page.php
+ * Associated Files: volunteer_form.html
+ *                  youth_form.html
+ */
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 // declare variables here to use throughout this page & w/ email functionality
