@@ -1,6 +1,14 @@
 
 <?php
-// Authors: Shayna Jamieson, Keller Flint, Bridget Black
+/*
+ * Authors: Shayna Jamieson, Keller Flint, Bridget Black
+ * 2019-10-02
+ * Last Updated: 2019-10-29
+ * Version 1.0
+ * File name: volunteer_success_splash_page.php
+ * Associated Files: volunteer_form.html
+ *                  youth_form.html
+ */
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 ?>
@@ -68,7 +76,7 @@ foreach($_POST as $key => $value) {
 }
 
 // sending email to client
-$sendTo = "kflint0068@gmail.com";
+$sendTo = "Sjamieson2@mail.greenriver.edu";
 $to = $sendTo;
 $headers = "From: " . $_POST["email"] . " \r\n";
 $headers .= "Reply-To: " . $_POST["email"] . "\r\n";
