@@ -7,6 +7,6 @@
 
 require_once("validation_functions.php");
 
-$result = phoneIsValid($_POST["test"]);
+$result = genderIsValid($_POST["test"]);
 
 echo "result = $result";
