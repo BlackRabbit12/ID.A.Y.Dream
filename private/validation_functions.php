@@ -10,6 +10,9 @@ const PHONE_LENGTH = 10;
 const ZIP_LENGTH = 5;
 const YEAR_LENGTH = 4;
 const DATE_LENGTH = 8;
+
+$errors = [];
+
 /* --- Helper Functions --- */
 // Returns true if string is of required min and max length (inclusive)
 function hasLength($str, $min, $max) {
@@ -93,4 +96,19 @@ function genderIsValid($str) {
     return $str == "male" || $str == "female" || $str == "other" || $str == "prefer-not-to-say";
 }
 
-// returns true if ethnicity is valid
+// returns true if ethnicity is valid TODO: [requires db]
+// do we need to do validation on checkboxes, radio buttons and dropdowns? How does that work?
+// Do we check that the id is in the database?
+// If id from database check that it is int, don't worry about validating that the FK is in the database
+// that will fail cause we're forcing foreign key if it is wrong.
+
+// graduation year TODO
+function validateGrad() {
+    return true;
+}
+
+
+// returns true if date of birth is valid TODO
+function validateDOB() {
+    return true;
+}
