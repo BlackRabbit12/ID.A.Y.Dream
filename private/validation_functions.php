@@ -91,24 +91,26 @@ function dateIsValid($str) {
     return isNumeric($str) && hasLength($str, DATE_LENGTH, DATE_LENGTH);
 }
 
-//returns true if gender is valid
+//returns true if gender is valid (could make this rely on database too so she can add more genders)
 function genderIsValid($str) {
     return $str == "male" || $str == "female" || $str == "other" || $str == "prefer-not-to-say";
 }
 
-// returns true if ethnicity is valid TODO: [requires db]
-// do we need to do validation on checkboxes, radio buttons and dropdowns? How does that work?
-// Do we check that the id is in the database?
-// If id from database check that it is int, don't worry about validating that the FK is in the database
-// that will fail cause we're forcing foreign key if it is wrong.
+// returns true if ethnicity is valid TODO: unclear on implementation details
 
-// graduation year TODO
-function validateGrad() {
-    return true;
+
+// returns true if graduation year is valid
+function validateGrad($str) {
+    if (isNumeric($str)) {
+        return ((int)$str < date("Y") + 10 && (int)$str >= date("Y"));
+    }
+    return false;
 }
 
-
-// returns true if date of birth is valid TODO
-function validateDOB() {
-    return true;
+// returns true if date of birth is valid
+function validateDOB($str) {
+    if (isNumeric($str)) {
+        return ((int)$str <= date("Y") - 10 && (int)$str >= date("Y") - 20);
+    }
+    return false;
 }
