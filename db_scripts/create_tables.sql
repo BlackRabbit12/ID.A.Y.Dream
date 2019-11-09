@@ -3,8 +3,8 @@ CREATE TABLE User
     user_id    INT          NOT NULL AUTO_INCREMENT,
     user_first VARCHAR(255) NOT NULL,
     user_last  VARCHAR(255) NOT NULL,
-    user_phone INT          NOT NULL,
     user_email VARCHAR(255) NOT NULL,
+    user_phone VARCHAR(255) NOT NULL,
 
     PRIMARY KEY (user_id)
 );

@@ -100,8 +100,11 @@ $aspirations = $_POST['aspirations'];
     $headers .= "Reply-To: $email\r\n";
     $success = mail($to, $emailSubject, $emailBody, $headers);
 
-    userInsertValidation($_POST["fname"], $_POST["lname"], $_POST["email"], $_POST["phone"]);
+    //does validation for user variables, gets back the user's row id
+    $userId = userInsert($_POST["fname"], $_POST["lname"], $_POST["phone"], $_POST["email"]);
 
+    //
+    dreamerInsert($userId, $_POST['college-interest'], $_POST['graduation-year'], $_POST['dob'], $_POST['gender'], $_POST['ethnicity'], $_POST['fav-snacks'], $_POST['aspirations']);
     ?>
 </div>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

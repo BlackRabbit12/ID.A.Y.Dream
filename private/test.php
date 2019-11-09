@@ -8,7 +8,7 @@
 require_once("validation_functions.php");
 require_once "db_connect.php";
 
-$result = genderIsValid($_POST["test"]);
+$result = phoneIsValid($_POST["test"]);
 
 echo "result = $result";
 

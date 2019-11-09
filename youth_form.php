@@ -160,7 +160,7 @@
     <!-- jQuery for input validation -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="scripts/validation_functions.js"></script>
-    <script src="scripts/youth_functions.js"></script>
+    <!--<script src="scripts/youth_functions.js"></script>-->
 </body>
 
 </html>
