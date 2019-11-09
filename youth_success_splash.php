@@ -8,6 +8,9 @@
  * Associated Files: volunteer_form.php
  *                  youth_form.php
  */
+
+require_once "private/init.php";
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 // declare variables here to use throughout this page & w/ email functionality
@@ -96,6 +99,9 @@ $aspirations = $_POST['aspirations'];
     $headers = "From: $email\r\n";
     $headers .= "Reply-To: $email\r\n";
     $success = mail($to, $emailSubject, $emailBody, $headers);
+
+    userInsertValidation($_POST["fname"], $_POST["lname"], $_POST["email"], $_POST["phone"]);
+
     ?>
 </div>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
