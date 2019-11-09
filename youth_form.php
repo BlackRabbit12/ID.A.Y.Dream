@@ -87,7 +87,7 @@
                 <div class="row">
                     <div class="col-md-6 padding">
                         <label for="dob" class="col-form-label"><em>*</em> Date of Birth</label>
-                        <input type="text" class="form-control" id="dob" name="dob" placeholder="01/01/2001">
+                        <input type="text" class="form-control" id="dob" name="dob" placeholder="MM/DD/YYYY">
                         <span id="err-dob" class="d-none">please enter your date of birth</span>
                     </div>
                     <div class="col-md-6 padding">
