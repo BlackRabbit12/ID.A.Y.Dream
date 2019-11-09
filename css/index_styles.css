@@ -1,0 +1,114 @@
+@charset "utf-8";
+
+/*
+Authors: Shayna Jamieson, Bridget Black, Keller Flint
+2019-10-29
+Last Update: 2019-11-06
+Version: 2.0
+File Name: index_styles.css
+Associated File: index.html
+*/
+
+/* MEDIA QUERIES FIRST */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .bottom-button-containers {
+        margin-left: 7%;
+    }
+
+    #description-text {
+        padding-left: 10%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .bottom-button-containers {
+        margin-left: 8%;
+    }
+
+    #description-text {
+        padding-left: 11%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .bottom-button-containers {
+        margin-left: 8%;
+    }
+
+    #description-text {
+        padding-left: 11%;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .bottom-button-containers {
+        margin-left: 12%;
+    }
+
+    #description-text {
+        padding-left: 15%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .bottom-button-containers {
+        margin-left: 12%;
+    }
+
+    #description-text {
+        padding-left: 15%;
+    }
+}
+
+/* POST MEDIA QUERY AREA */
+
+#body-text-row {
+    margin-bottom: 7%;
+}
+
+.bottom-buttons {
+    color: floralwhite !important;
+    background-color: #202020 !important;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 16px;
+    border: 2px solid #202020 !important;
+    font-family: Avantgarde, "Tex Gyre Adventor", "URW Gothic L", sans-serif;
+    letter-spacing: 0.02vw;
+    margin-bottom: 20px;
+    width: 50%;
+}
+
+.buttons {
+    color: #202020 !important;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 16px;
+    border: 2px solid #202020 !important;
+    font-family: Avantgarde, "Tex Gyre Adventor", "URW Gothic L", sans-serif;
+    letter-spacing: 0.02vw;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    background-image: url("../images/index_bg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#description-text {
+    width: 87%;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
