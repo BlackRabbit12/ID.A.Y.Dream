@@ -11,8 +11,6 @@ const ZIP_LENGTH = 5;
 const YEAR_LENGTH = 4;
 const DATE_LENGTH = 8;
 
-$errors = [];
-
 /* --- Helper Functions --- */
 // Returns true if string is of required min and max length (inclusive)
 function hasLength($str, $min, $max) {
