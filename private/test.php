@@ -11,3 +11,5 @@ require_once "db_connect.php";
 $result = genderIsValid($_POST["test"]);
 
 echo "result = $result";
+
+//echo date("Y") + 1;

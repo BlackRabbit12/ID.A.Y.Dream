@@ -6,8 +6,8 @@
  * Last Updated: 2019-10-29
  * Version 1.0
  * File name: volunteer_success_splash_page.php
- * Associated Files: volunteer_form.html
- *                  youth_form.html
+ * Associated Files: volunteer_form.php
+ *                  youth_form.php
  */
 ini_set('display_errors', 1);
 error_reporting(E_ALL);

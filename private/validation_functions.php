@@ -10,6 +10,7 @@ const PHONE_LENGTH = 10;
 const ZIP_LENGTH = 5;
 const YEAR_LENGTH = 4;
 const DATE_LENGTH = 8;
+
 /* --- Helper Functions --- */
 // Returns true if string is of required min and max length (inclusive)
 function hasLength($str, $min, $max) {
@@ -88,9 +89,26 @@ function dateIsValid($str) {
     return isNumeric($str) && hasLength($str, DATE_LENGTH, DATE_LENGTH);
 }
 
-//returns true if gender is valid
+//returns true if gender is valid (could make this rely on database too so she can add more genders)
 function genderIsValid($str) {
     return $str == "male" || $str == "female" || $str == "other" || $str == "prefer-not-to-say";
 }
 
-// returns true if ethnicity is valid
+// returns true if ethnicity is valid TODO: unclear on implementation details
+
+
+// returns true if graduation year is valid
+function validateGrad($str) {
+    if (isNumeric($str)) {
+        return ((int)$str < date("Y") + 10 && (int)$str >= date("Y"));
+    }
+    return false;
+}
+
+// returns true if date of birth is valid
+function validateDOB($str) {
+    if (isNumeric($str)) {
+        return ((int)$str <= date("Y") - 10 && (int)$str >= date("Y") - 20);
+    }
+    return false;
+}

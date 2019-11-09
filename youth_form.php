@@ -4,7 +4,7 @@
     2019-10-16
     Last Update: 2019-10-29
     Version: 1.0
-    File Name: youth_form.html
+    File Name: youth_form.php
 -->
 <html lang="en">
 
@@ -73,15 +73,12 @@
                 <label for="graduation-year" class="col-form-label"><em>*</em> Graduation Year</label>
                 <select class="custom-select" id="graduation-year" name="graduation-year">
                     <option selected id="graduation-none" value="">select</option>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>
-                    <option value="2027">2027</option>
-                    <option value="2028">2028</option>
+                    <?php
+                    for ($i = 0; $i < 10; $i++) {
+                        $date = date("Y") + $i;
+                        echo "<option value=\"$date\">$date</option>";
+                    }
+                    ?>
                 </select>
             </div>
         </div> <!-- end of row that asks for the users college of interest and graduation year  -->
@@ -90,7 +87,7 @@
                 <div class="row">
                     <div class="col-md-6 padding">
                         <label for="dob" class="col-form-label"><em>*</em> Date of Birth</label>
-                        <input type="text" class="form-control" id="dob" name="dob" placeholder="01/01/2001">
+                        <input type="text" class="form-control" id="dob" name="dob" placeholder="MM/DD/YYYY">
                         <span id="err-dob" class="d-none">please enter your date of birth</span>
                     </div>
                     <div class="col-md-6 padding">
