@@ -95,7 +95,9 @@ function genderIsValid($str) {
 }
 
 // returns true if ethnicity is valid TODO: unclear on implementation details
-
+function ethnicityIsValid($str) {
+    return true;
+}
 
 // returns true if graduation year is valid
 function validateGrad($str) {

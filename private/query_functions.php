@@ -135,7 +135,7 @@ function dreamerInsert($user_id, $user_college, $user_graduation, $user_dob, $us
         $error[] = 'Gender';
     }
 
-    if(true){
+    if(ethnicityIsValid($user_ethnicity)){
         $user_ethnicity = mysqli_real_escape_string($cnxn, $user_ethnicity);
     }
     else {
