@@ -28,57 +28,70 @@
 </head>
 <body>
 
-<h1>HERE IS WHERE WE PUT ADMIN TABLES/INFORMATION!</h1>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Data</label>
+    </div>
+    <form action="admin_page.php" id="select-form" method="GET">
+        <select class="custom-select" id="data-select" name="data_select">
+            <option>None</option>
+            <option value="dreamers" <?php if ($_GET["data_select"] == "dreamers") echo "selected"; ?>>Dreamers</option>
+            <option value="volunteers" <?php if ($_GET["data_select"] == "volunteers") echo "selected"; ?>>Volunteers</option>
+        </select>
+    </form>
+</div>
+<?php if ($_GET["data_select"] == "dreamers") { ?>
+    <table data-order='[[11, "desc"]]' id="dreamer-table" class="display">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>College</th>
+            <th>DOB</th>
+            <th>Graduation</th>
+            <th>Ethnicity</th>
+            <th>Snacks</th>
+            <th>Goals</th>
+            <th>Active</th>
+            <th>Date Joined</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        $sql = "SELECT * FROM Dreamer INNER JOIN User ON User.user_id = Dreamer.user_id;";
+        $result = mysqli_query($cnxn, $sql);
 
-<table data-order='[[11, "desc"]]' id="dreamer-table" class="display">
-    <thead>
-    <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>College</th>
-        <th>DOB</th>
-        <th>Graduation</th>
-        <th>Ethnicity</th>
-        <th>Snacks</th>
-        <th>Goals</th>
-        <th>Active</th>
-        <th>Date Joined</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    $sql = "SELECT * FROM Dreamer INNER JOIN User ON User.user_id = Dreamer.user_id;";
-    $result = mysqli_query($cnxn, $sql);
-
-    while ($data = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
-        echo "<td>{$data['user_first']}</td>";
-        echo "<td>{$data['user_last']}</td>";
-        echo "<td>{$data['user_phone']}</td>";
-        echo "<td>{$data['user_email']}</td>";
-        echo "<td>{$data['dreamer_college']}</td>";
-        echo "<td>{$data['dreamer_date_of_birth']}</td>";
-        echo "<td>{$data['dreamer_graduation_date']}</td>";
-        echo "<td>{$data['dreamer_ethnicity']}</td>";
-        echo "<td>{$data['dreamer_food']}</td>";
-        echo "<td>{$data['dreamer_goals']}</td>";
-        if($data['dreamer_active']) {
-            $active = 'false';
-        } else {
-            $active = 'true';
+        while ($data = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>{$data['user_first']}</td>";
+            echo "<td>{$data['user_last']}</td>";
+            echo "<td>{$data['user_phone']}</td>";
+            echo "<td>{$data['user_email']}</td>";
+            echo "<td>{$data['dreamer_college']}</td>";
+            echo "<td>{$data['dreamer_date_of_birth']}</td>";
+            echo "<td>{$data['dreamer_graduation_date']}</td>";
+            echo "<td>{$data['dreamer_ethnicity']}</td>";
+            echo "<td>{$data['dreamer_food']}</td>";
+            echo "<td>{$data['dreamer_goals']}</td>";
+            if ($data['dreamer_active']) {
+                $active = 'false';
+            } else {
+                $active = 'true';
+            }
+            echo "<td>$active</td>";
+            echo "<td>{$data['user_date_joined']}</td>";
+            echo "</tr>";
         }
-        echo "<td>$active</td>";
-        echo "<td>{$data['user_date_joined']}</td>";
-        echo "</tr>";
-    }
 
-    ?>
-    </tbody>
+        ?>
+        </tbody>
 
-</table>
+    </table>
 
+
+<?php } else if ($_GET["data_select"] == "volunteers") { ?>
 <!-- Volunteer Table -->
 <table data-order='[[10, "desc"]]' id="volunteer-table" class="display">
     <thead>
@@ -112,7 +125,7 @@
         echo "<td>{$data['volunteer_city']}</td>";
         echo "<td>{$data['volunteer_state']}</td>";
         echo "<td>{$data['volunteer_emailing']}</td>";
-        if($data['volunteer_active']) {
+        if ($data['volunteer_active']) {
             $active = 'false';
         } else {
             $active = 'true';
@@ -125,6 +138,8 @@
     ?>
     </tbody>
 
+    <?php } ?>
+
 </table>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -133,6 +148,11 @@
         $('#dreamer-table').DataTable();
         $('#volunteer-table').DataTable();
     });
+
+    document.getElementById("data-select").addEventListener("change", function () {
+        this.form.submit();
+    });
+
 </script>
 </body>
 </html>
