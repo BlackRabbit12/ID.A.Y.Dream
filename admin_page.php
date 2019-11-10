@@ -34,7 +34,7 @@
     </div>
     <form action="admin_page.php" id="select-form" method="GET">
         <select class="custom-select" id="data-select" name="data_select">
-            <option>None</option>
+            <option value="none">None</option>
             <option value="dreamers" <?php if ($_GET["data_select"] == "dreamers") echo "selected"; ?>>Dreamers</option>
             <option value="volunteers" <?php if ($_GET["data_select"] == "volunteers") echo "selected"; ?>>Volunteers</option>
         </select>
