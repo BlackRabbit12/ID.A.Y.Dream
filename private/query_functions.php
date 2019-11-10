@@ -44,7 +44,7 @@ function userInsert($user_first, $user_last, $user_phone, $user_email)
     }
 
     if ($isValid) {
-        $sql = "INSERT INTO User VALUES(default, '$user_first', '$user_last', '$user_email', '$user_phone');";
+        $sql = "INSERT INTO User VALUES(default, '$user_first', '$user_last', '$user_email', '$user_phone', now());";
 
         //look at the sql insert for data checking
         //echo $sql;
@@ -127,7 +127,7 @@ function dreamerInsert($user_id, $user_college, $user_graduation, $user_dob, $us
         $error[] = 'Date of Birth';
     }
 
-    if(generIsValid($user_gender)){
+    if(genderIsValid($user_gender)){
         $user_gender = mysqli_real_escape_string($cnxn, $user_gender);
     }
     else{
@@ -142,4 +142,18 @@ function dreamerInsert($user_id, $user_college, $user_graduation, $user_dob, $us
         $isValid = false;
         $error[] = 'Ethnicity';
     }
+
+    if ($isValid) {
+        $sql = "INSERT INTO Dreamer VALUES(default, '$user_college', '$user_dob', '$user_graduation', '$user_ethnicity', '$user_snack', '$user_aspirations', 0, $user_id);";
+
+        //true/false if the query works
+        $result = mysqli_query($cnxn, $sql);
+
+        return $result;
+    } else {
+        foreach($error as $value){
+            echo $value . ' ';
+        }
+    }
+
 } //end dreamerInsert()

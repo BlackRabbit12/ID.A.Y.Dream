@@ -107,10 +107,11 @@ function validateGrad($str) {
     return false;
 }
 
-// returns true if date of birth is valid
+// returns true if date of birth is valid TODO ALWAYS RETURNS TRUE
 function validateDOB($str) {
-    if (isNumeric($str)) {
-        return ((int)$str <= date("Y") - 10 && (int)$str >= date("Y") - 20);
+    $sub = substr($str, -4);
+    if (isNumeric($sub)) {
+        return ((int)$sub <= date("Y") - 10 && (int)$sub >= date("Y") - 20);
     }
-    return false;
+    return true;
 }

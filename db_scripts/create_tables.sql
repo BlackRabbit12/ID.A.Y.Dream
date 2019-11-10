@@ -5,7 +5,7 @@ CREATE TABLE User
     user_last  VARCHAR(255) NOT NULL,
     user_email VARCHAR(255) NOT NULL,
     user_phone VARCHAR(255) NOT NULL,
-
+    user_date_joined DATETIME NOT NULL,
     PRIMARY KEY (user_id)
 );
 
@@ -14,7 +14,7 @@ CREATE TABLE Dreamer
     dreamer_id              INT          NOT NULL AUTO_INCREMENT,
     dreamer_college         VARCHAR(255),
     dreamer_date_of_birth   DATE         NOT NULL,
-    dreamer_graduation_date DATE         NOT NULL,
+    dreamer_graduation_date YEAR         NOT NULL,
     dreamer_ethnicity       VARCHAR(255) NOT NULL,
     dreamer_food            VARCHAR(255),
     dreamer_goals           TEXT,
