@@ -29,7 +29,7 @@ CREATE TABLE ICE
 (
     ICE_id           INT          NOT NULL AUTO_INCREMENT,
     ICE_name         VARCHAR(255) NOT NULL,
-    ICE_phone        INT          NOT NULL,
+    ICE_phone        VARCHAR(255) NOT NULL,
     ICE_relationship VARCHAR(255) NOT NULL,
 
     PRIMARY KEY (ICE_id)
@@ -70,7 +70,7 @@ CREATE TABLE Volunteer
 CREATE TABLE Reference
 (
     reference_id           INT          NOT NULL AUTO_INCREMENT,
-    reference_phone        INT          NOT NULL,
+    reference_phone        VARCHAR(255) NOT NULL,
     reference_email        VARCHAR(255) NOT NULL,
     reference_relationship VARCHAR(255) NOT NULL,
     reference_name         VARCHAR(255) NOT NULL,

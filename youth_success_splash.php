@@ -113,7 +113,7 @@ if ($dreamer_success) { ?>
         ?>
     </div>
 <?php } else {
-    echo "it didn't work";
+    echo "it didn't work dreamer";
 } ?>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

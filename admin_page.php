@@ -78,11 +78,60 @@
     </tbody>
 
 </table>
+
+<!-- Volunteer Table -->
+<table data-order='[[10, "desc"]]' id="volunteer-table" class="display">
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Zip</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Mailing List</th>
+        <th>Active</th>
+        <th>Date Joined</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    $sql = "SELECT * FROM Volunteer INNER JOIN User ON User.user_id = Volunteer.user_id;";
+    $result = mysqli_query($cnxn, $sql);
+
+    while ($data = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+        echo "<td>{$data['user_first']}</td>";
+        echo "<td>{$data['user_last']}</td>";
+        echo "<td>{$data['user_phone']}</td>";
+        echo "<td>{$data['user_email']}</td>";
+        echo "<td>{$data['volunteer_street_address']}</td>";
+        echo "<td>{$data['volunteer_zip']}</td>";
+        echo "<td>{$data['volunteer_city']}</td>";
+        echo "<td>{$data['volunteer_state']}</td>";
+        echo "<td>{$data['volunteer_emailing']}</td>";
+        if($data['volunteer_active']) {
+            $active = 'false';
+        } else {
+            $active = 'true';
+        }
+        echo "<td>$active</td>";
+        echo "<td>{$data['user_date_joined']}</td>";
+        echo "</tr>";
+    }
+
+    ?>
+    </tbody>
+
+</table>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#dreamer-table').DataTable();
+        $('#volunteer-table').DataTable();
     });
 </script>
 </body>

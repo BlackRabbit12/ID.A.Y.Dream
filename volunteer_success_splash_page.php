@@ -8,6 +8,9 @@
  * Associated Files: volunteer_form.php
  *                  youth_form.php
  */
+
+require_once "private/init.php";
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 ?>
@@ -38,6 +41,38 @@ error_reporting(E_ALL);
             <h1 id="volunteer-title">VOLUNTEER</h1>
         </div>
     </div> <!-- ending section for the jumbotron -->
+
+    <?php
+    //, $_POST['events[]'], $_POST['interests-explain'], $_POST['availability[]'], $_POST['availability-explain']
+    //, $_POST['youth-experience-explanation']
+    //, $_POST['reference-name-1'], $_POST['reference-relationship-1'], $_POST['reference-email-1'], $_POST['reference-phone-1']
+    //, $_POST['reference-name-2'], $_POST['reference-relationship-2'], $_POST['reference-email-2'], $_POST['reference-phone-2']
+    //, $_POST['reference-name-3'], $_POST['reference-relationship-3'], $_POST['reference-email-3'], $_POST['reference-phone-3']
+    //, $_POST['terms-of-service']
+    //does validation for user variables, gets back the user's row id
+    $userId = userInsert($_POST['first-name'], $_POST['last-name'], $_POST['phone'], $_POST['email']);
+
+    $volunteer_id = volunteerInsert($_POST['address'], $_POST['zip'], $_POST['city'], $_POST['state'],
+        $_POST['shirt'], $_POST['about'], $_POST['motivation'], $_POST['volunteer-experience'],
+        $_POST['youth-experience'], $_POST['other-experience'], $_POST['mailing-list'], $_POST['terms-of-service'], $userId);
+
+    $volunteer_reference_id_array[] = referenceInsert($_POST['reference-phone-1'],$_POST['reference-email-1'], $_POST['reference-relationship-1'], $_POST['reference-name-1']);
+    $volunteer_reference_id_array[] = referenceInsert($_POST['reference-phone-2'], $_POST['reference-email-2'], $_POST['reference-relationship-2'], $_POST['reference-name-2']);
+    $volunteer_reference_id_array[] = referenceInsert($_POST['reference-phone-3'], $_POST['reference-email-3'], $_POST['reference-relationship-3'], $_POST['reference-name-3']);
+
+    $volunteer_reference_success = true;
+    foreach($volunteer_reference_id_array as $value){
+        if($value == null || $value == 0){
+            $volunteer_reference_success = false;
+        }
+    }
+
+    if ($volunteer_id != null && $volunteer_id != 0 && $volunteer_reference_success) {
+        foreach($volunteer_reference_id_array as $value){
+            referenceInsertVolunteer($volunteer_id, $value);
+        }
+    ?>
+
     <div class="container" id="thank-you-message">
         <h2>Thank you for your interest in volunteering with iD.A.Y.Dream <?php echo $_POST["first-name"] ?>. We’re investing in an entire region of youth. Youth seeking success through higher education, mentoring, etc.</h2>
         <br>
@@ -83,10 +118,11 @@ error_reporting(E_ALL);
         $headers = "From: " . $_POST["email"] . " \r\n";
         $headers .= "Reply-To: " . $_POST["email"] . "\r\n";
         $success = mail($to, $email_subject, $email_body, $headers);
-
-        //userInsert($_POST["fname"], $_POST["lname"], $_POST["email"], $_POST["phone"]);
-
         ?>
+    </div>
+    <?php } else {
+        echo "it didn't work volunteer";
+    } ?>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!-- Optional JavaScript -->
@@ -97,7 +133,6 @@ error_reporting(E_ALL);
         <!-- jQuery for input validation -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="scripts/volunteer_splash_functions.js"></script>
-    </div>
 </body>
 
 </html>
