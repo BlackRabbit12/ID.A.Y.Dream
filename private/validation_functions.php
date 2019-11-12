@@ -107,9 +107,18 @@ function validateGrad($str) {
     return false;
 }
 
+// turns date into format for mysql db
+function formatDOB($str) {
+    $month = substr($str, 0, 2);
+    $day = substr($str, 3, 2);
+    $year = substr($str, 6, 4);
+    return $year . "-" . $month . "-" . $day;
+}
+
 // returns true if date of birth is valid TODO ALWAYS RETURNS TRUE
 function validateDOB($str) {
-    $sub = substr($str, -4);
+    $str = formatDOB($str);
+    $sub = substr($str, 0, 4);
     if (isNumeric($sub)) {
         return ((int)$sub <= date("Y") - 10 && (int)$sub >= date("Y") - 20);
     }
