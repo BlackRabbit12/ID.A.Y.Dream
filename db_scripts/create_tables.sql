@@ -15,6 +15,7 @@ CREATE TABLE Dreamer
     dreamer_college         VARCHAR(255),
     dreamer_date_of_birth   DATE         NOT NULL,
     dreamer_graduation_date YEAR         NOT NULL,
+    dreamer_gender          VARCHAR(255) NOT NULL,
     dreamer_ethnicity       VARCHAR(255) NOT NULL,
     dreamer_food            VARCHAR(255),
     dreamer_goals           TEXT,

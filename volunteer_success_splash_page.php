@@ -52,9 +52,9 @@ error_reporting(E_ALL);
     //does validation for user variables, gets back the user's row id
     $userId = userInsert($_POST['first-name'], $_POST['last-name'], $_POST['phone'], $_POST['email']);
 
-    $volunteer_id = volunteerInsert($_POST['address'], $_POST['zip'], $_POST['city'], $_POST['state'],
+    $volunteer_id = volunteerInsert($userId, $_POST['address'], $_POST['zip'], $_POST['city'], $_POST['state'],
         $_POST['shirt'], $_POST['about'], $_POST['motivation'], $_POST['volunteer-experience'],
-        $_POST['youth-experience'], $_POST['other-experience'], $_POST['mailing-list'], $_POST['terms-of-service'], $userId);
+        $_POST['youth-experience'], $_POST['other-experience'], $_POST['mailing-list'], $_POST['terms-of-service']);
 
     $volunteer_reference_id_array[] = referenceInsert($_POST['reference-phone-1'],$_POST['reference-email-1'], $_POST['reference-relationship-1'], $_POST['reference-name-1']);
     $volunteer_reference_id_array[] = referenceInsert($_POST['reference-phone-2'], $_POST['reference-email-2'], $_POST['reference-relationship-2'], $_POST['reference-name-2']);
