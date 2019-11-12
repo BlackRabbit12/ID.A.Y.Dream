@@ -8,8 +8,10 @@
 require_once("validation_functions.php");
 require_once "db_connect.php";
 
-$result = phoneIsValid($_POST["test"]);
+$result = validateDOB($_POST["test"]);
+$date = formatDOB($_POST["test"]);
 
+echo "date = $date<br>";
 echo "result = $result";
 
 //echo date("Y") + 1;
