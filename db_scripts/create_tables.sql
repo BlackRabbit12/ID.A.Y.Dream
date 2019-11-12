@@ -126,3 +126,13 @@ CREATE TABLE User_Chapter
     FOREIGN KEY (user_id) REFERENCES User (user_id),
     FOREIGN KEY (chapter_id) REFERENCES Chapter (chapter_id)
 );
+
+// Insert sample data for dreamers
+INSERT INTO User VALUES(default, 'Keller', 'Flint', 'kflint0068@gmail.com', '2534411380', now());
+INSERT INTO Dreamer VALUES(default, 'GRC', '2003-04-26', '2021', 'White non-Hispanic', 'Pretzels', 'None', 0, 5);
+
+INSERT INTO User VALUES(default, 'Shayna', 'Jamieson', 'jamieson.shayna@gmail.com', '2532136729', now());
+INSERT INTO Dreamer VALUES(default, 'GRC', '2004-10-29', '2021', 'Bi/Multiracial', 'Tacos.', 'All of the things.', 0, 6);
+
+INSERT INTO User VALUES(default, 'Bridget', 'Black', 'bridget@beeze.com', '5037987921', now());
+INSERT INTO Dreamer VALUES(default, 'GRC', '2007-04-23', '2021', 'American Indian or Alaska Native', 'Doritos', 'none', 0, 7);
