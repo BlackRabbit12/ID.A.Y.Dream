@@ -55,11 +55,12 @@ $aspirations = $_POST['aspirations'];
 </div> <!-- ending section for the jumbotron -->
 <?php
 //does validation for user variables, gets back the user's row id
-$userId = userInsert($_POST["fname"], $_POST["lname"], $_POST["phone"], $_POST["email"]);
+$userId = userInsert($_POST["fname"], $_POST["lname"], $_POST["email"], $_POST["phone"]);
 
 //
-$dreamer_success = dreamerInsert($userId, $_POST['college-interest'], $_POST['graduation-year'], $_POST['dob'], $_POST['gender'], $_POST['ethnicity'], $_POST['fav-snacks'], $_POST['aspirations']);
-if ($dreamer_success) { ?>
+$dreamer_id = dreamerInsert($userId, $_POST['college-interest'], $_POST['dob'], $_POST['graduation-year'], $_POST['gender'], $_POST['ethnicity'], $_POST['fav-snacks'], $_POST['aspirations']);
+
+if ($dreamer_id != null && $dreamer_id != 0) { ?>
     <div class="container" id="thank-you-message">
         <?php
 
