@@ -117,10 +117,9 @@ function formatDOB($str) {
 
 // returns true if date of birth is valid TODO ALWAYS RETURNS TRUE
 function validateDOB($str) {
-    $str = formatDOB($str);
     $sub = substr($str, 0, 4);
     if (isNumeric($sub)) {
         return ((int)$sub <= date("Y") - 10 && (int)$sub >= date("Y") - 20);
     }
-    return true;
+    return false;
 }
