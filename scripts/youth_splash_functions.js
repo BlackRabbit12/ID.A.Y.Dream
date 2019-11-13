@@ -11,5 +11,6 @@ Associated File: volunteer_form.php
 document.getElementById("summary-button").onclick = toggleSummary;
 function toggleSummary() {
     document.getElementById("summary-button").style.display = "none";
+    // document.getElementById("click-to-see").style.display = "none";
     document.getElementById("summary").style.display = "block";
 } 
