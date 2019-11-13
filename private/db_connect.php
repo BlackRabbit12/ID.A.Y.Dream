@@ -1,3 +1,5 @@
+<?php
+
 /*
 * Authors: Shayna Jamieson, Keller Flint, Bridget Black
 * 2019-11-09
@@ -5,8 +7,6 @@
 * Version 1.0
 * File name: db_connect.php
 */
-
-<?
 
 $username = 'root';
 $password = 'password';

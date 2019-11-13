@@ -1,3 +1,10 @@
+<form action="test.php" method="POST">
+    <input type="text" name="test">
+    <button type="submit">submit</button>
+</form>
+
+<?php
+
 /*
 * Authors: Shayna Jamieson, Keller Flint, Bridget Black
 * 2019-11-09
@@ -5,13 +12,6 @@
 * Version 1.0
 * File name: test.php
 */
-
-<form action="test.php" method="POST">
-    <input type="text" name="test">
-    <button type="submit">submit</button>
-</form>
-
-<?php
 
 require_once("validation_functions.php");
 require_once "db_connect.php";
