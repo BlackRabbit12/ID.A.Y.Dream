@@ -55,8 +55,8 @@ footer {
     text-align: center !important;
     font-size: 1em !important;
     font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
-    font-weight: lighter;
-    letter-spacing: 0.3vw;
+    font-weight: bold;
+    letter-spacing: 0.1vw;
 }
 
 #form-intro-1 {
@@ -137,3 +137,11 @@ span {
     font-size: 5vw !important;
     white-space: nowrap;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #youth-volunteer-title {
+        font-size: 10vw !important;
+    }
+}
+
