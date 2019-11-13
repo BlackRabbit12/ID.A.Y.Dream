@@ -41,7 +41,7 @@
     </form>
 </div>
 <?php if ($_GET["data_select"] == "dreamers") { ?>
-    <table data-order='[[11, "desc"]]' id="dreamer-table" class="display">
+    <table data-order='[[12, "desc"]]' id="dreamer-table" class="display">
         <thead>
         <tr>
             <th>First Name</th>
@@ -51,6 +51,7 @@
             <th>College</th>
             <th>DOB</th>
             <th>Graduation</th>
+            <th>Gender</th>
             <th>Ethnicity</th>
             <th>Snacks</th>
             <th>Goals</th>
@@ -72,6 +73,7 @@
             echo "<td>{$data['dreamer_college']}</td>";
             echo "<td>{$data['dreamer_date_of_birth']}</td>";
             echo "<td>{$data['dreamer_graduation_date']}</td>";
+            echo "<td>{$data['dreamer_gender']}</td>";
             echo "<td>{$data['dreamer_ethnicity']}</td>";
             echo "<td>{$data['dreamer_food']}</td>";
             echo "<td>{$data['dreamer_goals']}</td>";
@@ -143,16 +145,6 @@
 </table>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#dreamer-table').DataTable();
-        $('#volunteer-table').DataTable();
-    });
-
-    document.getElementById("data-select").addEventListener("change", function () {
-        this.form.submit();
-    });
-
-</script>
+<script src="scripts/admin_page_functions.js"></script>
 </body>
 </html>
