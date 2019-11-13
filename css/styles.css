@@ -97,7 +97,7 @@ button[type="submit"] {
 }
 
 #container-for-ref-1, #container-for-ref-2, #container-for-ref-3 {
-    border: 2px solid #202020;
+    border: 2px solid lightslategray;
     border-radius: 3px;
     padding: 10px !important;
 }
