@@ -1,3 +1,13 @@
+/*
+* Authors: Shayna Jamieson, Keller Flint, Bridget Black
+* 2019-11-09
+* Last Updated: 2019-11-12
+* Version 1.0
+* File name: validation_functions.php
+* Associated Files: volunteer_success_splash.php
+*                  youth_success_splash.php
+*/
+
 <?php
 
 // for future reference https://www.php.net/manual/en/filter.filters.sanitize.php

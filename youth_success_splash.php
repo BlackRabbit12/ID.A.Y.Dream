@@ -74,7 +74,7 @@ $aspirations = $_POST['aspirations'];
 
             echo "<h2>Thank you for your submission $firstName!</h2>"
             ?>
-            <h3>Click to see a summary of your information.</h3>
+            <h3 id="click-to-see">Click to see a summary of your information.</h3>
             <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>
         </div>
 

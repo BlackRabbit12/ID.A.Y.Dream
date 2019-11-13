@@ -115,7 +115,7 @@ $refName3 = $_POST['reference-name-3'];
     <div class="container" id="thank-you-message">
         <h2>Thank you for your interest in volunteering with iD.A.Y.Dream <?php echo $firstName ?>. We’re investing in an entire region of youth. Youth seeking success through higher education, mentoring, etc.</h2>
         <br>
-        <h3>Click to see a summary of your information.</h3>
+        <h3 id = "click-to-see-volunteer">Click to see a summary of your information.</h3>
         <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>
     </div>
 

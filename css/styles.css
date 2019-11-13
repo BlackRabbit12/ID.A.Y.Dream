@@ -3,7 +3,7 @@
 /*
 Authors: Shayna Jamieson, Bridget Black, Keller Flint
 2019-10-29
-Last Update: 2019-10-29
+Last Update: 2019-11-12
 Version: 2.0
 File Name: styles.css
 Associated File: volunteer_form.php
@@ -21,6 +21,13 @@ Associated File: volunteer_form.php
     text-align: center;
     font-family: Avantgarde, "Tex Gyre Adventor", "URW Gothic L", sans-serif;
     color: #202020 !important;
+}
+
+#bg-check-explain-no {
+    border: 2px solid #c16062;
+    border-radius: 5px;
+    padding: 5%;
+    background-color: rgba(193, 96, 98, 0.2);
 }
 
 #bg-check-no-container {
@@ -44,7 +51,7 @@ button[type="button"]:active, button[type="button"]:hover {
     text-decoration: underline !important;
 }
 
-#bg-check-btn-no, #bg-check-btn-no:active, #bg-check-btn-no:hover, #bg-check-btn-yes, #bg-check-btn-yes:active, #bg-check-btn-yes:hover {
+#bg-check-btn-no, #bg-check-btn-no:active, #bg-check-btn-no:hover, #bg-check-btn-yes, #bg-check-btn-yes:active, #bg-check-btn-yes:hover, .btn-go-home, .btn-go-home:active, .btn-go-home:hover {
     background-color: #5b7978;
     color: white;
     padding: 10px 20px;
@@ -60,8 +67,13 @@ button[type="button"]:active, button[type="button"]:hover {
     letter-spacing: 0.3vw;
 }
 
-#bg-check-btn-yes:active, #bg-check-btn-yes:hover, #bg-check-btn-no:active, #bg-check-btn-no:hover {
+#bg-check-btn-yes:active, #bg-check-btn-yes:hover, #bg-check-btn-no:active, #bg-check-btn-no:hover, .btn-go-home:active, .btn-go-home:hover  {
     color: black !important;
+}
+
+.btn-go-home, .btn-go-home:active, .btn-go-home:hover  {
+    margin-top: 4%;
+    width: 50%;
 }
 
 button[type="submit"] {
@@ -248,8 +260,8 @@ label::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     text-align: center !important;
     font-size: 2em !important;
     font-family: Avantgarde, "Tex Gyre Adventor", "URW Gothic L", sans-serif;
-    font-weight: lighter;
-    letter-spacing: 0.3vw;
+    font-weight: bold;
+    letter-spacing: 0.1vw;
 }
 
 .legend-container {
@@ -291,9 +303,9 @@ span {
 #summary {
     margin-top: 5% !important;
     font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
-    text-align: center;
+    /*text-align: center;*/
     display: none;
-    border: 3px solid #5b7978;
+    /*border: 3px solid #5b7978;*/
     padding: 5% !important;
     margin-bottom: 5% !important;
 }
@@ -343,4 +355,11 @@ span {
     text-align: center !important;
     font-size: 5vw !important;
     white-space: nowrap;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #volunteer-title {
+        font-size: 10vw !important;
+    }
 }

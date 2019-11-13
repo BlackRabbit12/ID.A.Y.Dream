@@ -3,7 +3,7 @@
 /*
 Authors: Shayna Jamieson, Bridget Black, Keller Flint
 2019-10-29
-Last Update: 2019-10-29
+Last Update: 2019-11-12
 Version: 2.0
 File Name: youth_syles.css
 Associated File: volunteer_form.php
@@ -113,9 +113,9 @@ span {
 #summary {
     margin-top: 5% !important;
     font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
-    /*text-align: center;*/
+    text-align: center;
     display: none;
-    /*border: 3px solid #6cb1c1;*/
+    border: 3px solid #6cb1c1;
     padding: 5% !important;
     margin-bottom: 5% !important;
 }

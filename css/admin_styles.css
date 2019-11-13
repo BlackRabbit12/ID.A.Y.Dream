@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+/*
+Authors: Shayna Jamieson, Bridget Black, Keller Flint
+2019-11-12
+Last Update: 2019-11-12
+Version: 1.0
+File Name: admin_styles.css
+Associated File: admin_page.php
+*/
+
+.entire-container {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+}
+
+footer {
+    height: 150px;
+    width: auto;
+    background-color: #202020 !important;
+    margin-top: 5%;
+}
+
+.input-group-text {
+    background-color: #6cb1c1;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.logo-container {
+    border-bottom: 4px solid #6cb1c1;
+    margin-bottom: 3%;
+}
