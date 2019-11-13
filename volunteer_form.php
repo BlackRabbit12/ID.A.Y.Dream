@@ -2,7 +2,7 @@
 <!--
     Authors: Shayna Jamieson, Bridget Black, Keller Flint
     2019-10-02
-    Last Updated: 2019-10-29
+    Last Updated: 2019-11-12
     Version: 1.0
     File Name: volunteer_form.php
 -->
@@ -135,27 +135,27 @@
                     <label class="col-form-label">I would like to help...</label>
                     <span class="hide-me" id="where-to-help">Please select one of the ways you'd like to help:</span>
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="events" id="events">
+                        <input class="custom-control-input" type="checkbox" name="events[]" value="1" id="events">
                         <label class="custom-control-label" for="events">Events/Activities</label>
                     </div> <!-- end of div that has the events/activities check box -->
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="fundraising" id="fundraising">
+                        <input class="custom-control-input" type="checkbox" name="events[]" value="2" id="fundraising">
                         <label class="custom-control-label" for="fundraising">Fundraising</label>
                     </div> <!-- end of div that has the fundraising check box -->
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="newsletter" id="newsletter">
+                        <input class="custom-control-input" type="checkbox" name="events[]" value="3" id="newsletter">
                         <label class="custom-control-label" for="newsletter">Newsletter Production</label>
                     </div> <!-- end of div that has the newsletter check box -->
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="volunteer" id="volunteer">
+                        <input class="custom-control-input" type="checkbox" name="events[]" value="4" id="volunteer">
                         <label class="custom-control-label" for="volunteer">Volunteer Coordination</label>
                     </div> <!-- end of div that has the volunteer coordination check box -->
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="mentoring" id="mentoring">
+                        <input class="custom-control-input" type="checkbox" name="events[]" value="5" id="mentoring">
                         <label class="custom-control-label" for="mentoring">Mentoring</label>
                     </div> <!-- end of div that has the mentoring check box -->
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="other" id="other-interest">
+                        <input class="custom-control-input" type="checkbox" name="events[]" value="6" id="other-interest">
                         <label class="custom-control-label" for="other-interest">Other</label>
                     </div><br> <!-- end of div that has the mentoring check box -->
                     <div id="toggle-other-interests">

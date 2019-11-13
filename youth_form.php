@@ -2,7 +2,7 @@
 <!--
     Authors: Shayna Jamieson, Bridget Black, Keller Flint
     2019-10-16
-    Last Update: 2019-10-29
+    Last Update: 2019-1-
     Version: 1.0
     File Name: youth_form.php
 -->
@@ -160,7 +160,7 @@
     <!-- jQuery for input validation -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="scripts/validation_functions.js"></script>
-    <!--<script src="scripts/youth_functions.js"></script>-->
+    <script src="scripts/youth_functions.js"></script>
 </body>
 
 </html>

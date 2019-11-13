@@ -1,3 +1,11 @@
+/*
+ * Authors: Shayna Jamieson, Keller Flint, Bridget Black
+ * 2019-11-09
+ * Last Updated: 2019-11-12
+ * Version 1.0
+ * File name: create_tables.sql
+ */
+
 CREATE TABLE User
 (
     user_id    INT          NOT NULL AUTO_INCREMENT,
@@ -127,7 +135,15 @@ CREATE TABLE User_Chapter
     FOREIGN KEY (chapter_id) REFERENCES Chapter (chapter_id)
 );
 
-// Insert sample data for dreamers
+/* Insert Interests for volunteers */
+INSERT INTO Interest VALUES(1, "Events/Activities");
+INSERT INTO Interest VALUES(2, "Fundraising");
+INSERT INTO Interest VALUES(3, "Newsletter Production");
+INSERT INTO Interest VALUES(4, "Volunteer Coordination");
+INSERT INTO Interest VALUES(5, "Mentoring");
+INSERT INTO Interest VALUES(6, "Other");
+
+/* Insert sample data for dreamers */
 INSERT INTO User VALUES(default, 'Keller', 'Flint', 'kflint0068@gmail.com', '2534411380', now());
 INSERT INTO Dreamer VALUES(default, 'GRC', '2003-04-26', '2021', 'White non-Hispanic', 'Pretzels', 'None', 0, 5);
 
