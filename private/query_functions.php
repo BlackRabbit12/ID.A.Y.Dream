@@ -1,4 +1,14 @@
 <?php
+/*
+ * Authors: Shayna Jamieson, Keller Flint, Bridget Black
+ * 2019-11-09
+ * Last Updated: 2019-11-12
+ * Version 1.0
+ * File name: query_functions.php
+ * Associated Files: volunteer_success_splash.php
+ *                  youth_success_splash.php
+ */
+
 /**
  * Inserts a User into the database.
  * @param $user_first User first name.
@@ -425,4 +435,18 @@ function referenceInsertVolunteer($volunteer_id, $reference_id){
     $result = mysqli_query($cnxn, $sql);
 } //end referenceInsertVolunteer()
 
+/**
+ * Insert a Volunteer-Interest link.
+ * @param $volunteer_id Volunteer primary key.
+ * @param $interest_id Interest primary key.
+ */
+function interestInsertVolunteer($volunteer_id, $interest_id){
+    //global declaration
+    global $cnxn;
 
+    //insert into database, ($volunteer id, $interest id)
+    $sql = "INSERT INTO Volunteer_Interest VALUES($volunteer_id, $interest_id)";
+
+    //true-false if the query works
+    $result = mysqli_query($cnxn, $sql);
+} //end interestInsertVolunteer()

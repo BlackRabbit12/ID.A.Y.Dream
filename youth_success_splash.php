@@ -2,7 +2,7 @@
 /*
  * Authors: Shayna Jamieson, Keller Flint, Bridget Black
  * 2019-10-02
- * Last Updated: 2019-10-29
+ * Last Updated: 2019-11-12
  * Version 1.0
  * File name: volunteer_success_page.php
  * Associated Files: volunteer_form.php
@@ -13,14 +13,17 @@ require_once "private/init.php";
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+
 // declare variables here to use throughout this page & w/ email functionality
+//user
 $firstName = $_POST['fname'];
 $lastName = $_POST['lname'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
+//dreamer
 $collegeInterest = $_POST['college-interest'];
-$graduationYear = $_POST['graduation-year'];
 $dob = $_POST['dob'];
+$graduationYear = $_POST['graduation-year'];
 $gender = $_POST['gender'];
 $ethnicity = $_POST['ethnicity'];
 $favSnacks = $_POST['fav-snacks'];
@@ -46,91 +49,96 @@ $aspirations = $_POST['aspirations'];
     <link rel="manifest" href="images/site.webmanifest_title">
 </head>
 <body>
+    <!--<div class="jumbotron jumbotron-fluid">-->
+    <div class="jumbotron d-flex align-items-center">
+        <div class="container">
+            <h1 id="youth-volunteer-title">YOUTH SIGN-UP</h1>
+        </div>
+    </div> <!-- ending section for the jumbotron -->
 
-<!--<div class="jumbotron jumbotron-fluid">-->
-<div class="jumbotron d-flex align-items-center">
-    <div class="container">
-        <h1 id="youth-volunteer-title">YOUTH SIGN-UP</h1>
-    </div>
-</div> <!-- ending section for the jumbotron -->
-<?php
-//does validation for user variables, gets back the user's row id
-$userId = userInsert($_POST["fname"], $_POST["lname"], $_POST["email"], $_POST["phone"]);
+    <?php
 
-//
-$dreamer_id = dreamerInsert($userId, $_POST['college-interest'], $_POST['dob'], $_POST['graduation-year'], $_POST['gender'], $_POST['ethnicity'], $_POST['fav-snacks'], $_POST['aspirations']);
+    //does validation for user variables, gets back the user id row
+    $userId = userInsert($firstName, $lastName, $email, $phone);
 
-if ($dreamer_id != null && $dreamer_id != 0) { ?>
-    <div class="container" id="thank-you-message">
-        <?php
+    //does validation for the dreamer variables, gets back the dreamer id row
+    $dreamer_id = dreamerInsert($userId, $collegeInterest, $dob, $graduationYear, $gender, $ethnicity, $favSnacks, $aspirations);
 
-        echo "<h2>Thank you for your submission $firstName!</h2>"
-        ?>
-        <h3>Click to see a summary of your information.</h3>
-        <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>
-    </div>
+    //if dreamer successfully INSERTed, complete the success page for dreamer
+    if ($dreamer_id != null && $dreamer_id != 0) {
 
-    <div class="container" id="summary">
-        <?php
+    ?>
+
+        <div class="container" id="thank-you-message">
+            <?php
+
+            echo "<h2>Thank you for your submission $firstName!</h2>"
+            ?>
+            <h3>Click to see a summary of your information.</h3>
+            <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>
+        </div>
+
+        <div class="container" id="summary">
+            <?php
 
 
-        // start putting together email as we are also displaying their information
-        $emailBody = "Youth Information:\r\n\r\n";
-        $emailSubject = "ID.A.Y.Dream Youth Sign-Up Information";
-        echo "<p><strong>Full Name</strong>: $firstName $lastName</p>";
-        $emailBody .= "Name: $firstName $lastName\r\n";
-        echo "<p><strong>Email:</strong> $email</p>";
-        $emailBody .= "Email: $email\r\n";
-        echo "<p><strong>Phone Number:</strong> $phone</p>";
-        $emailBody .= "Phone: $phone\r\n";
-        echo "<p><strong>Date of Birth:</strong> $dob</p>";
-        $emailBody .= "Date of Birth: $dob\r\n";
-        echo "<p><strong>Ethnicity:</strong> $ethnicity</p>";
-        $emailBody .= "Ethnicity: $ethnicity\r\n";
-        // these can be intentionally left blank -- must check if they are before displaying no information
-        if (!$collegeInterest == "") {
-            echo "<p><strong>College of Interest:</strong> $collegeInterest</p>";
-            $emailBody .= "College of Interest: $collegeInterest\r\n";
-        }
-        if (!$graduationYear == "") {
-            echo "<p><strong>Graduation Year:</strong> $graduationYear</p>";
-            $emailBody .= "Graduation Year: $graduationYear\r\n";
-        }
-        if (!$favSnacks == "") {
-            echo "<p><strong>Favorite Foods/Snacks:</strong> $favSnacks</p>";
-            $emailBody .= "Favorite Foods/Snacks: $favSnacks\r\n";
-        }
-        if (!$aspirations == "") {
-            echo "<p><strong>Aspirations/Goals:</strong> $aspirations</p>";
-            $emailBody .= "Aspirations/Goals: $aspirations\r\n";
-        }
-        // now we send an email to show that we can send her the information
-        $sendToBrandy = "jamieson.shayna@gmail.com";
-        $to = $sendToBrandy;
-        $headers = "From: $email\r\n";
-        $headers .= "Reply-To: $email\r\n";
-        $success = mail($to, $emailSubject, $emailBody, $headers);
+            // start putting together email as we are also displaying their information
+            $emailBody = "Youth Information:\r\n\r\n";
+            $emailSubject = "ID.A.Y.Dream Youth Sign-Up Information";
+            echo "<p><strong>Full Name</strong>: $firstName $lastName</p>";
+            $emailBody .= "Name: $firstName $lastName\r\n";
+            echo "<p><strong>Email:</strong> $email</p>";
+            $emailBody .= "Email: $email\r\n";
+            echo "<p><strong>Phone Number:</strong> $phone</p>";
+            $emailBody .= "Phone: $phone\r\n";
+            echo "<p><strong>Date of Birth:</strong> $dob</p>";
+            $emailBody .= "Date of Birth: $dob\r\n";
+            echo "<p><strong>Ethnicity:</strong> $ethnicity</p>";
+            $emailBody .= "Ethnicity: $ethnicity\r\n";
+            // these can be intentionally left blank -- must check if they are before displaying no information
+            if (!$collegeInterest == "") {
+                echo "<p><strong>College of Interest:</strong> $collegeInterest</p>";
+                $emailBody .= "College of Interest: $collegeInterest\r\n";
+            }
+            if (!$graduationYear == "") {
+                echo "<p><strong>Graduation Year:</strong> $graduationYear</p>";
+                $emailBody .= "Graduation Year: $graduationYear\r\n";
+            }
+            if (!$favSnacks == "") {
+                echo "<p><strong>Favorite Foods/Snacks:</strong> $favSnacks</p>";
+                $emailBody .= "Favorite Foods/Snacks: $favSnacks\r\n";
+            }
+            if (!$aspirations == "") {
+                echo "<p><strong>Aspirations/Goals:</strong> $aspirations</p>";
+                $emailBody .= "Aspirations/Goals: $aspirations\r\n";
+            }
+            // now we send an email to show that we can send her the information
+            $sendToBrandy = "jamieson.shayna@gmail.com";
+            $to = $sendToBrandy;
+            $headers = "From: $email\r\n";
+            $headers .= "Reply-To: $email\r\n";
+            $success = mail($to, $emailSubject, $emailBody, $headers);
 
-        ?>
-    </div>
-<?php } else {
-    echo "it didn't work dreamer";
-} ?>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-<!-- jQuery for input validation -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="scripts/youth_splash_functions.js"></script>
+            ?>
+        </div>
+    <?php } else {
+        echo "it didn't work dreamer";
+    } ?>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <!-- jQuery for input validation -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="scripts/youth_splash_functions.js"></script>
 </body>
 </html>
