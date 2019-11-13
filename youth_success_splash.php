@@ -69,7 +69,7 @@ $aspirations = $_POST['aspirations'];
 
     ?>
 
-        <div class="container" id="thank-you-message">
+        <div class="container" id="thank-you-message"> 
             <?php
 
             echo "<h2>Thank you for your submission $firstName!</h2>"
