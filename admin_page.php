@@ -2,7 +2,7 @@
 <!--
     Authors: Shayna Jamieson, Bridget Black, Keller Flint
     2019-10-16
-    Last Update: 2019-11-06
+    Last Update: 2019-11-12
     Version: 1.0
     File Name: admin_page.php
 -->
@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/youth_styles.css" type="text/css">
+    <link rel="stylesheet" href="css/admin_styles.css" type="text/css">
 
     <!-- https://favicon.io/emoji-favicons/blue-heart/ -->
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -28,9 +28,14 @@
 </head>
 <body>
 
+
+<div class="text-center logo-container">
+    <img src="images/iDayDreamLogo.png" alt="IDAYDream Logo">
+</div>
+<div class="entire-container">
 <div class="input-group mb-3">
     <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Data</label>
+        <label class="input-group-text" for="inputGroupSelect01">Summary:</label>
     </div>
     <form action="admin_page.php" id="select-form" method="GET">
         <select class="custom-select" id="data-select" name="data_select">
@@ -143,6 +148,8 @@
     <?php } ?>
 
 </table>
+</div>
+<footer></footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="scripts/admin_page_functions.js"></script>

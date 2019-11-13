@@ -44,7 +44,8 @@
 <!-- end of container that holds the background check section -->
 
 <div class="container" id="bg-check-no-container">
-    <h2>Because of our values as an organization and out of the safety of the youth we serve it is a requirement that a background check must be submitted. You have chosen to decline. Thank you for your consideration in volunteering with iD.A.Y.Dream, at this time we are unable to move forward with your submission. Please do visit us again!</h2>
+    <h2 id = "bg-check-explain-no">Because of our values as an organization and out of the safety of the youth we serve it is a requirement that a background check must be submitted. You have chosen to decline. Thank you for your consideration in volunteering with iD.A.Y.Dream, at this time we are unable to move forward with your submission.<br>Please do visit us again!</h2>
+    <button class="btn btn-go-home" id = "go-home" href = "#">I D.A.Y. DREAM HOME PAGE</button>
 </div> <!-- end of container that holds the information for if user selects no to background check -->
 <div class="container" id="entire-form-container">
     <form id="volunteer-form" action="volunteer_success_splash_page.php" method="post">
@@ -312,6 +313,11 @@
             </div>
             <div class="row">
                 <div class="col-12">
+                    <label class="col-form-label" id="submit-policy">By submitting this application, I affirm that the facts set forth in it are true and complete. I understand that if I am accepted as a volunteer, any false statements, omissions, or other misrepresentations made by me on this application may result in my immediate dismissal.</label>
+                </div>
+            </div> <!-- end of row that contains our signature explanation -->
+            <div class="row">
+                <div class="col-12">
                     <!--form-check form-check-inline  for div and for input form-check-input  and for label  col-form-label -->
                     <div class="custom-control custom-checkbox">
                         <input class="custom-control-input" type="checkbox" id="information-is-true" name="terms-of-service" value="true">
@@ -319,11 +325,6 @@
                     </div>
                 </div>
             </div> <!-- end of row that has the checkbox for agreeing to terms and conditions  -->
-            <div class="row">
-                <div class="col-12">
-                    <label class="col-form-label" id="submit-policy">By submitting this application, I affirm that the facts set forth in it are true and complete. I understand that if I am accepted as a volunteer, any false statements, omissions, or other misrepresentations made by me on this application may result in my immediate dismissal.</label>
-                </div>
-            </div> <!-- end of row that contains our signature explanation -->
             <div class="row" id="row-holds-submit-button">
                 <div class="col text-center">
                     <button class="btn btn-lg" type="submit" id="submit-btn">SUBMIT</button>
