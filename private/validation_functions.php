@@ -1,3 +1,5 @@
+<?php
+
 /*
 * Authors: Shayna Jamieson, Keller Flint, Bridget Black
 * 2019-11-09
@@ -7,8 +9,6 @@
 * Associated Files: volunteer_success_splash.php
 *                  youth_success_splash.php
 */
-
-<?php
 
 // for future reference https://www.php.net/manual/en/filter.filters.sanitize.php
 // and https://www.php.net/manual/en/filter.filters.validate.php
