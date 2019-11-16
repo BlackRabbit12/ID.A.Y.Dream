@@ -7,7 +7,10 @@
     File Name: admin_page.php
 -->
 <html lang="en">
-<?php require_once "private/init.php"; ?>
+<?php require_once "private/init.php";
+
+
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -70,10 +73,11 @@
         $result = mysqli_query($cnxn, $sql);
 
         while ($data = mysqli_fetch_assoc($result)) {
+            $dataUserId = $data['user_id'];
             echo "<tr id='{$data['user_id']}'>";
-            echo "<td class='update' data-target='firstName' data-id='{$data['user_id']}'><a href='#'>{$data['user_first']}</a></td>";
-            echo "<td>{$data['user_last']}</td>";
-            echo "<td>{$data['user_phone']}</td>";
+            echo "<td class='update' data-target='firstName' data-id=$dataUserId><a href='#'>{$data['user_first']}</a></td>";
+            echo "<td data-target='lastName'>{$data['user_last']}</td>";
+            echo "<td data-target='phone'>{$data['user_phone']}</td>";
             echo "<td>{$data['user_email']}</td>";
             echo "<td>{$data['dreamer_college']}</td>";
             echo "<td>{$data['dreamer_date_of_birth']}</td>";
@@ -160,22 +164,26 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <h4 class="modal-title" id="full-name"></h4>
+                <button type="button" class="close btn bg-secondary" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <p id="first-name">Some text in the modal.</p>
+                <p>Some text in the modal.</p>
+                <input type="hidden" id="hidden-id">
             </div>
             <div class="modal-footer">
-                <button type="button" id="delete" class="btn btn-default">Delete</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="delete" class="pull-right bg-danger text-white btn btn-default">Delete</button>
+                <button type="button" id="save" class="pull-left bg-danger text-white btn btn-default">Save</button>
             </div>
         </div>
 
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -185,12 +193,33 @@
         $(".update").on("click", function() {
             let id = $(this).data("id");
             let firstName = $("#"+id).children("td[data-target=firstName]").text();
+            let lastName = $("#"+id).children("td[data-target=lastName]").text();
 
-            $("#first-name").html(firstName);
+
+            $("#hidden-id").val(id);
+
+
+            $("#full-name").html(firstName+" "+lastName);
 
             $("#myModal").modal("toggle");
         });
     });
+
+
+    $('#save').on('click', function() {
+        let id = $('#hidden-id').val();
+
+        $.ajax({
+            url: 'private/init.php',
+            method: 'post',
+            data: {id : id},
+            success: function(response){
+                console.log(response);
+            }
+    });
+    });
+
+
 </script>
 </body>
 </html>

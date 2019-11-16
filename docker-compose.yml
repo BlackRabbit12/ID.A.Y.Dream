@@ -13,8 +13,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: idaydream
-    volumes:
-      - ..\storage\docker\IDAYDream-mysql-data:/var/lib/mysql
     ports:
       - 3309:3306
   web_app:

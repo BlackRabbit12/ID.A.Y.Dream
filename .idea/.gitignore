@@ -2,3 +2,4 @@
 # Default ignored files
 /workspace.xml
 ../
+../docker-compose.yml
