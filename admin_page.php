@@ -28,6 +28,14 @@
     <link rel="manifest" href="images/site.webmanifest_title">
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <style>
+        p{
+            display: inline;
+        }
+        label{
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
@@ -48,114 +56,65 @@
         </select>
     </form>
 </div>
-<?php if ($_GET["data_select"] == "dreamers") { ?>
-    <table data-order='[[12, "desc"]]' id="dreamer-table" class="display">
+<?php
+    if ($_GET["data_select"] == "dreamers") {
+        $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id;";
+        $sql_ids = "SELECT user_id FROM Dreamer;";
+        //$dataUserId = $data['user_id'];
+    }
+    else if ($_GET["data_select"] == "volunteers") {
+        $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_active, user_date_joined FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id;";
+        $sql_ids = "SELECT user_id FROM Volunteer;";
+    }
+
+    if (($_GET["data_select"] == "dreamers") || $_GET["data_select"] == "volunteers") {
+        $result = mysqli_query($cnxn, $sql);
+        $tableHeadingNames = $result -> fetch_fields();
+        $result_ids = mysqli_query($cnxn, $sql_ids);
+    ?>
+    <table data-order='[[<?php echo mysqli_num_fields($result) - 1; ?>, "desc"]]' id="dreamer-table" class="display">
         <thead>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>College</th>
-            <th>DOB</th>
-            <th>Graduation</th>
-            <th>Gender</th>
-            <th>Ethnicity</th>
-            <th>Snacks</th>
-            <th>Goals</th>
-            <th>Active</th>
-            <th>Date Joined</th>
+            <?php
+            $tableHeadingNames_array = [];
+            foreach($tableHeadingNames as $value){
+                echo "<th>{$value -> name}</th>";
+                $tableHeadingNames_array[] = $value -> name;
+            }
+
+            $allIdsForAllRows_array = [];
+            while ($value = mysqli_fetch_assoc($result_ids)){
+                $allIdsForAllRows_array[] = $value['user_id'];
+            }
+            //var_dump($allIdsForAllRows_array);
+            ?>
         </tr>
         </thead>
         <tbody>
         <?php
-        $sql = "SELECT * FROM Dreamer INNER JOIN User ON User.user_id = Dreamer.user_id;";
-        $result = mysqli_query($cnxn, $sql);
-
+        $k = 0;
         while ($data = mysqli_fetch_assoc($result)) {
-            $dataUserId = $data['user_id'];
-            echo "<tr id='{$data['user_id']}'>";
-            echo "<td class='update' data-target='firstName' data-id=$dataUserId><a href='#'>{$data['user_first']}</a></td>";
-            echo "<td data-target='lastName'>{$data['user_last']}</td>";
-            echo "<td data-target='phone'>{$data['user_phone']}</td>";
-            echo "<td>{$data['user_email']}</td>";
-            echo "<td>{$data['dreamer_college']}</td>";
-            echo "<td>{$data['dreamer_date_of_birth']}</td>";
-            echo "<td>{$data['dreamer_graduation_date']}</td>";
-            echo "<td>{$data['dreamer_gender']}</td>";
-            echo "<td>{$data['dreamer_ethnicity']}</td>";
-            echo "<td>{$data['dreamer_food']}</td>";
-            echo "<td>{$data['dreamer_goals']}</td>";
-            if ($data['dreamer_active']) {
-                $active = 'false';
-            } else {
-                $active = 'true';
+            echo "<tr id= '$allIdsForAllRows_array[$k]'>";
+            $i = 0;
+            foreach($data as $value){
+                if($i == 0){
+                    echo "<td class = 'update' data-field-name = $tableHeadingNames_array[$i]><a href = '#'>$value</a></td>";
+                }
+                else {
+                    echo "<td data-field-name = $tableHeadingNames_array[$i]>$value</td>";
+                }
+                $i++;
             }
-            echo "<td>$active</td>";
-            echo "<td>{$data['user_date_joined']}</td>";
             echo "</tr>";
+            $k++;
         }
-
         ?>
         </tbody>
-
     </table>
-
-
-<?php } else if ($_GET["data_select"] == "volunteers") { ?>
-<!-- Volunteer Table -->
-<table data-order='[[10, "desc"]]' id="volunteer-table" class="display">
-    <thead>
-    <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Zip</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Mailing List</th>
-        <th>Active</th>
-        <th>Date Joined</th>
-    </tr>
-    </thead>
-    <tbody>
     <?php
-    $sql = "SELECT * FROM Volunteer INNER JOIN User ON User.user_id = Volunteer.user_id;";
-    $result = mysqli_query($cnxn, $sql);
-
-    while ($data = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
-        echo "<td>{$data['user_first']}</td>";
-        echo "<td>{$data['user_last']}</td>";
-        echo "<td>{$data['user_phone']}</td>";
-        echo "<td>{$data['user_email']}</td>";
-        echo "<td>{$data['volunteer_street_address']}</td>";
-        echo "<td>{$data['volunteer_zip']}</td>";
-        echo "<td>{$data['volunteer_city']}</td>";
-        echo "<td>{$data['volunteer_state']}</td>";
-        echo "<td>{$data['volunteer_emailing']}</td>";
-        if ($data['volunteer_active']) {
-            $active = 'false';
-        } else {
-            $active = 'true';
-        }
-        echo "<td>$active</td>";
-        echo "<td>{$data['user_date_joined']}</td>";
-        echo "</tr>";
-    }
-
+    } //closing if statement
     ?>
-    </tbody>
-
-    <?php } ?>
-
-</table>
-
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-</div>
+</div> <!-- entire container -->
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -167,8 +126,8 @@
                 <h4 class="modal-title" id="full-name"></h4>
                 <button type="button" class="close btn bg-secondary" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body">
-                <p>Some text in the modal.</p>
+            <div class="modal-body" id="modal-body">
+<!--                <p>Some text in the modal.</p>-->
                 <input type="hidden" id="hidden-id">
             </div>
             <div class="modal-footer">
@@ -179,10 +138,7 @@
 
     </div>
 </div>
-<script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -191,35 +147,64 @@
 <script>
     $(document).ready(function() {
         $(".update").on("click", function() {
-            let id = $(this).data("id");
-            let firstName = $("#"+id).children("td[data-target=firstName]").text();
-            let lastName = $("#"+id).children("td[data-target=lastName]").text();
+
+            let id = this.parentElement.getAttribute("id");
+            let firstName = $("#"+id).children("td[data-field-name = user_first]").text();
+            let lastName = $("#"+id).children("td[data-field-name = user_last]").text();
 
 
+
+
+            //to be passed into .ajax
             $("#hidden-id").val(id);
-
 
             $("#full-name").html(firstName+" "+lastName);
 
             $("#myModal").modal("toggle");
-        });
-    });
+
+            $.ajax({
+                url: 'private/init.php',
+                method: 'post',
+                data: {id : id},
+                dataType: 'JSON',
+                success: function(response){
+                    console.log(response);
+                    populateModalData(response);
+                }
+            }); //.ajax
+        }); //.on
+    }); //.ready
 
 
     $('#save').on('click', function() {
         let id = $('#hidden-id').val();
+    }); //.on
 
-        $.ajax({
-            url: 'private/init.php',
-            method: 'post',
-            data: {id : id},
-            success: function(response){
-                console.log(response);
-            }
-    });
-    });
+    //JSON array
+    //appending all children into modal-body
+    function populateModalData(responseData) {
+        $.each(responseData, function(key, value){
+            let textNode = document.createTextNode(key + " ");
+            let label = document.createElement('label');
+            label.append(textNode);
 
+            textNode = document.createTextNode(value);
+            let p = document.createElement('p');
+            p.append(textNode);
 
+            label.append(p);
+
+            let modalB = document.getElementById("modal-body");
+            modalB.append(label);
+            //console.log(responseData[l]);
+            console.log(key, value);
+        }); //.each
+    } //end populateModalData
+
+    //clears modal body after click away
+    $('#myModal').on('hidden.bs.modal', function(){
+        $("#modal-body").html("");
+    }); //.on
 </script>
 </body>
 </html>
