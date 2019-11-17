@@ -93,7 +93,8 @@
             <?php
             $tableHeadingNames_array = [];
             foreach($tableHeadingNames as $value){
-                echo "<th>{$value -> name}</th>";
+                $heading = formatHeadings($value -> name);
+                echo "<th>$heading</th>";
                 $tableHeadingNames_array[] = $value -> name;
             }
 
