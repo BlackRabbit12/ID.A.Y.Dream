@@ -31,10 +31,26 @@
     <style>
         p{
             display: inline;
+            font-weight: normal;
         }
         label{
             display: block;
+            font-weight: bolder;
         }
+
+        .modal-dialog,
+        .modal-content {
+            /* 80% of window height */
+            height: 90%;
+            width: 100%;
+        }
+
+        .modal-body {
+            /* 100% = dialog height, 120px = header + footer */
+            max-height: calc(100% - 120px);
+            overflow-y: scroll;
+        }
+
     </style>
 </head>
 <body>
@@ -190,7 +206,7 @@
     //appending all children into modal-body
     function populateModalData(responseData) {
         $.each(responseData, function(key, value){
-            let textNode = document.createTextNode(key + " ");
+            let textNode = document.createTextNode(key + ":   ");
             let label = document.createElement('label');
             label.append(textNode);
 
