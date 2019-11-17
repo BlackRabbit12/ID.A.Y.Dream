@@ -51,8 +51,8 @@
     <form action="admin_page.php" id="select-form" method="GET">
         <select class="custom-select" id="data-select" name="data_select">
             <option value="none">None</option>
-            <option value="dreamers" <?php if ($_GET["data_select"] == "dreamers") echo "selected"; ?>>Dreamers</option>
-            <option value="volunteers" <?php if ($_GET["data_select"] == "volunteers") echo "selected"; ?>>Volunteers</option>
+            <option value="dreamers" id="dreamer-option" <?php if ($_GET["data_select"] == "dreamers") echo "selected"; ?>>Dreamers</option>
+            <option value="volunteers" id="volunteer-option" <?php if ($_GET["data_select"] == "volunteers") echo "selected"; ?>>Volunteers</option>
         </select>
     </form>
 </div>
@@ -152,8 +152,13 @@
             let firstName = $("#"+id).children("td[data-field-name = user_first]").text();
             let lastName = $("#"+id).children("td[data-field-name = user_last]").text();
 
-
-
+            let dataSelect;
+            if (document.getElementById('dreamer-option').selected){
+                dataSelect = 'dreamers';
+            }
+            else if (document.getElementById('volunteer-option').selected){
+                dataSelect = 'volunteers';
+            }
 
             //to be passed into .ajax
             $("#hidden-id").val(id);
@@ -165,17 +170,18 @@
             $.ajax({
                 url: 'private/init.php',
                 method: 'post',
-                data: {id : id},
+                data: {id : id, dataSelect : dataSelect},
                 dataType: 'JSON',
                 success: function(response){
-                    console.log(response);
+                    //console.log(response);
                     populateModalData(response);
                 }
             }); //.ajax
         }); //.on
     }); //.ready
 
-
+    //user_id for row we're working on
+    //save button doesn't work 2019-11-16
     $('#save').on('click', function() {
         let id = $('#hidden-id').val();
     }); //.on
@@ -196,8 +202,8 @@
 
             let modalB = document.getElementById("modal-body");
             modalB.append(label);
-            //console.log(responseData[l]);
-            console.log(key, value);
+
+            //console.log(key, value);
         }); //.each
     } //end populateModalData
 

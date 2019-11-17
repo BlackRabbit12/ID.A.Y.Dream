@@ -34,24 +34,24 @@ CREATE TABLE Dreamer
     FOREIGN KEY (user_id) REFERENCES User (user_id)
 );
 
-CREATE TABLE ICE
+CREATE TABLE Guardian
 (
-    ICE_id           INT          NOT NULL AUTO_INCREMENT,
-    ICE_name         VARCHAR(255) NOT NULL,
-    ICE_phone        VARCHAR(255) NOT NULL,
-    ICE_relationship VARCHAR(255) NOT NULL,
+    guardian_id           INT          NOT NULL AUTO_INCREMENT,
+    guardian_name         VARCHAR(255) NOT NULL,
+    guardian_phone        VARCHAR(255) NOT NULL,
+    guardian_relationship VARCHAR(255) NOT NULL,
 
-    PRIMARY KEY (ICE_id)
+    PRIMARY KEY (guardian_id)
 );
 
-CREATE TABLE Dreamer_ICE
+CREATE TABLE Dreamer_Guardian
 (
     dreamer_id INT NOT NULL,
-    ICE_id     INT NOT NULL,
+    guardian_id     INT NOT NULL,
 
-    PRIMARY KEY (dreamer_id, ICE_id),
+    PRIMARY KEY (dreamer_id, guardian_id),
     FOREIGN KEY (dreamer_id) REFERENCES Dreamer (dreamer_id),
-    FOREIGN KEY (ICE_id) REFERENCES ICE (ICE_id)
+    FOREIGN KEY (guardian_id) REFERENCES Guardian (guardian_id)
 );
 
 CREATE TABLE Volunteer
