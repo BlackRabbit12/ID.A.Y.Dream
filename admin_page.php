@@ -55,7 +55,6 @@
 </head>
 <body>
 
-
 <div class="text-center logo-container">
     <img src="images/iDayDreamLogo.png" alt="IDAYDream Logo">
 </div>
@@ -189,7 +188,7 @@
                 data: {id : id, dataSelect : dataSelect},
                 dataType: 'JSON',
                 success: function(response){
-                    //console.log(response);
+                    console.log(response);
                     populateModalData(response);
                 }
             }); //.ajax

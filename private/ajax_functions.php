@@ -1,7 +1,7 @@
 <?php
 
 //if the admin_page.php <select> <option> is selected (not 'none')
-if(isset($_POST['dataSelect'])){
+if (isset($_POST['dataSelect'])) {
     //if user is a dreamer
     if ($_POST['dataSelect'] == 'dreamers') {
         //user_id
@@ -20,7 +20,7 @@ if(isset($_POST['dataSelect'])){
         }
     } //end dreamers
     //if user is a volunteer
-    else if ($_POST['dataSelect'] == 'volunteers'){
+    else if ($_POST['dataSelect'] == 'volunteers') {
         // user_id
         $id = $_POST['id'];
 
@@ -30,7 +30,7 @@ if(isset($_POST['dataSelect'])){
         $tempSQL = "SELECT volunteer_id FROM Volunteer INNER JOIN User ON Volunteer.user_id = User.user_id WHERE Volunteer.user_id = '$id'";
         $result = mysqli_query($cnxn, $tempSQL);
         $volunteerId = "";
-        if($result) {
+        if ($result) {
             // gets the accurate volunteer_id based on the $POST user_id
             while ($row = mysqli_fetch_assoc($result)) {
                 $volunteerId = $row['volunteer_id'];
@@ -45,10 +45,10 @@ if(isset($_POST['dataSelect'])){
         // ALL data that we add to our associative array
         $data = [];
 
-        if (mysqli_multi_query($cnxn, $sql)){
-            do{
+        if (mysqli_multi_query($cnxn, $sql)) {
+            do {
                 // get the result for each query to perform steps
-                if ($result = mysqli_store_result($cnxn)){
+                if ($result = mysqli_store_result($cnxn)) {
                     // keep adding to data with our call to this method
                     $data = createAssociativeArray($result, $data);
 
@@ -65,54 +65,50 @@ if(isset($_POST['dataSelect'])){
 
 
 //helper functions
-function createAssociativeArray($result, $data){
+function createAssociativeArray($result, $data)
+{
+    global $log;
     //get the column table names
-    $fieldNames = $result -> fetch_fields();
+    $fieldNames = $result->fetch_fields();
 
     // create an array of field (column names)
     $fieldNames_array = [];
     foreach ($fieldNames as $value) {
-        $fieldNames_array[] = $value -> name;
+        $fieldNames_array[] = $value->name;
     }
 
     // use $i to loop through our row and get the correct
     // field name to insert as a key
     $i = 0;
-
-    // refCount keeps track of which reference it is displaying
-    // as we start adding keys so that no duplicates exist
-    $refCount = 0;
+    $row_num = 0;
+    $log = [];
 
     // here we do a generic keys / values add to our $data array for dreamers, some volunteer data, etc.
-    // BUT for references and later interests we need to loop through a different way because of the
-    // fact that there are key "duplicates"
+    // row_num is appended to fieldname if the while loop runs more than once (which would indicate a multi-row return)
     while ($row = mysqli_fetch_assoc($result)) {
-        $refCount++;
         foreach ($row as $value) {
-            // we go in here if we know that we are in the references section
-            if($fieldNames_array[0] == 'reference_name') {
-
-                // HARD CODED RIGHT NOW -- we can think of something better?
-                $refName = "$fieldNames_array[0]{$refCount}";
-                $data[$refName] = $row['reference_name'];
-
-                $refPhone = "$fieldNames_array[1]{$refCount}";
-                $data[$refPhone] = $row['reference_phone'];
-
-                $refEmail = "$fieldNames_array[2]{$refCount}";
-                $data[$refEmail] = $row['reference_email'];
-
-                $refRelationship = "$fieldNames_array[3]{$refCount}";
-                $data[$refRelationship] = $row['reference_relationship'];
-            }
-            // else is for normal dreamer or volunteer information
-            else {
+            if ($row_num > 0) {
+                //$log[] = $fieldNames_array[$i];
+                $data[$fieldNames_array[$i] . $row_num]  = $value;
+            } else {
                 $data[$fieldNames_array[$i]] = $value;
-                $i++;
             }
+            $i++;
         }
+        $i = 0;
+        $row_num++;
     }
+
+    // --- debugging log for php during ajax calls ---
+//    $myfile = fopen("log.txt", "w") or die("Unable to open file!");
+//    $text = "";
+//    foreach($log as $item)
+//        $text .= "$item\n";
+//    fwrite($myfile, $text);
+//    fclose($myfile);
+    // --- end debug ---
+
 
     //return object
     return $data;
-} //end createAssociativeArray()
+}//end createAssociativeArray()
