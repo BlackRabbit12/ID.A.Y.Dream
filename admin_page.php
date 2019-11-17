@@ -205,7 +205,7 @@
     //appending all children into modal-body
     function populateModalData(responseData) {
         $.each(responseData, function(key, value){
-            let textNode = document.createTextNode(key + ":   ");
+            let textNode = document.createTextNode(formatHeadings(key) + ":   ");
             let label = document.createElement('label');
             label.append(textNode);
 
@@ -226,6 +226,20 @@
     $('#myModal').on('hidden.bs.modal', function(){
         $("#modal-body").html("");
     }); //.on
+
+    // formats the heading names retrieved from database for clear user view
+    function formatHeadings(str) {
+        str = str.replace(/\d+/g, '');
+        str = str.replace(/_/g, " ");
+        str = str.replace("user", "");
+        str = str.replace("volunteer", "");
+        str = str.replace("dreamer", "");
+        if (str[0] == " ") {
+            str = str.substr(1, str.legnth);
+        }
+        str = str[0].toUpperCase() + str.substr(1, str.legnth);
+        return str;
+    }
 </script>
 </body>
 </html>
