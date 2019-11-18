@@ -37,7 +37,7 @@ function hasLength($str, $min, $max) {
 
 // returns true if string is empty
 function isEmpty($str) {
-    return trim($str) == "";
+    return trim($str) == "" || $str == null;
 }
 
 // returns true if string contains only numbers
@@ -125,7 +125,7 @@ function formatDOB($str) {
     return $year . "-" . $month . "-" . $day;
 }
 
-// returns true if date of birth is valid TODO ALWAYS RETURNS TRUE
+// returns true if date of birth is valid
 function validateDOB($str) {
     $sub = substr($str, 0, 4);
     if (isNumeric($sub)) {

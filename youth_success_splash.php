@@ -26,6 +26,9 @@ $dob = $_POST['dob'];
 $graduationYear = $_POST['graduation-year'];
 $gender = $_POST['gender'];
 $ethnicity = $_POST['ethnicity'];
+if (!isEmpty($_POST['ethnicity-other'])) {
+    $ethnicity = $_POST['ethnicity-other'];
+}
 $favSnacks = $_POST['fav-snacks'];
 $aspirations = $_POST['aspirations'];
 ?>

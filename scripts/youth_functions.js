@@ -7,10 +7,23 @@ File Name: youth_functions.js
 Associated File: volunteer_form.php
                 youth_form.php
 */
+
+// code for other ethnicity is checked
+document.getElementById("toggle-ethnicity-other").classList.add("d-none");
+document.getElementById("ethnicity").addEventListener("change", function() {
+    if (document.getElementById("select-ethnicity-other").selected) {
+        document.getElementById("toggle-ethnicity-other").classList.remove("d-none");
+        document.getElementById("toggle-ethnicity-other").classList.add("d-block");
+    } else {
+        document.getElementById("toggle-ethnicity-other").classList.add("d-none");
+        document.getElementById("toggle-ethnicity-other").classList.remove("d-block");
+    }
+});
+
 // 2D  function array with input element ids
 let validateEmptyArray = [
     "fname",
-    "lname",
+    "lname"
 ];
 
 // *** Functions ***
