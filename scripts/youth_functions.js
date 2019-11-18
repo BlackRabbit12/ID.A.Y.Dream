@@ -23,7 +23,7 @@ document.getElementById("ethnicity").addEventListener("change", function() {
 // 2D  function array with input element ids
 let validateEmptyArray = [
     "fname",
-    "lname",
+    "lname"
 ];
 
 // *** Functions ***

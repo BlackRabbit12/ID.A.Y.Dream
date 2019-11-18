@@ -37,7 +37,7 @@ function hasLength($str, $min, $max) {
 
 // returns true if string is empty
 function isEmpty($str) {
-    return trim($str) == "";
+    return trim($str) == "" || $str == null;
 }
 
 // returns true if string contains only numbers
