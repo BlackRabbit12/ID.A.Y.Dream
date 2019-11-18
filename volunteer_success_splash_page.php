@@ -29,7 +29,9 @@ $tShirt = $_POST['shirt'];
 $aboutUs = $_POST['about'];
 $motivation = $_POST['motivation'];
 $volunteerExperience = $_POST['volunteer-experience'];
-$volunteerExperienceYouth = $_POST['youth-experience'];
+$volunteerExperienceYouth = "";
+if (isset($_POST['youth-experience']))
+    $volunteerExperienceYouth = $_POST['youth-experience'];
 $skills = $_POST['other-experience'];
 $mailingList = $_POST['mailing-list'];
 $termsOfService = $_POST['terms-of-service'];
@@ -59,7 +61,8 @@ $refName3 = $_POST['reference-name-3'];
 
     <title>Volunteer - iD.A.Y.Dream</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
 
     <!-- https://favicon.io/emoji-favicons/blue-heart/ -->
@@ -70,52 +73,55 @@ $refName3 = $_POST['reference-name-3'];
 </head>
 
 <body>
-    <div class="jumbotron d-flex align-items-center">
-        <div class="container">
-            <h1 id="volunteer-title">VOLUNTEER</h1>
-        </div>
-    </div> <!-- ending section for the jumbotron -->
+<div class="jumbotron d-flex align-items-center">
+    <div class="container">
+        <h1 id="volunteer-title">VOLUNTEER</h1>
+    </div>
+</div> <!-- ending section for the jumbotron -->
 
-    <?php
+<?php
 
-    //does validation for user variables, gets back the user id row
-    $userId = userInsert($firstName, $lastName, $email, $phone);
+//does validation for user variables, gets back the user id row
+$userId = userInsert($firstName, $lastName, $email, $phone);
 
-    //does validation for volunteer variables, gets back volunteer id row
-    $volunteer_id = volunteerInsert($userId, $address, $zip, $city, $state, $tShirt, $aboutUs, $motivation,
-        $volunteerExperience, $volunteerExperienceYouth, $skills, $mailingList, $termsOfService);
+//does validation for volunteer variables, gets back volunteer id row
+$volunteer_id = volunteerInsert($userId, $address, $zip, $city, $state, $tShirt, $aboutUs, $motivation,
+    $volunteerExperience, $volunteerExperienceYouth, $skills, $mailingList, $termsOfService);
 
-    //does validation on each reference, gets back each reference's id row and saves into an array
-    $volunteer_reference_id_array[] = referenceInsert($refPhone1, $refEmail1, $refRel1, $refName1);
-    $volunteer_reference_id_array[] = referenceInsert($refPhone2, $refEmail2, $refRel2, $refName2);
-    $volunteer_reference_id_array[] = referenceInsert($refPhone3, $refEmail3, $refRel3, $refName3);
-    //loop through each reference id and ensure they are filled properly
-    $volunteer_reference_success = true;
-    foreach($volunteer_reference_id_array as $value){
-        //if a reference failed to validate properly, then set the success variable to false
-        if($value == null || $value == 0){
-            $volunteer_reference_success = false;
-        }
+//does validation on each reference, gets back each reference's id row and saves into an array
+$volunteer_reference_id_array[] = referenceInsert($refPhone1, $refEmail1, $refRel1, $refName1);
+$volunteer_reference_id_array[] = referenceInsert($refPhone2, $refEmail2, $refRel2, $refName2);
+$volunteer_reference_id_array[] = referenceInsert($refPhone3, $refEmail3, $refRel3, $refName3);
+//loop through each reference id and ensure they are filled properly
+$volunteer_reference_success = true;
+foreach ($volunteer_reference_id_array as $value) {
+    //if a reference failed to validate properly, then set the success variable to false
+    if ($value == null || $value == 0) {
+        $volunteer_reference_success = false;
     }
+}
 
-    //capture the 'values' from the Interests events[] checkboxes from 'volunteer_form.php' and loop through them to validate and INSERT
+//capture the 'values' from the Interests events[] checkboxes from 'volunteer_form.php' and loop through them to validate and INSERT
+if (isset($_POST['events'])) {
     $volunteer_interests_id_array = $_POST['events'];
-    for($i = 0; $i < count($volunteer_interests_id_array); $i++){
+    for ($i = 0; $i < count($volunteer_interests_id_array); $i++) {
         interestInsertVolunteer($volunteer_id, $volunteer_interests_id_array[$i]);
     }
+}
 
-    //if volunteer successfully INSERTed, then INSERT references and complete success page for volunteer
-    if ($volunteer_id != null && $volunteer_id != 0 && $volunteer_reference_success) {
-        foreach($volunteer_reference_id_array as $value){
-            referenceInsertVolunteer($volunteer_id, $value);
-        }
+//if volunteer successfully INSERTed, then INSERT references and complete success page for volunteer
+if ($volunteer_id != null && $volunteer_id != 0 && $volunteer_reference_success) {
+    foreach ($volunteer_reference_id_array as $value) {
+        referenceInsertVolunteer($volunteer_id, $value);
+    }
     ?>
 
     <!-- HERE IS WHERE WE NEED TO THANK THEM AND THEN DISPLAY THE INFORMATION THAT THEY SUBMITTED  -->
     <div class="container" id="thank-you-message">
-        <h2>Thank you for your interest in volunteering with iD.A.Y.Dream <?php echo $firstName ?>. We’re investing in an entire region of youth. Youth seeking success through higher education, mentoring, etc.</h2>
+        <h2>Thank you for your interest in volunteering with iD.A.Y.Dream <?php echo $firstName ?>. We’re investing in
+            an entire region of youth. Youth seeking success through higher education, mentoring, etc.</h2>
         <br>
-        <h3 id = "click-to-see-volunteer">Click to see a summary of your information.</h3>
+        <h3 id="click-to-see-volunteer">Click to see a summary of your information.</h3>
         <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>
     </div>
 
@@ -160,21 +166,26 @@ $refName3 = $_POST['reference-name-3'];
         ?>
     </div>
     <?php
-    }
-    //if volunteer did NOT successfully get INSERTed
-    else {
-        echo "it didn't work volunteer";
-    } ?>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <!-- jQuery for input validation -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="scripts/volunteer_splash_functions.js"></script>
+} //if volunteer did NOT successfully get INSERTed
+else {
+    echo "it didn't work volunteer";
+} ?>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<!-- jQuery for input validation -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="scripts/volunteer_splash_functions.js"></script>
 </body>
 
 </html>
