@@ -120,6 +120,9 @@
                     if($tableHeadingNames_array[$i] == "dreamer_date_of_birth" || $tableHeadingNames_array[$i] == "user_date_joined") {
                         $value = formatSQLDate($value);
                     }
+                    if ($tableHeadingNames_array[$i] == "user_phone") {
+                        $value = formatSQLPhone($value);
+                    }
                     echo "<td data-field-name = $tableHeadingNames_array[$i]>$value</td>";
                 }
                 $i++;

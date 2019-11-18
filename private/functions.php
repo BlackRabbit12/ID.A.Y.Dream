@@ -18,11 +18,9 @@ function formatSQLDate($str) {
     return $str;
 }
 
-/*str = str.replace(/_/g, " ");
-        str = str.replace("user", "");
-        str = str.replace("volunteer", "");
-        str = str.replace("dreamer", "");
-        if (str[0] == " ") {
-            str = str.substr(1, str.legnth);
-        }
-        str = str[0].toUpperCase() + str.substr(1, str.legnth);*/
+// formats the SQL phone we get back into the (111) 111-1111 format
+function formatSQLPhone($str) {
+    //SQL return = 2534411380
+    $str = "(" . substr($str, 0, 3)  . ") " . substr($str, 4,3) . "-" . substr($str, 6, 4);
+    return $str;
+}
