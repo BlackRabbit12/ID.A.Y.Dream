@@ -117,6 +117,9 @@
                     echo "<td class = 'update' data-field-name = $tableHeadingNames_array[$i]><a href = '#'>$value</a></td>";
                 }
                 else {
+                    if($tableHeadingNames_array[$i] == "dreamer_date_of_birth") {
+                        $value = formatSQLDate($value);
+                    }
                     echo "<td data-field-name = $tableHeadingNames_array[$i]>$value</td>";
                 }
                 $i++;

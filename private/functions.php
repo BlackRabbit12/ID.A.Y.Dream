@@ -11,6 +11,13 @@ function formatHeadings($str)
     return $str;
 }
 
+// formats the SQL date we get back into the MM/DD/YYYY format
+function formatSQLDate($str) {
+    //SQL return = 2003-04-26
+    $str = substr($str, 5, 2)  . "/" . substr($str, 8,2) . "/" . substr($str, 0, 4);
+    return $str;
+}
+
 /*str = str.replace(/_/g, " ");
         str = str.replace("user", "");
         str = str.replace("volunteer", "");
