@@ -216,7 +216,7 @@
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="scripts/admin_page_functions.js"></script>
 <script>
-    
+
     $(document).ready(function () {
         //toggle switch for 'active'/'inactive' members
         $("#toggle-inactive").on("change", function () {
