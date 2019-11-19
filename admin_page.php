@@ -29,11 +29,12 @@
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <style>
-        p{
+        p {
             display: inline;
             font-weight: normal;
         }
-        label{
+
+        label {
             display: block;
             font-weight: bolder;
         }
@@ -52,7 +53,7 @@
         }
 
 
-    /*    Bootstrap Slider */
+        /*    Bootstrap Slider */
         /* The switch - the box around the slider */
         .switch {
             position: relative;
@@ -124,97 +125,58 @@
     <img src="images/iDayDreamLogo.png" alt="IDAYDream Logo">
 </div>
 <div class="entire-container">
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Summary:</label>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Summary:</label>
+        </div>
+        <form action="admin_page.php" id="select-form" method="GET">
+            <select class="custom-select" id="data-select" name="data_select">
+                <option value="none">None</option>
+                <option value="dreamers"
+                        id="dreamer-option" <?php if ($_GET["data_select"] == "dreamers") echo "selected"; ?>>Dreamers
+                </option>
+                <option value="volunteers"
+                        id="volunteer-option" <?php if ($_GET["data_select"] == "volunteers") echo "selected"; ?>>
+                    Volunteers
+                </option>
+            </select>
+        </form>
+        <p>Active: </p>
+        <label class="switch">
+            <input type="checkbox" id="toggle-inactive" checked>
+            <span class="slider"></span>
+        </label><br><br>
     </div>
-    <form action="admin_page.php" id="select-form" method="GET">
-        <select class="custom-select" id="data-select" name="data_select">
-            <option value="none">None</option>
-            <option value="dreamers" id="dreamer-option" <?php if ($_GET["data_select"] == "dreamers") echo "selected"; ?>>Dreamers</option>
-            <option value="volunteers" id="volunteer-option" <?php if ($_GET["data_select"] == "volunteers") echo "selected"; ?>>Volunteers</option>
-        </select>
-    </form>
-    <p>Active:  </p>
-<!--    <label class="switch">-->
-<!---->
-<!--        <input type="checkbox" checked>-->
-<!--        <span class="slider round"></span>-->
-<!--    </label>-->
-    <label class="switch">
-        <input type="checkbox" checked>
-        <span class="slider"></span>
-    </label><br><br>
-</div>
-<?php
+    <?php
+    //if it's the dreamer table, run $sql for member row + run $sql_ids for user_ids Foreign key
     if ($_GET["data_select"] == "dreamers") {
-        $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id;";
+        $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
+                INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
+                WHERE dreamer_active = 1;";
         $sql_ids = "SELECT user_id FROM Dreamer;";
-        //$dataUserId = $data['user_id'];
     }
+    //if it's the volunteer table, run $sql for member row + run $sql_ids for user_ids Foreign key
     else if ($_GET["data_select"] == "volunteers") {
         $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_active, user_date_joined FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id;";
         $sql_ids = "SELECT user_id FROM Volunteer;";
     }
 
+    //if on the dreamer or volunteer table then continue:
     if (($_GET["data_select"] == "dreamers") || $_GET["data_select"] == "volunteers") {
+        //storing return data and ensuring query executes correctly
         $result = mysqli_query($cnxn, $sql);
-        $tableHeadingNames = $result -> fetch_fields();
+        //storing column names
+        $tableHeadingNames = $result->fetch_fields();
+        //storing return data and ensuring query executes correctly
         $result_ids = mysqli_query($cnxn, $sql_ids);
-    ?>
-    <table data-order='[[<?php echo mysqli_num_fields($result) - 1; ?>, "desc"]]' id="dreamer-table" class="display">
-        <thead>
-        <tr>
-            <?php
-            $tableHeadingNames_array = [];
-            foreach($tableHeadingNames as $value){
-                $heading = formatHeadings($value -> name);
-                echo "<th>$heading</th>";
-                $tableHeadingNames_array[] = $value -> name;
-            }
-
-            $allIdsForAllRows_array = [];
-            while ($value = mysqli_fetch_assoc($result_ids)){
-                $allIdsForAllRows_array[] = $value['user_id'];
-            }
-            //var_dump($allIdsForAllRows_array);
-            ?>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        $k = 0;
-        while ($data = mysqli_fetch_assoc($result)) {
-            echo "<tr id= '$allIdsForAllRows_array[$k]'>";
-            $i = 0;
-            foreach($data as $value){
-                if($i == 0){
-                    echo "<td class = 'update' data-field-name = $tableHeadingNames_array[$i]><a href = '#'>$value</a></td>";
-                }
-                else {
-                    if($tableHeadingNames_array[$i] == "dreamer_date_of_birth" || $tableHeadingNames_array[$i] == "user_date_joined") {
-                        $value = formatSQLDate($value);
-                    }
-                    if ($tableHeadingNames_array[$i] == "user_phone") {
-                        $value = formatSQLPhone($value);
-                    }
-
-                    if ($tableHeadingNames_array[$i] == "dreamer_active") {
-                        $value = formatActive($value);
-                    }
-
-
-                    echo "<td data-field-name = $tableHeadingNames_array[$i]>$value</td>";
-                }
-                $i++;
-            }
-            echo "</tr>";
-            $k++;
-        }
         ?>
-        </tbody>
-    </table>
-    <?php
+
+        <!--start the building of the table-->
+        <table data-order='[[<?php echo mysqli_num_fields($result) - 1; ?>, "desc"]]' id="dreamer-table"
+               class="display">
+            <?php echo buildTable($result, $tableHeadingNames, $result_ids); ?>
+        </table>
+        <?php
     } //closing if statement
     ?>
 </div> <!-- entire container -->
@@ -230,52 +192,74 @@
                 <button type="button" class="close btn bg-secondary" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" id="modal-body">
-<!--                <p>Some text in the modal.</p>-->
+                <!--                <p>Some text in the modal.</p>-->
                 <input type="hidden" id="hidden-id">
             </div>
             <div class="modal-footer">
-                <button type="button" id="delete" class="pull-right bg-danger text-white btn btn-default">Delete</button>
+                <button type="button" id="delete" class="pull-right bg-danger text-white btn btn-default">Delete
+                </button>
                 <button type="button" id="save" class="pull-left bg-danger text-white btn btn-default">Save</button>
             </div>
         </div>
 
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="scripts/admin_page_functions.js"></script>
 <script>
-    $(document).ready(function() {
-        $(".update").on("click", function() {
 
+    $(document).ready(function () {
+        //toggle switch for 'active'/'inactive' members
+        $("#toggle-inactive").on("change", function () {
+            //overwrites 'active' members on table and displays 'inactive'
+            $.ajax({
+                url: 'private/init.php',
+                method: 'post',
+                data: {queryType: "inactive_query"},
+                success: function (response) {
+                    $("#dreamer-table").html(response);
+                }
+            }); //.ajax
+        }); //.on
+
+        //fills modal on 'click' of member's name
+        $(".update").on("click", function () {
+            //get the 'id' of the row (parent of first name clicked)
             let id = this.parentElement.getAttribute("id");
-            let firstName = $("#"+id).children("td[data-field-name = user_first]").text();
-            let lastName = $("#"+id).children("td[data-field-name = user_last]").text();
+            let firstName = $("#" + id).children("td[data-field-name = user_first]").text();
+            let lastName = $("#" + id).children("td[data-field-name = user_last]").text();
 
+            //get the selected table from "select" dropdown
             let dataSelect;
-            if (document.getElementById('dreamer-option').selected){
+            if (document.getElementById('dreamer-option').selected) {
                 dataSelect = 'dreamers';
-            }
-            else if (document.getElementById('volunteer-option').selected){
+            } else if (document.getElementById('volunteer-option').selected) {
                 dataSelect = 'volunteers';
             }
 
             //to be passed into .ajax
             $("#hidden-id").val(id);
-
-            $("#full-name").html(firstName+" "+lastName);
+            //Top of modal display full name of member
+            $("#full-name").html(firstName + " " + lastName);
 
             $("#myModal").modal("toggle");
 
+            //writes 'active' members to table
             $.ajax({
                 url: 'private/init.php',
                 method: 'post',
-                data: {id : id, dataSelect : dataSelect},
+                data: {id: id, dataSelect: dataSelect},
                 dataType: 'JSON',
-                success: function(response){
+                success: function (response) {
                     console.log(response);
                     populateModalData(response);
                 }
@@ -284,15 +268,17 @@
     }); //.ready
 
     //user_id for row we're working on
-    //save button doesn't work 2019-11-16
-    $('#save').on('click', function() {
+    //save button doesn't work 2019-11-16 DELETE WHEN WORKING ***************************************************
+    $('#save').on('click', function () {
         let id = $('#hidden-id').val();
     }); //.on
 
     //JSON array
     //appending all children into modal-body
     function populateModalData(responseData) {
-        $.each(responseData, function(key, value){
+        //for each data field, displaying 'key' and 'value' paired data into the modal
+        $.each(responseData, function (key, value) {
+            //the field heading
             let textNode = document.createTextNode(formatHeadings(key) + ":   ");
             let label = document.createElement('label');
             label.append(textNode);
@@ -302,22 +288,23 @@
                 value = formatActive(value);
             }
 
-
+            //the field value
             textNode = document.createTextNode(value);
             let p = document.createElement('p');
             p.append(textNode);
 
+            //append the key and value together
             label.append(p);
 
+            //the modal body
             let modalB = document.getElementById("modal-body");
+            //append key and value into the modal
             modalB.append(label);
-
-            //console.log(key, value);
         }); //.each
     } //end populateModalData
 
     //clears modal body after click away
-    $('#myModal').on('hidden.bs.modal', function(){
+    $('#myModal').on('hidden.bs.modal', function () {
         $("#modal-body").html("");
     }); //.on
 
@@ -335,6 +322,7 @@
         return str;
     }
 
+    //the member's status is a TINYINT, convert for readability
     function formatActive(val) {
         if (val === "1") {
             return "active";
