@@ -254,14 +254,14 @@
         str = str.replace("volunteer", "");
         str = str.replace("dreamer", "");
         if (str[0] == " ") {
-            str = str.substr(1, str.legnth);
+            str = str.substr(1, str.length);
         }
-        str = str[0].toUpperCase() + str.substr(1, str.legnth);
+        str = str[0].toUpperCase() + str.substr(1, str.length);
         return str;
     }
 
     function formatActive(val) {
-        if (val == "true") {
+        if (val === "1") {
             return "active";
         }
         return "inactive";
