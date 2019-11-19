@@ -118,7 +118,22 @@ if (isset($_POST['queryType'])) {
         $result_ids = mysqli_query($cnxn, $sql_ids);
 
         echo buildTable($result, $tableHeadingNames, $result_ids);
+    } else if ($_POST['queryType'] == 'active_query') {
+        // Selects and returns output string containing table with inactive users
+        global $cnxn;
+
+        $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
+                INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
+                WHERE dreamer_active = 1;";
+        $sql_ids = "SELECT user_id FROM Dreamer;";
+
+        $result = mysqli_query($cnxn, $sql);
+        $tableHeadingNames = $result->fetch_fields();
+        $result_ids = mysqli_query($cnxn, $sql_ids);
+
+        echo buildTable($result, $tableHeadingNames, $result_ids);
     }
+
 } //end isset($_POST['queryType'])
 
 // --- debugging log for php during ajax calls ---

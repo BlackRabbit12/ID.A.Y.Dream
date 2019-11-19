@@ -141,11 +141,13 @@
                 </option>
             </select>
         </form>
+        <?php if ($_GET["data_select"] == "dreamers") { ?>
         <p>Active: </p>
         <label class="switch">
             <input type="checkbox" id="toggle-inactive" checked>
             <span class="slider"></span>
         </label><br><br>
+        <?php } ?>
         <button id="email-button" type="button" class="btn btn-primary btn-lg">Email</button>
     </div>
     <?php
@@ -155,8 +157,7 @@
                 INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
                 WHERE dreamer_active = 1;";
         $sql_ids = "SELECT user_id FROM Dreamer;";
-    }
-    //if it's the volunteer table, run $sql for member row + run $sql_ids for user_ids Foreign key
+    } //if it's the volunteer table, run $sql for member row + run $sql_ids for user_ids Foreign key
     else if ($_GET["data_select"] == "volunteers") {
         $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_active, user_date_joined FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id;";
         $sql_ids = "SELECT user_id FROM Volunteer;";
@@ -232,7 +233,6 @@
 </div>
 
 
-
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
@@ -250,14 +250,26 @@
         //toggle switch for 'active'/'inactive' members
         $("#toggle-inactive").on("change", function () {
             //overwrites 'active' members on table and displays 'inactive'
-            $.ajax({
-                url: 'private/init.php',
-                method: 'post',
-                data: {queryType: "inactive_query"},
-                success: function (response) {
-                    $("#dreamer-table").html(response);
-                }
-            }); //.ajax
+            if ($("#toggle-inactive").is(":checked")) {
+                $.ajax({
+                    url: 'private/init.php',
+                    method: 'post',
+                    data: {queryType: "active_query"},
+                    success: function (response) {
+                        $("#dreamer-table").html(response);
+                    }
+                }); //.ajax
+            } else {
+                $.ajax({
+                    url: 'private/init.php',
+                    method: 'post',
+                    data: {queryType: "inactive_query"},
+                    success: function (response) {
+                        $("#dreamer-table").html(response);
+                    }
+                }); //.ajax
+            }
+
         }); //.on
 
         //fills modal on 'click' of member's name
@@ -292,12 +304,11 @@
         }); //.on
 
 
-
         // toggle the modal for emailing functionality
-        $("#email-button").on("click", function() {
+        $("#email-button").on("click", function () {
             let str = tableSelected();
             str = str[0].toUpperCase() + str.substr(1, str.length);
-            $("#email-modal-title").html("Email Active "+str);
+            $("#email-modal-title").html("Email Active " + str);
             $("#emailModal").modal("toggle");
         });
 
