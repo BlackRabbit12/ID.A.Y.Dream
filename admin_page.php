@@ -123,6 +123,12 @@
                     if ($tableHeadingNames_array[$i] == "user_phone") {
                         $value = formatSQLPhone($value);
                     }
+
+                    if ($tableHeadingNames_array[$i] == "dreamer_active") {
+                        $value = formatActive($value);
+                    }
+
+
                     echo "<td data-field-name = $tableHeadingNames_array[$i]>$value</td>";
                 }
                 $i++;
@@ -216,6 +222,12 @@
             let label = document.createElement('label');
             label.append(textNode);
 
+            // format active to inactive or active rather than 0 and 1
+            if (key == "dreamer_active") {
+                value = formatActive(value);
+            }
+
+
             textNode = document.createTextNode(value);
             let p = document.createElement('p');
             p.append(textNode);
@@ -246,6 +258,13 @@
         }
         str = str[0].toUpperCase() + str.substr(1, str.legnth);
         return str;
+    }
+
+    function formatActive(val) {
+        if (val == "true") {
+            return "active";
+        }
+        return "inactive";
     }
 </script>
 </body>

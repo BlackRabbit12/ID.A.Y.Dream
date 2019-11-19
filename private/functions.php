@@ -24,3 +24,12 @@ function formatSQLPhone($str) {
     $str = "(" . substr($str, 0, 3)  . ") " . substr($str, 4,3) . "-" . substr($str, 6, 4);
     return $str;
 }
+
+// format booleans to string active or inactive
+function formatActive($val) {
+    if ($val) {
+        return "active";
+    }
+    return "inactive";
+}
+
