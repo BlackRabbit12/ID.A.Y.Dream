@@ -450,3 +450,14 @@ function interestInsertVolunteer($volunteer_id, $interest_id){
     //true-false if the query works
     $result = mysqli_query($cnxn, $sql);
 } //end interestInsertVolunteer()
+
+// returns the names of all interests
+function findInterests() {
+    global $cnxn;
+
+    $sql = "SELECT * FROM Interest;";
+
+    $result = mysqli_query($cnxn, $sql);
+
+    return $result;
+}

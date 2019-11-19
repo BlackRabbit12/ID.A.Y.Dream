@@ -141,7 +141,6 @@ INSERT INTO Interest VALUES(2, "Fundraising");
 INSERT INTO Interest VALUES(3, "Newsletter Production");
 INSERT INTO Interest VALUES(4, "Volunteer Coordination");
 INSERT INTO Interest VALUES(5, "Mentoring");
-INSERT INTO Interest VALUES(6, "Other");
 
 /* Insert sample data for dreamers */
 INSERT INTO User VALUES(default, 'Keller', 'Flint', 'kflint0068@gmail.com', '2534411380', now());

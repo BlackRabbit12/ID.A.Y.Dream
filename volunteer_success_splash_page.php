@@ -105,7 +105,7 @@ foreach ($volunteer_reference_id_array as $value) {
 if (isset($_POST['events'])) {
     $volunteer_interests_id_array = $_POST['events'];
     for ($i = 0; $i < count($volunteer_interests_id_array); $i++) {
-        interestInsertVolunteer($volunteer_id, $volunteer_interests_id_array[$i]);
+        interestInsertVolunteer($volunteer_id, substr($volunteer_interests_id_array[$i], 0, 1));
     }
 }
 
@@ -140,7 +140,9 @@ if ($volunteer_id != null && $volunteer_id != 0 && $volunteer_reference_success)
                 $key_text = ucfirst($key_text);
                 echo "<p><strong>$key_text:</strong></p>";
                 echo "<ul>";
+                // for each loop displays the events and removes the FK added at the beginning of the value
                 foreach ($value as $child_key => $child_value) {
+                    $child_value = substr($child_value, 1);
                     $value_text = htmlspecialchars($child_value);
                     $email_body .= "$child_value \r\n";
                     echo "<li>$child_value</li>";

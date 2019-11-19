@@ -1,3 +1,7 @@
+<?php
+require_once "private/init.php";
+?>
+
 <!DOCTYPE html>
 <!--
     Authors: Shayna Jamieson, Bridget Black, Keller Flint
@@ -12,7 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Volunteer - iD.A.Y.Dream</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
 
     <!-- https://favicon.io/emoji-favicons/blue-heart/ -->
@@ -44,8 +49,11 @@
 <!-- end of container that holds the background check section -->
 
 <div class="container" id="bg-check-no-container">
-    <h2 id = "bg-check-explain-no">Because of our values as an organization and out of the safety of the youth we serve it is a requirement that a background check must be submitted. You have chosen to decline. Thank you for your consideration in volunteering with iD.A.Y.Dream, at this time we are unable to move forward with your submission.<br>Please do visit us again!</h2>
-    <button class="btn btn-go-home" id = "go-home" href = "#">I D.A.Y. DREAM HOME PAGE</button>
+    <h2 id="bg-check-explain-no">Because of our values as an organization and out of the safety of the youth we serve it
+        is a requirement that a background check must be submitted. You have chosen to decline. Thank you for your
+        consideration in volunteering with iD.A.Y.Dream, at this time we are unable to move forward with your
+        submission.<br>Please do visit us again!</h2>
+    <button class="btn btn-go-home" id="go-home" href="#">I D.A.Y. DREAM HOME PAGE</button>
 </div> <!-- end of container that holds the information for if user selects no to background check -->
 <div class="container" id="entire-form-container">
     <form id="volunteer-form" action="volunteer_success_splash_page.php" method="post">
@@ -135,52 +143,51 @@
                 <div class="col-md-6">
                     <label class="col-form-label">I would like to help...</label>
                     <span class="hide-me" id="where-to-help">Please select one of the ways you'd like to help:</span>
+                    <?php
+                    $result = findInterests();
+                    while ($event = mysqli_fetch_assoc($result)) { ?>
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" name="events[]" value="<?php echo  $event["interest_id"] . $event["interest_name_of_interest"];?>"
+                                   id="<?php echo $event["interest_name_of_interest"];?>">
+                            <label class="custom-control-label" for="<?php echo $event["interest_name_of_interest"];?>"><?php echo $event["interest_name_of_interest"];?></label>
+                        </div> <!-- end of div that has the mentoring check box -->
+                    <?php } ?>
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="1" id="events">
-                        <label class="custom-control-label" for="events">Events/Activities</label>
-                    </div> <!-- end of div that has the events/activities check box -->
-                    <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="2" id="fundraising">
-                        <label class="custom-control-label" for="fundraising">Fundraising</label>
-                    </div> <!-- end of div that has the fundraising check box -->
-                    <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="3" id="newsletter">
-                        <label class="custom-control-label" for="newsletter">Newsletter Production</label>
-                    </div> <!-- end of div that has the newsletter check box -->
-                    <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="4" id="volunteer">
-                        <label class="custom-control-label" for="volunteer">Volunteer Coordination</label>
-                    </div> <!-- end of div that has the volunteer coordination check box -->
-                    <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="5" id="mentoring">
-                        <label class="custom-control-label" for="mentoring">Mentoring</label>
-                    </div> <!-- end of div that has the mentoring check box -->
-                    <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="6" id="other-interest">
+                        <input class="custom-control-input" type="checkbox" name="events[]" value="Other"
+                               id="other-interest">
                         <label class="custom-control-label" for="other-interest">Other</label>
-                    </div><br> <!-- end of div that has the mentoring check box -->
+                    </div>
+                    <br> <!-- end of div that has the mentoring check box -->
                     <div id="toggle-other-interests">
-                        <label for="other-interests-explanation"><em>*</em> Please explain other areas of interest:</label>
+                        <label for="other-interests-explanation"><em>*</em> Please explain other areas of
+                            interest:</label>
                         <div class="input-group">
-                            <textarea class="form-control" id="other-interests-explanation" name="interests-explain" placeholder=""></textarea>
+                            <textarea class="form-control" id="other-interests-explanation" name="interests-explain"
+                                      placeholder=""></textarea>
                         </div> <!-- area where the user explains their other interests if chosen other -->
-                    </div><br> <!-- end of div that holds the toggle for if user needs to explain their interests -->
+                    </div>
+                    <br> <!-- end of div that holds the toggle for if user needs to explain their interests -->
                 </div> <!-- end of row that holds the events and activities check boxes -->
                 <div class="col-md-6">
                     <label class="col-form-label">My availability is...</label>
                     <span class="hide-me" id="i-can-help">Please select when you can help:</span>
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" value="weekend-availability" name="availability[]" id="weekend-availability">
+                        <input class="custom-control-input" type="checkbox" value="weekend-availability"
+                               name="availability[]" id="weekend-availability">
                         <label class="custom-control-label" for="weekend-availability">Weekends</label>
                     </div> <!-- end of div that has the weekend check box -->
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" value="summer-camp" name="availability[]" id="summer-camp">
-                        <label class="custom-control-label" for="summer-camp" >Summer Camp (1 week)</label>
-                    </div><br> <!-- end of div that has the summer camp check box -->
+                        <input class="custom-control-input" type="checkbox" value="summer-camp" name="availability[]"
+                               id="summer-camp">
+                        <label class="custom-control-label" for="summer-camp">Summer Camp (1 week)</label>
+                    </div>
+                    <br> <!-- end of div that has the summer camp check box -->
                     <div id="toggle-weekend-availability">
-                        <label for="weekend-availability-explanation"><em>*</em> Please list weekend dates/times that you are available:</label>
+                        <label for="weekend-availability-explanation"><em>*</em> Please list weekend dates/times that
+                            you are available:</label>
                         <div class="input-group">
-                            <textarea class="form-control" id="weekend-availability-explanation" name="availability-explain" placeholder=""></textarea>
+                            <textarea class="form-control" id="weekend-availability-explanation"
+                                      name="availability-explain" placeholder=""></textarea>
                         </div> <!-- area where the user explains their other interests if chosen other -->
                     </div> <!-- end of div that holds the toggle for if user needs to explain their interests -->
                 </div>
@@ -197,23 +204,29 @@
             <span id="err-motivation" class="d-none">please describe your motivation for working with us</span><br>
             <label for="volunteer-experience">Describe your previous volunteer experience:</label>
             <div class="input-group">
-                <textarea class="form-control" id="volunteer-experience" name="volunteer-experience" placeholder=""></textarea>
-            </div><br> <!-- end of text area for if they have previous volunteer experience -->
+                <textarea class="form-control" id="volunteer-experience" name="volunteer-experience"
+                          placeholder=""></textarea>
+            </div>
+            <br> <!-- end of text area for if they have previous volunteer experience -->
             <label>Do you have previous work experience with youth organizations?</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-yes" value="yes">
+                <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-yes"
+                       value="yes">
                 <label class="form-check-label" for="youth-experience-yes">Yes</label>
             </div> <!-- end of div for checkbox of if they have experience with youth "yes" -->
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-no" value="no">
+                <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-no"
+                       value="no">
                 <label class="form-check-label" for="youth-experience-no">No</label>
             </div> <!-- end of div for checkbox of if they have experience with youth "no"  -->
             <div id="toggle-please-explain"><br>
                 <label for="youth-experience-explanation">Please elaborate on your work with youth:</label>
                 <div class="input-group">
-                    <textarea class="form-control" id="youth-experience-explanation" name="youth-experience-explanation" placeholder=""></textarea>
+                    <textarea class="form-control" id="youth-experience-explanation" name="youth-experience-explanation"
+                              placeholder=""></textarea>
                 </div> <!-- area where the user explains the volunteer experience that they have with youth -->
-            </div><br> <!-- end of div that holds the toggle for if user needs to explain their youth volunteer experience -->
+            </div>
+            <br> <!-- end of div that holds the toggle for if user needs to explain their youth volunteer experience -->
             <label for="other-experience">Any other skills or qualifications you would like to list:</label>
             <div class="input-group">
                 <textarea class="form-control" id="other-experience" name="other-experience" placeholder=""></textarea>
@@ -232,20 +245,24 @@
                     </div>
                     <div class="col-md-6">
                         <label for="ref-relationship-1" class="col-form-label char-ref-bg1">Relationship</label>
-                        <input type="text" class="form-control" id="ref-relationship-1" name="reference-relationship-1" placeholder="">
+                        <input type="text" class="form-control" id="ref-relationship-1" name="reference-relationship-1"
+                               placeholder="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <label for="ref-email-1" class="col-form-label char-ref-bg1">Email</label>
-                        <input type="text" class="form-control" id="ref-email-1" name="reference-email-1" placeholder="">
+                        <input type="text" class="form-control" id="ref-email-1" name="reference-email-1"
+                               placeholder="">
                     </div>
                     <div class="col-md-6">
                         <label for="ref-phone-1" class="col-form-label char-ref-bg1">Phone</label>
-                        <input type="text" class="form-control" id="ref-phone-1" name="reference-phone-1" placeholder="">
+                        <input type="text" class="form-control" id="ref-phone-1" name="reference-phone-1"
+                               placeholder="">
                     </div>
                 </div>
-            </div><br> <!--  end of a single char reference-->
+            </div>
+            <br> <!--  end of a single char reference-->
             <h4 class="ref-title"><em>*</em> Reference 2</h4>
             <div id="container-for-ref-2">
                 <div class="row">
@@ -255,20 +272,24 @@
                     </div>
                     <div class="col-md-6">
                         <label for="ref-relationship-2" class="col-form-label char-ref-bg2">Relationship</label>
-                        <input type="text" class="form-control" id="ref-relationship-2" name="reference-relationship-2" placeholder="">
+                        <input type="text" class="form-control" id="ref-relationship-2" name="reference-relationship-2"
+                               placeholder="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <label for="ref-email-2" class="col-form-label char-ref-bg2">Email</label>
-                        <input type="text" class="form-control" id="ref-email-2" name="reference-email-2" placeholder="">
+                        <input type="text" class="form-control" id="ref-email-2" name="reference-email-2"
+                               placeholder="">
                     </div>
                     <div class="col-md-6">
                         <label for="ref-phone-2" class="col-form-label char-ref-bg2">Phone</label>
-                        <input type="text" class="form-control" id="ref-phone-2" name="reference-phone-2" placeholder="">
+                        <input type="text" class="form-control" id="ref-phone-2" name="reference-phone-2"
+                               placeholder="">
                     </div>
                 </div>
-            </div><br> <!--  end of a single char reference -->
+            </div>
+            <br> <!--  end of a single char reference -->
             <h4 class="ref-title"><em>*</em> Reference 3</h4>
             <div id="container-for-ref-3">
                 <div class="row">
@@ -278,17 +299,20 @@
                     </div>
                     <div class="col-md-6">
                         <label for="ref-relationship-3" class="col-form-label char-ref-bg3">Relationship</label>
-                        <input type="text" class="form-control" id="ref-relationship-3" name="reference-relationship-3" placeholder="">
+                        <input type="text" class="form-control" id="ref-relationship-3" name="reference-relationship-3"
+                               placeholder="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <label for="ref-email-3" class="col-form-label char-ref-bg3">Email</label>
-                        <input type="text" class="form-control" id="ref-email-3" name="reference-email-3" placeholder="">
+                        <input type="text" class="form-control" id="ref-email-3" name="reference-email-3"
+                               placeholder="">
                     </div>
                     <div class="col-md-6">
                         <label for="ref-phone-3" class="col-form-label char-ref-bg3">Phone</label>
-                        <input type="text" class="form-control" id="ref-phone-3" name="reference-phone-3" placeholder="">
+                        <input type="text" class="form-control" id="ref-phone-3" name="reference-phone-3"
+                               placeholder="">
                     </div>
                 </div>
             </div> <!--  end of a single char reference-->
@@ -299,7 +323,8 @@
             </div>
             <label>Would you like to be added to our mailing list?</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-yes" value="yes" checked>
+                <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-yes" value="yes"
+                       checked>
                 <label class="form-check-label" for="mailing-list-yes">Yes</label>
             </div> <!-- end of div for "yes" to mailing list check -->
             <div class="form-check">
@@ -313,15 +338,20 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <label class="col-form-label" id="submit-policy">By submitting this application, I affirm that the facts set forth in it are true and complete. I understand that if I am accepted as a volunteer, any false statements, omissions, or other misrepresentations made by me on this application may result in my immediate dismissal.</label>
+                    <label class="col-form-label" id="submit-policy">By submitting this application, I affirm that the
+                        facts set forth in it are true and complete. I understand that if I am accepted as a volunteer,
+                        any false statements, omissions, or other misrepresentations made by me on this application may
+                        result in my immediate dismissal.</label>
                 </div>
             </div> <!-- end of row that contains our signature explanation -->
             <div class="row">
                 <div class="col-12">
                     <!--form-check form-check-inline  for div and for input form-check-input  and for label  col-form-label -->
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" id="information-is-true" name="terms-of-service" value="true">
-                        <label class="custom-control-label" for="information-is-true">I agree to the Terms and Conditions</label>
+                        <input class="custom-control-input" type="checkbox" id="information-is-true"
+                               name="terms-of-service" value="true">
+                        <label class="custom-control-label" for="information-is-true">I agree to the Terms and
+                            Conditions</label>
                     </div>
                 </div>
             </div> <!-- end of row that has the checkbox for agreeing to terms and conditions  -->
@@ -337,13 +367,20 @@
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="scripts/validation_functions.js"></script>
-<script src="scripts/volunteer_functions.js"></script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<script src="scripts/validation_functions.js"></script>
+<script src="scripts/volunteer_functions.js"></script>
 <!-- jQuery for input validation -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
