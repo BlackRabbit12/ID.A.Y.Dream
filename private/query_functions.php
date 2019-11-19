@@ -175,7 +175,7 @@ function dreamerInsert($dreamer_user_id, $dreamer_college, $dreamer_dob, $dreame
     //if all validation is good, add dreamer to database
     if ($isValid) {
         //insert into database, (dreamer_id, dreamer info, dreamer's user id)
-        $sql = "INSERT INTO Dreamer VALUES(default, '$dreamer_college', '$dreamer_dob', '$dreamer_graduation', '$dreamer_gender', '$dreamer_ethnicity', '$dreamer_snack', '$dreamer_aspirations', 0, $dreamer_user_id);";
+        $sql = "INSERT INTO Dreamer VALUES(default, '$dreamer_college', '$dreamer_dob', '$dreamer_graduation', '$dreamer_gender', '$dreamer_ethnicity', '$dreamer_snack', '$dreamer_aspirations', 1, $dreamer_user_id);";
 
         //true-false if the query works
         $result = mysqli_query($cnxn, $sql);
