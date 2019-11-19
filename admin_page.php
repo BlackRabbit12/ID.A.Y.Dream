@@ -117,6 +117,63 @@
             border-radius: 50%;
         }
 
+
+    /*    FOR THE THREE TOGGLE SWITCH -- */
+        body{
+            margin:0;
+            padding:0;
+        }
+        .parent{
+            /*position:fixed;*/
+            /*width:100%;*/
+            /*height:100%;*/
+            display:inline-flex;
+            background:#fff;
+        }
+
+
+        .switch_3_ways{
+            margin:auto;
+            font-size:1em;
+            height:2em;
+            line-height:2em;
+            border-radius:0.3em;
+            background:#ccc;
+            position:relative;
+            display:block;
+            float:left;
+        }
+
+        .switch.pending,
+        .switch.active,
+        .switch.inactive{
+            cursor:pointer;
+            position:relative;
+            display:block;
+            float:left;
+            -webkit-transition: 300ms ease-out;
+            -moz-transition: 300ms ease-out;
+            transition: 300ms ease-out;
+            padding: 0 1em;
+        }
+
+        .selector{
+            text-align:center;
+            position:absolute;
+            width:0;
+            box-sizing:border-box;
+            -webkit-transition: 300ms ease-out;
+            -moz-transition: 300ms ease-out;
+            transition: 300ms ease-out;
+            border-radius:0.3em;
+            color:white;
+            -moz-box-shadow: 0px 2px 13px 0px #9b9b9b;
+            -webkit-box-shadow: 0px 2px 13px 0px #9b9b9b;
+            -o-box-shadow: 0px 2px 13px 0px #9b9b9b;
+            box-shadow: 0px 2px 13px 0px #9b9b9b;
+            filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=180, Strength=13);
+        }
+
     </style>
 </head>
 <body>
@@ -147,7 +204,25 @@
             <input type="checkbox" id="toggle-inactive" checked>
             <span class="slider"></span>
         </label><br><br>
-        <?php } ?>
+        <?php }
+            // this is where we need the three toggle switch
+            // we will allow the admin to switch between inactive, active, and pending
+            // for her volunteer users and will populate the table as such
+            else if($_GET['data_select'] == "volunteers") {
+            ?>
+                <div class="parent">
+                    <div class="switch_3_ways">
+                        <div id="pending" class="switch pending" onclick="change_status('pending')">Pending</div>
+                        <div id="active" class="switch active" onclick="change_status('active')">Active</div>
+                        <div id="inactive" class="switch inactive" onclick="change_status('inactive')">Inactive</div>
+                        <div id="selector" class="selector"></div>
+                    </div>
+
+                </div> <!-- displays the three toggle switch-->
+
+             <?
+            }
+            ?>
         <button id="email-button" type="button" class="btn btn-primary btn-lg">Email</button>
     </div>
     <?php
@@ -247,6 +322,8 @@
 <script>
 
     $(document).ready(function () {
+        // call function to set the three switch toggle to "active"
+        change_status("active");
         //toggle switch for 'active'/'inactive' members
         $("#toggle-inactive").on("change", function () {
             //overwrites 'active' members on table and displays 'inactive'
@@ -386,6 +463,38 @@
             dataSelect = 'volunteers';
         }
         return dataSelect;
+    }
+
+    // FOR THE THREE TOGGLE SWITCH !!! -- should be moved later
+    function change_status(status){
+        let pending = document.getElementById("pending");
+
+        let active = document.getElementById("active");
+
+        let inactive = document.getElementById("inactive");
+
+        let selector = document.getElementById("selector");
+
+        if(status === "pending"){
+            selector.style.left = 0;
+            selector.style.width = pending.clientWidth + "px";
+            selector.style.backgroundColor = "#777777";
+            selector.innerHTML = "Pending";
+        }
+
+        else if(status === "active"){
+            selector.style.left = pending.clientWidth + "px";
+            selector.style.width = active.clientWidth + "px";
+            selector.innerHTML = "Active";
+            selector.style.backgroundColor = "#418d92";
+        }
+
+        else{
+            selector.style.left = pending.clientWidth + active.clientWidth + 1 + "px";
+            selector.style.width = inactive.clientWidth + "px";
+            selector.innerHTML = "Inactive";
+            selector.style.backgroundColor = "#4d7ea9";
+        }
     }
 </script>
 </body>
