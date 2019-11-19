@@ -2,6 +2,7 @@
 
 //if the admin_page.php <select> <option> is selected (not 'none')
 if (isset($_POST['dataSelect'])) {
+
     //if user is a dreamer
     if ($_POST['dataSelect'] == 'dreamers') {
         //user_id
@@ -61,7 +62,7 @@ if (isset($_POST['dataSelect'])) {
             echo json_encode($data);
         }
     } //end volunteers
-} //end isset
+} //end isset($_POST['dataSelect'])
 
 
 //helper functions
@@ -89,7 +90,7 @@ function createAssociativeArray($result, $data)
         foreach ($row as $value) {
             if ($row_num > 0) {
                 //$log[] = $fieldNames_array[$i];
-                $data[$fieldNames_array[$i] . $row_num]  = $value;
+                $data[$fieldNames_array[$i] . $row_num] = $value;
             } else {
                 $data[$fieldNames_array[$i]] = $value;
             }
@@ -98,17 +99,33 @@ function createAssociativeArray($result, $data)
         $i = 0;
         $row_num++;
     }
+    //return object
+    return $data;
+}//end createAssociativeArray()
 
-    // --- debugging log for php during ajax calls ---
+// Selects and returns output string containing table with inactive users
+if (isset($_POST['queryType'])) {
+    if ($_POST['queryType'] == 'inactive_query') {
+        global $cnxn;
+
+        $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
+            INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
+            WHERE dreamer_active = 0;";
+        $sql_ids = "SELECT user_id FROM Dreamer;";
+
+        $result = mysqli_query($cnxn, $sql);
+        $tableHeadingNames = $result->fetch_fields();
+        $result_ids = mysqli_query($cnxn, $sql_ids);
+
+        echo buildTable($result, $tableHeadingNames, $result_ids);
+    }
+} //end isset($_POST['queryType'])
+
+// --- debugging log for php during ajax calls ---
 //    $myfile = fopen("log.txt", "w") or die("Unable to open file!");
 //    $text = "";
 //    foreach($log as $item)
 //        $text .= "$item\n";
 //    fwrite($myfile, $text);
 //    fclose($myfile);
-    // --- end debug ---
-
-
-    //return object
-    return $data;
-}//end createAssociativeArray()
+// --- end debug ---
