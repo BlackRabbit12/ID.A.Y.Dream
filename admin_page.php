@@ -146,6 +146,7 @@
             <input type="checkbox" id="toggle-inactive" checked>
             <span class="slider"></span>
         </label><br><br>
+        <button id="email-button" type="button" class="btn btn-primary btn-lg">Email</button>
     </div>
     <?php
     //if it's the dreamer table, run $sql for member row + run $sql_ids for user_ids Foreign key
@@ -181,7 +182,7 @@
     ?>
 </div> <!-- entire container -->
 
-<!-- Modal -->
+<!-- Modal for individual users and their data -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -201,9 +202,37 @@
                 <button type="button" id="save" class="pull-left bg-danger text-white btn btn-default">Save</button>
             </div>
         </div>
-
     </div>
 </div>
+
+<!-- Modal for email functionality -->
+<div id="emailModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="email-modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Subject</span>
+                    </div>
+                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div> <!-- end of subject line code -->
+                <textarea rows="10" cols="50"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
@@ -239,12 +268,8 @@
             let lastName = $("#" + id).children("td[data-field-name = user_last]").text();
 
             //get the selected table from "select" dropdown
-            let dataSelect;
-            if (document.getElementById('dreamer-option').selected) {
-                dataSelect = 'dreamers';
-            } else if (document.getElementById('volunteer-option').selected) {
-                dataSelect = 'volunteers';
-            }
+            let dataSelect = tableSelected();
+
 
             //to be passed into .ajax
             $("#hidden-id").val(id);
@@ -265,6 +290,17 @@
                 }
             }); //.ajax
         }); //.on
+
+
+
+        // toggle the modal for emailing functionality
+        $("#email-button").on("click", function() {
+            let str = tableSelected();
+            str = str[0].toUpperCase() + str.substr(1, str.length);
+            $("#email-modal-title").html("Email Active "+str);
+            $("#emailModal").modal("toggle");
+        });
+
     }); //.ready
 
     //user_id for row we're working on
@@ -328,6 +364,17 @@
             return "active";
         }
         return "inactive";
+    }
+
+    function tableSelected() {
+        // get the selected table from "select" dropdown
+        let dataSelect;
+        if (document.getElementById('dreamer-option').selected) {
+            dataSelect = 'dreamers';
+        } else if (document.getElementById('volunteer-option').selected) {
+            dataSelect = 'volunteers';
+        }
+        return dataSelect;
     }
 </script>
 </body>
