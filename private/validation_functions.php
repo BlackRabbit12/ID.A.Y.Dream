@@ -252,81 +252,61 @@ function validateVolunteer($volunteer)
     $isValid = true;
 
     //volunteer address
-    if (requiredInputIsValid($volunteer["volunteer_street_address"])) {
-        $volunteer_street_address = mysqli_real_escape_string($db, $volunteer_street_address);
-    } else {
+    if (!requiredInputIsValid($volunteer["volunteer_street_address"])) {
         $isValid = false;
         $error[] = 'Address';
     }
 
     //volunteer zipcode
-    if (zipIsValid($volunteer["volunteer_zip"])) {
-        $volunteer_zip = mysqli_real_escape_string($db, $volunteer_zip);
-    } else {
+    if (!zipIsValid($volunteer["volunteer_zip"])) {
         $isValid = false;
         $error[] = 'Zip';
     }
 
     //volunteer city
-    if (requiredInputIsValid($volunteer["volunteer_city"])) {
-        $volunteer_city = mysqli_real_escape_string($db, $volunteer_city);
-    } else {
+    if (!requiredInputIsValid($volunteer["volunteer_city"])) {
         $isValid = false;
         $error[] = 'City';
     }
 
     //volunteer state
-    if (inputIsValid($volunteer["volunteer_state"])) {
-        $volunteer_state = mysqli_real_escape_string($db, $volunteer_state);
-    } else {
+    if (!inputIsValid($volunteer["volunteer_state"])) {
         $isValid = false;
         $error[] = 'State';
     }
 
     //volunteer t-shirt size
-    if (inputIsValid($volunteer["volunteer_tshirt_size"])) {
-        $volunteer_tshirt_size = mysqli_real_escape_string($db, $volunteer_tshirt_size);
-    } else {
+    if (!inputIsValid($volunteer["volunteer_tshirt_size"])) {
         $isValid = false;
         $error[] = 'T-shirt';
     }
 
     //volunteer about us
-    if (textareaIsValid($volunteer["volunteer_about_us"])) {
-        $volunteer_about_us = mysqli_real_escape_string($db, $volunteer_about_us);
-    } else {
+    if (!textareaIsValid($volunteer["volunteer_about_us"])) {
         $isValid = false;
         $error[] = 'About Us';
     }
 
     //volunteer motivations to work with ID.A.Y.Dream
-    if (requiredTextareaIsValid($volunteer["volunteer_motivated"])) {
-        $volunteer_motivated = mysqli_real_escape_string($db, $volunteer_motivated);
-    } else {
+    if (!requiredTextareaIsValid($volunteer["volunteer_motivated"])) {
         $isValid = false;
         $error[] = 'Motivated';
     }
 
     //volunteer previous volunteer experience
-    if (textareaIsValid($volunteer["volunteer_experience"])) {
-        $volunteer_volunteer_experience = mysqli_real_escape_string($db, $volunteer_volunteer_experience);
-    } else {
+    if (!textareaIsValid($volunteer["volunteer_experience"])) {
         $isValid = false;
         $error[] = 'Volunteer Experience';
     }
 
     //volunteer previous volunteer experience with youth organizations
-    if (textareaIsValid($volunteer["volunteer_youth_experience"])) {
-        $volunteer_dreamer_experience = mysqli_real_escape_string($db, $volunteer_dreamer_experience);
-    } else {
+    if (!textareaIsValid($volunteer["volunteer_youth_experience"])) {
         $isValid = false;
         $error[] = 'Dreamer Experience';
     }
 
     //volunteer's applicable skills
-    if (textareaIsValid($volunteer["volunteer_skills"])) {
-        $volunteer_skills = mysqli_real_escape_string($db, $volunteer_skills);
-    } else {
+    if (!textareaIsValid($volunteer["volunteer_skills"])) {
         $isValid = false;
         $error[] = 'Skills';
     }
@@ -338,5 +318,5 @@ function validateVolunteer($volunteer)
         $volunteer_emailing = 0;
     }
 
-    return isValid;
+    return $isValid;
 }

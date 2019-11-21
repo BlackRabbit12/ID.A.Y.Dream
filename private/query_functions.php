@@ -51,7 +51,6 @@ function insertDreamer($user, $dreamer)
         $sql = "INSERT INTO Dreamer (dreamer_id, user_id) VALUES (default, $user_id);";
         $dreamer_result = mysqli_query($db, $sql);
         $dreamer_id = $db->insert_id;
-        echo "test = $dreamer_id";
 
         if ($user_result && $dreamer_result) {
             // calls update data on user and dreamer associative arrays
@@ -75,28 +74,50 @@ function insertDreamer($user, $dreamer)
  * Inserts a User/Volunteer into the database.
  * @param $user [] associative array of user data
  * @param $volunteer [] associative array of volunteer data
+ * @param $events [] array of names that represent events
+ * @param $references [] array of associative arrays containing reference information
  * @return bool for success or failure of insert
  */
-function volunteerInsert($user, $volunteer)
+function volunteerInsert($user, $volunteer, $events, $references)
 {
     //global declaration
     global $db;
-
     global $error;
-
     //if validation is good, add volunteer to database
-    if ($isValid) {
-        //insert into database, (volunteer id, volunteer verified, volunteer info, volunteer active, volunteer user id)
-        $sql = "INSERT INTO Volunteer VALUES(default, 0, '$volunteer_street_address', $volunteer_zip, '$volunteer_city', 
-                '$volunteer_state', '$volunteer_tshirt_size', '$volunteer_about_us', '$volunteer_motivated', 
-                '$volunteer_volunteer_experience', '$volunteer_dreamer_experience', '$volunteer_skills', 
-                $volunteer_emailing, 0, $volunteer_user_id)";
+    if (validateUser($user) && validateVolunteer($volunteer)) {
+        //insert new user_id into the database
+        $sql = "INSERT INTO User (user_id, user_date_joined) VALUES (default, now());";
+        $user_result = mysqli_query($db, $sql);
+        $user_id = $db->insert_id;
 
-        //true-false if the query works
-        $result = mysqli_query($db, $sql);
+        //insert new dreamer_id into the database with new user_id
+        $sql = "INSERT INTO Volunteer (volunteer_id, user_id) VALUES (default, $user_id);";
+        $volunteer_result = mysqli_query($db, $sql);
+        $volunteer_id = $db->insert_id;
 
-        //return to 'volunteer_success_splash.php' the volunteer_id number for the created row
-        return $db->insert_id;
+        if ($user_result && $volunteer_result) {
+            // calls update data on user and volunteer associative arrays
+            updateData("User", "user_id", $user, $user_id);
+            updateData("Volunteer", "volunteer_id", $volunteer, $volunteer_id);
+
+            // TODO add events!
+
+            // calls insert function for references
+            foreach($references as $value) {
+                $sql = "INSERT INTO Contact (contact_id, user_id) VALUES (default, $user_id);";
+                $contact_result = mysqli_query($db, $sql);
+                $contact_id = $db->insert_id;
+
+                if ($contact_result) {
+                    updateData("Contact", "contact_id", $value, $contact_id);
+                }
+            }
+
+        } else {
+            echo "Adding dreamer failed.";
+            return false;
+        }
+        return true;
     } //if validation is bad, echo out which fields contain errors
     else {
         foreach ($error as $value) {
