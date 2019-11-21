@@ -224,7 +224,7 @@ function validateDreamer($dreamer)
     }
 
     //dreamer ethnicity
-    if (!requiredInputIsValid($dreamer["ethnicity"])) {
+    if (!requiredInputIsValid($dreamer["dreamer_ethnicity"])) {
         $isValid = false;
         $error[] = 'Ethnicity';
     }

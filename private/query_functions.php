@@ -194,24 +194,6 @@ function referenceInsert($reference_phone, $reference_email, $reference_relation
     }
 } //end referenceInsert()
 
-//volunteer_id reference_id, pairs them in joining table
-/**
- * Insert a Volunteer-Reference link.
- * @param $volunteer_id Volunteer primary key.
- * @param $reference_id Reference primary key.
- */
-function referenceInsertVolunteer($volunteer_id, $reference_id)
-{
-    //global declaration
-    global $db;
-
-    //insert into database, (volunteer id, reference id)
-    $sql = "INSERT INTO Volunteer_Reference VALUES($volunteer_id, $reference_id)";
-
-    //true-false if the query works
-    $result = mysqli_query($db, $sql);
-} //end referenceInsertVolunteer()
-
 /**
  * Insert a Volunteer-Interest link.
  * @param $volunteer_id Volunteer primary key.

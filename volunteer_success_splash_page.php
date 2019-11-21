@@ -86,8 +86,8 @@ $referencesArray[] = array(
     "contact_type" => "reference"
 );
 
-//ensures nothing submits into database if volunteer does not agree to terms of service TODO this
-if ($_POST['terms-of-service'] == "no") {
+//ensures nothing submits into database if volunteer does not agree to terms of service
+if (!isset($_POST['terms-of-service'])) {
     echo "You must accept the terms of service to proceed.";
 } else {
 
@@ -113,33 +113,8 @@ if ($success) {
     $email_body = "Volunteer Information:\r\n\r\n";
     $email_subject = "ID.A.Y.Dream Volunteer Sign-Up Information";
 
-    // iterates over items posted, displays each as html on page and builds email string
-    foreach ($_POST as $key => $value) {
-        // When the value is an array where each item in the array must be displayed
-        if (is_array($value)) {
-            $key_text = htmlspecialchars($key);
-            $key_text = str_replace("-", " ", $key_text);
-            $key_text = ucfirst($key_text);
-            echo "<p><strong>$key_text:</strong></p>";
-            echo "<ul>";
-            // for each loop displays the events and removes the FK added at the beginning of the value
-            foreach ($value as $child_key => $child_value) {
-                $child_value = substr($child_value, 1);
-                $value_text = htmlspecialchars($child_value);
-                $email_body .= "$child_value \r\n";
-                echo "<li>$child_value</li>";
-            }
-            echo "</ul>";
-            // As long as the value isn't empty, display results and add to email
-        } else if ($value != "") {
-            $key_text = htmlspecialchars($key);
-            $key_text = ucfirst($key_text);
-            $value_text = htmlspecialchars($value);
-            $key_text = str_replace("-", " ", $key_text);
-            $email_body .= "$key_text: $value_text \r\n";
-            echo "<p><strong>$key_text:</strong> $value_text</p>";
-        }
-    }
+    echo createSummary($email_body)[0];
+    $email_body .= createSummary($email_body)[1];
 
     // sending email to client
     $sendTo = "Sjamieson2@mail.greenriver.edu";

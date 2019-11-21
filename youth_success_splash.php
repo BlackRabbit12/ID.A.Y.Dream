@@ -49,7 +49,7 @@ $user["user_phone"] = formatPhone($_POST["phone"]);
 
 // create the dreamer associative array from POST data
 $dreamer["dreamer_college"] = $_POST["college-interest"];
-$dreamer["dreamer_date_of_birth"] = $_POST["dob"];
+$dreamer["dreamer_date_of_birth"] = formatDOB($_POST["dob"]);
 $dreamer["dreamer_graduation_date"] = $_POST["graduation-year"];
 $dreamer["dreamer_gender"] = $_POST["gender"];
 $dreamer["dreamer_ethnicity"] = $_POST['ethnicity'];
@@ -83,33 +83,8 @@ if ($success) {
         $email_body = "Youth Information:\r\n\r\n";
         $email_subject = "ID.A.Y.Dream Youth Sign-Up Information";
 
-        // iterates over items posted, displays each as html on page and builds email string
-        foreach ($dreamer as $key => $value) {
-            // When the value is an array where each item in the array must be displayed
-            if (is_array($value)) {
-                $key_text = htmlspecialchars($key);
-                $key_text = str_replace("-", " ", $key_text);
-                $key_text = ucfirst($key_text);
-                echo "<p><strong>$key_text:</strong></p>";
-                echo "<ul>";
-                // for each loop displays the events and removes the FK added at the beginning of the value
-                foreach ($value as $child_key => $child_value) {
-                    $child_value = substr($child_value, 1);
-                    $value_text = htmlspecialchars($child_value);
-                    $email_body .= "$child_value \r\n";
-                    echo "<li>$child_value</li>";
-                }
-                echo "</ul>";
-                // As long as the value isn't empty, display results and add to email
-            } else if ($value != "") {
-                $key_text = htmlspecialchars($key);
-                $key_text = ucfirst($key_text);
-                $value_text = htmlspecialchars($value);
-                $key_text = str_replace("-", " ", $key_text);
-                $email_body .= "$key_text: $value_text \r\n";
-                echo "<p><strong>$key_text:</strong> $value_text</p>";
-            }
-        }
+        echo createSummary($email_body)[0];
+        $email_body .= createSummary($email_body)[1];
 
         // sending email to client
         $sendTo = "Sjamieson2@mail.greenriver.edu";

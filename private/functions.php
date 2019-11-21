@@ -94,3 +94,34 @@ function formatActive($val)
     return "inactive";
 }
 
+function createSummary($email_body) {
+    $summary_content = "";
+    // iterates over items posted, displays each as html on page and builds email string
+    foreach ($_POST as $key => $value) {
+        // When the value is an array where each item in the array must be displayed
+        if (is_array($value)) {
+            $key_text = htmlspecialchars($key);
+            $key_text = str_replace("-", " ", $key_text);
+            $key_text = ucfirst($key_text);
+            $summary_content .= "<p><strong>$key_text:</strong></p>";
+            $summary_content .= "<ul>";
+            // for each loop displays the events and removes the FK added at the beginning of the value
+            foreach ($value as $child_key => $child_value) {
+                $child_value = substr($child_value, 1);
+                $value_text = htmlspecialchars($child_value);
+                $email_body .= "$value_text \r\n";
+                $summary_content .= "<li>$value_text</li>";
+            }
+            $summary_content .= "</ul>";
+            // As long as the value isn't empty, display results and add to email
+        } else if ($value != "") {
+            $key_text = htmlspecialchars($key);
+            $key_text = ucfirst($key_text);
+            $value_text = htmlspecialchars($value);
+            $key_text = str_replace("-", " ", $key_text);
+            $email_body .= "$key_text: $value_text \r\n";
+            $summary_content .= "<p><strong>$key_text:</strong> $value_text</p>";
+        }
+    }
+    return [$summary_content, $email_body];
+}
