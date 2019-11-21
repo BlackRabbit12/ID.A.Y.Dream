@@ -241,11 +241,11 @@
     //if on the dreamer or volunteer table then continue:
     if (($_GET["data_select"] == "dreamers") || $_GET["data_select"] == "volunteers") {
         //storing return data and ensuring query executes correctly
-        $result = mysqli_query($cnxn, $sql);
+        $result = mysqli_query($db, $sql);
         //storing column names
         $tableHeadingNames = $result->fetch_fields();
         //storing return data and ensuring query executes correctly
-        $result_ids = mysqli_query($cnxn, $sql_ids);
+        $result_ids = mysqli_query($db, $sql_ids);
         ?>
 
         <!--start the building of the table-->

@@ -81,6 +81,8 @@ $refName3 = $_POST['reference-name-3'];
 
 <?php
 
+//ensures nothing submits into database if volunteer does not agree to terms of service TODO this
+
 //does validation for user variables, gets back the user id row
 $userId = userInsert($firstName, $lastName, $email, $phone);
 

@@ -9,7 +9,7 @@ if (isset($_POST['dataSelect'])) {
         $id = $_POST['id'];
 
         //Get all of data columns from User table + Dreamer table for this row
-        $result = mysqli_query($cnxn, "SELECT * FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id WHERE User.user_id = '$id';");
+        $result = mysqli_query($db, "SELECT * FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id WHERE User.user_id = '$id';");
 
         //create associative arrays
         $data = [];
@@ -29,7 +29,7 @@ if (isset($_POST['dataSelect'])) {
         // here we need to actually get the volunteer id that we want to use in the second query
         // before we were just inserting the same user id so it did not grab relevant data
         $tempSQL = "SELECT volunteer_id FROM Volunteer INNER JOIN User ON Volunteer.user_id = User.user_id WHERE Volunteer.user_id = '$id'";
-        $result = mysqli_query($cnxn, $tempSQL);
+        $result = mysqli_query($db, $tempSQL);
         $volunteerId = "";
         if ($result) {
             // gets the accurate volunteer_id based on the $POST user_id
@@ -46,16 +46,16 @@ if (isset($_POST['dataSelect'])) {
         // ALL data that we add to our associative array
         $data = [];
 
-        if (mysqli_multi_query($cnxn, $sql)) {
+        if (mysqli_multi_query($db, $sql)) {
             do {
                 // get the result for each query to perform steps
-                if ($result = mysqli_store_result($cnxn)) {
+                if ($result = mysqli_store_result($db)) {
                     // keep adding to data with our call to this method
                     $data = createAssociativeArray($result, $data);
 
                     mysqli_free_result($result);
                 }
-            } while (mysqli_next_result($cnxn));
+            } while (mysqli_next_result($db));
         }
         //if $results is a good call, send associative array back to admin modal
         if ($result) {
@@ -106,30 +106,30 @@ function createAssociativeArray($result, $data)
 // Selects and returns output string containing table with inactive users
 if (isset($_POST['queryType'])) {
     if ($_POST['queryType'] == 'inactive_query') {
-        global $cnxn;
+        global $db;
 
         $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
             INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
             WHERE dreamer_active = 0;";
         $sql_ids = "SELECT user_id FROM Dreamer;";
 
-        $result = mysqli_query($cnxn, $sql);
+        $result = mysqli_query($db, $sql);
         $tableHeadingNames = $result->fetch_fields();
-        $result_ids = mysqli_query($cnxn, $sql_ids);
+        $result_ids = mysqli_query($db, $sql_ids);
 
         echo buildTable($result, $tableHeadingNames, $result_ids);
     } else if ($_POST['queryType'] == 'active_query') {
         // Selects and returns output string containing table with inactive users
-        global $cnxn;
+        global $db;
 
         $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
                 INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
                 WHERE dreamer_active = 1;";
         $sql_ids = "SELECT user_id FROM Dreamer;";
 
-        $result = mysqli_query($cnxn, $sql);
+        $result = mysqli_query($db, $sql);
         $tableHeadingNames = $result->fetch_fields();
-        $result_ids = mysqli_query($cnxn, $sql_ids);
+        $result_ids = mysqli_query($db, $sql_ids);
 
         echo buildTable($result, $tableHeadingNames, $result_ids);
     }
