@@ -94,6 +94,11 @@ function formatActive($val)
     return "inactive";
 }
 
+/**
+ * Generates a summary of the users information for email and the site
+ * @param $email_body string the starting text for the body of the email
+ * @return array element 0 contains the html summary format, element 2 contains the email summary format
+ */
 function createSummary($email_body) {
     $summary_content = "";
     // iterates over items posted, displays each as html on page and builds email string
@@ -101,13 +106,15 @@ function createSummary($email_body) {
         // When the value is an array where each item in the array must be displayed
         if (is_array($value)) {
             $key_text = htmlspecialchars($key);
+            //formatting keys
             $key_text = str_replace("-", " ", $key_text);
             $key_text = ucfirst($key_text);
+            //
             $summary_content .= "<p><strong>$key_text:</strong></p>";
             $summary_content .= "<ul>";
             // for each loop displays the events and removes the FK added at the beginning of the value
             foreach ($value as $child_key => $child_value) {
-                $child_value = substr($child_value, 1);
+                $child_value = $child_value;
                 $value_text = htmlspecialchars($child_value);
                 $email_body .= "$value_text \r\n";
                 $summary_content .= "<li>$value_text</li>";

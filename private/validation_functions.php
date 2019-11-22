@@ -320,3 +320,38 @@ function validateVolunteer($volunteer)
 
     return $isValid;
 }
+
+function validateReference($reference) {
+    //global declaration
+    global $db;
+    //error message array
+    global $error;
+
+    $isValid = true;
+
+    //Reference phone number
+    if (!phoneIsValid($reference["contact_phone"])) {
+        $isValid = false;
+        $error[] = 'Reference Phone';
+    }
+
+    //Reference email
+    if (!emailIsValid($reference["contact_email"])) {
+        $isValid = false;
+        $error[] = 'Reference Email';
+    }
+
+    //Reference relationship to volunteer
+    if (!requiredInputIsValid($reference["contact_relationship"])) {
+        $isValid = false;
+        $error[] = 'Reference Relationship';
+    }
+
+    //Reference name
+    if (requiredInputIsValid($reference["contact_name"])) {
+        $isValid = false;
+        $error[] = 'Reference Name';
+    }
+
+    return $isValid;
+}

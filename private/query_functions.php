@@ -13,7 +13,7 @@
  * Adds values of data set to table
  * @param $table string The name of the sql table to update
  * @param $table_id string The primary key field of the table to update
- * @param $data [] Associative rray of data to add
+ * @param $data [] Associative array of data to add
  * @param $id int The id of the row we want to add data to
  */
 function updateData($table, $table_id, $data, $id)
@@ -78,11 +78,12 @@ function insertDreamer($user, $dreamer)
  * @param $references [] array of associative arrays containing reference information
  * @return bool for success or failure of insert
  */
-function volunteerInsert($user, $volunteer, $events, $references)
+function volunteerInsert($user, $volunteer, $interests, $references)
 {
     //global declaration
     global $db;
     global $error;
+
     //if validation is good, add volunteer to database
     if (validateUser($user) && validateVolunteer($volunteer)) {
         //insert new user_id into the database
@@ -100,17 +101,24 @@ function volunteerInsert($user, $volunteer, $events, $references)
             updateData("User", "user_id", $user, $user_id);
             updateData("Volunteer", "volunteer_id", $volunteer, $volunteer_id);
 
-            // TODO add events!
-
             // calls insert function for references
             foreach($references as $value) {
-                $sql = "INSERT INTO Contact (contact_id, user_id) VALUES (default, $user_id);";
-                $contact_result = mysqli_query($db, $sql);
-                $contact_id = $db->insert_id;
+                // checks if each reference is valid, executes query if true
+                if (validateReference($value)) {
+                    $sql = "INSERT INTO Contact (contact_id, user_id) VALUES (default, $user_id);";
+                    $contact_result = mysqli_query($db, $sql);
+                    $contact_id = $db->insert_id;
 
-                if ($contact_result) {
-                    updateData("Contact", "contact_id", $value, $contact_id);
+                    if ($contact_result) {
+                        updateData("Contact", "contact_id", $value, $contact_id);
+                    }
                 }
+            }
+
+            // insert interests intro joining table
+            foreach($interests as $value) {
+                $sql = "INSERT INTO Volunteer_Interest (volunteer_id, interest_id) VALUES ($volunteer_id, $value);";
+                mysqli_query($db, $sql);
             }
 
         } else {
@@ -136,45 +144,6 @@ function volunteerInsert($user, $volunteer, $events, $references)
  */
 function referenceInsert($reference_phone, $reference_email, $reference_relationship, $reference_name)
 {
-    //global declaration
-    global $db;
-    //error message array
-    global $error;
-
-    $isValid = true;
-
-    //Reference phone number
-    $reference_phone = preg_replace("/[^0-9]/", "", $reference_phone);
-    if (phoneIsValid($reference_phone)) {
-        $reference_phone = mysqli_real_escape_string($db, $reference_phone);
-    } else {
-        $isValid = false;
-        $error[] = 'Reference Phone';
-    }
-
-    //Reference email
-    if (emailIsValid($reference_email)) {
-        $reference_email = mysqli_real_escape_string($db, $reference_email);
-    } else {
-        $isValid = false;
-        $error[] = 'Reference Email';
-    }
-
-    //Reference relationship to volunteer
-    if (requiredInputIsValid($reference_relationship)) {
-        $reference_relationship = mysqli_real_escape_string($db, $reference_relationship);
-    } else {
-        $isValid = false;
-        $error[] = 'Reference Relationship';
-    }
-
-    //Reference name
-    if (requiredInputIsValid($reference_name)) {
-        $reference_name = mysqli_real_escape_string($db, $reference_name);
-    } else {
-        $isValid = false;
-        $error[] = 'Reference Name';
-    }
 
     //if validation is good, insert the Reference to database
     if ($isValid) {

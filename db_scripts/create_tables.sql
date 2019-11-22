@@ -46,6 +46,8 @@ CREATE TABLE Volunteer
     volunteer_state            VARCHAR(255) NULL,
     volunteer_tshirt_size      VARCHAR(255) NULL,
     volunteer_about_us         TEXT         NULL,
+    volunteer_interest_other   TEXT         NULL,
+    volunteer_availability     TEXT         NULL,
     volunteer_motivated        TEXT         NULL,
     volunteer_experience       TEXT         NULL,
     volunteer_youth_experience TEXT         NULL,

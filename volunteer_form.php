@@ -147,13 +147,13 @@ require_once "private/init.php";
                     $result = findInterests();
                     while ($event = mysqli_fetch_assoc($result)) { ?>
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" name="events[]" value="<?php echo  $event["interest_id"] . $event["interest_name_of_interest"];?>"
+                            <input class="custom-control-input" type="checkbox" name="events[]" value="<?php echo  $event["interest_id"]; ?>"
                                    id="<?php echo $event["interest_name_of_interest"];?>">
-                            <label class="custom-control-label" for="<?php echo $event["interest_name_of_interest"];?>"><?php echo $event["interest_name_of_interest"];?></label>
+                            <label class="custom-control-label" for="<?php echo $event["interest_name_of_interest"]; ?>"><?php echo $event["interest_name_of_interest"];?></label>
                         </div> <!-- end of div that has the mentoring check box -->
                     <?php } ?>
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="Other"
+                        <input class="custom-control-input" type="checkbox" name="events[]" value="0"
                                id="other-interest">
                         <label class="custom-control-label" for="other-interest">Other</label>
                     </div>
