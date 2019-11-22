@@ -74,7 +74,7 @@ function insertDreamer($user, $dreamer)
  * Inserts a User/Volunteer into the database.
  * @param $user [] associative array of user data
  * @param $volunteer [] associative array of volunteer data
- * @param $events [] array of names that represent events
+ * @param $interests [] array of names that represent events
  * @param $references [] array of associative arrays containing reference information
  * @return bool for success or failure of insert
  */
@@ -134,52 +134,6 @@ function volunteerInsert($user, $volunteer, $interests, $references)
     }
 } //end volunteerInsert()
 
-/**
- * Inserts a reference into the database.
- * @param $reference_phone Reference's phone number.
- * @param $reference_email Reference's email address.
- * @param $reference_relationship Reference's relationship to Volunteer.
- * @param $reference_name Reference's name.
- * @return mixed Reference_id for the newly created row.
- */
-function referenceInsert($reference_phone, $reference_email, $reference_relationship, $reference_name)
-{
-
-    //if validation is good, insert the Reference to database
-    if ($isValid) {
-        //insert into database, (reference id, reference info)
-        $sql = "INSERT INTO Reference VALUES(default, $reference_phone, '$reference_email', '$reference_relationship', '$reference_name')";
-
-        //true-false if the query works
-        $result = mysqli_query($db, $sql);
-
-        //return to 'volunteer_success_splash.php' the reference_id number for the created row
-        return $db->insert_id;
-    } //if validation is bad, echo out which fields contain errors
-    else {
-        foreach ($error as $value) {
-            echo $value . ' ';
-        }
-    }
-} //end referenceInsert()
-
-/**
- * Insert a Volunteer-Interest link.
- * @param $volunteer_id Volunteer primary key.
- * @param $interest_id Interest primary key.
- */
-function interestInsertVolunteer($volunteer_id, $interest_id)
-{
-    //global declaration
-    global $db;
-
-    //insert into database, ($volunteer id, $interest id)
-    $sql = "INSERT INTO Volunteer_Interest VALUES($volunteer_id, $interest_id)";
-
-    //true-false if the query works
-    $result = mysqli_query($db, $sql);
-} //end interestInsertVolunteer()
-
 // returns the names of all interests
 function findInterests()
 {
@@ -190,4 +144,22 @@ function findInterests()
     $result = mysqli_query($db, $sql);
 
     return $result;
+}
+
+/**
+ * Finds names of interests given their ids
+ * @param $ids array of interest ids to find names of
+ * @return array of interest names
+ */
+function findInterestNamesByIds($ids) {
+    global $db;
+
+    $results = [];
+
+    foreach($ids as $value) {
+        $sql = "SELECT interest_name_of_interest FROM Interest WHERE interest_id = $value;";
+        $result = mysqli_query($db, $sql);
+        $results[] = mysqli_fetch_assoc($result)["interest_name_of_interest"];
+    }
+    return $results;
 }

@@ -99,19 +99,24 @@ function formatActive($val)
  * @param $email_body string the starting text for the body of the email
  * @return array element 0 contains the html summary format, element 2 contains the email summary format
  */
-function createSummary($email_body) {
+function createSummary($email_body)
+{
     $summary_content = "";
     // iterates over items posted, displays each as html on page and builds email string
     foreach ($_POST as $key => $value) {
         // When the value is an array where each item in the array must be displayed
         if (is_array($value)) {
+            //formatting keys for output
             $key_text = htmlspecialchars($key);
-            //formatting keys
             $key_text = str_replace("-", " ", $key_text);
             $key_text = ucfirst($key_text);
-            //
+            //adding key output to summary
             $summary_content .= "<p><strong>$key_text:</strong></p>";
             $summary_content .= "<ul>";
+            // if the value is the ids of the interests, switch out the ids for the interest names
+            if ($key == "events") {
+                $value = findInterestNamesByIds($value);
+            }
             // for each loop displays the events and removes the FK added at the beginning of the value
             foreach ($value as $child_key => $child_value) {
                 $child_value = $child_value;
@@ -119,13 +124,16 @@ function createSummary($email_body) {
                 $email_body .= "$value_text \r\n";
                 $summary_content .= "<li>$value_text</li>";
             }
+
             $summary_content .= "</ul>";
             // As long as the value isn't empty, display results and add to email
         } else if ($value != "") {
+            // formatting keys and values for output to summary
             $key_text = htmlspecialchars($key);
             $key_text = ucfirst($key_text);
             $value_text = htmlspecialchars($value);
             $key_text = str_replace("-", " ", $key_text);
+            //adding key and value output to summaries
             $email_body .= "$key_text: $value_text \r\n";
             $summary_content .= "<p><strong>$key_text:</strong> $value_text</p>";
         }
