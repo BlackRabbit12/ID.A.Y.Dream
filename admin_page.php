@@ -9,6 +9,9 @@
 <html lang="en">
 <?php require_once "private/init.php";
 
+if (!isset($_GET["data_select"])) {
+    $_GET["data_select"] = "none";
+}
 
 ?>
 <head>
@@ -29,150 +32,6 @@
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <style>
-        p {
-            display: inline;
-            font-weight: normal;
-        }
-
-        label {
-            display: block;
-            font-weight: bolder;
-        }
-
-        .modal-dialog,
-        .modal-content {
-            /* 80% of window height */
-            height: 90%;
-            width: 100%;
-        }
-
-        .modal-body {
-            /* 100% = dialog height, 120px = header + footer */
-            max-height: calc(100% - 120px);
-            overflow-y: scroll;
-        }
-
-
-        /*    Bootstrap Slider */
-        /* The switch - the box around the slider */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        /* Hide default HTML checkbox */
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        /* The slider */
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-
-        input:focus + .slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-
-
-    /*    FOR THE THREE TOGGLE SWITCH -- */
-        body{
-            margin:0;
-            padding:0;
-        }
-        .parent{
-            /*position:fixed;*/
-            /*width:100%;*/
-            /*height:100%;*/
-            display:inline-flex;
-            background:#fff;
-        }
-
-
-        .switch_3_ways{
-            margin:auto;
-            font-size:1em;
-            height:2em;
-            line-height:2em;
-            border-radius:0.3em;
-            background:#ccc;
-            position:relative;
-            display:block;
-            float:left;
-        }
-
-        .switch.pending,
-        .switch.active,
-        .switch.inactive{
-            cursor:pointer;
-            position:relative;
-            display:block;
-            float:left;
-            -webkit-transition: 300ms ease-out;
-            -moz-transition: 300ms ease-out;
-            transition: 300ms ease-out;
-            padding: 0 1em;
-        }
-
-        .selector{
-            text-align:center;
-            position:absolute;
-            width:0;
-            box-sizing:border-box;
-            -webkit-transition: 300ms ease-out;
-            -moz-transition: 300ms ease-out;
-            transition: 300ms ease-out;
-            border-radius:0.3em;
-            color:white;
-            -moz-box-shadow: 0px 2px 13px 0px #9b9b9b;
-            -webkit-box-shadow: 0px 2px 13px 0px #9b9b9b;
-            -o-box-shadow: 0px 2px 13px 0px #9b9b9b;
-            box-shadow: 0px 2px 13px 0px #9b9b9b;
-            filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=180, Strength=13);
-        }
 
     </style>
 </head>
@@ -198,7 +57,9 @@
                 </option>
             </select>
         </form>
-        <?php if ($_GET["data_select"] == "dreamers") { ?>
+        <?php
+        // displays switch for toggling active vs inactive if dreamer is selected
+        if ($_GET["data_select"] == "dreamers") { ?>
         <p>Active: </p>
         <label class="switch">
             <input type="checkbox" id="toggle-inactive" checked>
@@ -230,22 +91,22 @@
     if ($_GET["data_select"] == "dreamers") {
         $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
                 INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
-                WHERE dreamer_active = 1;";
+                WHERE dreamer_active = 'active';";
         $sql_ids = "SELECT user_id FROM Dreamer;";
     } //if it's the volunteer table, run $sql for member row + run $sql_ids for user_ids Foreign key
     else if ($_GET["data_select"] == "volunteers") {
-        $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_active, user_date_joined FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id;";
+        $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id;";
         $sql_ids = "SELECT user_id FROM Volunteer;";
     }
 
     //if on the dreamer or volunteer table then continue:
     if (($_GET["data_select"] == "dreamers") || $_GET["data_select"] == "volunteers") {
         //storing return data and ensuring query executes correctly
-        $result = mysqli_query($cnxn, $sql);
+        $result = mysqli_query($db, $sql);
         //storing column names
         $tableHeadingNames = $result->fetch_fields();
         //storing return data and ensuring query executes correctly
-        $result_ids = mysqli_query($cnxn, $sql_ids);
+        $result_ids = mysqli_query($db, $sql_ids);
         ?>
 
         <!--start the building of the table-->
@@ -319,183 +180,5 @@
         crossorigin="anonymous"></script>
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="scripts/admin_page_functions.js"></script>
-<script>
-
-    $(document).ready(function () {
-        // call function to set the three switch toggle to "active"
-        change_status("active");
-        //toggle switch for 'active'/'inactive' members
-        $("#toggle-inactive").on("change", function () {
-            //overwrites 'active' members on table and displays 'inactive'
-            if ($("#toggle-inactive").is(":checked")) {
-                $.ajax({
-                    url: 'private/init.php',
-                    method: 'post',
-                    data: {queryType: "active_query"},
-                    success: function (response) {
-                        $("#dreamer-table").html(response);
-                    }
-                }); //.ajax
-            } else {
-                $.ajax({
-                    url: 'private/init.php',
-                    method: 'post',
-                    data: {queryType: "inactive_query"},
-                    success: function (response) {
-                        $("#dreamer-table").html(response);
-                    }
-                }); //.ajax
-            }
-
-        }); //.on
-
-        //fills modal on 'click' of member's name
-        $(".update").on("click", function () {
-            //get the 'id' of the row (parent of first name clicked)
-            let id = this.parentElement.getAttribute("id");
-            let firstName = $("#" + id).children("td[data-field-name = user_first]").text();
-            let lastName = $("#" + id).children("td[data-field-name = user_last]").text();
-
-            //get the selected table from "select" dropdown
-            let dataSelect = tableSelected();
-
-
-            //to be passed into .ajax
-            $("#hidden-id").val(id);
-            //Top of modal display full name of member
-            $("#full-name").html(firstName + " " + lastName);
-
-            $("#myModal").modal("toggle");
-
-            //writes 'active' members to table
-            $.ajax({
-                url: 'private/init.php',
-                method: 'post',
-                data: {id: id, dataSelect: dataSelect},
-                dataType: 'JSON',
-                success: function (response) {
-                    console.log(response);
-                    populateModalData(response);
-                }
-            }); //.ajax
-        }); //.on
-
-
-        // toggle the modal for emailing functionality
-        $("#email-button").on("click", function () {
-            let str = tableSelected();
-            str = str[0].toUpperCase() + str.substr(1, str.length);
-            $("#email-modal-title").html("Email Active " + str);
-            $("#emailModal").modal("toggle");
-        });
-
-    }); //.ready
-
-    //user_id for row we're working on
-    //save button doesn't work 2019-11-16 DELETE WHEN WORKING ***************************************************
-    $('#save').on('click', function () {
-        let id = $('#hidden-id').val();
-    }); //.on
-
-    //JSON array
-    //appending all children into modal-body
-    function populateModalData(responseData) {
-        //for each data field, displaying 'key' and 'value' paired data into the modal
-        $.each(responseData, function (key, value) {
-            //the field heading
-            let textNode = document.createTextNode(formatHeadings(key) + ":   ");
-            let label = document.createElement('label');
-            label.append(textNode);
-
-            // format active to inactive or active rather than 0 and 1
-            if (key == "dreamer_active") {
-                value = formatActive(value);
-            }
-
-            //the field value
-            textNode = document.createTextNode(value);
-            let p = document.createElement('p');
-            p.append(textNode);
-
-            //append the key and value together
-            label.append(p);
-
-            //the modal body
-            let modalB = document.getElementById("modal-body");
-            //append key and value into the modal
-            modalB.append(label);
-        }); //.each
-    } //end populateModalData
-
-    //clears modal body after click away
-    $('#myModal').on('hidden.bs.modal', function () {
-        $("#modal-body").html("");
-    }); //.on
-
-    // formats the heading names retrieved from database for clear user view
-    function formatHeadings(str) {
-        str = str.replace(/\d+/g, '');
-        str = str.replace(/_/g, " ");
-        str = str.replace("user", "");
-        str = str.replace("volunteer", "");
-        str = str.replace("dreamer", "");
-        if (str[0] == " ") {
-            str = str.substr(1, str.length);
-        }
-        str = str[0].toUpperCase() + str.substr(1, str.length);
-        return str;
-    }
-
-    //the member's status is a TINYINT, convert for readability
-    function formatActive(val) {
-        if (val === "1") {
-            return "active";
-        }
-        return "inactive";
-    }
-
-    function tableSelected() {
-        // get the selected table from "select" dropdown
-        let dataSelect;
-        if (document.getElementById('dreamer-option').selected) {
-            dataSelect = 'dreamers';
-        } else if (document.getElementById('volunteer-option').selected) {
-            dataSelect = 'volunteers';
-        }
-        return dataSelect;
-    }
-
-    // FOR THE THREE TOGGLE SWITCH !!! -- should be moved later
-    function change_status(status){
-        let pending = document.getElementById("pending");
-
-        let active = document.getElementById("active");
-
-        let inactive = document.getElementById("inactive");
-
-        let selector = document.getElementById("selector");
-
-        if(status === "pending"){
-            selector.style.left = 0;
-            selector.style.width = pending.clientWidth + "px";
-            selector.style.backgroundColor = "#777777";
-            selector.innerHTML = "Pending";
-        }
-
-        else if(status === "active"){
-            selector.style.left = pending.clientWidth + "px";
-            selector.style.width = active.clientWidth + "px";
-            selector.innerHTML = "Active";
-            selector.style.backgroundColor = "#418d92";
-        }
-
-        else{
-            selector.style.left = pending.clientWidth + active.clientWidth + 1 + "px";
-            selector.style.width = inactive.clientWidth + "px";
-            selector.innerHTML = "Inactive";
-            selector.style.backgroundColor = "#4d7ea9";
-        }
-    }
-</script>
 </body>
 </html>

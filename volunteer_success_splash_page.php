@@ -11,45 +11,6 @@
 
 require_once "private/init.php";
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-// declare variables here to use throughout this page & w/ email functionality
-//user
-$firstName = $_POST['first-name'];
-$lastName = $_POST['last-name'];
-$email = $_POST['email'];
-$phone = $_POST['phone'];
-//volunteer
-$address = $_POST['address'];
-$zip = $_POST['zip'];
-$city = $_POST['city'];
-$state = $_POST['state'];
-$tShirt = $_POST['shirt'];
-$aboutUs = $_POST['about'];
-$motivation = $_POST['motivation'];
-$volunteerExperience = $_POST['volunteer-experience'];
-$volunteerExperienceYouth = "";
-if (isset($_POST['youth-experience']))
-    $volunteerExperienceYouth = $_POST['youth-experience'];
-$skills = $_POST['other-experience'];
-$mailingList = $_POST['mailing-list'];
-$termsOfService = $_POST['terms-of-service'];
-//reference 1
-$refPhone1 = $_POST['reference-phone-1'];
-$refEmail1 = $_POST['reference-email-1'];
-$refRel1 = $_POST['reference-relationship-1'];
-$refName1 = $_POST['reference-name-1'];
-//reference 2
-$refPhone2 = $_POST['reference-phone-2'];
-$refEmail2 = $_POST['reference-email-2'];
-$refRel2 = $_POST['reference-relationship-2'];
-$refName2 = $_POST['reference-name-2'];
-//reference 3
-$refPhone3 = $_POST['reference-phone-3'];
-$refEmail3 = $_POST['reference-email-3'];
-$refRel3 = $_POST['reference-relationship-3'];
-$refName3 = $_POST['reference-name-3'];
 ?>
 <!DOCTYPE html>
 
@@ -81,97 +42,120 @@ $refName3 = $_POST['reference-name-3'];
 
 <?php
 
+// declare variables here to use throughout this page & w/ email functionality
+//user
+$user["user_first"] = $_POST['first-name'];
+$user["user_last"] = $_POST['last-name'];
+$user["user_email"] = $_POST['email'];
+$user["user_phone"] = formatPhone($_POST["phone"]);
+//volunteer
+$volunteer["volunteer_street_address"] = $_POST['address'];
+$volunteer["volunteer_zip"] = $_POST['zip'];
+$volunteer["volunteer_city"] = $_POST['city'];
+$volunteer["volunteer_state"] = $_POST['state'];
+$volunteer["volunteer_tshirt_size"] = $_POST['shirt'];
+$volunteer["volunteer_about_us"] = $_POST['about'];
+$volunteer["volunteer_motivated"] = $_POST['motivation'];
+$volunteer["volunteer_experience"] = $_POST['volunteer-experience'];
+// youth experience
+$volunteer["volunteer_youth_experience"] = "";
+if (isset($_POST['youth-experience']))
+    $volunteer["volunteer_youth_experience"] = $_POST['youth-experience'];
+//volunteer availability
+$volunteer["volunteer_availability"] = "tt";
+foreach ($_POST["availability"] as $value) {
+    $volunteer["volunteer_availability"] .= $value;
+}
+$volunteer["volunteer_availability"] .= $_POST["availability-explain"];
+
+$volunteer["volunteer_skills"] = $_POST['other-experience'];
+$volunteer["volunteer_emailing"] = $_POST['mailing-list'];
+
+$volunteer["volunteer_verified"] = 0;
+$volunteer["volunteer_status"] = "pending";
+
+// creating the array of interests and storing other interests data
+$interests = [];
+foreach($_POST["events"] as $value) {
+    //special case for other since it isn't in database, check if on other, if yes, assign volunteer other, skip adding to array
+    if ($value == "0") {
+        $volunteer["volunteer_interest_other"] = $_POST["interests-explain"];
+    } else {
+        $interests[] = $value;
+    }
+}
+
+// creating the array of associative arrays containing reference data
+$referencesArray = [];
+$referencesArray[] = array(
+    "contact_name" => $_POST['reference-name-1'],
+    "contact_relationship" => $_POST["reference-relationship-1"],
+    "contact_email" => $_POST["reference-email-1"],
+    "contact_phone" => formatPhone($_POST["reference-phone-1"]),
+    "contact_type" => "reference"
+);
+$referencesArray[] = array(
+    "contact_name" => $_POST['reference-name-2'],
+    "contact_relationship" => $_POST["reference-relationship-2"],
+    "contact_email" => $_POST["reference-email-2"],
+    "contact_phone" => formatPhone($_POST["reference-phone-2"]),
+    "contact_type" => "reference"
+);
+$referencesArray[] = array(
+    "contact_name" => $_POST['reference-name-3'],
+    "contact_relationship" => $_POST["reference-relationship-3"],
+    "contact_email" => $_POST["reference-email-3"],
+    "contact_phone" => formatPhone($_POST["reference-phone-3"]),
+    "contact_type" => "reference"
+);
+
+//ensures nothing submits into database if volunteer does not agree to terms of service
+if (!isset($_POST['terms-of-service'])) {
+    echo "You must accept the terms of service to proceed.";
+} else {
+
 //does validation for user variables, gets back the user id row
-$userId = userInsert($firstName, $lastName, $email, $phone);
+$success = volunteerInsert($user, $volunteer, $interests, $referencesArray);
 
-//does validation for volunteer variables, gets back volunteer id row
-$volunteer_id = volunteerInsert($userId, $address, $zip, $city, $state, $tShirt, $aboutUs, $motivation,
-    $volunteerExperience, $volunteerExperienceYouth, $skills, $mailingList, $termsOfService);
+//if volunteer successfully inserted, then INSERT references and complete success page for volunteer
+if ($success) {
+?>
 
-//does validation on each reference, gets back each reference's id row and saves into an array
-$volunteer_reference_id_array[] = referenceInsert($refPhone1, $refEmail1, $refRel1, $refName1);
-$volunteer_reference_id_array[] = referenceInsert($refPhone2, $refEmail2, $refRel2, $refName2);
-$volunteer_reference_id_array[] = referenceInsert($refPhone3, $refEmail3, $refRel3, $refName3);
-//loop through each reference id and ensure they are filled properly
-$volunteer_reference_success = true;
-foreach ($volunteer_reference_id_array as $value) {
-    //if a reference failed to validate properly, then set the success variable to false
-    if ($value == null || $value == 0) {
-        $volunteer_reference_success = false;
-    }
-}
+<!-- HERE IS WHERE WE NEED TO THANK THEM AND THEN DISPLAY THE INFORMATION THAT THEY SUBMITTED  -->
+<div class="container" id="thank-you-message">
+    <h2>Thank you for your interest in volunteering with iD.A.Y.Dream <?php echo $user["user_first"] ?>. We’re investing in
+        an entire region of youth. Youth seeking success through higher education, mentoring, etc.</h2>
+    <br>
+    <h3 id="click-to-see-volunteer">Click to see a summary of your information.</h3>
+    <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>
+</div>
 
-//capture the 'values' from the Interests events[] checkboxes from 'volunteer_form.php' and loop through them to validate and INSERT
-if (isset($_POST['events'])) {
-    $volunteer_interests_id_array = $_POST['events'];
-    for ($i = 0; $i < count($volunteer_interests_id_array); $i++) {
-        interestInsertVolunteer($volunteer_id, substr($volunteer_interests_id_array[$i], 0, 1));
-    }
-}
+<div class="container" id="summary">
+    <?php
+    // building email content
+    $email_body = "Volunteer Information:\r\n\r\n";
+    $email_subject = "ID.A.Y.Dream Volunteer Sign-Up Information";
 
-//if volunteer successfully INSERTed, then INSERT references and complete success page for volunteer
-if ($volunteer_id != null && $volunteer_id != 0 && $volunteer_reference_success) {
-    foreach ($volunteer_reference_id_array as $value) {
-        referenceInsertVolunteer($volunteer_id, $value);
-    }
+    // shows html the summary generated by function and returned at the first index of its return
+    echo createSummary($email_body)[0];
+    $email_body .= createSummary($email_body)[1];
+
+    // sending email to client
+    $sendTo = "Sjamieson2@mail.greenriver.edu";
+    $to = $sendTo;
+    $headers = "From: " . $user["user_email"] . " \r\n";
+    $headers .= "Reply-To: " . $user["user_email"] . "\r\n";
+    $success = mail($to, $email_subject, $email_body, $headers);
     ?>
 
-    <!-- HERE IS WHERE WE NEED TO THANK THEM AND THEN DISPLAY THE INFORMATION THAT THEY SUBMITTED  -->
-    <div class="container" id="thank-you-message">
-        <h2>Thank you for your interest in volunteering with iD.A.Y.Dream <?php echo $firstName ?>. We’re investing in
-            an entire region of youth. Youth seeking success through higher education, mentoring, etc.</h2>
-        <br>
-        <h3 id="click-to-see-volunteer">Click to see a summary of your information.</h3>
-        <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>
-    </div>
-
-    <div class="container" id="summary">
-        <?php
-        // building email content
-        $email_body = "Youth Information:\r\n\r\n";
-        $email_subject = "ID.A.Y.Dream Youth Sign-Up Information";
-
-        // iterates over items posted, displays each as html on page and builds email string
-        foreach ($_POST as $key => $value) {
-            // When the value is an array where each item in the array must be displayed
-            if (is_array($value)) {
-                $key_text = htmlspecialchars($key);
-                $key_text = str_replace("-", " ", $key_text);
-                $key_text = ucfirst($key_text);
-                echo "<p><strong>$key_text:</strong></p>";
-                echo "<ul>";
-                // for each loop displays the events and removes the FK added at the beginning of the value
-                foreach ($value as $child_key => $child_value) {
-                    $child_value = substr($child_value, 1);
-                    $value_text = htmlspecialchars($child_value);
-                    $email_body .= "$child_value \r\n";
-                    echo "<li>$child_value</li>";
-                }
-                echo "</ul>";
-                // As long as the value isn't empty, display results and add to email
-            } else if ($value != "") {
-                $key_text = htmlspecialchars($key);
-                $key_text = ucfirst($key_text);
-                $value_text = htmlspecialchars($value);
-                $key_text = str_replace("-", " ", $key_text);
-                $email_body .= "$key_text: $value_text \r\n";
-                echo "<p><strong>$key_text:</strong> $value_text</p>";
-            }
-        }
-
-        // sending email to client
-        $sendTo = "Sjamieson2@mail.greenriver.edu";
-        $to = $sendTo;
-        $headers = "From: " . $email . " \r\n";
-        $headers .= "Reply-To: " . $email . "\r\n";
-        $success = mail($to, $email_subject, $email_body, $headers);
-        ?>
-    </div>
     <?php
-} //if volunteer did NOT successfully get INSERTed
-else {
-    echo "it didn't work volunteer";
-} ?>
+    } //if volunteer did NOT successfully get inserted
+    else {
+        echo "it didn't work volunteer";
+    }
+    } ?>
+</div>
+
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- Optional JavaScript -->

@@ -8,99 +8,76 @@
 
 CREATE TABLE User
 (
-    user_id    INT          NOT NULL AUTO_INCREMENT,
-    user_first VARCHAR(255) NOT NULL,
-    user_last  VARCHAR(255) NOT NULL,
-    user_email VARCHAR(255) NOT NULL,
-    user_phone VARCHAR(255) NOT NULL,
-    user_date_joined DATETIME NOT NULL,
+    user_id          INT          NOT NULL AUTO_INCREMENT,
+    user_first       VARCHAR(255) NULL,
+    user_last        VARCHAR(255) NULL,
+    user_email       VARCHAR(255) NULL,
+    user_phone       VARCHAR(255) NULL,
+    user_date_joined DATETIME     NULL,
     PRIMARY KEY (user_id)
 );
 
 CREATE TABLE Dreamer
 (
     dreamer_id              INT          NOT NULL AUTO_INCREMENT,
-    dreamer_college         VARCHAR(255),
-    dreamer_date_of_birth   DATE         NOT NULL,
-    dreamer_graduation_date YEAR         NOT NULL,
-    dreamer_gender          VARCHAR(255) NOT NULL,
-    dreamer_ethnicity       VARCHAR(255) NOT NULL,
-    dreamer_food            VARCHAR(255),
-    dreamer_goals           TEXT,
-    dreamer_active          TINYINT      NOT NULL,
     user_id                 INT          NOT NULL,
+    dreamer_college         VARCHAR(255) NULL,
+    dreamer_date_of_birth   DATE         NULL,
+    dreamer_graduation_date YEAR         NULL,
+    dreamer_gender          VARCHAR(255) NULL,
+    dreamer_ethnicity       VARCHAR(255) NULL,
+    dreamer_food            VARCHAR(255) NULL,
+    dreamer_goals           TEXT         NULL,
+    dreamer_active          VARCHAR(255) NULL,
+    dreamer_notes           TEXT         NULL,
 
     PRIMARY KEY (dreamer_id),
     FOREIGN KEY (user_id) REFERENCES User (user_id)
 );
 
-CREATE TABLE Guardian
-(
-    guardian_id           INT          NOT NULL AUTO_INCREMENT,
-    guardian_name         VARCHAR(255) NOT NULL,
-    guardian_phone        VARCHAR(255) NOT NULL,
-    guardian_relationship VARCHAR(255) NOT NULL,
-
-    PRIMARY KEY (guardian_id)
-);
-
-CREATE TABLE Dreamer_Guardian
-(
-    dreamer_id INT NOT NULL,
-    guardian_id     INT NOT NULL,
-
-    PRIMARY KEY (dreamer_id, guardian_id),
-    FOREIGN KEY (dreamer_id) REFERENCES Dreamer (dreamer_id),
-    FOREIGN KEY (guardian_id) REFERENCES Guardian (guardian_id)
-);
-
 CREATE TABLE Volunteer
 (
-    volunteer_id                   INT          NOT NULL AUTO_INCREMENT,
-    volunteer_verified             TINYINT      NOT NULL,
-    volunteer_street_address       VARCHAR(255) NOT NULL,
-    volunteer_zip                  INT          NOT NULL,
-    volunteer_city                 VARCHAR(255) NOT NULL,
-    volunteer_state                VARCHAR(255) NOT NULL,
-    volunteer_tshirt_size          VARCHAR(255) NOT NULL,
-    volunteer_about_us             TEXT,
-    volunteer_motivated            TEXT         NOT NULL,
-    volunteer_volunteer_experience TEXT,
-    volunteer_dreamer_experience   TEXT,
-    volunteer_skills               TEXT,
-    volunteer_emailing             TINYINT      NOT NULL,
-    volunteer_active               TINYINT      NOT NULL,
-    user_id                        INT          NOT NULL,
+    volunteer_id               INT          NOT NULL AUTO_INCREMENT,
+    user_id                    INT          NOT NULL,
+    volunteer_verified         TINYINT      NULL,
+    volunteer_street_address   VARCHAR(255) NULL,
+    volunteer_zip              INT          NULL,
+    volunteer_city             VARCHAR(255) NULL,
+    volunteer_state            VARCHAR(255) NULL,
+    volunteer_tshirt_size      VARCHAR(255) NULL,
+    volunteer_about_us         TEXT         NULL,
+    volunteer_interest_other   TEXT         NULL,
+    volunteer_availability     TEXT         NULL,
+    volunteer_motivated        TEXT         NULL,
+    volunteer_experience       TEXT         NULL,
+    volunteer_youth_experience TEXT         NULL,
+    volunteer_skills           TEXT         NULL,
+    volunteer_emailing         TINYINT      NULL,
+    volunteer_status           VARCHAR(255) NULL,
+    volunteer_notes            TEXT         NULL,
 
     PRIMARY KEY (volunteer_id),
     FOREIGN KEY (user_id) REFERENCES User (user_id)
 );
 
-CREATE TABLE Reference
+CREATE TABLE Contact
 (
-    reference_id           INT          NOT NULL AUTO_INCREMENT,
-    reference_phone        VARCHAR(255) NOT NULL,
-    reference_email        VARCHAR(255) NOT NULL,
-    reference_relationship VARCHAR(255) NOT NULL,
-    reference_name         VARCHAR(255) NOT NULL,
+    contact_id           INT          NOT NULL AUTO_INCREMENT,
+    user_id              INT          NOT NULL,
+    contact_phone        VARCHAR(255) NULL,
+    contact_email        VARCHAR(255) NULL,
+    contact_relationship VARCHAR(255) NULL,
+    contact_name         VARCHAR(255) NULL,
+    contact_type         VARCHAR(255) NULL,
 
-    PRIMARY KEY (reference_id)
-);
-
-CREATE TABLE Volunteer_Reference
-(
-    volunteer_id INT NOT NULL,
-    reference_id INT NOT NULL,
-
-    PRIMARY KEY (volunteer_id, reference_id),
-    FOREIGN KEY (volunteer_id) REFERENCES Volunteer (volunteer_id),
-    FOREIGN KEY (reference_id) REFERENCES Reference (reference_id)
+    PRIMARY KEY (contact_id),
+    FOREIGN KEY (user_id) references User (user_id)
 );
 
 CREATE TABLE Interest
 (
-    interest_id               INT NOT NULL AUTO_INCREMENT,
-    interest_name_of_interest VARCHAR(255),
+    interest_id               INT          NOT NULL AUTO_INCREMENT,
+    interest_name_of_interest VARCHAR(255) NOT NULL,
 
     PRIMARY KEY (interest_id)
 );
@@ -118,11 +95,9 @@ CREATE TABLE Volunteer_Interest
 CREATE TABLE Chapter
 (
     chapter_id       INT          NOT NULL AUTO_INCREMENT,
-    chapter_location VARCHAR(255) NOT NULL,
-    user_id          INT          NOT NULL,
+    chapter_location VARCHAR(255) NULL,
 
-    PRIMARY KEY (chapter_id),
-    FOREIGN KEY (user_id) REFERENCES User (user_id)
+    PRIMARY KEY (chapter_id)
 );
 
 CREATE TABLE User_Chapter
@@ -136,18 +111,14 @@ CREATE TABLE User_Chapter
 );
 
 /* Insert Interests for volunteers */
-INSERT INTO Interest VALUES(1, "Events/Activities");
-INSERT INTO Interest VALUES(2, "Fundraising");
-INSERT INTO Interest VALUES(3, "Newsletter Production");
-INSERT INTO Interest VALUES(4, "Volunteer Coordination");
-INSERT INTO Interest VALUES(5, "Mentoring");
+INSERT INTO Interest
+VALUES (1, "Events/Activities");
+INSERT INTO Interest
+VALUES (2, "Fundraising");
+INSERT INTO Interest
+VALUES (3, "Newsletter Production");
+INSERT INTO Interest
+VALUES (4, "Volunteer Coordination");
+INSERT INTO Interest
+VALUES (5, "Mentoring");
 
-/* Insert sample data for dreamers */
-INSERT INTO User VALUES(default, 'Keller', 'Flint', 'kflint0068@gmail.com', '2534411380', now());
-INSERT INTO Dreamer VALUES(default, 'GRC', '2003-04-26', '2021', 'Male', 'White non-Hispanic', 'Pretzels', 'None', 0, 1);
-
-INSERT INTO User VALUES(default, 'Shayna', 'Jamieson', 'jamieson.shayna@gmail.com', '2532136729', now());
-INSERT INTO Dreamer VALUES(default, 'GRC', '2004-10-29', '2021', 'Female', 'Bi/Multiracial', 'Tacos.', 'All of the things.', 0, 2);
-
-INSERT INTO User VALUES(default, 'Bridget', 'Black', 'bridget@beeze.com', '5037987921', now());
-INSERT INTO Dreamer VALUES(default, 'GRC', '2007-04-23', '2021', 'Female', 'American Indian or Alaska Native', 'Doritos', 'none', 0, 3);
