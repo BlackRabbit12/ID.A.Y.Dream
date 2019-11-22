@@ -95,7 +95,9 @@ if (!isset($_GET["data_select"])) {
         $sql_ids = "SELECT user_id FROM Dreamer;";
     } //if it's the volunteer table, run $sql for member row + run $sql_ids for user_ids Foreign key
     else if ($_GET["data_select"] == "volunteers") {
-        $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id;";
+        $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User 
+                INNER JOIN Volunteer ON User.user_id = Volunteer.user_id;";
+        //******************************************* need to add a WHERE volunteer = active statement and change TINYINT to Varchar??********************
         $sql_ids = "SELECT user_id FROM Volunteer;";
     }
 

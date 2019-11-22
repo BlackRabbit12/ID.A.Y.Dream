@@ -122,3 +122,32 @@ VALUES (4, "Volunteer Coordination");
 INSERT INTO Interest
 VALUES (5, "Mentoring");
 
+
+/* Insert sample data for volunteers */
+INSERT INTO User VALUES(default, 'Keller', 'Flint', 'kflint0068@gmail.com', '2534411380', now());
+INSERT INTO Dreamer VALUES(default, 1, 'Keller College', '2007/01/01', '2019', 'Male', 'Keller Ethnicity', 'Pretzel', 'No goals', 'active', 'No notes');
+
+INSERT INTO User VALUES(default, 'Shayna', 'Jamieson', 'jamieson.shayna@gmail.com', '2532136729', now());
+INSERT INTO Dreamer VALUES(default, 2, 'Shayna College', '2007/02/01', '2019', 'Female', 'Shayna Ethnicity', 'Saltine', 'No goals', 'active', 'No notes');
+
+INSERT INTO User VALUES(default, 'Bridget', 'Black', 'bridget@beeze.com', '5037987921', now());
+INSERT INTO Dreamer VALUES(default, 3, 'Bridget College', '2007/03/01', '2019', 'Female', 'Bridget Ethnicity', 'Cheeze It', 'No goals', 'inactive', 'No notes');
+
+/* Insert sample data for volunteers */
+INSERT INTO User VALUES(default, 'Vol-Keller', 'Vol-Flint', 'Vol-kflint0068@gmail.com', '2534411380', now());
+INSERT INTO Volunteer VALUES(default, 4, 1, '2222 Second St', 98188, 'Kent', 'WA', 'medium', 'About Keller', 'Interests Other Keller', 'Availability Keller', 'Motivated Keller', 'Volunteer Experience Keller', 'Youth Experience Keller', 'Skills Keller', 1, 'active', 'No notes Keller');
+
+INSERT INTO User VALUES(default, 'Vol-Shayna', 'Vol-Jamieson', 'Vol-jamieson.shayna@gmail.com', '2532136729', now());
+INSERT INTO Volunteer VALUES(default, 5, 1, '3333 Third St', 98188, 'De Moines', 'WA', 'medium', 'About Shayna', 'Interests Other Shayna', 'Availability Shayna', 'Motivated Shayna', 'Volunteer Experience Shayna', 'Youth Experience Shayna', 'Skills Shayna', 1, 'inactive', 'No notes Shayna');
+
+INSERT INTO User VALUES(default, 'Vol-Bridget', 'Vol-Black', 'Vol-bridget@beeze.com', '5037987921', now());
+INSERT INTO Volunteer VALUES(default, 6, 0, '0000 Zero St', 98188, 'SeaTac', 'WA', 'medium', 'About Bridget', 'Interests Other Bridget', 'Availability Bridget', 'Motivated Bridget', 'Volunteer Experience Bridget', 'Youth Experience Bridget', 'Skills Bridget', 0, 'pending', 'No notes Bridget');
+
+/* Insert sample data for volunteers */
+INSERT INTO Contact VALUES(default, 1, '425-222-2222', 'contact@email.com', 'contact relationship', 'contact name', 'guardian');
+
+INSERT INTO Contact VALUES(default, 3, '503-777-7777', 'contact@email.com', 'contact relationship', 'contact name', 'guardian');
+
+INSERT INTO Contact VALUES(default, 4, '425-222-1111', 'contact1@email.com', 'contact1 relationship', 'contact1 name', 'reference');
+
+INSERT INTO Contact VALUES(default, 4, '425-222-3333', 'contact2@email.com', 'contact2 relationship', 'contact2 name', 'reference');
