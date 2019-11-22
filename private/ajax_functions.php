@@ -110,7 +110,7 @@ if (isset($_POST['queryType'])) {
 
         $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
             INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
-            WHERE dreamer_active = 0;";
+            WHERE dreamer_active = 'inactive';";
         $sql_ids = "SELECT user_id FROM Dreamer;";
 
         $result = mysqli_query($db, $sql);
@@ -124,7 +124,7 @@ if (isset($_POST['queryType'])) {
 
         $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
                 INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
-                WHERE dreamer_active = 1;";
+                WHERE dreamer_active = 'active';";
         $sql_ids = "SELECT user_id FROM Dreamer;";
 
         $result = mysqli_query($db, $sql);
