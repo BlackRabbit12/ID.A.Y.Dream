@@ -71,6 +71,9 @@ $volunteer["volunteer_availability"] .= $_POST["availability-explain"];
 $volunteer["volunteer_skills"] = $_POST['other-experience'];
 $volunteer["volunteer_emailing"] = $_POST['mailing-list'];
 
+$volunteer["volunteer_verified"] = 0;
+$volunteer["volunteer_status"] = "pending";
+
 // creating the array of interests and storing other interests data
 $interests = [];
 foreach($_POST["events"] as $value) {
