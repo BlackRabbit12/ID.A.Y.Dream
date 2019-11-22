@@ -22,29 +22,19 @@ if (isset($_POST['dataSelect'])) {
     } //end dreamers
     //if user is a volunteer
     else if ($_POST['dataSelect'] == 'volunteers') {
+
         // user_id
         $id = $_POST['id'];
 
-        // IMPORTANT !!!
-        // here we need to actually get the volunteer id that we want to use in the second query
-        // before we were just inserting the same user id so it did not grab relevant data
-        $tempSQL = "SELECT volunteer_id FROM Volunteer INNER JOIN User ON Volunteer.user_id = User.user_id WHERE Volunteer.user_id = '$id'";
-        $result = mysqli_query($db, $tempSQL);
-        $volunteerId = "";
-        if ($result) {
-            // gets the accurate volunteer_id based on the $POST user_id
-            while ($row = mysqli_fetch_assoc($result)) {
-                $volunteerId = $row['volunteer_id'];
-            }
-        }
 
         // here are the queries that go into the multi_query line and into our associative arrays function
         // the FIRST uses the USER id, the SECOND uses the VOLUNTEER id !!! IMPORTANT
         $sql = "SELECT * FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id WHERE User.user_id = '$id';";
-        $sql .= "SELECT reference_name, reference_phone, reference_email, reference_relationship FROM Volunteer_Reference INNER JOIN Reference ON Volunteer_Reference.reference_id = Reference.reference_id WHERE volunteer_id = '$volunteerId';";
+        $sql .= "SELECT contact_name, contact_phone, contact_email, contact_relationship FROM Contact WHERE user_id = '$id';";
 
         // ALL data that we add to our associative array
         $data = [];
+
 
         if (mysqli_multi_query($db, $sql)) {
             do {
@@ -55,10 +45,15 @@ if (isset($_POST['dataSelect'])) {
 
                     mysqli_free_result($result);
                 }
-            } while (mysqli_next_result($db));
+            } while (mysqli_more_results($db) && mysqli_next_result($db));
         }
         //if $results is a good call, send associative array back to admin modal
+        $myfile = fopen("log.txt", "w") or die("Unable to open file!");
+        $text = json_encode($data);
+        fwrite($myfile, $text);
+        fclose($myfile);
         if ($result) {
+
             echo json_encode($data);
         }
     } //end volunteers
