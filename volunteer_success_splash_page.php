@@ -62,9 +62,11 @@ $volunteer["volunteer_youth_experience"] = "";
 if (isset($_POST['youth-experience']))
     $volunteer["volunteer_youth_experience"] = $_POST['youth-experience'];
 //volunteer availability
-$volunteer["volunteer_availability"] = "tt";
-foreach ($_POST["availability"] as $value) {
-    $volunteer["volunteer_availability"] .= $value;
+$volunteer["volunteer_availability"] = "";
+if (isset($_POST["availability"])) {
+    foreach ($_POST["availability"] as $value) {
+        $volunteer["volunteer_availability"] .= $value;
+    }
 }
 $volunteer["volunteer_availability"] .= $_POST["availability-explain"];
 
@@ -76,12 +78,14 @@ $volunteer["volunteer_status"] = "pending";
 
 // creating the array of interests and storing other interests data
 $interests = [];
-foreach($_POST["events"] as $value) {
-    //special case for other since it isn't in database, check if on other, if yes, assign volunteer other, skip adding to array
-    if ($value == "0") {
-        $volunteer["volunteer_interest_other"] = $_POST["interests-explain"];
-    } else {
-        $interests[] = $value;
+if (isset($_POST["events"])) {
+    foreach ($_POST["events"] as $value) {
+        //special case for other since it isn't in database, check if on other, if yes, assign volunteer other, skip adding to array
+        if ($value == "0") {
+            $volunteer["volunteer_interest_other"] = $_POST["interests-explain"];
+        } else {
+            $interests[] = $value;
+        }
     }
 }
 

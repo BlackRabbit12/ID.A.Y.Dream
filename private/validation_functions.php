@@ -348,7 +348,7 @@ function validateReference($reference) {
     }
 
     //Reference name
-    if (requiredInputIsValid($reference["contact_name"])) {
+    if (!requiredInputIsValid($reference["contact_name"])) {
         $isValid = false;
         $error[] = 'Reference Name';
     }
