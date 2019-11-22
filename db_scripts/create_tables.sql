@@ -149,5 +149,5 @@ INSERT INTO Contact VALUES(1, 1, '425-222-2222', 'contact@email.com', 'contact r
 INSERT INTO Contact VALUES(2, 3, '503-777-7777', 'contact@email.com', 'contact relationship', 'contact name', 'guardian');
 
 INSERT INTO Contact VALUES(3, 4, '425-222-1111', 'contact1@email.com', 'contact1 relationship', 'contact1 name', 'reference');
-
 INSERT INTO Contact VALUES(4, 4, '425-222-3333', 'contact2@email.com', 'contact2 relationship', 'contact2 name', 'reference');
+INSERT INTO Contact VALUES(5, 4, '425-222-3333', 'contact3@email.com', 'contact3 relationship', 'contact3 name', 'reference');
