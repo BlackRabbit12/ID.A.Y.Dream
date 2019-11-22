@@ -40,10 +40,6 @@ function buildTable($result, $tableHeadingNames, $result_ids)
                     $value = formatSQLPhone($value);
                 }
 
-                if ($tableHeadingNames_array[$i] == "dreamer_active") {
-                    $value = formatActive($value);
-                }
-
 
                 $output .= "<td data-field-name = $tableHeadingNames_array[$i]>$value</td>";
             }
@@ -83,15 +79,6 @@ function formatSQLPhone($str)
     //SQL return = 2534411380
     $str = "(" . substr($str, 0, 3) . ") " . substr($str, 4, 3) . "-" . substr($str, 6, 4);
     return $str;
-}
-
-// format booleans to string active or inactive
-function formatActive($val)
-{
-    if ($val) {
-        return "active";
-    }
-    return "inactive";
 }
 
 /**
