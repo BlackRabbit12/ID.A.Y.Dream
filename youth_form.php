@@ -117,7 +117,7 @@
                         Islander
                     </option>
                     <option value="Southeast Asian">Southeast Asian</option>
-                    <option value="White non-Hispanic">White European non-Hispanic</option>
+                    <option value="White non-Hispanic">White non-Hispanic</option>
                     <option value="Bi/Multiracial">Bi/Multiracial</option>
                     <option value="Other" id="select-ethnicity-other">Other</option>
                     <option value="Prefer Not to Say">Prefer Not to Say</option>
