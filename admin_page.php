@@ -73,9 +73,9 @@ if (!isset($_GET["data_select"])) {
             ?>
                 <div class="parent">
                     <div class="switch_3_ways">
-                        <div id="pending" class="switch pending" onclick="change_status('pending')">Pending</div>
-                        <div id="active" class="switch active" onclick="change_status('active')">Active</div>
-                        <div id="inactive" class="switch inactive" onclick="change_status('inactive')">Inactive</div>
+                        <div id="pending" class="switch pending">Pending</div>
+                        <div id="active" class="switch active">Active</div>
+                        <div id="inactive" class="switch inactive">Inactive</div>
                         <div id="selector" class="selector"></div>
                     </div>
 

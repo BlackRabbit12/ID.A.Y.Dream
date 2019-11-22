@@ -7,6 +7,17 @@
  * Associated Files: admin_page.php
  */
 
+$("#pending").on("click", function() {
+    change_status("pending");
+});
+$("#active").on("click", function () {
+    change_status("active");
+});
+
+$("#inactive").on("click", function () {
+    change_status("inactive");
+});
+
 $(document).ready(function () {
     $('#dreamer-table').DataTable();
     $('#volunteer-table').DataTable();
@@ -19,10 +30,10 @@ document.getElementById("data-select").addEventListener("change", function () {
 
 $(document).ready(function () {
     // call function to set the three switch toggle to "active"
-    change_status("active");
     //toggle switch for 'active'/'inactive' members
     $("#toggle-inactive").on("change", function () {
         //overwrites 'active' members on table and displays 'inactive'
+        console.log("toggle inactive/active dreamer");
         if ($("#toggle-inactive").is(":checked")) {
             $.ajax({
                 url: 'private/init.php',
