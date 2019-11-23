@@ -123,6 +123,56 @@ if (isset($_POST['queryType'])) {
 
         echo buildTable($result, $tableHeadingNames, $result_ids);
     }
+    // volunteers query for pending to switch what volunteers we display
+    else if($_POST['queryType'] == "pending_volunteers_query") {
+        global $db;
+
+        $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User
+                INNER JOIN Volunteer ON User.user_id = Volunteer.user_id
+                WHERE volunteer_status = 'pending';";
+
+        $sql_ids =  $sql_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'pending';";
+
+        $result = mysqli_query($db, $sql);
+        $tableHeadingNames = $result->fetch_fields();
+        $result_ids = mysqli_query($db, $sql_ids);
+
+        echo buildTable($result, $tableHeadingNames, $result_ids);
+    }
+
+    // volunteers query for active to switch what volunteers we display
+    else if($_POST['queryType'] == "active_volunteers_query") {
+        global $db;
+
+        $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User
+                INNER JOIN Volunteer ON User.user_id = Volunteer.user_id
+                WHERE volunteer_status = 'active';";
+
+        $sql_ids =  $sql_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'active';";
+
+        $result = mysqli_query($db, $sql);
+        $tableHeadingNames = $result->fetch_fields();
+        $result_ids = mysqli_query($db, $sql_ids);
+
+        echo buildTable($result, $tableHeadingNames, $result_ids);
+    }
+
+    // volunteers query for active to switch what volunteers we display
+    else if($_POST['queryType'] == "inactive_volunteers_query") {
+        global $db;
+
+        $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User
+                INNER JOIN Volunteer ON User.user_id = Volunteer.user_id
+                WHERE volunteer_status = 'inactive';";
+
+        $sql_ids =  $sql_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'inactive';";
+
+        $result = mysqli_query($db, $sql);
+        $tableHeadingNames = $result->fetch_fields();
+        $result_ids = mysqli_query($db, $sql_ids);
+
+        echo buildTable($result, $tableHeadingNames, $result_ids);
+    }
 
 } //end isset($_POST['queryType'])
 

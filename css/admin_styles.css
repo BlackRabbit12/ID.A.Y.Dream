@@ -129,8 +129,8 @@ body{
 
 .parent{
     /*position:fixed;*/
-    /*width:100%;*/
-    /*height:100%;*/
+    width:100%;
+    height:100%;
     display:inline-flex;
     background:#6cb1c1;
     /* *****************************************background: #fff; ************************************ */
@@ -145,21 +145,27 @@ body{
     border-radius:0.3em;
     background:#ccc;
     position:relative;
-    display:block;
-    float:left;
+    /*display:block;*/
+    /*float:left;*/
+
+    width:100%;
+    display:inline-flex;
+    height:100%;
 }
 
 .switch.pending,
 .switch.active,
 .switch.inactive{
     cursor:pointer;
-    position:relative;
+    /*position:relative;*/
     display:block;
     float:left;
     -webkit-transition: 300ms ease-out;
     -moz-transition: 300ms ease-out;
     transition: 300ms ease-out;
     padding: 0 1em;
+
+    display:inline-flex;
 }
 
 .selector{
