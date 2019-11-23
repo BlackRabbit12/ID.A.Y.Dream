@@ -36,7 +36,7 @@ if (!isset($_GET["data_select"])) {
     </style>
 </head>
 <body>
-
+<input type="hidden" id="anchor">
 <div class="text-center logo-container">
     <img src="images/iDayDreamLogo.png" alt="IDAYDream Logo">
 </div>
