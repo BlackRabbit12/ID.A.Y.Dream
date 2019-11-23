@@ -27,7 +27,6 @@ document.getElementById("data-select").addEventListener("change", function () {
     this.form.submit();
 });
 
-
 $(document).ready(function () {
     // call function to set the three switch toggle to "active"
     //toggle switch for 'active'/'inactive' members

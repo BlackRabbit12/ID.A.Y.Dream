@@ -25,9 +25,11 @@ function buildTable($result, $tableHeadingNames, $result_ids)
     $output .= "<tbody>";
 
     //fill in the table's row + data
+    $log = [];
     $k = 0;
     while ($data = mysqli_fetch_assoc($result)) {
         $output .= "<tr id= '$user_ids_array[$k]'>";
+        $log[] = $user_ids_array[$k];
         $i = 0;
         foreach ($data as $value) {
             if ($i == 0) {
@@ -45,9 +47,17 @@ function buildTable($result, $tableHeadingNames, $result_ids)
             }
             $i++;
         }
+
         $output .= "</tr>";
         $k++;
     }
+    $myfile = fopen("log.txt", "w") or die("Unable to open file!");
+    $text = "";
+    foreach ($log as $item)
+        $text .= "$item\n";
+    fwrite($myfile, $text);
+    fclose($myfile);
+
     $output .= "</tbody>";
 
     //return built table
