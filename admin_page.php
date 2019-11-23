@@ -32,7 +32,6 @@ if (!isset($_GET["data_select"])) {
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <style>
-
     </style>
 </head>
 <body>
@@ -96,7 +95,8 @@ if (!isset($_GET["data_select"])) {
     } //if it's the volunteer table, run $sql for member row + run $sql_ids for user_ids Foreign key
     else if ($_GET["data_select"] == "volunteers") {
         $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User 
-                INNER JOIN Volunteer ON User.user_id = Volunteer.user_id;";
+                INNER JOIN Volunteer ON User.user_id = Volunteer.user_id
+                WHERE volunteer_status = 'active';";
         //******************************************* need to add a WHERE volunteer = active statement and change TINYINT to Varchar??********************
         $sql_ids = "SELECT user_id FROM Volunteer;";
     }

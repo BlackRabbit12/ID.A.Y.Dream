@@ -7,16 +7,7 @@
  * Associated Files: admin_page.php
  */
 
-$("#pending").on("click", function() {
-    change_status("pending");
-});
-$("#active").on("click", function () {
-    change_status("active");
-});
 
-$("#inactive").on("click", function () {
-    change_status("inactive");
-});
 
 function addClickEvents() {
     //fills modal on 'click' of member's name
@@ -56,7 +47,14 @@ function addClickEvents() {
 $(document).ready(function () {
     $('#dreamer-table').DataTable();
     $('#volunteer-table').DataTable();
+
     addClickEvents();
+
+    // on page load if the user has chosen to look at the volunteers table we want to initialize
+    // the position of the three switch toggle to active to start
+    if(tableSelected() == "volunteers") {
+        change_status("active");
+    }
 });
 
 document.getElementById("data-select").addEventListener("change", function () {
@@ -64,7 +62,6 @@ document.getElementById("data-select").addEventListener("change", function () {
 });
 
 $(document).ready(function () {
-    // call function to set the three switch toggle to "active"
     //toggle switch for 'active'/'inactive' members
     $("#toggle-inactive").on("change", function () {
         //overwrites 'active' members on table and displays 'inactive'
@@ -94,6 +91,71 @@ $(document).ready(function () {
         });
     }); //.on
 
+    // the code here allows us to update/change the display of volunteers for active,
+    // pending, and inactive. We have to make separate calls to update the table and use ajaxComplete()
+    // NEW STUFF *************************************************************************************
+
+    $("#pending").on("click", function() {
+        // update status of three switch toggle for colors/design
+        change_status("pending");
+
+        // make ajax call to update the display of pending volunteers
+        $.ajax({
+            url: 'private/init.php',
+            method: 'post',
+            data: {queryType: "pending_volunteers_query"},
+            success: function (response) {
+                $("#dreamer-table").html(response);
+            }
+        }); //.ajax
+
+        // need to re-update the click events on the page
+        $( document ).ajaxComplete(function() {
+            addClickEvents();
+        });
+    });
+
+    // for displaying ONLY active volunteers
+    $("#active").on("click", function () {
+        change_status("active");
+
+        // make ajax call to update the display of pending volunteers
+        $.ajax({
+            url: 'private/init.php',
+            method: 'post',
+            data: {queryType: "active_volunteers_query"},
+            success: function (response) {
+                $("#dreamer-table").html(response);
+            }
+        }); //.ajax
+
+        // need to re-update the click events on the page
+        $( document ).ajaxComplete(function() {
+            addClickEvents();
+        });
+    });
+
+    // for displaying ONLY inactive volunteers
+    $("#inactive").on("click", function () {
+        change_status("inactive");
+
+        // make ajax call to update the display of pending volunteers
+        $.ajax({
+            url: 'private/init.php',
+            method: 'post',
+            data: {queryType: "inactive_volunteers_query"},
+            success: function (response) {
+                $("#dreamer-table").html(response);
+            }
+        }); //.ajax
+
+        // need to re-update the click events on the page
+        $( document ).ajaxComplete(function() {
+            addClickEvents();
+        });
+    });
+
+
     // toggle the modal for emailing functionality
     $("#email-button").on("click", function () {
         let str = tableSelected();
@@ -113,6 +175,11 @@ $('#save').on('click', function () {
 //JSON array
 //appending all children into modal-body
 function populateModalData(responseData) {
+
+    // clear modal data before we populate -- added here as well
+    // because in testing it was not clearing out the modal before re-populating
+    $("#modal-body").html("");
+
     //for each data field, displaying 'key' and 'value' paired data into the modal
     $.each(responseData, function (key, value) {
         //the field heading
@@ -175,18 +242,18 @@ function change_status(status){
 
     let selector = document.getElementById("selector");
 
-    if(status === "pending"){
-        selector.style.left = 0;
-        selector.style.width = pending.clientWidth + "px";
-        selector.style.backgroundColor = "#777777";
-        selector.innerHTML = "Pending";
-    }
 
-    else if(status === "active"){
+    if(status === "active"){
         selector.style.left = pending.clientWidth + "px";
         selector.style.width = active.clientWidth + "px";
         selector.innerHTML = "Active";
         selector.style.backgroundColor = "#418d92";
+    }
+    else if(status === "pending"){
+        selector.style.left = 0;
+        selector.style.width = pending.clientWidth + "px";
+        selector.style.backgroundColor = "#777777";
+        selector.innerHTML = "Pending";
     }
 
     else{
