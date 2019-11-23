@@ -9,6 +9,14 @@ File Name: admin_styles.css
 Associated File: admin_page.php
 */
 
+#email-button {
+    background-color: #6cb1c1 !important;
+    border-color: #6cb1c1 !important;
+    display: block;
+    float: left;
+    clear: both;
+}
+
 .entire-container {
     margin-left: 10px !important;
     margin-right: 10px !important;
@@ -60,9 +68,11 @@ label {
 /* The switch - the box around the slider */
 .switch {
     position: relative;
-    display: inline-block;
+    /*display: inline-block;*/
     width: 60px;
     height: 34px;
+
+    display: block;
 }
 
 /* Hide default HTML checkbox */
@@ -98,11 +108,11 @@ label {
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #6cb1c1;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #6cb1c1;
 }
 
 input:checked + .slider:before {
@@ -129,11 +139,12 @@ body{
 
 .parent{
     /*position:fixed;*/
-    width:100%;
-    height:100%;
+    /*width:100%;*/
+    /*height:100%;*/
     display:inline-flex;
     background:#6cb1c1;
     /* *****************************************background: #fff; ************************************ */
+
 }
 
 
@@ -145,19 +156,20 @@ body{
     border-radius:0.3em;
     background:#ccc;
     position:relative;
-    /*display:block;*/
-    /*float:left;*/
+    display:block;
+    float:left;
 
-    width:100%;
-    display:inline-flex;
-    height:100%;
+
+    /*width:100%;*/
+    /*display:inline-flex;*/
+    /*height:100%;*/
 }
 
 .switch.pending,
 .switch.active,
 .switch.inactive{
     cursor:pointer;
-    /*position:relative;*/
+    position:relative;
     display:block;
     float:left;
     -webkit-transition: 300ms ease-out;
@@ -165,10 +177,16 @@ body{
     transition: 300ms ease-out;
     padding: 0 1em;
 
-    display:inline-flex;
+    /*display:inline-flex;*/
 }
 
 .selector{
+
+
+
+
+
+
     text-align:center;
     position:absolute;
     width:0;

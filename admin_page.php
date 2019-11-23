@@ -77,13 +77,12 @@ if (!isset($_GET["data_select"])) {
                         <div id="inactive" class="switch inactive">Inactive</div>
                         <div id="selector" class="selector"></div>
                     </div>
-
                 </div> <!-- displays the three toggle switch-->
 
              <?
             }
             ?>
-        <button id="email-button" type="button" class="btn btn-primary btn-lg">Email</button>
+        <button id="email-button" type="button" class="btn btn-lg text-white">Email</button>
     </div>
     <?php
     //if it's the dreamer table, run $sql for member row + run $sql_ids for user_ids Foreign key
@@ -136,9 +135,9 @@ if (!isset($_GET["data_select"])) {
                 <input type="hidden" id="hidden-id">
             </div>
             <div class="modal-footer">
-                <button type="button" id="delete" class="pull-right bg-danger text-white btn btn-default">Delete
+                <button type="button" id="delete" class="pull-right bg-danger text-white btn btn-default btn-lg">Delete
                 </button>
-                <button type="button" id="save" class="pull-left bg-danger text-white btn btn-default">Save</button>
+                <button type="button" id="save" class="pull-left bg-success text-white btn btn-default btn-lg">Save</button>
             </div>
         </div>
     </div>
