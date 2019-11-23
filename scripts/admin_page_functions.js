@@ -18,45 +18,11 @@ $("#inactive").on("click", function () {
     change_status("inactive");
 });
 
-$(document).ready(function () {
-    $('#dreamer-table').DataTable();
-    $('#volunteer-table').DataTable();
-});
-
-document.getElementById("data-select").addEventListener("change", function () {
-    this.form.submit();
-});
-
-$(document).ready(function () {
-    // call function to set the three switch toggle to "active"
-    //toggle switch for 'active'/'inactive' members
-    $("#toggle-inactive").on("change", function () {
-        //overwrites 'active' members on table and displays 'inactive'
-        console.log("toggle inactive/active dreamer");
-        if ($("#toggle-inactive").is(":checked")) {
-            $.ajax({
-                url: 'private/init.php',
-                method: 'post',
-                data: {queryType: "active_query"},
-                success: function (response) {
-                    $("#dreamer-table").html(response);
-                }
-            }); //.ajax
-        } else {
-            $.ajax({
-                url: 'private/init.php',
-                method: 'post',
-                data: {queryType: "inactive_query"},
-                success: function (response) {
-                    $("#dreamer-table").html(response);
-                }
-            }); //.ajax
-        }
-
-    }); //.on
-
+function addClickEvents() {
     //fills modal on 'click' of member's name
+    console.log("click events");
     $(".update").on("click", function () {
+        console.log("update clicked");
         //get the 'id' of the row (parent of first name clicked)
         let id = this.parentElement.getAttribute("id");
         let firstName = $("#" + id).children("td[data-field-name = user_first]").text();
@@ -85,7 +51,48 @@ $(document).ready(function () {
             }
         }); //.ajax
     }); //.on
+}
 
+$(document).ready(function () {
+    $('#dreamer-table').DataTable();
+    $('#volunteer-table').DataTable();
+    addClickEvents();
+});
+
+document.getElementById("data-select").addEventListener("change", function () {
+    this.form.submit();
+});
+
+$(document).ready(function () {
+    // call function to set the three switch toggle to "active"
+    //toggle switch for 'active'/'inactive' members
+    $("#toggle-inactive").on("change", function () {
+        //overwrites 'active' members on table and displays 'inactive'
+        console.log("changed");
+
+        if ($("#toggle-inactive").is(":checked")) {
+            $.ajax({
+                url: 'private/init.php',
+                method: 'post',
+                data: {queryType: "active_query"},
+                success: function (response) {
+                    $("#dreamer-table").html(response);
+                }
+            }); //.ajax
+        } else {
+            $.ajax({
+                url: 'private/init.php',
+                method: 'post',
+                data: {queryType: "inactive_query"},
+                success: function (response) {
+                    $("#dreamer-table").html(response);
+                }
+            }); //.ajax
+        }
+        $( document ).ajaxComplete(function() {
+            addClickEvents();
+        });
+    }); //.on
 
     // toggle the modal for emailing functionality
     $("#email-button").on("click", function () {
