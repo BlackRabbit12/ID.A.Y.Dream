@@ -171,11 +171,26 @@ if (isset($_POST['queryType'])) {
 
 } //end isset($_POST['queryType'])
 
-// --- debugging log for php during ajax calls ---
+//mouseup event for user modal 'save' button
+if(isset($_POST['table'])){
+    $dataAssociativeArray[$_POST['key']] = $_POST['value'];
+    updateData($_POST['table'], $_POST['pKName'], $dataAssociativeArray, $_POST['user_id']);
+
+    // --- debugging log for php during ajax calls ---
+    $myfile = fopen("log.txt", "w") or die("Unable to open file!");
+    $text = "some";
+    foreach($_POST as $item)
+        $text .= "$item\n";
+    fwrite($myfile, $text);
+    fclose($myfile);
+    // --- end debug ---
+} //end isset($_POST['table'])
+
+// //--- debugging log for php during ajax calls ---
 //    $myfile = fopen("log.txt", "w") or die("Unable to open file!");
 //    $text = "";
 //    foreach($log as $item)
 //        $text .= "$item\n";
 //    fwrite($myfile, $text);
 //    fclose($myfile);
-// --- end debug ---
+// //--- end debug ---
