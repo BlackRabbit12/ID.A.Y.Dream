@@ -31,7 +31,7 @@ function addEditEvents(){
             this.append(inputElement);
             //keep focus on current <input> (because "blur" drops focus)
             document.getElementById("input_id").focus();
-            //append a 'save' button to row for when edit is confirmed to send to database
+            //after 'appends' a sibling, "append" a 'save' button to row for when edit is confirmed to send to database
             let saveBtn = "<button type=\"button\" id=\"save\" class=\"pull-left bg-success text-white btn btn-default btn-sm\">Save</button>";
 
 
@@ -63,10 +63,15 @@ function addEditEvents(){
                 //appends <p> to <label>
                 parent.append(p);
             }); //.addEventListener
+
+            $("#save").on("mouseup", function () {
+                console.log("yay"); //**************************************************************************************
+
+            }); //.on
         }
         // else we have already clicked on the field so it has an input_id
         else{
-            console.log("else");
+            console.log("else"); //******************************************************************************************
         }
     }); //.on
 
@@ -75,9 +80,9 @@ function addEditEvents(){
 
 function addClickEvents() {
     //fills modal on 'click' of member's name
-    console.log("click events");
+    console.log("click events"); //******************************************************************************************
     $(".update").on("click", function () {
-        console.log("update clicked");
+        console.log("update clicked"); //************************************************************************************
         //get the 'id' of the row (parent of first name clicked)
         let id = this.parentElement.getAttribute("id");
         let firstName = $("#" + id).children("td[data-field-name = user_first]").text();
@@ -100,7 +105,7 @@ function addClickEvents() {
             data: {id: id, dataSelect: dataSelect},
             dataType: 'JSON',
             success: function (response) {
-                console.log(response);
+                console.log(response); //************************************************************************************
                 populateModalData(response);
             }
         }); //.ajax
@@ -132,7 +137,7 @@ $(document).ready(function () {
     //toggle switch for 'active'/'inactive' members
     $("#toggle-inactive").on("change", function () {
         //overwrites 'active' members on table and displays 'inactive'
-        console.log("changed");
+        console.log("changed"); //******************************************************************************************
 
         if ($("#toggle-inactive").is(":checked")) {
             $.ajax({
@@ -242,13 +247,15 @@ function populateModalData(responseData) {
 
     //for each data field, displaying 'key' and 'value' paired data into the modal
     $.each(responseData, function (key, value) {
-        //the field heading
+        //create a textNode wrapping the field heading (the column's name (aka 'key'))
         let textNode = document.createTextNode(formatHeadings(key) + ":   ");
+        //create a <label>
         let label = document.createElement('label');
         //assign the database column name to the label, formatting class = "editInput" used for function addEditEvents()
         label.setAttribute("id", key.substring(0, key.length - 1));
         // TODO add correct class and display style (dropdown or text field) inside the modal for consistent user experience
         label.classList.add("editInput");
+        //append the textNode(with heading) to the <label>
         label.append(textNode);
 
         //the field value
