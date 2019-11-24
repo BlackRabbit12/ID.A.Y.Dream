@@ -127,7 +127,6 @@ if (!isset($_GET["data_select"])) {
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="btn bg-secondary">Edit  </button>
                 <h4 class="modal-title" id="full-name"></h4>
                 <button type="button" class="close btn bg-secondary" data-dismiss="modal">&times;</button>
             </div>
@@ -138,7 +137,6 @@ if (!isset($_GET["data_select"])) {
             <div class="modal-footer">
                 <button type="button" id="delete" class="pull-right bg-danger text-white btn btn-default btn-lg">Delete
                 </button>
-                <!--<button type="button" id="save" class="pull-left bg-success text-white btn btn-default btn-lg">Save</button>-->
             </div>
         </div>
     </div>
