@@ -1,13 +1,69 @@
 /*
  * Authors: Shayna Jamieson, Keller Flint, Bridget Black
  * 2019-11-12
- * Last Updated: 2019-11-12
+ * Last Updated: 2019-11-24
  * Version 1.0
  * File name: admin_page_functions.js
  * Associated Files: admin_page.php
  */
 
 
+function addEditEvents(){
+    $(".editInput").on("mouseup", function(){
+        //if we have not "set" the input_id by clicking on it, then it's null
+        if(document.getElementById("input_id") == null) {
+            //get user's id
+            let user_id = document.getElementById("user_id");
+
+            //set paragraph to text input, use children[0] because we only have one child for each label
+            let text = this.children[0].innerText;
+            //creates a new element of type <input>
+            let inputElement = document.createElement("input");
+            //set the attribute id
+            inputElement.setAttribute("id", "input_id");
+            //set the attribute of <input>'s type to text
+            inputElement.setAttribute("type", "text");
+            //set the attribute of <input>'s value to 'text'
+            inputElement.setAttribute("value", text);
+            //remove the <p> element
+            this.removeChild(this.children[0]);
+            //append the new <input> to the <label>
+            this.append(inputElement);
+            //keep focus on current <input> (because "blur" drops focus)
+            document.getElementById("input_id").focus();
+            //append a 'save' button to row for when edit is confirmed to send to database
+            let saveBtn = "<button type=\"button\" id=\"save\" class=\"pull-left bg-success text-white btn btn-default btn-sm\">Save</button>";
+            $(this).after(saveBtn);
+
+            //add eventlistener for when click outside of box to dump changes
+            this.children[0].addEventListener("blur", function () {
+                console.log("blurry");
+                // get the <input>'s parent = <label>
+                let parent = this.parentElement;
+                //removes the <input>
+                this.remove(this);
+                //removes the 'save' button when "outside" of field click happens (looses focus)
+                document.getElementById("save").remove();
+                //create a new <p> element for updated admin value
+                let p = document.createElement("p");
+                //create a new Text Node for 'text'
+                let textNode = document.createTextNode(text);
+                //append 'textNode' to <p>
+                p.append(textNode);
+                //appends <p> to <label>
+                parent.append(p);
+            }); //.addEventListener
+
+            $("#save").on("click", function () {
+                console.log("yay");
+            }); //.on
+        }
+        // else we have already clicked on the field so it has an input_id
+        else{
+            console.log("else");
+        }
+    }); //.on
+} //end function addEditEvents()
 
 function addClickEvents() {
     //fills modal on 'click' of member's name
@@ -21,7 +77,6 @@ function addClickEvents() {
 
         //get the selected table from "select" dropdown
         let dataSelect = tableSelected();
-
 
         //to be passed into .ajax
         $("#hidden-id").val(id);
@@ -41,8 +96,12 @@ function addClickEvents() {
                 populateModalData(response);
             }
         }); //.ajax
+        //after ajax is done loading, then add the editable events
+        $( document ).ajaxComplete(function() {
+            addEditEvents();
+        }); //.ajaxComplete
     }); //.on
-}
+} //end function addClickEvents()
 
 $(document).ready(function () {
     $('#dreamer-table').DataTable();
@@ -55,11 +114,11 @@ $(document).ready(function () {
     if(tableSelected() == "volunteers") {
         change_status("active");
     }
-});
+}); //.ready
 
 document.getElementById("data-select").addEventListener("change", function () {
     this.form.submit();
-});
+}); //addEventListener
 
 $(document).ready(function () {
     //toggle switch for 'active'/'inactive' members
@@ -86,9 +145,10 @@ $(document).ready(function () {
                 }
             }); //.ajax
         }
+        //after ajax is done loading, then add the clickable events
         $( document ).ajaxComplete(function() {
             addClickEvents();
-        });
+        }); //.ajaxComplete
     }); //.on
 
     // the code here allows us to update/change the display of volunteers for active,
@@ -112,8 +172,8 @@ $(document).ready(function () {
         // need to re-update the click events on the page
         $( document ).ajaxComplete(function() {
             addClickEvents();
-        });
-    });
+        }); //.ajaxComplete
+    }); //.on
 
     // for displaying ONLY active volunteers
     $("#active").on("click", function () {
@@ -132,8 +192,8 @@ $(document).ready(function () {
         // need to re-update the click events on the page
         $( document ).ajaxComplete(function() {
             addClickEvents();
-        });
-    });
+        }); //.ajaxComplete
+    }); //.on
 
     // for displaying ONLY inactive volunteers
     $("#inactive").on("click", function () {
@@ -152,9 +212,8 @@ $(document).ready(function () {
         // need to re-update the click events on the page
         $( document ).ajaxComplete(function() {
             addClickEvents();
-        });
-    });
-
+        }); //.ajaxComplete
+    }); //.on
 
     // toggle the modal for emailing functionality
     $("#email-button").on("click", function () {
@@ -162,15 +221,8 @@ $(document).ready(function () {
         str = str[0].toUpperCase() + str.substr(1, str.length);
         $("#email-modal-title").html("Email Active " + str);
         $("#emailModal").modal("toggle");
-    });
-
+    }); //.on
 }); //.ready
-
-//user_id for row we're working on
-//save button doesn't work 2019-11-16 DELETE WHEN WORKING ***************************************************
-$('#save').on('click', function () {
-    let id = $('#hidden-id').val();
-}); //.on
 
 //JSON array
 //appending all children into modal-body
@@ -185,6 +237,10 @@ function populateModalData(responseData) {
         //the field heading
         let textNode = document.createTextNode(formatHeadings(key) + ":   ");
         let label = document.createElement('label');
+        //assign the database column name to the label, formatting class = "editInput" used for function addEditEvents()
+        label.setAttribute("id", key.substring(0, key.length - 1));
+        // TODO add correct class and display style (dropdown or text field) inside the modal for consistent user experience
+        label.classList.add("editInput");
         label.append(textNode);
 
         //the field value
@@ -219,7 +275,7 @@ function formatHeadings(str) {
     }
     str = str[0].toUpperCase() + str.substr(1, str.length);
     return str;
-}
+} //function formatHeadings(str)
 
 function tableSelected() {
     // get the selected table from "select" dropdown
@@ -230,7 +286,7 @@ function tableSelected() {
         dataSelect = 'volunteers';
     }
     return dataSelect;
-}
+} //function tableSelected()
 
 // FOR THE THREE TOGGLE SWITCH !!! -- should be moved later
 function change_status(status){
@@ -262,4 +318,4 @@ function change_status(status){
         selector.innerHTML = "Inactive";
         selector.style.backgroundColor = "#4d7ea9";
     }
-}
+} //end function change_status(status)

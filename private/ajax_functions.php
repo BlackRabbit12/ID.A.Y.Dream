@@ -48,12 +48,7 @@ if (isset($_POST['dataSelect'])) {
             } while (mysqli_more_results($db) && mysqli_next_result($db));
         }
         //if $results is a good call, send associative array back to admin modal
-        $myfile = fopen("log.txt", "w") or die("Unable to open file!");
-        $text = json_encode($data);
-        fwrite($myfile, $text);
-        fclose($myfile);
         if ($result) {
-
             echo json_encode($data);
         }
     } //end volunteers

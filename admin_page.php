@@ -138,7 +138,7 @@ if (!isset($_GET["data_select"])) {
             <div class="modal-footer">
                 <button type="button" id="delete" class="pull-right bg-danger text-white btn btn-default btn-lg">Delete
                 </button>
-                <button type="button" id="save" class="pull-left bg-success text-white btn btn-default btn-lg">Save</button>
+                <!--<button type="button" id="save" class="pull-left bg-success text-white btn btn-default btn-lg">Save</button>-->
             </div>
         </div>
     </div>
