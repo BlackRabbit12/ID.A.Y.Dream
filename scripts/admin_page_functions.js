@@ -33,10 +33,20 @@ function addEditEvents(){
             document.getElementById("input_id").focus();
             //after 'appends' a sibling, "append" a 'save' button to row for when edit is confirmed to send to database
             let saveBtn = "<button type=\"button\" id=\"save\" class=\"pull-left bg-success text-white btn btn-default btn-sm\">Save</button>";
-            $(this).after(saveBtn);
 
-            //add event listener for when click outside of box to dump changes
-            this.children[0].addEventListener("blur", function () {
+
+
+           // $(this).after(saveBtn);
+            $(this).append(saveBtn);
+
+            $("#save").on("mousedown", function (event) {
+
+                console.log("yay");
+            }); //.on
+
+            //add eventlistener for when click outside of box to dump changes
+            this.children[0].addEventListener("blur", function (event) {
+                event.preventDefault();
                 console.log("blurry");
                 // get the <input>'s parent = <label>
                 let parent = this.parentElement;
@@ -64,6 +74,8 @@ function addEditEvents(){
             console.log("else"); //******************************************************************************************
         }
     }); //.on
+
+
 } //end function addEditEvents()
 
 function addClickEvents() {
