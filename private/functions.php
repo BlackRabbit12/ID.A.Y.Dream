@@ -51,12 +51,6 @@ function buildTable($result, $tableHeadingNames, $result_ids)
         $output .= "</tr>";
         $k++;
     }
-    $myfile = fopen("log.txt", "w") or die("Unable to open file!");
-    $text = "";
-    foreach ($log as $item)
-        $text .= "$item\n";
-    fwrite($myfile, $text);
-    fclose($myfile);
 
     $output .= "</tbody>";
 
