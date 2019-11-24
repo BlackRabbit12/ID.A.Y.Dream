@@ -13,7 +13,7 @@ function addEditEvents(){
         //if we have not "set" the input_id by clicking on it, then it's null
         if(document.getElementById("input_id") == null) {
             //get user's id
-            let user_id = document.getElementById("user_id");
+            let user_id = document.getElementById("user_id").value;
 
             //set paragraph to text input, use children[0] because we only have one child for each label
             let text = this.children[0].innerText;
@@ -33,18 +33,13 @@ function addEditEvents(){
             document.getElementById("input_id").focus();
             //after 'appends' a sibling, "append" a 'save' button to row for when edit is confirmed to send to database
             let saveBtn = "<button type=\"button\" id=\"save\" class=\"pull-left bg-success text-white btn btn-default btn-sm\">Save</button>";
-
-
-
-           // $(this).after(saveBtn);
             $(this).append(saveBtn);
 
             $("#save").on("mousedown", function (event) {
-
                 console.log("yay");
             }); //.on
 
-            //add eventlistener for when click outside of box to dump changes
+            //add event listener for when click outside of box to dump changes
             this.children[0].addEventListener("blur", function (event) {
                 event.preventDefault();
                 console.log("blurry");
@@ -66,7 +61,20 @@ function addEditEvents(){
 
             $("#save").on("mouseup", function () {
                 console.log("yay"); //**************************************************************************************
-
+                let key = this.getAttribute("id");
+                let value = document.getElementById("input_id").value;
+                //updates the value in the selected field's database equivalent
+                $.ajax({
+                    url: 'private/init.php',
+                    method: 'post',
+                    data: {user_id: user_id, table: "User", pKName: "user_id", key: key, value: value},
+                    dataType: 'JSON',
+                    success: function (response) {
+                        console.log("success in update");
+                        console.log(response); //************************************************************************************
+                        //populateModalData(response);
+                    }
+                }); //.ajax
             }); //.on
         }
         // else we have already clicked on the field so it has an input_id
