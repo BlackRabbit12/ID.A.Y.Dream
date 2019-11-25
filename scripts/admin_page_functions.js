@@ -12,9 +12,6 @@ function addEditEvents(){
     $(".editInput").on("mouseup", function(){
         //if we have not "set" the input_id by clicking on it, then it's null
         if(document.getElementById("input_id") == null) {
-            //get user's id
-            let user_id = document.getElementById("user_id").value;
-
             //set paragraph to text input, use children[0] because we only have one child for each label
             let text = this.children[0].innerText;
             //creates a new element of type <input>
@@ -59,16 +56,19 @@ function addEditEvents(){
                 parent.append(p);
             }); //.addEventListener
 
-            $("#save").on("mouseup", function () {
-                console.log("yay"); //**************************************************************************************
-                let key = this.getAttribute("id");
+            $("#save").on("mousedown", function () {
+                //get user's id
+                let user_id = document.getElementById("user_id").children[0].innerText;
+                let key = document.getElementById("input_id").parentElement.getAttribute("id");
                 let value = document.getElementById("input_id").value;
+                console.log("user_id " + user_id); //**************************************************************************************
+                console.log("key " + key);
+                console.log("value " + value);
                 //updates the value in the selected field's database equivalent
                 $.ajax({
                     url: 'private/init.php',
                     method: 'post',
                     data: {user_id: user_id, table: "User", pKName: "user_id", key: key, value: value},
-                    dataType: 'JSON',
                     success: function (response) {
                         console.log("success in update");
                         console.log(response); //************************************************************************************

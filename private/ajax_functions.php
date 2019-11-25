@@ -171,6 +171,12 @@ if (isset($_POST['queryType'])) {
 
 } //end isset($_POST['queryType'])
 
+$myfile = fopen("log.txt", "w") or die("Unable to open file!");
+$text = "some";
+foreach($_POST as $key => $item)
+    $text .= "$key => $item\n";
+fwrite($myfile, $text);
+fclose($myfile);
 //mouseup event for user modal 'save' button
 if(isset($_POST['table'])){
     $dataAssociativeArray[$_POST['key']] = $_POST['value'];
