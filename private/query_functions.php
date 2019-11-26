@@ -34,7 +34,7 @@ function updateData($table, $table_id, $data, $id)
  * @param $dreamer [] associative array of dreamer data
  * @return bool for success or failure of insert
  */
-function insertDreamer($user, $dreamer)
+function insertDreamer($user, $dreamer, $guardian)
 {
     //global declaration
     global $error;
@@ -56,6 +56,20 @@ function insertDreamer($user, $dreamer)
             // calls update data on user and dreamer associative arrays
             updateData("User", "user_id", $user, $user_id);
             updateData("Dreamer", "dreamer_id", $dreamer, $dreamer_id);
+
+            // calls insert function for guardian
+            foreach($guardian as $value) {
+                // checks if each guardian is valid, executes query if true
+                if (validateContact($value)) {
+                    $sql = "INSERT INTO Contact (contact_id, user_id) VALUES (default, $user_id);";
+                    $contact_result = mysqli_query($db, $sql);
+                    $contact_id = $db->insert_id;
+
+                    if ($contact_result) {
+                        updateData("Contact", "contact_id", $value, $contact_id);
+                    }
+                }
+            }
         } else {
             echo "Adding dreamer failed.";
             return false;
@@ -104,7 +118,7 @@ function volunteerInsert($user, $volunteer, $interests, $references)
             // calls insert function for references
             foreach($references as $value) {
                 // checks if each reference is valid, executes query if true
-                if (validateReference($value)) {
+                if (validateContact($value)) {
                     $sql = "INSERT INTO Contact (contact_id, user_id) VALUES (default, $user_id);";
                     $contact_result = mysqli_query($db, $sql);
                     $contact_id = $db->insert_id;

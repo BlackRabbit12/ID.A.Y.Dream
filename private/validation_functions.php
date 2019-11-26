@@ -321,7 +321,7 @@ function validateVolunteer($volunteer)
     return $isValid;
 }
 
-function validateReference($reference) {
+function validateContact($contact) {
     //global declaration
     global $db;
     //error message array
@@ -330,27 +330,27 @@ function validateReference($reference) {
     $isValid = true;
 
     //Reference phone number
-    if (!phoneIsValid($reference["contact_phone"])) {
+    if (!phoneIsValid($contact["contact_phone"])) {
         $isValid = false;
-        $error[] = 'Reference Phone';
+        $error[] = 'Contact Phone';
     }
 
     //Reference email
-    if (!emailIsValid($reference["contact_email"])) {
+    if (!emailIsValid($contact["contact_email"])) {
         $isValid = false;
-        $error[] = 'Reference Email';
+        $error[] = 'Contact Email';
     }
 
     //Reference relationship to volunteer
-    if (!requiredInputIsValid($reference["contact_relationship"])) {
+    if (!requiredInputIsValid($contact["contact_relationship"])) {
         $isValid = false;
-        $error[] = 'Reference Relationship';
+        $error[] = 'Contact Relationship';
     }
 
     //Reference name
-    if (!requiredInputIsValid($reference["contact_name"])) {
+    if (!requiredInputIsValid($contact["contact_name"])) {
         $isValid = false;
-        $error[] = 'Reference Name';
+        $error[] = 'Contact Name';
     }
 
     return $isValid;

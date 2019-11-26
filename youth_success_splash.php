@@ -61,7 +61,17 @@ $dreamer["dreamer_food"] = $_POST["fav-snacks"];
 $dreamer["dreamer_goals"] = $_POST["aspirations"];
 $dreamer["dreamer_active"] = "active";
 
-$success = insertDreamer($user, $dreamer);
+// creating the array of associative arrays containing guardian data
+$guardianArray = [];
+$guardianArray[] = array(
+    "contact_name" => $_POST["guardian-fName"] . " " . $_POST['guardian-lName'],
+    "contact_relationship" => $_POST["guardian-relationship"],
+    "contact_email" => $_POST["guardian-email"],
+    "contact_phone" => formatPhone($_POST["guardian-phone"]),
+    "contact_type" => "guardian"
+);
+
+$success = insertDreamer($user, $dreamer, $guardianArray);
 
 //if dreamer successfully INSERTed, complete the success page for dreamer
 if ($success) {
