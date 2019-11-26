@@ -32,6 +32,55 @@ if (!isset($_GET["data_select"])) {
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <style>
+
+        form {
+            margin-left: 20px;
+        }
+        .switch-field {
+            display: flex;
+            margin-bottom: 36px;
+            overflow: hidden;
+        }
+
+        .switch-field input {
+            position: absolute !important;
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            width: 1px;
+            border: 0;
+            overflow: hidden;
+        }
+
+        .switch-field label {
+            background-color: #e4e4e4;
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 14px;
+            line-height: 1;
+            text-align: center;
+            padding: 8px 16px;
+            margin-right: -1px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+            transition: all 0.1s ease-in-out;
+        }
+
+        .switch-field label:hover {
+            cursor: pointer;
+        }
+
+        .switch-field input:checked + label {
+            background-color: #6cb1c0;
+            box-shadow: none;
+            color: white;
+        }
+
+        .switch-field label:first-of-type {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .switch-field label:last-of-type {
+            border-radius: 0 4px 4px 0;
+        }
     </style>
 </head>
 <body>
@@ -59,26 +108,26 @@ if (!isset($_GET["data_select"])) {
         <?php
         // displays switch for toggling active vs inactive if dreamer is selected
         if ($_GET["data_select"] == "dreamers") { ?>
-            <p>Active: </p>
-            <label class="switch">
-                <input type="checkbox" id="toggle-inactive" checked>
-                <span class="slider"></span>
-            </label><br><br>
+            <div class="switch-field">
+                <input type="radio" id="active-dreamer" name="switch-one" value="Active" checked/>
+                <label id="active-dreamer-label" for="active-dreamer">Active</label>
+                <input type="radio" id="inactive-dreamer" name="switch-one" value="Inactive" />
+                <label id="inactive-dreamer-label" for="inactive-dreamer">Inactive</label>
+            </div>
         <?php }
         // this is where we need the three toggle switch
         // we will allow the admin to switch between inactive, active, and pending
         // for her volunteer users and will populate the table as such
         else if($_GET['data_select'] == "volunteers") {
             ?>
-            <div class="parent">
-                <div class="switch_3_ways">
-                    <div id="pending" class="switch pending">Pending</div>
-                    <div id="active" class="switch active">Active</div>
-                    <div id="inactive" class="switch inactive">Inactive</div>
-                    <div id="selector" class="selector"></div>
-                </div>
-            </div> <!-- displays the three toggle switch-->
-
+            <div class="switch-field">
+                <input type="radio" id="pending" name="switch-two" value="Pending" />
+                <label id="pending-label" for="pending">Pending</label>
+                <input type="radio" id="active" name="switch-two" value="Active" checked/>
+                <label id="active-label" for="active">Active</label>
+                <input type="radio" id="inactive" name="switch-two" value="Inactive" />
+                <label id="inactive-label" for="inactive">Inactive</label>
+            </div>
             <?
         }
         if($_GET['data_select'] == "volunteers" || $_GET['data_select'] == "dreamers") {

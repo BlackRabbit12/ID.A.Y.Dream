@@ -139,7 +139,7 @@ $(document).ready(function () {
     // on page load if the user has chosen to look at the volunteers table we want to initialize
     // the position of the three switch toggle to active to start
     if(tableSelected() == "volunteers") {
-        change_status("active");
+        // change_status("active");
     }
 }); //.ready
 
@@ -148,31 +148,35 @@ document.getElementById("data-select").addEventListener("change", function () {
 }); //addEventListener
 
 $(document).ready(function () {
-    //toggle switch for 'active'/'inactive' members
-    $("#toggle-inactive").on("change", function () {
-        //overwrites 'active' members on table and displays 'inactive'
-        console.log("changed"); //******************************************************************************************
+    $("#active-dreamer-label").on("click", function() {
+        // make ajax call to update the display of pending volunteers
+        $.ajax({
+            url: 'private/init.php',
+            method: 'post',
+            data: {queryType: "active_query"},
+            success: function (response) {
+                $("#dreamer-table").html(response);
+            }
+        }); //.ajax
 
-        if ($("#toggle-inactive").is(":checked")) {
-            $.ajax({
-                url: 'private/init.php',
-                method: 'post',
-                data: {queryType: "active_query"},
-                success: function (response) {
-                    $("#dreamer-table").html(response);
-                }
-            }); //.ajax
-        } else {
-            $.ajax({
-                url: 'private/init.php',
-                method: 'post',
-                data: {queryType: "inactive_query"},
-                success: function (response) {
-                    $("#dreamer-table").html(response);
-                }
-            }); //.ajax
-        }
-        //after ajax is done loading, then add the clickable events
+        // need to re-update the click events on the page
+        $( document ).ajaxComplete(function() {
+            addClickEvents();
+        }); //.ajaxComplete
+    }); //.on
+
+    $("#inactive-dreamer-label").on("click", function() {
+        // make ajax call to update the display of pending volunteers
+        $.ajax({
+            url: 'private/init.php',
+            method: 'post',
+            data: {queryType: "inactive_query"},
+            success: function (response) {
+                $("#dreamer-table").html(response);
+            }
+        }); //.ajax
+
+        // need to re-update the click events on the page
         $( document ).ajaxComplete(function() {
             addClickEvents();
         }); //.ajaxComplete
@@ -181,11 +185,8 @@ $(document).ready(function () {
     // the code here allows us to update/change the display of volunteers for active,
     // pending, and inactive. We have to make separate calls to update the table and use ajaxComplete()
     // NEW STUFF *************************************************************************************
-
-    $("#pending").on("click", function() {
-        // update status of three switch toggle for colors/design
-        change_status("pending");
-
+    // ($("#toggle-inactive").is(":checked"))
+    $("#pending-label").on("click", function() {
         // make ajax call to update the display of pending volunteers
         $.ajax({
             url: 'private/init.php',
@@ -203,8 +204,8 @@ $(document).ready(function () {
     }); //.on
 
     // for displaying ONLY active volunteers
-    $("#active").on("click", function () {
-        change_status("active");
+    $("#active-label").on("click", function () {
+        //change_status("active");
 
         // make ajax call to update the display of pending volunteers
         $.ajax({
@@ -223,8 +224,8 @@ $(document).ready(function () {
     }); //.on
 
     // for displaying ONLY inactive volunteers
-    $("#inactive").on("click", function () {
-        change_status("inactive");
+    $("#inactive-label").on("click", function () {
+        //change_status("inactive");
 
         // make ajax call to update the display of pending volunteers
         $.ajax({
@@ -316,38 +317,6 @@ function tableSelected() {
     }
     return dataSelect;
 } //function tableSelected()
-
-// FOR THE THREE TOGGLE SWITCH !!! -- should be moved later
-function change_status(status){
-    let pending = document.getElementById("pending");
-
-    let active = document.getElementById("active");
-
-    let inactive = document.getElementById("inactive");
-
-    let selector = document.getElementById("selector");
-
-
-    if(status === "active"){
-        selector.style.left = pending.clientWidth + "px";
-        selector.style.width = active.clientWidth + "px";
-        selector.innerHTML = "Active";
-        selector.style.backgroundColor = "#418d92";
-    }
-    else if(status === "pending"){
-        selector.style.left = 0;
-        selector.style.width = pending.clientWidth + "px";
-        selector.style.backgroundColor = "#777777";
-        selector.innerHTML = "Pending";
-    }
-
-    else{
-        selector.style.left = pending.clientWidth + active.clientWidth + 1 + "px";
-        selector.style.width = inactive.clientWidth + "px";
-        selector.innerHTML = "Inactive";
-        selector.style.backgroundColor = "#4d7ea9";
-    }
-} //end function change_status(status)
 
 $("#email-send").on("click", function() {
     let subject = $("#email-subject").val();
