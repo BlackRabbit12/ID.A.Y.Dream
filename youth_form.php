@@ -148,6 +148,36 @@
                 </div>
             </div>
         </div> <!-- end of row that has the user list their career aspirations -->
+        <h3 class="mb-4">Parent/Guardian Information</h3>
+        <div class="row">
+            <div class="col-md-4 padding">
+                <label for="guardian-fName" class="col-form-label"><em>*</em> Guardian First</label>
+                <input type="text" class="form-control" id="guardian-fName" name="guardian-fName" placeholder="">
+                <span id="err-guardian-fName" class="d-none">please enter a valid guardian first name</span>
+            </div>
+            <div class="col-md-4 padding">
+                <label for="guardian-lName" class="col-form-label"><em>*</em> Guardian Last</label>
+                <input type="text" class="form-control" id="guardian-lName" name="guardian-lName" placeholder="">
+                <span id="err-guardian-lName" class="d-none">please enter a valid guardian last name</span>
+            </div>
+            <div class="col-md-4 padding">
+                <label for="guardian-relationship" class="col-form-label"><em>*</em> Guardian Relationship</label>
+                <input type="text" class="form-control" id="guardian-relationship" name="guardian-relationship" placeholder="">
+                <span id="err-guardian-relationship" class="d-none">please enter a valid guardian relationship</span>
+            </div>
+        </div> <!-- end of row that has the guardian first name, last name, and relationship -->
+        <div class="row">
+            <div class="col-md-6 padding">
+                <label for="guardian-email" class="col-form-label"><em>*</em> Guardian Email</label>
+                <input type="text" class="form-control" id="guardian-email" name="guardian-email" placeholder="">
+                <span id="err-guardian-email" class="d-none">please enter a valid guardian email</span>
+            </div>
+            <div class="col-md-6 padding">
+                <label for="guardian-phone" class="col-form-label"><em>*</em> Guardian Phone</label>
+                <input type="text" class="form-control" id="guardian-phone" name="guardian-phone" placeholder="">
+                <span id="err-guardian-phone" class="d-none">please enter a valid guardian phone</span>
+            </div>
+        </div>
         <div class="row" id="row-holds-submit-button">
             <div class="col text-center">
                 <button class="btn btn-lg" type="submit" id="submit-btn">SUBMIT</button>

@@ -11,6 +11,8 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+//require_once "/home/threeofa/db_connect.php"; for cpanel upload
+
 require_once "db_connect.php";
 require_once "functions.php";
 require_once "validation_functions.php";

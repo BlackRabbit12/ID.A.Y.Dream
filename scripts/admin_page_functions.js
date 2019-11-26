@@ -71,6 +71,12 @@ function addEditEvents(){
                     data: {user_id: user_id, table: "User", pKName: "user_id", key: key, value: value},
                     success: function (response) {
                         console.log("success in update");
+                        try {
+                            $('#dreamer-table').DataTable().ajax.reload();
+                        } catch(e) {
+                            console.log(e);
+                        }
+
                         console.log(response); //************************************************************************************
                         //populateModalData(response);
                     }
@@ -342,3 +348,25 @@ function change_status(status){
         selector.style.backgroundColor = "#4d7ea9";
     }
 } //end function change_status(status)
+
+$("#email-send").on("click", function() {
+    let subject = $("#email-subject").val();
+    let body = $("#email-body").val();
+
+    //get the selected table from "select" dropdown
+    let dataSelect = tableSelected();
+
+    if (subject.trim() == "" || body.trim() == "") {
+        console.log("failed");
+    } else {
+        // make ajax call to update the display of pending volunteers
+        $.ajax({
+            url: 'private/init.php',
+            method: 'post',
+            data: {emailType: dataSelect, subject: subject, body: body},
+            success: function (response) {
+                console.log(response);
+            }
+        }); //.ajax
+    }
+});
