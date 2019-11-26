@@ -23,7 +23,10 @@ document.getElementById("ethnicity").addEventListener("change", function() {
 // 2D  function array with input element ids
 let validateEmptyArray = [
     "fname",
-    "lname"
+    "lname",
+    "guardian-fName",
+    "guardian-lName",
+    "guardian-relationship"
 ];
 
 // *** Functions ***
@@ -45,9 +48,18 @@ $("#phone").on("input focus blur", function () {
     validatePhone("phone");
 });
 
+$("#guardian-phone").on("input focus blur", function () {
+    validatePhone("guardian-phone");
+});
+
 $("#email").on("input focus blur", function () {
     validateEmail("email");
 });
+
+$("#guardian-email").on("input focus blur", function () {
+    validateEmail("guardian-email");
+});
+
 
 $("#gender").on("input focus blur", function () {
     validateGender();
@@ -99,6 +111,14 @@ function validateForm() {
     }
 
     if (!validateGraduation()) {
+        isValid = false;
+    }
+
+    if (!validatePhone("guardian-phone")) {
+        isValid = false;
+    }
+
+    if (!validateEmail("guardian-email")) {
         isValid = false;
     }
 
