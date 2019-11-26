@@ -59,30 +59,35 @@ if (!isset($_GET["data_select"])) {
         <?php
         // displays switch for toggling active vs inactive if dreamer is selected
         if ($_GET["data_select"] == "dreamers") { ?>
-        <p>Active: </p>
-        <label class="switch">
-            <input type="checkbox" id="toggle-inactive" checked>
-            <span class="slider"></span>
-        </label><br><br>
+            <p>Active: </p>
+            <label class="switch">
+                <input type="checkbox" id="toggle-inactive" checked>
+                <span class="slider"></span>
+            </label><br><br>
         <?php }
-            // this is where we need the three toggle switch
-            // we will allow the admin to switch between inactive, active, and pending
-            // for her volunteer users and will populate the table as such
-            else if($_GET['data_select'] == "volunteers") {
+        // this is where we need the three toggle switch
+        // we will allow the admin to switch between inactive, active, and pending
+        // for her volunteer users and will populate the table as such
+        else if($_GET['data_select'] == "volunteers") {
             ?>
-                <div class="parent">
-                    <div class="switch_3_ways">
-                        <div id="pending" class="switch pending">Pending</div>
-                        <div id="active" class="switch active">Active</div>
-                        <div id="inactive" class="switch inactive">Inactive</div>
-                        <div id="selector" class="selector"></div>
-                    </div>
-                </div> <!-- displays the three toggle switch-->
+            <div class="parent">
+                <div class="switch_3_ways">
+                    <div id="pending" class="switch pending">Pending</div>
+                    <div id="active" class="switch active">Active</div>
+                    <div id="inactive" class="switch inactive">Inactive</div>
+                    <div id="selector" class="selector"></div>
+                </div>
+            </div> <!-- displays the three toggle switch-->
 
-             <?
-            }
-            ?>
-        <button id="email-button" type="button" class="btn btn-lg text-white">Email</button>
+            <?
+        }
+        if($_GET['data_select'] == "volunteers" || $_GET['data_select'] == "dreamers") {
+        ?>
+            <button id="email-button" type="button" class="btn btn-lg text-white">Email</button>
+           <?php
+        }
+        ?>
+
     </div>
     <?php
     //if it's the dreamer table, run $sql for member row + run $sql_ids for user_ids Foreign key
@@ -157,12 +162,12 @@ if (!isset($_GET["data_select"])) {
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3">Subject</span>
                     </div>
-                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    <input type="text" class="form-control" id="email-subject" aria-describedby="basic-addon3">
                 </div> <!-- end of subject line code -->
-                <textarea rows="10" cols="50"></textarea>
+                <textarea id="email-body" rows="10" cols="50"></textarea>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Send</button>
+                <button type="button" id="email-send" class="btn btn-primary">Send</button>
             </div>
         </div>
     </div>
