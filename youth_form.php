@@ -24,7 +24,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16_title.png">
     <link rel="manifest" href="images/site.webmanifest_title">
 </head>
-
 <body>
 
 <!--<div class="jumbotron jumbotron-fluid">-->
