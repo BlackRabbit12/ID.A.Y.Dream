@@ -39,7 +39,7 @@ CREATE TABLE Volunteer
 (
     volunteer_id               INT          NOT NULL AUTO_INCREMENT,
     user_id                    INT          NOT NULL,
-    volunteer_verified         TINYINT      NULL,
+    volunteer_verified         VARCHAR(255) NULL,
     volunteer_street_address   VARCHAR(255) NULL,
     volunteer_zip              INT          NULL,
     volunteer_city             VARCHAR(255) NULL,
@@ -144,22 +144,22 @@ INSERT INTO Dreamer VALUES(6, 6, 'none', '2007/06/01', '2021', 'Female', 'Native
 
 /* Insert sample data for volunteers */
 INSERT INTO User VALUES(default, 'Brie', 'Larson', 'opSuperHuman@gmail.com', '2534418050', now());
-INSERT INTO Volunteer VALUES(1, 7, 1, '785 E St', 98188, 'Kent', 'WA', 'medium', 'I heard about you from a flier', 'Liaison', 'Weekends', 'Enjoy working with at risk youth', 'Volunteer for after school programs for kids', 'Works with kids in after school programs', 'Good with teaching kids', 'yes', 'active', 'No Notes');
+INSERT INTO Volunteer VALUES(1, 7, 'yes', '785 E St', 98188, 'Kent', 'WA', 'medium', 'I heard about you from a flier', 'Liaison', 'Weekends', 'Enjoy working with at risk youth', 'Volunteer for after school programs for kids', 'Works with kids in after school programs', 'Good with teaching kids', 'yes', 'active', 'No Notes');
 
 INSERT INTO User VALUES(default, 'Jack', 'Daniels', 'notYourBestDay@gmail.com', '2539654123', now());
-INSERT INTO Volunteer VALUES(2, 8, 1, '9615 L St', 98188, 'Kent', 'WA', 'xLarge', 'I heard about you from a friend', 'I want to partner with ID.A.Y.Dream', 'Summer Camp only', 'Want to make a difference in the community', 'None', 'None', 'No skills', 'yes', 'inactive', 'Allergic to peanuts');
+INSERT INTO Volunteer VALUES(2, 8, 'yes', '9615 L St', 98188, 'Kent', 'WA', 'xLarge', 'I heard about you from a friend', 'I want to partner with ID.A.Y.Dream', 'Summer Camp only', 'Want to make a difference in the community', 'None', 'None', 'No skills', 'yes', 'inactive', 'Allergic to peanuts');
 
 INSERT INTO User VALUES(default, 'Hermione', 'Granger', 'bsblack12@gmail.com', '5037987651', now());
-INSERT INTO Volunteer VALUES(3, 9, 1, '3333 Third St', 98188, 'De Moines', 'WA', 'large', 'I was a dreamer', 'Writing newsletter if it is online', 'Weekends', 'Want to help kids achieve their goals', 'Worked with college level students as tutor', 'None', 'Experience with writing newsletters', 'no', 'inactive', 'No notes');
+INSERT INTO Volunteer VALUES(3, 9, 'yes', '3333 Third St', 98188, 'De Moines', 'WA', 'large', 'I was a dreamer', 'Writing newsletter if it is online', 'Weekends', 'Want to help kids achieve their goals', 'Worked with college level students as tutor', 'None', 'Experience with writing newsletters', 'no', 'inactive', 'No notes');
 
 INSERT INTO User VALUES(default, 'Grace', 'Hopper', 'bridget@beeze.com', '2537418569', now());
-INSERT INTO Volunteer VALUES(4, 10, 1, '8569 L Ave', 98188, 'Kent', 'WA', 'medium', 'I heard about you from a coworker who has a kid in the program', 'Unsure', 'Unsure', 'Love helping kids', 'Volunteer chaperon', 'Chaperon youth events', 'Chaperon experience', 'yes', 'pending', 'Only available summer');
+INSERT INTO Volunteer VALUES(4, 10, 'no', '8569 L Ave', 98188, 'Kent', 'WA', 'medium', 'I heard about you from a coworker who has a kid in the program', 'Unsure', 'Unsure', 'Love helping kids', 'Volunteer chaperon', 'Chaperon youth events', 'Chaperon experience', 'yes', 'pending', 'Only available summer');
 
 INSERT INTO User VALUES(default, 'Carie', 'Fisher', 'layaWasABoss@beeze.com', '5037987921', now());
-INSERT INTO Volunteer VALUES(5, 11, 0, '0000 Zero St', 98188, 'SeaTac', 'WA', 'medium', 'I heard about you from another youth organization function', 'Unsure', 'Weekends', 'Enjoy volunteering', 'Volunteer for Marion County Search and Rescue', 'None', 'No skills added', 'no', 'pending', 'No notes');
+INSERT INTO Volunteer VALUES(5, 11, 'no', '0000 Zero St', 98188, 'SeaTac', 'WA', 'medium', 'I heard about you from another youth organization function', 'Unsure', 'Weekends', 'Enjoy volunteering', 'Volunteer for Marion County Search and Rescue', 'None', 'No skills added', 'no', 'pending', 'No notes');
 
 INSERT INTO User VALUES(default, 'Happy', 'Dad', 'best_dad_44@gmail.com', '2537985489', now());
-INSERT INTO Volunteer VALUES(6, 12, 1, '4523 H St', 98188, 'Kent', 'WA', 'small', 'My kid is a dreamer, I would like to help them', 'None', 'Every weekend, any events my kid signs up for', 'My kid is a dreamer', 'None', 'None', 'None', 'yes', 'active', 'Allergic to cats');
+INSERT INTO Volunteer VALUES(6, 12, 'yes', '4523 H St', 98188, 'Kent', 'WA', 'small', 'My kid is a dreamer, I would like to help them', 'None', 'Every weekend, any events my kid signs up for', 'My kid is a dreamer', 'None', 'None', 'None', 'yes', 'active', 'Allergic to cats');
 
 /* Insert sample data for contacts */
 INSERT INTO Contact VALUES(1, 1, '425-222-2222', 'jamieson.shayna@gmail.com', 'Mother', 'Lynda Flint', 'guardian');
