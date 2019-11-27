@@ -208,6 +208,8 @@ $(document).ready(function () {
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
             addClickEvents();
+            $("#dreamer-table").DataTable().destroy();
+            $("#dreamer-table").DataTable();
         }); //.ajaxComplete
     }); //.on
 
@@ -228,6 +230,8 @@ $(document).ready(function () {
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
             addClickEvents();
+            $("#dreamer-table").DataTable().destroy();
+            $("#dreamer-table").DataTable();
         }); //.ajaxComplete
     }); //.on
 
@@ -248,6 +252,8 @@ $(document).ready(function () {
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
             addClickEvents();
+            $("#dreamer-table").DataTable().destroy();
+            $("#dreamer-table").DataTable();
         }); //.ajaxComplete
     }); //.on
 
