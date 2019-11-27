@@ -43,12 +43,12 @@
         <div class="row">
             <div class="col-md-6 padding">
                 <label for="fname" class="col-form-label"><em>*</em> First</label>
-                <input type="text" class="form-control" id="fname" name="fname" placeholder="">
+                <input type="text" class="form-control" id="fname" name="first-name" placeholder="">
                 <span id="err-fname" class="d-none">please enter a valid first name</span>
             </div> <!-- end of  div that holds the first name row -->
             <div class="col-md-6 padding">
                 <label for="lname" class="col-form-label"><em>*</em> Last</label>
-                <input type="text" class="form-control" id="lname" name="lname" placeholder="">
+                <input type="text" class="form-control" id="lname" name="last-name" placeholder="">
                 <span id="err-lname" class="d-none">please enter a valid last name</span>
             </div>
         </div> <!-- end of row that asks for the users first and last names -->
@@ -151,12 +151,12 @@
         <div class="row">
             <div class="col-md-4 padding">
                 <label for="guardian-fName" class="col-form-label"><em>*</em> Guardian First</label>
-                <input type="text" class="form-control" id="guardian-fName" name="guardian-fName" placeholder="">
+                <input type="text" class="form-control" id="guardian-fName" name="guardian-First-Name" placeholder="">
                 <span id="err-guardian-fName" class="d-none">please enter a valid guardian first name</span>
             </div>
             <div class="col-md-4 padding">
                 <label for="guardian-lName" class="col-form-label"><em>*</em> Guardian Last</label>
-                <input type="text" class="form-control" id="guardian-lName" name="guardian-lName" placeholder="">
+                <input type="text" class="form-control" id="guardian-lName" name="guardian-Last-Name" placeholder="">
                 <span id="err-guardian-lName" class="d-none">please enter a valid guardian last name</span>
             </div>
             <div class="col-md-4 padding">
