@@ -78,6 +78,11 @@ function addEditEvents() {
                             } else {
                                 $("#" + user_id).children("." + key).html(value);
                             }
+                            let firstName = $("#" + user_id).children(".user_first").text();
+                            let lastName = $("#" + user_id).children(".user_last").text();
+
+                            //Top of modal display full name of member
+                            $("#full-name").html(firstName + " " + lastName);
                             console.log(response); //************************************************************************************
                             //populateModalData(response);
                         }
