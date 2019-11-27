@@ -85,6 +85,14 @@ function createAssociativeArray($result, $data)
                 //if 'value' at given 'key' is null, then display empty string instead of null
                 $data[$fieldNames_array[$i] . $row_num] = "";
             }
+            //if 'key' is "dreamer's date of birth" or "user's date joined" then format them for readability
+            else if ($fieldNames_array[$i] == "dreamer_date_of_birth" || $fieldNames_array[$i]== "user_date_joined") {
+                $data[$fieldNames_array[$i] . $row_num]= formatSQLDate($row[$fieldNames_array[$i]]);
+            }
+            //if 'key' is "user's phone" then format them for readability
+            else if ($fieldNames_array[$i] == "user_phone") {
+                $data[$fieldNames_array[$i] . $row_num] = formatSQLPhone($row[$fieldNames_array[$i]]);
+            }
             else {
                 //display 'value' at given 'key'
                 $data[$fieldNames_array[$i] . $row_num] = $row[$fieldNames_array[$i]];
