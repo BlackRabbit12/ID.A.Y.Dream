@@ -230,23 +230,35 @@ if(isset($_POST["emailType"])) {
     $subject = $_POST['subject'];
     $body = $_POST['body'];
 
+    $emailCount = 0;
+
     while($email = mysqli_fetch_assoc($result)) {
         // sending email to client
         $sendTo = "{$email['user_email']}";
         $to = $sendTo;
-        echo $to;
+        //echo $to;
         //  $to = "jamieson.shayna@gmail.com";
         // $headers = "From: " . "kflint0068@gmail.com" . " \r\n";
         // $headers .= "Reply-To: " . "kflint0068@gmail.com" . "\r\n";
         //  echo ("to $to, subject {$_POST["subject"]}, body {$_POST["body"]}, ");
         // $success = mail($to, $_POST["subject"], $_POST["body"], $headers);
-        if(mail($to, $subject, $body)) {
-            echo "success";
-        } else {
-            echo "failure";
+        // if(mail($to, $subject, $body)) {
+        //     echo "success";
+        //     $emailCount++;
+        // } else {
+        //     echo "failure";
+        // }
 
-        }
+        $success = mail($to, $subject, $body);
+        // echo $success;
+        $emailCount = $emailCount + 1;
+
     }
+    //echo $emailCount;
+    $data["emailCount"] = $emailCount;
+    //echo $data["emailCount"];
+
+    echo json_encode($data);
 
 
 }
