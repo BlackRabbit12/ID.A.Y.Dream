@@ -8,11 +8,9 @@
 -->
 <html lang="en">
 <?php require_once "private/init.php";
-
 if (!isset($_GET["data_select"])) {
     $_GET["data_select"] = "none";
 }
-
 ?>
 <head>
     <meta charset="UTF-8">
@@ -32,7 +30,6 @@ if (!isset($_GET["data_select"])) {
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <style>
-
         form {
             margin-left: 20px;
         }
@@ -41,7 +38,6 @@ if (!isset($_GET["data_select"])) {
             margin-bottom: 36px;
             overflow: hidden;
         }
-
         .switch-field input {
             position: absolute !important;
             clip: rect(0, 0, 0, 0);
@@ -50,7 +46,6 @@ if (!isset($_GET["data_select"])) {
             border: 0;
             overflow: hidden;
         }
-
         .switch-field label {
             background-color: #e4e4e4;
             color: rgba(0, 0, 0, 0.6);
@@ -63,21 +58,17 @@ if (!isset($_GET["data_select"])) {
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
             transition: all 0.1s ease-in-out;
         }
-
         .switch-field label:hover {
             cursor: pointer;
         }
-
         .switch-field input:checked + label {
             background-color: #6cb1c0;
             box-shadow: none;
             color: white;
         }
-
         .switch-field label:first-of-type {
             border-radius: 4px 0 0 4px;
         }
-
         .switch-field label:last-of-type {
             border-radius: 0 4px 4px 0;
         }
@@ -85,137 +76,97 @@ if (!isset($_GET["data_select"])) {
         #user_id, #volunteer_id, #dreamer_id {
             display: none;
         }
-
-        /* STYLE IMBEDDED IN Idaydream logo */
-
-        .row {
-            width: 100%;
-        }
-
-        .no-pad-right {
-            padding-right: 0px;
-        }
-
-        .no-pad-left {
-            padding-left: 0px;
-        }
-
-        #select-form {
-            margin-left: 0px;
-        }
     </style>
 </head>
 <body>
-<div id="admin-page-container" class="row">
-    <div id="admin-tools-container" class="col-2">
-        <div class="input-group mb-3">
-            <div class="row">
-                <div class="col-6 no-pad-right">
-            <div class="input-group-prepend" id="summary-id">
-                <label class="input-group-text" for="inputGroupSelect01">Summary:</label>
+<input type="hidden" id="anchor">
+<div class="text-center logo-container">
+    <img src="images/iDayDreamLogo.png" alt="IDAYDream Logo">
+</div>
+<div class="entire-container">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Summary:</label>
+        </div>
+        <form action="admin_page.php" id="select-form" method="GET">
+            <select class="custom-select" id="data-select" name="data_select">
+                <option value="none">None</option>
+                <option value="dreamers"
+                        id="dreamer-option" <?php if ($_GET["data_select"] == "dreamers") echo "selected"; ?>>Dreamers
+                </option>
+                <option value="volunteers"
+                        id="volunteer-option" <?php if ($_GET["data_select"] == "volunteers") echo "selected"; ?>>
+                    Volunteers
+                </option>
+            </select>
+        </form>
+        <?php
+        // displays switch for toggling active vs inactive if dreamer is selected
+        if ($_GET["data_select"] == "dreamers") { ?>
+            <div class="switch-field">
+                <input type="radio" id="active-dreamer" name="switch-one" value="Active" checked/>
+                <label id="active-dreamer-label" for="active-dreamer">Active</label>
+                <input type="radio" id="inactive-dreamer" name="switch-one" value="Inactive" />
+                <label id="inactive-dreamer-label" for="inactive-dreamer">Inactive</label>
             </div>
-                </div>
-                <div class="col-6 no-pad-left no-right">
-            <form action="admin_page.php" id="select-form" method="GET">
-                <select class="custom-select" id="data-select" name="data_select">
-                    <option value="none">None</option>
-                    <option value="dreamers"
-                            id="dreamer-option" <?php if ($_GET["data_select"] == "dreamers") echo "selected"; ?>>Dreamers
-                    </option>
-                    <option value="volunteers"
-                            id="volunteer-option" <?php if ($_GET["data_select"] == "volunteers") echo "selected"; ?>>
-                        Volunteers
-                    </option>
-                </select>
-            </form>
-            </div> <!-- col-12 -->
-            </div> <!-- row -->
-            <div class="row">
-                <div class="col">
-            <?php
-            // displays switch for toggling active vs inactive if dreamer is selected
-            if ($_GET["data_select"] == "dreamers") { ?>
-                <div class="switch-field">
-                    <input type="radio" id="active-dreamer" name="switch-one" value="Active" checked/>
-                    <label id="active-dreamer-label" for="active-dreamer">Active</label>
-                    <input type="radio" id="inactive-dreamer" name="switch-one" value="Inactive" />
-                    <label id="inactive-dreamer-label" for="inactive-dreamer">Inactive</label>
-                </div>
-            <?php }
-            // this is where we need the three toggle switch
-            // we will allow the admin to switch between inactive, active, and pending
-            // for her volunteer users and will populate the table as such
-            else if($_GET['data_select'] == "volunteers") {
-                ?>
-                <div class="switch-field">
-                    <input type="radio" id="pending" name="switch-two" value="Pending" />
-                    <label id="pending-label" for="pending">Pending</label>
-                    <input type="radio" id="active" name="switch-two" value="Active" checked/>
-                    <label id="active-label" for="active">Active</label>
-                    <input type="radio" id="inactive" name="switch-two" value="Inactive" />
-                    <label id="inactive-label" for="inactive">Inactive</label>
-                </div>
-                <?
-            }
-            if($_GET['data_select'] == "volunteers" || $_GET['data_select'] == "dreamers") {
-                ?>
-                </div> <!-- col-12 -->
-            </div> <!-- row -->
-            <div class="row">
-                <div class="col">
-                    <button id="email-button" type="button" class="btn btn-lg text-white">Email</button>
-                </div> <!-- col-12 -->
-            </div> <!-- row -->
-                <?php
-            }
+        <?php }
+        // this is where we need the three toggle switch
+        // we will allow the admin to switch between inactive, active, and pending
+        // for her volunteer users and will populate the table as such
+        else if($_GET['data_select'] == "volunteers") {
             ?>
-
-        </div> <!-- input-group mb-3 -->
-
-    </div> <!-- admin-tools-container -->
-    <div id="logo-table-container" class="col-10">
-    <input type="hidden" id="anchor">
-    <div class="text-center logo-container">
-        <img src="images/iDayDreamLogo.png" alt="IDAYDream Logo" style="width: 1000px; height: 275px">
-    </div>
-    <div class="entire-container">
-         <?php
-        //if it's the dreamer table, run $sql for member row + run $sql_ids for user_ids Foreign key
-        if ($_GET["data_select"] == "dreamers") {
-            $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
-                    INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
-                    WHERE dreamer_active = 'active';";
-            $sql_ids = "SELECT user_id FROM Dreamer;";
-        } //if it's the volunteer table, run $sql for member row + run $sql_ids for user_ids Foreign key
-        else if ($_GET["data_select"] == "volunteers") {
-            $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User 
-                    INNER JOIN Volunteer ON User.user_id = Volunteer.user_id
-                    WHERE volunteer_status = 'active';";
-            //******************************************* need to add a WHERE volunteer = active statement and change TINYINT to Varchar??********************
-            $sql_ids = "SELECT user_id FROM Volunteer;";
+            <div class="switch-field">
+                <input type="radio" id="pending" name="switch-two" value="Pending" />
+                <label id="pending-label" for="pending">Pending</label>
+                <input type="radio" id="active" name="switch-two" value="Active" checked/>
+                <label id="active-label" for="active">Active</label>
+                <input type="radio" id="inactive" name="switch-two" value="Inactive" />
+                <label id="inactive-label" for="inactive">Inactive</label>
+            </div>
+            <?
         }
-
-        //if on the dreamer or volunteer table then continue:
-        if (($_GET["data_select"] == "dreamers") || $_GET["data_select"] == "volunteers") {
-            //storing return data and ensuring query executes correctly
-            $result = mysqli_query($db, $sql);
-            //storing column names
-            $tableHeadingNames = $result->fetch_fields();
-            //storing return data and ensuring query executes correctly
-            $result_ids = mysqli_query($db, $sql_ids);
+        if($_GET['data_select'] == "volunteers" || $_GET['data_select'] == "dreamers") {
             ?>
-
-            <!--start the building of the table-->
-            <table data-order='[[<?php echo mysqli_num_fields($result) - 1; ?>, "desc"]]' id="dreamer-table"
-                   class="display">
-                <?php echo buildTable($result, $tableHeadingNames, $result_ids); ?>
-            </table>
+            <button id="email-button" type="button" class="btn btn-lg text-white">Email</button>
             <?php
-        } //closing if statement
+        }
         ?>
-    </div> <!-- entire container -->
-    </div> <!-- logo-table-container -->
-</div> <!-- admin-page-container -->
+
+    </div>
+    <?php
+    //if it's the dreamer table, run $sql for member row + run $sql_ids for user_ids Foreign key
+    if ($_GET["data_select"] == "dreamers") {
+        $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
+                INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
+                WHERE dreamer_active = 'active';";
+        $sql_ids = "SELECT user_id FROM Dreamer;";
+    } //if it's the volunteer table, run $sql for member row + run $sql_ids for user_ids Foreign key
+    else if ($_GET["data_select"] == "volunteers") {
+        $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User 
+                INNER JOIN Volunteer ON User.user_id = Volunteer.user_id
+                WHERE volunteer_status = 'active';";
+        //******************************************* need to add a WHERE volunteer = active statement and change TINYINT to Varchar??********************
+        $sql_ids = "SELECT user_id FROM Volunteer;";
+    }
+    //if on the dreamer or volunteer table then continue:
+    if (($_GET["data_select"] == "dreamers") || $_GET["data_select"] == "volunteers") {
+        //storing return data and ensuring query executes correctly
+        $result = mysqli_query($db, $sql);
+        //storing column names
+        $tableHeadingNames = $result->fetch_fields();
+        //storing return data and ensuring query executes correctly
+        $result_ids = mysqli_query($db, $sql_ids);
+        ?>
+
+        <!--start the building of the table-->
+        <table data-order='[[<?php echo mysqli_num_fields($result) - 1; ?>, "desc"]]' id="dreamer-table"
+               class="display">
+            <?php echo buildTable($result, $tableHeadingNames, $result_ids); ?>
+        </table>
+        <?php
+    } //closing if statement
+    ?>
+</div> <!-- entire container -->
 
 <!-- Modal for individual users and their data -->
 <div id="myModal" class="modal fade" role="dialog">
