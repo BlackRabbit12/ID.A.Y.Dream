@@ -81,7 +81,14 @@ function createAssociativeArray($result, $data)
     // row_num is appended to fieldname if the while loop runs more than once (which would indicate a multi-row return)
     while ($row = mysqli_fetch_assoc($result)) {
         foreach ($row as $value) {
-            $data[$fieldNames_array[$i] . $row_num] = $row[$fieldNames_array[$i]];
+            if($row[$fieldNames_array[$i]] == null){
+                //if 'value' at given 'key' is null, then display empty string instead of null
+                $data[$fieldNames_array[$i] . $row_num] = "";
+            }
+            else {
+                //display 'value' at given 'key'
+                $data[$fieldNames_array[$i] . $row_num] = $row[$fieldNames_array[$i]];
+            }
             $i++;
         }
         $i = 0;
