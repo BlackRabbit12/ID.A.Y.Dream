@@ -8,10 +8,10 @@
  */
 
 
-function addEditEvents(){
-    $(".editInput").on("mouseup", function(){
+function addEditEvents() {
+    $(".editInput").on("mouseup", function () {
         //if we have not "set" the input_id by clicking on it, then it's null
-        if(document.getElementById("input_id") == null) {
+        if (document.getElementById("input_id") == null) {
             //set paragraph to text input, use children[0] because we only have one child for each label
             let text = this.children[0].innerText;
             //creates a new element of type <input>
@@ -32,9 +32,9 @@ function addEditEvents(){
             let saveBtn = "<button type=\"button\" id=\"save\" class=\"pull-left bg-success text-white btn btn-default btn-sm\">Save</button>";
             $(this).append(saveBtn);
 
-            $("#save").on("mousedown", function (event) {
-                console.log("yay");
-            }); //.on
+            // $("#save").on("mousedown", function (event) {
+            //     console.log("yay");
+            // }); //.on
 
             //add event listener for when click outside of box to dump changes
             this.children[0].addEventListener("blur", function (event) {
@@ -57,37 +57,41 @@ function addEditEvents(){
             }); //.addEventListener
 
             $("#save").on("mousedown", function () {
-                //get user's id
-                let user_id = document.getElementById("user_id").children[0].innerText;
-                let key = document.getElementById("input_id").parentElement.getAttribute("id");
-                let value = document.getElementById("input_id").value;
-                console.log("user_id " + user_id); //**************************************************************************************
-                console.log("key " + key);
-                console.log("value " + value);
-                //updates the value in the selected field's database equivalent
-                $.ajax({
-                    url: 'private/init.php',
-                    method: 'post',
-                    data: {user_id: user_id, table: "User", pKName: "user_id", key: key, value: value},
-                    success: function (response) {
-                        console.log("success in update");
-                        // try {
-                        //     $('#dreamer-table').DataTable().ajax.reload();
-                        // } catch(e) {
-                        //     console.log(e);
-                        // }
-
-                        console.log(response); //************************************************************************************
-                        //populateModalData(response);
-                    }
-                }); //.ajax
-            }); //.on
+                    //get user's id
+                    let user_id = document.getElementById("user_id").children[0].innerText;
+                    let key = document.getElementById("input_id").parentElement.getAttribute("id");
+                    let value = document.getElementById("input_id").value;
+                    console.log("user_id " + user_id); //**************************************************************************************
+                    console.log("key " + key);
+                    console.log("value " + value);
+                    //updates the value in the selected field's database equivalent
+                    $.ajax({
+                        url: 'private/init.php',
+                        method: 'post',
+                        data: {user_id: user_id, table: "User", pKName: "user_id", key: key, value: value},
+                        success: function (response) {
+                            //update input with new value
+                            $("#" + key).find("p").html(value);
+                            //update the table data with new value. If user first, add a tags for link styling
+                            if (key === "user_first") {
+                                $("#" + user_id).children("." + key).html("<a href=\'#\'>" + value + "</a>");
+                            } else {
+                                $("#" + user_id).children("." + key).html(value);
+                            }
+                            console.log(response); //************************************************************************************
+                            //populateModalData(response);
+                        }
+                    }); //.ajax
+                }
+            ); //.on
         }
-        // else we have already clicked on the field so it has an input_id
-        else{
+
+// else we have already clicked on the field so it has an input_id
+        else {
             console.log("else"); //******************************************************************************************
         }
-    }); //.on
+    })
+    ; //.on
 
 
 } //end function addEditEvents()
@@ -99,8 +103,8 @@ function addClickEvents() {
         console.log("update clicked"); //************************************************************************************
         //get the 'id' of the row (parent of first name clicked)
         let id = this.parentElement.getAttribute("id");
-        let firstName = $("#" + id).children("td[data-field-name = user_first]").text();
-        let lastName = $("#" + id).children("td[data-field-name = user_last]").text();
+        let firstName = $("#" + id).children(".user_first").text();
+        let lastName = $("#" + id).children(".user_last").text();
 
         //get the selected table from "select" dropdown
         let dataSelect = tableSelected();
@@ -124,7 +128,7 @@ function addClickEvents() {
             }
         }); //.ajax
         //after ajax is done loading, then add the editable events
-        $( document ).ajaxComplete(function() {
+        $(document).ajaxComplete(function () {
             addEditEvents();
         }); //.ajaxComplete
     }); //.on
@@ -138,7 +142,7 @@ $(document).ready(function () {
 
     // on page load if the user has chosen to look at the volunteers table we want to initialize
     // the position of the three switch toggle to active to start
-    if(tableSelected() == "volunteers") {
+    if (tableSelected() == "volunteers") {
         // change_status("active");
     }
 }); //.ready
@@ -148,7 +152,7 @@ document.getElementById("data-select").addEventListener("change", function () {
 }); //addEventListener
 
 $(document).ready(function () {
-    $("#active-dreamer-label").on("click", function() {
+    $("#active-dreamer-label").on("click", function () {
         // make ajax call to update the display of pending volunteers
         $.ajax({
             url: 'private/init.php',
@@ -160,12 +164,12 @@ $(document).ready(function () {
         }); //.ajax
 
         // need to re-update the click events on the page
-        $( document ).ajaxComplete(function() {
+        $(document).ajaxComplete(function () {
             addClickEvents();
         }); //.ajaxComplete
     }); //.on
 
-    $("#inactive-dreamer-label").on("click", function() {
+    $("#inactive-dreamer-label").on("click", function () {
         // make ajax call to update the display of pending volunteers
         $.ajax({
             url: 'private/init.php',
@@ -177,7 +181,7 @@ $(document).ready(function () {
         }); //.ajax
 
         // need to re-update the click events on the page
-        $( document ).ajaxComplete(function() {
+        $(document).ajaxComplete(function () {
             addClickEvents();
         }); //.ajaxComplete
     }); //.on
@@ -186,7 +190,7 @@ $(document).ready(function () {
     // pending, and inactive. We have to make separate calls to update the table and use ajaxComplete()
     // NEW STUFF *************************************************************************************
     // ($("#toggle-inactive").is(":checked"))
-    $("#pending-label").on("click", function() {
+    $("#pending-label").on("click", function () {
         // make ajax call to update the display of pending volunteers
         $.ajax({
             url: 'private/init.php',
@@ -198,7 +202,7 @@ $(document).ready(function () {
         }); //.ajax
 
         // need to re-update the click events on the page
-        $( document ).ajaxComplete(function() {
+        $(document).ajaxComplete(function () {
             addClickEvents();
         }); //.ajaxComplete
     }); //.on
@@ -218,7 +222,7 @@ $(document).ready(function () {
         }); //.ajax
 
         // need to re-update the click events on the page
-        $( document ).ajaxComplete(function() {
+        $(document).ajaxComplete(function () {
             addClickEvents();
         }); //.ajaxComplete
     }); //.on
@@ -238,7 +242,7 @@ $(document).ready(function () {
         }); //.ajax
 
         // need to re-update the click events on the page
-        $( document ).ajaxComplete(function() {
+        $(document).ajaxComplete(function () {
             addClickEvents();
         }); //.ajaxComplete
     }); //.on
@@ -277,6 +281,8 @@ function populateModalData(responseData) {
         textNode = document.createTextNode(value);
         let p = document.createElement('p');
         p.append(textNode);
+
+        //creates class for the modal input so it can be reassigned after save
 
         //append the key and value together
         label.append(p);
@@ -318,7 +324,7 @@ function tableSelected() {
     return dataSelect;
 } //function tableSelected()
 
-$("#email-send").on("click", function() {
+$("#email-send").on("click", function () {
     let subject = $("#email-subject").val();
     let body = $("#email-body").val();
 
@@ -336,10 +342,10 @@ $("#email-send").on("click", function() {
             success: function (response) {
                 //console.log(response);
                 // get the number of emails sent to choose which modal to populate
-                let emailCount = parseInt(response.substring(14, response.length -1));
+                let emailCount = parseInt(response.substring(14, response.length - 1));
 
                 // we display a failure pop up that notifies the sender that emails we not going through
-                if(emailCount == 0) {
+                if (emailCount == 0) {
                     alert("Emails were not able to be sent!");
                 }
 
@@ -348,7 +354,7 @@ $("#email-send").on("click", function() {
                 else {
                     $('#emailModal').modal('toggle');
                     // alert(emailCount+" "+dataSelect+" emails were sent!");
-                    alert("Active "+dataSelect+": "+emailCount+" emails were sent!");
+                    alert("Active " + dataSelect + ": " + emailCount + " emails were sent!");
                 }
             }
         }); //.ajax

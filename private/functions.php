@@ -31,9 +31,10 @@ function buildTable($result, $tableHeadingNames, $result_ids)
         $output .= "<tr id= '$user_ids_array[$k]'>";
         $log[] = $user_ids_array[$k];
         $i = 0;
+        // populates table data
         foreach ($data as $value) {
             if ($i == 0) {
-                $output .= "<td class = 'update' data-field-name = $tableHeadingNames_array[$i]><a href = '#'>$value</a></td>";
+                $output .= "<td class = 'update $tableHeadingNames_array[$i]'><a href = '#'>$value</a></td>";
             } else {
                 if ($tableHeadingNames_array[$i] == "dreamer_date_of_birth" || $tableHeadingNames_array[$i] == "user_date_joined") {
                     $value = formatSQLDate($value);
@@ -42,8 +43,7 @@ function buildTable($result, $tableHeadingNames, $result_ids)
                     $value = formatSQLPhone($value);
                 }
 
-
-                $output .= "<td data-field-name = $tableHeadingNames_array[$i]>$value</td>";
+                $output .= "<td class = '$tableHeadingNames_array[$i]'>$value</td>";
             }
             $i++;
         }
