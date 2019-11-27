@@ -60,6 +60,11 @@ Associated File: admin_page.php
     margin-right: 10px !important;
 }
 
+#email-body {
+    margin-top: 15px;
+    min-width: 100%;
+}
+
 #email-subject-background > span {
     background-color: #36454f;
 }
@@ -68,6 +73,8 @@ Associated File: admin_page.php
     background-color: #36454f;
     border-color: #36454f;
 }
+
+
 
 footer {
     height: 150px;
@@ -105,6 +112,13 @@ img {
     /*background: no-repeat;*/
 }
 
+#err-email-subject, #err-email-body {
+    color: #c16062;
+    white-space:nowrap;
+    font-size: smaller;
+    margin-bottom: 0;
+}
+
 p {
     display: inline;
     font-weight: normal;
@@ -133,7 +147,7 @@ label {
     margin-left: 0;
 }
 
- /*For the three toggle switch */
+/*For the three toggle switch */
 .switch-field {
     display: flex;
     /*margin-bottom: 36px;*/

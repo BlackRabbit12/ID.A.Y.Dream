@@ -54,7 +54,7 @@ if (!isset($_GET["data_select"])) {
                 </option>
             </select>
         </form>
-    <!-- Toggle: Active, Inactive, Pending -->
+        <!-- Toggle: Active, Inactive, Pending -->
         <?php
         // displays switch for toggling active vs inactive if dreamer is selected
         if ($_GET["data_select"] == "dreamers") { ?>
@@ -81,13 +81,13 @@ if (!isset($_GET["data_select"])) {
             <?
         }
         if($_GET['data_select'] == "volunteers" || $_GET['data_select'] == "dreamers") {
-            ?>
-            <!-- Email for all active users of table type -->
-            <button id="email-button" type="button" class="btn btn-lg text-white">Email</button>
-    </div> <!-- input-group -->
-            <?php
-        }
         ?>
+        <!-- Email for all active users of table type -->
+        <button id="email-button" type="button" class="btn btn-lg text-white">Email</button>
+    </div> <!-- input-group -->
+    <?php
+    }
+    ?>
 
 
     <?php
@@ -158,17 +158,18 @@ if (!isset($_GET["data_select"])) {
                 </button>
             </div>
             <div class="modal-body">
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <div class="input-group-prepend" id="email-subject-background">
                         <span class="input-group-text" id="basic-addon3">Subject</span>
                     </div>
                     <input type="text" class="form-control" id="email-subject" aria-describedby="basic-addon3">
-                    <span id="err-email-subject" class="d-none">Email must not be blank</span>
+
                 </div> <!-- end of subject line code -->
+                <span id="err-email-subject" class="d-none">Subject must not be blank</span>
 
-                  
 
-                <textarea id="email-body" rows="15" cols="55"></textarea>
+
+                <textarea id="email-body" rows="13"></textarea>
                 <span id="err-email-body" class="d-none">Email must not be blank</span>
 
             </div>
