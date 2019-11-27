@@ -36,7 +36,9 @@ if (!isset($_GET["data_select"])) {
     <img src="images/new_admin_logo.png" alt="IDAYDream Logo">
 </div>
 <div class="entire-container">
+    <!-- Choosing which table summary to look at: None, Dreamer, Volunteer -->
     <div class="input-group">
+
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Summary:</label>
         </div>
@@ -52,7 +54,7 @@ if (!isset($_GET["data_select"])) {
                 </option>
             </select>
         </form>
-    </div>
+    <!-- Toggle: Active, Inactive, Pending -->
         <?php
         // displays switch for toggling active vs inactive if dreamer is selected
         if ($_GET["data_select"] == "dreamers") { ?>
@@ -80,7 +82,9 @@ if (!isset($_GET["data_select"])) {
         }
         if($_GET['data_select'] == "volunteers" || $_GET['data_select'] == "dreamers") {
             ?>
+            <!-- Email for all active users of table type -->
             <button id="email-button" type="button" class="btn btn-lg text-white">Email</button>
+    </div> <!-- input-group -->
             <?php
         }
         ?>
