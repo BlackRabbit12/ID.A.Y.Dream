@@ -81,6 +81,10 @@ if (!isset($_GET["data_select"])) {
         .switch-field label:last-of-type {
             border-radius: 0 4px 4px 0;
         }
+        /* hide ids inside modal */
+        #user_id, #volunteer_id, #dreamer_id {
+            display: none;
+        }
     </style>
 </head>
 <body>
