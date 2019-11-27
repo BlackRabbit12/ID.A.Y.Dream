@@ -334,7 +334,22 @@ $("#email-send").on("click", function() {
             method: 'post',
             data: {emailType: dataSelect, subject: subject, body: body},
             success: function (response) {
-                console.log(response);
+                //console.log(response);
+                // get the number of emails sent to choose which modal to populate
+                let emailCount = parseInt(response.substring(14, response.length -1));
+
+                // we display a failure pop up that notifies the sender that emails we not going through
+                if(emailCount == 0) {
+                    alert("Emails were not able to be sent!");
+                }
+
+                // here we know that the emails sent and we can display a
+                // success pop up and close the email modal
+                else {
+                    $('#emailModal').modal('toggle');
+                    // alert(emailCount+" "+dataSelect+" emails were sent!");
+                    alert("Active "+dataSelect+": "+emailCount+" emails were sent!");
+                }
             }
         }); //.ajax
     }
