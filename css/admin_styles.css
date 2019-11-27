@@ -131,3 +131,8 @@ th {
 tr {
     height: 50px;
 }
+
+/* */
+#user_id, #volunteer_id, #dreamer_id {
+    display: none;
+}
