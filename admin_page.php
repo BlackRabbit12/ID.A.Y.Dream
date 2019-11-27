@@ -32,7 +32,7 @@ if (!isset($_GET["data_select"])) {
 </head>
 <body>
 <input type="hidden" id="anchor">
-<div class="text-center logo-container" style="width: 100vw;">
+<div class="logo-container">
     <img src="images/new_admin_logo.png" alt="IDAYDream Logo">
 </div>
 <div class="entire-container">
@@ -133,7 +133,7 @@ if (!isset($_GET["data_select"])) {
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="full-name"></h4>
-                <button type="button" class="close btn bg-secondary" data-dismiss="modal">&times;</button>
+                <button type="button" class="close btn text-white btn-lg" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" id="modal-body">
                 <!--                <p>Some text in the modal.</p>-->
@@ -153,21 +153,21 @@ if (!isset($_GET["data_select"])) {
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="email-modal-title"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close btn text-white btn-lg" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="input-group mb-3">
-                    <div class="input-group-prepend">
+                    <div class="input-group-prepend" id="email-subject-background">
                         <span class="input-group-text" id="basic-addon3">Subject</span>
                     </div>
                     <input type="text" class="form-control" id="email-subject" aria-describedby="basic-addon3">
                 </div> <!-- end of subject line code -->
-                <textarea id="email-body" rows="10" cols="50"></textarea>
+                    <textarea id="email-body" rows="15" cols="55"></textarea>
             </div>
             <div class="modal-footer">
-                <button type="button" id="email-send" class="btn btn-primary">Send</button>
+                <button type="button" id="email-send" class="btn btn-lg btn-primary">Send</button>
             </div>
         </div>
     </div>
