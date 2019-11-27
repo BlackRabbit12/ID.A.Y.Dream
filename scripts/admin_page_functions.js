@@ -78,6 +78,11 @@ function addEditEvents() {
                             } else {
                                 $("#" + user_id).children("." + key).html(value);
                             }
+                            let firstName = $("#" + user_id).children(".user_first").text();
+                            let lastName = $("#" + user_id).children(".user_last").text();
+
+                            //Top of modal display full name of member
+                            $("#full-name").html(firstName + " " + lastName);
                             console.log(response); //************************************************************************************
                             //populateModalData(response);
                         }
@@ -166,6 +171,8 @@ $(document).ready(function () {
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
             addClickEvents();
+            $("#dreamer-table").DataTable().destroy();
+            $("#dreamer-table").DataTable();
         }); //.ajaxComplete
     }); //.on
 
@@ -183,6 +190,8 @@ $(document).ready(function () {
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
             addClickEvents();
+            $("#dreamer-table").DataTable().destroy();
+            $("#dreamer-table").DataTable();
         }); //.ajaxComplete
     }); //.on
 
@@ -204,6 +213,8 @@ $(document).ready(function () {
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
             addClickEvents();
+            $("#dreamer-table").DataTable().destroy();
+            $("#dreamer-table").DataTable();
         }); //.ajaxComplete
     }); //.on
 
@@ -224,6 +235,8 @@ $(document).ready(function () {
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
             addClickEvents();
+            $("#dreamer-table").DataTable().destroy();
+            $("#dreamer-table").DataTable();
         }); //.ajaxComplete
     }); //.on
 
@@ -244,6 +257,8 @@ $(document).ready(function () {
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
             addClickEvents();
+            $("#dreamer-table").DataTable().destroy();
+            $("#dreamer-table").DataTable();
         }); //.ajaxComplete
     }); //.on
 
@@ -253,6 +268,12 @@ $(document).ready(function () {
         str = str[0].toUpperCase() + str.substr(1, str.length);
         $("#email-modal-title").html("Email Active " + str);
         $("#emailModal").modal("toggle");
+        $("#email-subject").on("input focus blur", function() {
+            validateEmpty("email-subject");
+        });
+        $("#email-body").on("input focus blur", function() {
+            validateEmpty("email-body");
+        });
     }); //.on
 }); //.ready
 
