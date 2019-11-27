@@ -15,6 +15,11 @@ Associated File: admin_page.php
     display: block;
     float: left;
     clear: both;
+    height: 38px;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-width: 400;
 }
 
 .entire-container {
@@ -63,11 +68,18 @@ label {
     overflow-y: scroll;
 }
 
+/* Choose table: None, Dreamer, Volunteer */
+#select-form {
+    margin-left: 0;
+}
+
  /*For the three toggle switch */
 .switch-field {
     display: flex;
-    margin-bottom: 36px;
+    /*margin-bottom: 36px;*/
     overflow: hidden;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .switch-field input {
@@ -80,9 +92,9 @@ label {
 }
 
 .switch-field label {
-    background-color: #e4e4e4;
+    background-color: #fff;
     color: rgba(0, 0, 0, 0.6);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1;
     text-align: center;
     padding: 8px 16px;
@@ -108,4 +120,14 @@ label {
 
 .switch-field label:last-of-type {
     border-radius: 0 4px 4px 0;
+}
+
+th {
+    background-color: #2c3840;
+    color: #fff;
+    height: 50px;
+}
+
+tr {
+    height: 50px;
 }
