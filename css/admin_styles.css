@@ -64,9 +64,6 @@ label {
 }
 
  /*For the three toggle switch */
-form {
-    margin-left: 20px;
-}
 .switch-field {
     display: flex;
     margin-bottom: 36px;

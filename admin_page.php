@@ -29,62 +29,14 @@ if (!isset($_GET["data_select"])) {
     <link rel="manifest" href="images/site.webmanifest_title">
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <style>
-        form {
-            margin-left: 20px;
-        }
-        .switch-field {
-            display: flex;
-            margin-bottom: 36px;
-            overflow: hidden;
-        }
-        .switch-field input {
-            position: absolute !important;
-            clip: rect(0, 0, 0, 0);
-            height: 1px;
-            width: 1px;
-            border: 0;
-            overflow: hidden;
-        }
-        .switch-field label {
-            background-color: #e4e4e4;
-            color: rgba(0, 0, 0, 0.6);
-            font-size: 14px;
-            line-height: 1;
-            text-align: center;
-            padding: 8px 16px;
-            margin-right: -1px;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-            transition: all 0.1s ease-in-out;
-        }
-        .switch-field label:hover {
-            cursor: pointer;
-        }
-        .switch-field input:checked + label {
-            background-color: #6cb1c0;
-            box-shadow: none;
-            color: white;
-        }
-        .switch-field label:first-of-type {
-            border-radius: 4px 0 0 4px;
-        }
-        .switch-field label:last-of-type {
-            border-radius: 0 4px 4px 0;
-        }
-        /* hide ids inside modal */
-        #user_id, #volunteer_id, #dreamer_id {
-            display: none;
-        }
-    </style>
 </head>
 <body>
 <input type="hidden" id="anchor">
-<div class="text-center logo-container">
-    <img src="images/iDayDreamLogo.png" alt="IDAYDream Logo">
+<div class="text-center logo-container" style="width: 100vw;">
+    <img src="images/new_admin_logo.png" alt="IDAYDream Logo">
 </div>
 <div class="entire-container">
-    <div class="input-group mb-3">
+    <div class="input-group">
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Summary:</label>
         </div>
@@ -100,6 +52,7 @@ if (!isset($_GET["data_select"])) {
                 </option>
             </select>
         </form>
+    </div>
         <?php
         // displays switch for toggling active vs inactive if dreamer is selected
         if ($_GET["data_select"] == "dreamers") { ?>
@@ -132,7 +85,7 @@ if (!isset($_GET["data_select"])) {
         }
         ?>
 
-    </div>
+
     <?php
     //if it's the dreamer table, run $sql for member row + run $sql_ids for user_ids Foreign key
     if ($_GET["data_select"] == "dreamers") {
