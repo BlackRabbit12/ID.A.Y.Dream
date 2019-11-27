@@ -71,11 +71,11 @@ function addEditEvents(){
                     data: {user_id: user_id, table: "User", pKName: "user_id", key: key, value: value},
                     success: function (response) {
                         console.log("success in update");
-                        try {
-                            $('#dreamer-table').DataTable().ajax.reload();
-                        } catch(e) {
-                            console.log(e);
-                        }
+                        // try {
+                        //     $('#dreamer-table').DataTable().ajax.reload();
+                        // } catch(e) {
+                        //     console.log(e);
+                        // }
 
                         console.log(response); //************************************************************************************
                         //populateModalData(response);

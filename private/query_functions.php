@@ -105,7 +105,7 @@ function volunteerInsert($user, $volunteer, $interests, $references)
         $user_result = mysqli_query($db, $sql);
         $user_id = $db->insert_id;
 
-        //insert new dreamer_id into the database with new user_id
+        //insert new volunteer_id into the database with new user_id
         $sql = "INSERT INTO Volunteer (volunteer_id, user_id) VALUES (default, $user_id);";
         $volunteer_result = mysqli_query($db, $sql);
         $volunteer_id = $db->insert_id;
