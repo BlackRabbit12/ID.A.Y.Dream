@@ -163,8 +163,11 @@ if (!isset($_GET["data_select"])) {
                         <span class="input-group-text" id="basic-addon3">Subject</span>
                     </div>
                     <input type="text" class="form-control" id="email-subject" aria-describedby="basic-addon3">
+                    <span id="err-email-subject" class="d-none">Email must not be blank</span>
                 </div> <!-- end of subject line code -->
                 <textarea id="email-body" rows="10" cols="50"></textarea>
+                <span id="err-email-body" class="d-none">Email must not be blank</span>
+
             </div>
             <div class="modal-footer">
                 <button type="button" id="email-send" class="btn btn-primary">Send</button>
@@ -184,6 +187,7 @@ if (!isset($_GET["data_select"])) {
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="scripts/validation_functions.js"></script>
 <script src="scripts/admin_page_functions.js"></script>
 </body>
 </html>

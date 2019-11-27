@@ -253,6 +253,12 @@ $(document).ready(function () {
         str = str[0].toUpperCase() + str.substr(1, str.length);
         $("#email-modal-title").html("Email Active " + str);
         $("#emailModal").modal("toggle");
+        $("#email-subject").on("input focus blur", function() {
+            validateEmpty("email-subject");
+        });
+        $("#email-body").on("input focus blur", function() {
+            validateEmpty("email-body");
+        });
     }); //.on
 }); //.ready
 
