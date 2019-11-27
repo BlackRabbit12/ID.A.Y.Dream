@@ -42,8 +42,8 @@ require_once "private/init.php";
 <?php
 
 // create the user associative array from POST data
-$user["user_first"] = $_POST["fname"];
-$user["user_last"] = $_POST["lname"];
+$user["user_first"] = $_POST["first-name"];
+$user["user_last"] = $_POST["last-name"];
 $user["user_email"] = $_POST["email"];
 $user["user_phone"] = formatPhone($_POST["phone"]);
 
@@ -64,7 +64,7 @@ $dreamer["dreamer_active"] = "active";
 // creating the array of associative arrays containing guardian data
 $guardianArray = [];
 $guardianArray[] = array(
-    "contact_name" => $_POST["guardian-fName"] . " " . $_POST['guardian-lName'],
+    "contact_name" => $_POST["guardian-First-Name"] . " " . $_POST['guardian-Last-Name'],
     "contact_relationship" => $_POST["guardian-relationship"],
     "contact_email" => $_POST["guardian-email"],
     "contact_phone" => formatPhone($_POST["guardian-phone"]),
