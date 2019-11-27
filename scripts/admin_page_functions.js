@@ -9,7 +9,7 @@
 
 
 function addEditEvents() {
-    $(".editInput").on("mouseup", function () {
+    $(".editInput").on("click", function () {
         //if we have not "set" the input_id by clicking on it, then it's null
         if (document.getElementById("input_id") == null) {
             //set paragraph to text input, use children[0] because we only have one child for each label
