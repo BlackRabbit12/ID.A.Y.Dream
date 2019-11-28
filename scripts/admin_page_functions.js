@@ -1,10 +1,16 @@
-/*
- * Authors: Shayna Jamieson, Keller Flint, Bridget Black
+/**
+ * @author Shayna Jamieson
+ * @author Bridget Black
+ * @author Keller Flint
+ * @version 1.0
  * 2019-11-12
- * Last Updated: 2019-11-24
- * Version 1.0
+ * Last Update: 2019-11-24
  * File name: admin_page_functions.js
- * Associated Files: admin_page.php
+ * Associated Files:
+ *      admin_page.php
+ *
+ * Description:
+ *      File contains **********************************************************************************
  */
 
 

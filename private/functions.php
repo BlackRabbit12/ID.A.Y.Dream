@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * @author Shayna Jamieson
+ * @author Bridget Black
+ * @author Keller Flint
+ * @version 1.0
+ * 2019-10-29
+ * Last Update: 2019-11-27
+ * File name: functions.php
+ * Associated Files:
+ *      ************************************************************************************************
+ *
+ * Description:
+ *      File contains **********************************************************************************
+ */
+
 // builds and returns a table $output string
 function buildTable($result, $tableHeadingNames, $result_ids)
 {

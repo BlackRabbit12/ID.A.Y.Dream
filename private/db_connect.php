@@ -1,12 +1,17 @@
 <?php
 
-/*
-* Authors: Shayna Jamieson, Keller Flint, Bridget Black
-* 2019-11-09
-* Last Updated: 2019-11-12
-* Version 1.0
-* File name: db_connect.php
-*/
+/**
+ * @author Shayna Jamieson
+ * @author Bridget Black
+ * @author Keller Flint
+ * @version 1.0
+ * 2019-11-09
+ * Last Updated: 2019-11-12
+ * File name: db_connect.php
+ *
+ * Description:
+ *      Database connection file.
+ */
 
 $username = 'root';
 $password = 'password';

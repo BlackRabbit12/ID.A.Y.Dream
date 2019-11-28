@@ -1,12 +1,19 @@
 <?php
-/*
- * Authors: Shayna Jamieson, Keller Flint, Bridget Black
+
+/**
+ * @author Shayna Jamieson
+ * @author Bridget Black
+ * @author Keller Flint
+ * @version 1.0
  * 2019-11-09
- * Last Updated: 2019-11-12
- * Version 1.0
+ * Last Update: 2019-11-12
  * File name: query_functions.php
- * Associated Files: volunteer_success_splash.php
- *                  youth_success_splash.php
+ * Associated Files:
+ *      volunteer_success_splash.php
+ *      youth_success_splash.php
+ *
+ * Description:
+ *      File contains **********************************************************************************
  */
 
 /**
