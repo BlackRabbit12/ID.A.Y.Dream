@@ -51,7 +51,7 @@ function validatePhone(id) {
 
 
 /**
- * Takes an Array from youth_functions js and checks for empty inputs.
+ * Takes an Array from youth_functions and volunteer_functions js and checks for empty inputs.
  * @param id Array of input element ids.
  * @returns {boolean} True or False if there are empty inputs.
  */

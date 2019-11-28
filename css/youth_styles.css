@@ -15,6 +15,13 @@
  *      File contains iD.A.Y.Dream Youth Organization's associated files Bootstrap overrides and custom styles.
  */
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #youth-volunteer-title {
+        font-size: 10vw !important;
+    }
+}
+
 
 .btn {
     background-color: #6cb1c1;
@@ -98,14 +105,13 @@ input[type="text"]:focus {
     z-index: 0;
 }
 
-.red-border-drop {
-    border-bottom: 1px solid #c16062 !important;
-}
-
 .padding {
     margin-bottom: 3% !important;
 }
 
+.red-border-drop {
+    border-bottom: 1px solid #c16062 !important;
+}
 
 #row-holds-submit-button {
     margin-top: 5% !important;
@@ -143,11 +149,3 @@ span {
     font-size: 5vw !important;
     white-space: nowrap;
 }
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-    #youth-volunteer-title {
-        font-size: 10vw !important;
-    }
-}
-
