@@ -1,14 +1,20 @@
 @charset "utf-8";
 
-/*
-Authors: Shayna Jamieson, Bridget Black, Keller Flint
-2019-10-29
-Last Update: 2019-11-12
-Version: 2.0
-File Name: youth_syles.css
-Associated File: volunteer_form.php
-                youth_form.php
-*/
+/**
+ * @author Shayna Jamieson
+ * @author Bridget Black
+ * @author Keller Flint
+ * @version 1.0
+ * 2019-10-29
+ * Last Update: 2019-11-12
+ * File name: youth_styles.css
+ * Associated Files:
+ *      youth_form.php
+ *
+ * Description:
+ *      File contains iD.A.Y.Dream Youth Organization's associated files Bootstrap overrides and custom styles.
+ */
+
 
 .btn {
     background-color: #6cb1c1;

@@ -10,11 +10,9 @@
  * File name: admin_styles.css
  * Associated Files:
  *      admin_page.php
- *      volunteer_form.php
- *      youth_form.php
  *
  * Description:
- *      File contains CSS for associated files' Bootstrap Overrides and custom styles.
+ *      File contains CSS for the Admin Page's Bootstrap Overrides and custom styles.
  */
 
 /* make email modal's subject box's text white */
