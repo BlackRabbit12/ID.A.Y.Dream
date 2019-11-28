@@ -1,9 +1,38 @@
-/*
- * Authors: Shayna Jamieson, Keller Flint, Bridget Black
+/**
+ * @author Shayna Jamieson
+ * @author Keller Flint
+ * @author Bridget Black
+ * @version 1.0
  * 2019-11-09
- * Last Updated: 2019-11-12
- * Version 1.0
+ * Last Updated: 2019-11-27
  * File name: create_tables.sql
+ * Associated Files:
+ *      admin_page.php
+ *      volunteer_form.php
+ *      youth_form.php
+ *
+ * Description:
+ *      This file contains tables for iD.A.Y.Dream Youth Organization's database. Table interactions are as such:
+ *      All organization member's basic information is stored in the User table.
+ *      Volunteers are Users with additional volunteer specific data, stored in the Volunteer table.
+ *      Dreamers are Users with additional dreamer specific data, stored in the dreamer table.
+ *      Contacts are either of type 'Reference' (tied to volunteers) or of type 'Guardian' (tied to dreamers).
+ *          Volunteers have 3 references (required).
+ *          Dreamers have 1 guardian (1 required).
+ *      Interest are the type of volunteer work a volunteer would like to do for the organization. Options include but
+ *          are not limited to: 'Activities/Events', 'Fundraising', 'Other'.
+ *      Volunteer_Interest is a linking table to allow one volunteer to have many interest (one-to-many).
+ *
+ *      ******Currently Unused:
+ *      Chapter table will allow Admin to send pertinent information to appropriate volunteers and dreamers when
+ *          sending 'newsletters', 'emails', 'etc'.
+ *      User_Chapter is a linking table to allow one volunteer to belong to many chapters (one-to-many).
+ *
+ *      There are 'Interest' descriptions to match interest_id, this allows many interests to be added or deleted for
+ *          future management. (order corresponds to order listed in volunteer_form.php.
+ *
+ *      TODO Delete Sample Data When Live:
+ *      Sample Users, Volunteers, Dreamers, Contacts are added for testing purposes only.
  */
 
 CREATE TABLE User
@@ -110,7 +139,7 @@ CREATE TABLE User_Chapter
     FOREIGN KEY (chapter_id) REFERENCES Chapter (chapter_id)
 );
 
-/* Insert Interests for volunteers */
+/* Interest descriptions for volunteers */
 INSERT INTO Interest
 VALUES (1, "Events/Activities");
 INSERT INTO Interest
@@ -146,7 +175,7 @@ INSERT INTO Dreamer VALUES(6, 6, 'none', '2007/06/01', '2021', 'Female', 'Native
 INSERT INTO User VALUES(default, 'Brie', 'Larson', 'opSuperHuman@gmail.com', '2534418050', now());
 INSERT INTO Volunteer VALUES(1, 7, 'yes', '785 E St', 98188, 'Kent', 'WA', 'medium', 'I heard about you from a flier', 'Liaison', 'Weekends', 'Enjoy working with at risk youth', 'Volunteer for after school programs for kids', 'Works with kids in after school programs', 'Good with teaching kids', 'yes', 'active', 'No Notes');
 
-INSERT INTO User VALUES(default, 'Jack', 'Daniels', 'notYourBestDay@gmail.com', '2539654123', now());
+INSERT INTO User VALUES(default, 'Jackie', 'Daniels', 'notYourBestDay@gmail.com', '2539654123', now());
 INSERT INTO Volunteer VALUES(2, 8, 'yes', '9615 L St', 98188, 'Kent', 'WA', 'xLarge', 'I heard about you from a friend', 'I want to partner with ID.A.Y.Dream', 'Summer Camp only', 'Want to make a difference in the community', 'None', 'None', 'No skills', 'yes', 'inactive', 'Allergic to peanuts');
 
 INSERT INTO User VALUES(default, 'Hermione', 'Granger', 'bsblack12@gmail.com', '5037987651', now());
