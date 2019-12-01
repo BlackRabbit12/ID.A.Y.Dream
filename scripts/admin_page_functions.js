@@ -157,6 +157,27 @@ document.getElementById("data-select").addEventListener("change", function () {
 }); //addEventListener
 
 $(document).ready(function () {
+    // three toggle switch for Dreamers: Pending
+    $("#pending-dreamer-label").on("click", function () {
+        // make ajax call to update the display of pending volunteers
+        $.ajax({
+            url: 'private/init.php',
+            method: 'post',
+            data: {queryType: "pending_query"},
+            success: function (response) {
+                $("#dreamer-table").html(response);
+            }
+        }); //.ajax
+
+        // need to re-update the click events on the page
+        $(document).ajaxComplete(function () {
+            addClickEvents();
+            $("#dreamer-table").DataTable().destroy();
+            $("#dreamer-table").DataTable();
+        }); //.ajaxComplete
+    }); //.on
+
+    // three toggle switch for Dreamers: Active
     $("#active-dreamer-label").on("click", function () {
         // make ajax call to update the display of pending volunteers
         $.ajax({
@@ -176,6 +197,7 @@ $(document).ready(function () {
         }); //.ajaxComplete
     }); //.on
 
+    // three toggle switch for Dreamers: Inactive
     $("#inactive-dreamer-label").on("click", function () {
         // make ajax call to update the display of pending volunteers
         $.ajax({
