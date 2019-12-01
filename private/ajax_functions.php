@@ -47,7 +47,7 @@ if (isset($_POST['dataSelect'])) {
         // here are the queries that go into the multi_query line and into our associative arrays function
         // the FIRST uses the USER id, the SECOND uses the VOLUNTEER id !!! IMPORTANT
         $sql = "SELECT * FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id WHERE User.user_id = '$id';";
-        $sql .= "SELECT contact_name, contact_phone, contact_email, contact_relationship FROM Contact WHERE user_id = '$id';";
+        $sql .= "SELECT * FROM Contact WHERE user_id = '$id';";
 
         // ALL data that we add to our associative array
         $data = [];
