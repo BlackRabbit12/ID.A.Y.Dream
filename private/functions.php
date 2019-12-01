@@ -50,12 +50,17 @@ function buildTable($result, $tableHeadingNames, $result_ids)
         foreach ($data as $value) {
             if ($i == 0) {
                 $output .= "<td class = 'update $tableHeadingNames_array[$i]'><a href = '#'>$value</a></td>";
-            } else {
+            }
+            else {
                 if ($tableHeadingNames_array[$i] == "dreamer_date_of_birth" || $tableHeadingNames_array[$i] == "user_date_joined") {
                     $value = formatSQLDate($value);
                 }
                 if ($tableHeadingNames_array[$i] == "user_phone") {
                     $value = formatSQLPhone($value);
+                }
+                // todo change dreamer_active to dreamer_status
+                if ($tableHeadingNames_array[$i] == "volunteer_status" || $tableHeadingNames_array[$i] == "dreamer_active"){
+                    $value = dropDownStatus($value);
                 }
 
                 $output .= "<td class = '$tableHeadingNames_array[$i]'>$value</td>";
@@ -72,6 +77,31 @@ function buildTable($result, $tableHeadingNames, $result_ids)
     //return built table
     return $output;
 }
+
+//creates a dropdown menu in the status column on admin table
+function dropDownStatus($value){
+    if ($value == 'pending') {
+        return "<select class=\"form-control\" id=\"sel1\">
+        <option selected>pending</option>
+        <option>active</option>
+        <option>inactive</option>
+      </select>";
+    }
+    else if ($value == 'active') {
+        return "<select class=\"form-control\" id=\"sel1\">
+        <option>pending</option>
+        <option selected>active</option>
+        <option>inactive</option>
+      </select>";
+    }
+    else if  ($value == 'inactive') {
+        return "<select class=\"form-control\" id=\"sel1\">
+        <option>pending</option>
+        <option>active</option>
+        <option selected>inactive</option>
+      </select>";
+    }
+} //end dropDownStatus($value)
 
 // formats the heading names retrieved from database for clear user view
 function formatHeadings($str)
