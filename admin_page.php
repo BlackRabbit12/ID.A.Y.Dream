@@ -172,7 +172,7 @@ if (!isset($_GET["data_select"])) {
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="full-name"></h4>
+                    <h4 class="modal-title" id="full-name-status"></h4>
                     <button type="button" class="close btn text-white btn-lg" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body" id="modal-body">
