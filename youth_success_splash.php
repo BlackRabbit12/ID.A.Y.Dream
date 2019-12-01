@@ -59,7 +59,7 @@ if (!isEmpty($_POST['ethnicity-other'])) {
 }
 $dreamer["dreamer_food"] = $_POST["fav-snacks"];
 $dreamer["dreamer_goals"] = $_POST["aspirations"];
-$dreamer["dreamer_active"] = "active";
+$dreamer["dreamer_active"] = "pending";
 
 // creating the array of associative arrays containing guardian data
 $guardianArray = [];
