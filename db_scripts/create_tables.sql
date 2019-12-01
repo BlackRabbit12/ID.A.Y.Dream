@@ -33,6 +33,7 @@
  *
  *      TODO Delete Sample Data When Live:
  *      Sample Users, Volunteers, Dreamers, Contacts are added for testing purposes only.
+        TODO Dreamer_active to Dreamer_status
  */
 
 CREATE TABLE User
