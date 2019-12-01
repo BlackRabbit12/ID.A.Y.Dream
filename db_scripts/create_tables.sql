@@ -125,13 +125,13 @@ VALUES (5, "Mentoring");
 
 /* Insert sample data for dreamers */
 INSERT INTO User VALUES(default, 'Keller', 'Flint', 'kflint0068@gmail.com', '2534411380', now());
-INSERT INTO Dreamer VALUES(1, 1, 'Green River College', '2007/01/01', '2019', 'Male', 'White non-Hispanic', 'Pretzel', 'Be a teacher', 'active', 'Funny guy');
+INSERT INTO Dreamer VALUES(1, 1, 'Green River College', '2007/01/01', '2019', 'Male', 'White non-Hispanic', 'Pretzel', 'Be a teacher', 'pending', 'Funny guy');
 
 INSERT INTO User VALUES(default, 'Shayna', 'Jamieson', 'jamieson.shayna@gmail.com', '2532136729', now());
-INSERT INTO Dreamer VALUES(2, 2, 'Highline College', '2007/02/01', '2019', 'Female', 'Bi/Multiracial', 'Saltine', 'Live in the countryside with a ton of animals', 'active', 'Loves animals');
+INSERT INTO Dreamer VALUES(2, 2, 'Highline College', '2007/02/01', '2019', 'Female', 'Bi/Multiracial', 'Saltine', 'Live in the countryside with a ton of animals', 'pending', 'Loves animals');
 
 INSERT INTO User VALUES(default, 'Bridget', 'Black', 'bridget@beeze.com', '5037987921', now());
-INSERT INTO Dreamer VALUES(3, 3, 'Portland Community College', '2007/03/01', '2021', 'Female', 'White non-Hispanic', 'Cheeze It', 'have the best ratio of happiness to work', 'active', 'Hates shrimp');
+INSERT INTO Dreamer VALUES(3, 3, 'Portland Community College', '2007/03/01', '2021', 'Female', 'White non-Hispanic', 'Cheeze It', 'have the best ratio of happiness to work', 'pending', 'Hates shrimp');
 
 INSERT INTO User VALUES(default, 'Jane', 'Doe', 'rielysblackcats@yahoo.com', '5032222222', now());
 INSERT INTO Dreamer VALUES(4, 4, 'Green River College', '2007/04/01', '2021', 'Prefer Not to Say', 'Prefer Not to Say', 'Sour Patch Kids', 'No goals', 'inactive', 'No notes');
