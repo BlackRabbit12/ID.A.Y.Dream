@@ -1,12 +1,19 @@
 <?php
 
-/*
-* Authors: Shayna Jamieson, Keller Flint, Bridget Black
-* 2019-11-09
-* Last Updated: 2019-11-12
-* Version 1.0
-* File name: init.php
-*/
+/**
+ * @author Shayna Jamieson
+ * @author Bridget Black
+ * @author Keller Flint
+ * @version 1.0
+ * 2019-11-09
+ * Last Update: 2019-11-12
+ * File name: init.php
+ * Associated Files:
+ *      ************************************************************************************************
+ *
+ * Description:
+ *      File contains required_once files used by associated files.
+ */
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);

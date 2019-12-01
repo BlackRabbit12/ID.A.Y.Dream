@@ -1,16 +1,28 @@
-/*
-Authors: Shayna Jamieson, Bridget Black, Keller Flint
-2019-10-29
-Last Update: 2019-10-29
-Version: 1.0
-File Name: validation_functions.js
-Associated File: volunteer_form.php
-                youth_form.php
-*/
-// Validates phone numbers and adds formatting
-// forces phone input and displays errors if invalid
+/**
+ * @author Shayna Jamieson
+ * @author Bridget Black
+ * @author Keller Flint
+ * @version 1.0
+ * 2019-10-29
+ * Last Updated: 2019-11-27
+ * File name: validation_functions.js
+ * Associated Files:
+ *      youth_functions.js
+ *      youth_form.php
+ *      volunteer_form.php
+ *
+ * Description:
+ *      File contains functions for validating Volunteer and Dreamer Form input client side.
+ */
+
+/**
+ * Formats phone numbers and validates the data.
+ * Uses the form element's id for phone number to get the user's input, then uses string manipulation to format the
+ * phone number for optimal readability and testing. Displays error if the phone number is invalid.
+ * @param id The form element's id for the phone number data field.
+ * @returns {boolean} True or False if the phone number is valid or not.
+ */
 function validatePhone(id) {
-    console.log("validate phone");
     // formats phone number
     let str = $("#" + id).val();
     str = str.replace(/\D/g, "");
@@ -25,6 +37,7 @@ function validatePhone(id) {
 
     $("#" + id).val(str);
 
+    //validate phone number
     if (str.length != 14) {
         $("#err-" + id).removeClass("d-none");
         $("#" + id).addClass("red-border-drop");
@@ -34,9 +47,14 @@ function validatePhone(id) {
         $("#" + id).removeClass("red-border-drop");
         return true;
     }
-}
+} //end validatePhone(id)
 
-// Checks for empty inputs and displays errors if invalid
+
+/**
+ * Takes an Array from youth_functions and volunteer_functions js and checks for empty inputs.
+ * @param id Array of input element ids.
+ * @returns {boolean} True or False if there are empty inputs.
+ */
 function validateEmpty(id) {
     if (!isEmpty($("#" + id).val())) {
         $("#err-" + id).addClass("d-none");
@@ -47,9 +65,16 @@ function validateEmpty(id) {
         $("#" + id).addClass("red-border-drop");
         return false;
     }
-}
+} //end validateEmpty(id)
 
-// Checks for valid email input and displays errors if invalid
+
+/**
+ * Checks for valid email data.
+ * Uses the form element's id for email to get the user's input, then uses relational string to ensure proper email
+ * address formatting. Displays error if the email is invalid.
+ * @param id The form element's id for the email data field.
+ * @returns {boolean} True or False if the email is valid or not.
+ */
 function validateEmail(id) {
     let expression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!expression.test(String($("#" + id).val()).toLocaleLowerCase())) {
@@ -61,9 +86,15 @@ function validateEmail(id) {
         $("#" + id).removeClass("red-border-drop");
         return true;
     }
-}
+} //end validateEmail(id)
 
-// Validates zip code and adds formatting
+
+/**
+ * Checks for valid zip code data.
+ * Uses the form element's id for zip code to get the user's input, formats to test and display 5 digits. Displays
+ * error if the email is invalid.
+ * @returns {boolean} True or False if the zip code is valid or not.
+ */
 function validateZip() {
     $("#zip").val($("#zip").val().trim().substring(0, 5));
     if ($("#zip").val().trim().length < 5) {
@@ -75,9 +106,13 @@ function validateZip() {
         $("#zip").removeClass("red-border-drop");
         return true;
     }
-}
+} //end validateZip()
 
-// Validates that a T-Shirt size is selected
+
+/**
+ * Checks for valid T-shirt size data.
+ * @returns {boolean} True or False if the T-shirt size is valid or not.
+ */
 function validateTshirt() {
     if (document.getElementById("t-shirt-none").selected) {
         $("#err-t-shirt").removeClass("d-none");
@@ -88,9 +123,13 @@ function validateTshirt() {
         $("#t-shirt").removeClass("red-border-drop");
         return true;
     }
-}
+} //end validateTshirt()
 
 // Displays errors if gender has invalid input
+/**
+ * Checks for valid Gender data.
+ * @returns {boolean} True or False if the gender is valid or not.
+ */
 function validateGender() {
     if (document.getElementById("gender-none").selected) {
         $("#err-gender").removeClass("d-none");
@@ -101,9 +140,13 @@ function validateGender() {
         $("#gender").removeClass("red-border-drop");
         return true;
     }
-}
+} //end validateGender()
 
-// Displays errors if ethnicity has invalid input
+
+/**
+ * Checks for valid Ethnicity data.
+ * @returns {boolean} True or False if the Ethnicity is valid or not.
+ */
 function validateEthnicity() {
     if (document.getElementById("ethnicity-none").selected) {
         $("#err-ethnicity").removeClass("d-none");
@@ -114,9 +157,13 @@ function validateEthnicity() {
         $("#ethnicity").removeClass("red-border-drop");
         return true;
     }
-}
+} //end validateEthnicity()
 
-// Displays errors if graduation has invalid input
+
+/**
+ * Checks for valid graduation date data.
+ * @returns {boolean} True or False if the graduation date is valid or not.
+ */
 function validateGraduation() {
     if (document.getElementById("graduation-none").selected) {
         $("#err-graduation-year").removeClass("d-none");
@@ -127,10 +174,17 @@ function validateGraduation() {
         $("#graduation-year").removeClass("red-border-drop");
         return true;
     }
-}
+} //end validateGraduation()
 
-// Displays errors if date of birth has invalid input
+
+/**
+ * Checks for valid date of birth data.
+ * Uses string manipulation to format the date of birth for optimal readability and testing. Displays error if the
+ * date of birth is invalid.
+ * @returns {boolean} True or False if the Date of Birth is valid or not.
+ */
 function validateDOB() {
+    //format date of birth
     let str = $("#dob").val();
     str = str.replace(/\D/g, "");
 
@@ -144,6 +198,7 @@ function validateDOB() {
 
     $("#dob").val(str);
 
+    //validate date of birth
     if (str.length != 10) {
         $("#err-dob").removeClass("d-none");
         $("#dob").addClass("red-border-drop");
@@ -153,11 +208,15 @@ function validateDOB() {
         $("#dob").removeClass("red-border-drop");
         return true;
     }
-}
+} //end validateDOB()
 
 /* --- Helper functions --- */
 
-// returns true if string is empty
+/**
+ * Checks if the string is empty or not.
+ * @param str String being trimmed and checked if it's empty.
+ * @returns {boolean} True or False if the string is empty or not.
+ */
 function isEmpty(str) {
     return str.trim() == "";
-}
+} //end isEmpty(str)

@@ -1,44 +1,31 @@
 @charset "utf-8";
 
-/*
-Authors: Shayna Jamieson, Bridget Black, Keller Flint
-2019-11-12
-Last Update: 2019-11-12
-Version: 1.0
-File Name: admin_styles.css
-Associated File: admin_page.php
-*/
+/**
+ * @author Shayna Jamieson
+ * @author Keller Flint
+ * @author Bridget Black
+ * @version 1.0
+ * 2019-11-12
+ * Last Updated: 2019-11-27
+ * File name: admin_styles.css
+ * Associated Files:
+ *      admin_page.php
+ *
+ * Description:
+ *      File contains CSS for the Admin Page's Bootstrap Overrides and custom styles.
+ */
 
+/* make email modal's subject box's text white */
+#basic-addon3 {
+    color: white;
+}
+/* override .bg-danger's bright red color with muted red */
 .bg-danger {
     background-color: #c16062 !important;
     border-color: #c16062 !important;
 }
 
-.modal-header {
-    background-color: #36454f;
-    color: white;
-}
-
-#modal-body > label {
-    border-bottom: 1px solid #d3d3d3;
-    margin-bottom: 11px;
-    padding-bottom: 10px;
-}
-
-#modal-body > label > p, #modal-body > label > input {
-    margin-left: 4px;
-}
-
-#save {
-    margin-left: 2px;
-    background-color: #007F00 !important;
-    border-color: #007F00 !important;
-}
-
-#basic-addon3 {
-    color: white;
-}
-
+/* email modal button styles */
 #email-button {
     background-color: #f7aa35 !important;
     border-color: #f7aa35 !important;
@@ -55,26 +42,36 @@ Associated File: admin_page.php
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.entire-container {
-    margin-left: 10px !important;
-    margin-right: 10px !important;
-}
-
+/* email modal's message box*/
 #email-body {
     margin-top: 15px;
     min-width: 100%;
 }
 
+/* make email modal's subject box dark */
 #email-subject-background > span {
     background-color: #36454f;
 }
 
+/* make email modal's send button dark */
 #email-send {
     background-color: #36454f;
     border-color: #36454f;
 }
 
+/* spacing for container containing Table Select Dropdown + Status Toggle + Email Button + Tables */
+.entire-container {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+}
 
+/* error spans on email modal */
+#err-email-subject, #err-email-body {
+    color: #c16062;
+    white-space:nowrap;
+    font-size: smaller;
+    margin-bottom: 0;
+}
 
 footer {
     height: 150px;
@@ -83,6 +80,21 @@ footer {
     margin-top: 5%;
 }
 
+/* styles for admin_page image: new_admin_logo.png*/
+img {
+    width: 52%;
+    height: 275px;
+    display:block;
+    margin:auto;
+    /*background-size: cover;*/
+    /*background: no-repeat;*/
+}
+/* Used for admin_page.php, volunteer_form.php, youth_form.php */
+.input-group {
+    margin-bottom: 2%;
+}
+
+/* admin page table selector: 'Summary' and email modal: 'Subject' styles */
 .input-group-text {
     background-color: #f7aa35;
     color: white;
@@ -92,10 +104,13 @@ footer {
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.input-group {
-    margin-bottom: 2%;
+/* toggle styles */
+label {
+    display: block;
+    font-weight: bolder;
 }
 
+/* admin page logo image styles: new_admin_logo.png */
 .logo-container {
     width: 100%;
     margin-bottom: 3%;
@@ -103,32 +118,20 @@ footer {
     background-color: #6cb1c1;
 }
 
-img {
-    width: 52%;
-    height: 275px;
-    display:block;
-    margin:auto;
-    /*background-size: cover;*/
-    /*background: no-repeat;*/
+/* email + member modal body: email message + member information layout styles */
+.modal-body {
+    /* 100% = dialog height, 120px = header + footer */
+    max-height: calc(100% - 120px);
+    overflow-y: scroll;
 }
 
-#err-email-subject, #err-email-body {
-    color: #c16062;
-    white-space:nowrap;
-    font-size: smaller;
-    margin-bottom: 0;
+/* email + member modal header: email status + member name layout styles */
+.modal-header {
+    background-color: #36454f;
+    color: white;
 }
 
-p {
-    display: inline;
-    font-weight: normal;
-}
-
-label {
-    display: block;
-    font-weight: bolder;
-}
-
+/* email + member modal layout */
 .modal-dialog,
 .modal-content {
     /* 80% of window height */
@@ -136,10 +139,29 @@ label {
     width: 100%;
 }
 
-.modal-body {
-    /* 100% = dialog height, 120px = header + footer */
-    max-height: calc(100% - 120px);
-    overflow-y: scroll;
+/* vertical spacing on member modal body + light grey line */
+#modal-body > label {
+    border-bottom: 1px solid #d3d3d3;
+    margin-bottom: 11px;
+    padding-bottom: 10px;
+}
+
+/* horizontal spacing placed on the member modal body 'values' */
+#modal-body > label > p, #modal-body > label > input {
+    margin-left: 4px;
+}
+
+/* member modal 'values' */
+p {
+    display: inline;
+    font-weight: normal;
+}
+
+/* member modal save button */
+#save {
+    margin-left: 2px;
+    background-color: #007F00 !important;
+    border-color: #007F00 !important;
 }
 
 /* Choose table: None, Dreamer, Volunteer */
@@ -156,6 +178,7 @@ label {
     margin-right: 20px;
 }
 
+/*For the three toggle switch */
 .switch-field input {
     position: absolute !important;
     clip: rect(0, 0, 0, 0);
@@ -165,6 +188,14 @@ label {
     overflow: hidden;
 }
 
+/*For the three toggle switch */
+.switch-field input:checked + label {
+    background-color: #f7aa35;
+    box-shadow: none;
+    color: white;
+}
+
+/*For the three toggle switch */
 .switch-field label {
     background-color: #fff;
     color: rgba(0, 0, 0, 0.6);
@@ -178,35 +209,34 @@ label {
     transition: all 0.1s ease-in-out;
 }
 
-.switch-field label:hover {
-    cursor: pointer;
-}
-
-.switch-field input:checked + label {
-    background-color: #f7aa35;
-    box-shadow: none;
-    color: white;
-}
-
+/*For the three toggle switch */
 .switch-field label:first-of-type {
     border-radius: 4px 0 0 4px;
 }
 
+/*For the three toggle switch */
+.switch-field label:hover {
+    cursor: pointer;
+}
+
+/*For the three toggle switch */
 .switch-field label:last-of-type {
     border-radius: 0 4px 4px 0;
 }
 
+/* admin page table header, dark styles */
 th {
     background-color: #36454f;
     color: #fff;
     height: 50px;
 }
 
+/* admin page table rows */
 tr {
     height: 50px;
 }
 
-/* */
+/* hide all id 'keys' + 'values' in member modal body */
 #user_id, #volunteer_id, #dreamer_id {
     display: none;
 }

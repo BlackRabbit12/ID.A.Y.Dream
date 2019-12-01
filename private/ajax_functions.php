@@ -1,5 +1,19 @@
 <?php
 
+/**
+ * @author Shayna Jamieson
+ * @author Bridget Black
+ * @author Keller Flint
+ * @version 1.0
+ * 2019-10-29
+ * Last Update: 2019-11-27
+ * File name: ajax_functions.php
+ * Associated Files:
+ *      ************************************************************************************************
+ *
+ * Description:
+ *      File contains **********************************************************************************
+ */
 
 require_once "init.php";
 

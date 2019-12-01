@@ -1,13 +1,18 @@
 @charset "utf-8";
 
-/*
-Authors: Shayna Jamieson, Bridget Black, Keller Flint
-2019-10-29
-Last Update: 2019-11-12
-Version: 2.0
-File Name: index_styles.css
-Associated File: index.html
-*/
+/**
+ * @author Shayna Jamieson
+ * @author Keller Flint
+ * @author Bridget Black
+ * @version 1.0
+ * 2019-10-29
+ * File name: index_styles.css
+ * Associated Files:
+ *      index.html
+ *
+ * Description:
+ *      File contains iD.A.Y.Dream Youth Organization's Admin Login page's Bootstrap overrides and custom styles.
+ */
 
 /* MEDIA QUERIES FIRST */
 
@@ -68,10 +73,12 @@ Associated File: index.html
 
 /* POST MEDIA QUERY AREA */
 
+/* description text styles */
 #body-text-row {
     margin-bottom: 7%;
 }
 
+/* Dreamer and Volunteer sign up form buttons */
 .bottom-buttons {
     color: floralwhite !important;
     background-color: #202020 !important;
@@ -85,6 +92,7 @@ Associated File: index.html
     width: 50%;
 }
 
+/* admin login button */
 .buttons {
     color: #202020 !important;
     text-align: center;
@@ -104,10 +112,12 @@ body, html {
     background-size: cover;
 }
 
+/* description text for admin login page */
 #description-text {
     width: 87%;
 }
 
+/* admin login page background image */
 img {
     max-width: 100%;
     max-height: 100%;

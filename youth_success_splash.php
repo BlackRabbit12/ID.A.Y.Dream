@@ -1,13 +1,21 @@
 <?php
-/*
- * Authors: Shayna Jamieson, Keller Flint, Bridget Black
+
+/**
+ * @author Shayna Jamieson
+ * @author Bridget Black
+ * @author Keller Flint
+ * @version 1.0
  * 2019-10-02
- * Last Updated: 2019-11-12
- * Version 1.0
- * File name: volunteer_success_page.php
- * Associated Files: volunteer_form.php
- *                  youth_form.php
+ * Last Update: 2019-11-12
+ * File name: youth_success_splash.php
+ * Associated Files:
+ *      volunteer_form.php
+ *      youth_form.php
+ *
+ * Description:
+ *      File contains **********************************************************************************
  */
+
 
 require_once "private/init.php";
 

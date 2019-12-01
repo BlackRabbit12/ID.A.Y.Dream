@@ -5,13 +5,20 @@
 
 <?php
 
-/*
-* Authors: Shayna Jamieson, Keller Flint, Bridget Black
-* 2019-11-09
-* Last Updated: 2019-11-12
-* Version 1.0
-* File name: test.php
-*/
+/**
+ * @author Shayna Jamieson
+ * @author Bridget Black
+ * @author Keller Flint
+ * @version 1.0
+ * 2019-11=09
+ * Last Update: 2019-11-12
+ * File name: test.php
+ * Associated Files:
+ *      ************************************************************************************************
+ *
+ * Description:
+ *      File contains **********************************************************************************
+ */
 
 require_once("validation_functions.php");
 require_once "db_connect.php";
