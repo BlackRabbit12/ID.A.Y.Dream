@@ -219,8 +219,8 @@ if (isset($_POST['queryType'])) {
 
 //mouseup event for user modal 'save' button
 if(isset($_POST['table'])){
-    $dataAssociativeArray[$_POST['key']] = $_POST['value'];
-    updateData($_POST['table'], $_POST['pKName'], $dataAssociativeArray, $_POST['user_id']);
+    $dataAssociativeArray[$_POST['column_name']] = $_POST['value'];
+    updateData($_POST['table'], $_POST['table_id'], $dataAssociativeArray, $_POST['id']);
 } //end isset($_POST['table'])
 
 //emailType: dataSelect, subject: subject, body: body
