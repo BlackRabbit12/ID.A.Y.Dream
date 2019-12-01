@@ -237,6 +237,6 @@ tr {
 }
 
 /* hide all id 'keys' + 'values' in member modal body  */
-#user_id, #volunteer_id, #dreamer_id, #contact_id {
+#user_id, #volunteer_id, #dreamer_id, #contact_id0, #contact_id1, #contact_id2 {
     display: none;
 }
