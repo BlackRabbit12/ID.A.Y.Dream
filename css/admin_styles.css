@@ -236,7 +236,7 @@ tr {
     height: 50px;
 }
 
-/* hide all id 'keys' + 'values' in member modal body  */
-#user_id, #volunteer_id, #dreamer_id, #contact_id0, #contact_id1, #contact_id2 {
+/* hide all id 'keys' + 'values' && status in member modal body  */
+#user_id, #volunteer_id, #dreamer_id, #contact_id0, #contact_id1, #contact_id2, #volunteer_active, #dreamer_active {
     display: none;
 }

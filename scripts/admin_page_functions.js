@@ -85,8 +85,20 @@ function addEditEvents() {
                         let firstName = $("#" + data_to_update[4]).children(".user_first").text();
                         let lastName = $("#" + data_to_update[4]).children(".user_last").text();
 
-                        //Top of modal display full name of member
-                        $("#full-name").html(firstName + " " + lastName);
+                        //get the selected table from "select" dropdown
+                        let dataSelect = tableSelected();
+
+                        //get the status of member "inactive, active, pending"
+                        let status;
+                        if (dataSelect === "dreamers") {
+                            status = $("#" + data_to_update[4]).children(".dreamer_active").text();
+                        }
+                        else if (dataSelect === "volunteers"){
+                            status = $("#" + data_to_update[4]).children(".volunteer_active").text();
+                        }
+
+                        //Top of modal display full name and status of member
+                        $("#full-name-status").html(firstName + " " + lastName + " (" + status + ")");
                         console.log(response); //************************************************************************************
                         //populateModalData(response);
                     }
@@ -113,10 +125,19 @@ function addClickEvents() {
         //get the selected table from "select" dropdown
         let dataSelect = tableSelected();
 
+        //get the status of member "inactive, active, pending"
+        let status;
+        if (dataSelect === "dreamers") {
+            status = $("#" + id).children(".dreamer_active").text();
+        }
+        else if (dataSelect === "volunteers"){
+            status = $("#" + id).children(".volunteer_active").text();
+        }
+
         //to be passed into .ajax
         $("#hidden-id").val(id);
-        //Top of modal display full name of member
-        $("#full-name").html(firstName + " " + lastName);
+        //Top of modal display full name of member and their status
+        $("#full-name-status").html(firstName + " " + lastName + " (" + status + ")");
 
         $("#myModal").modal("toggle");
 
