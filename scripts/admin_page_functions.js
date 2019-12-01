@@ -66,7 +66,6 @@ function addEditEvents() {
                 let column_name = document.getElementById("input_id").parentElement.getAttribute("id");
                 //Collects data and values for running an update/edit on #save
                 let data_to_update = getUpdateData(column_name);
-
                 //updates the value in the selected field's database equivalent
                 $.ajax({
                     url: 'private/init.php',
@@ -317,6 +316,8 @@ function populateModalData(responseData) {
         let label = document.createElement('label');
 
         //assign the database column name to the label, formatting class = "editInput" used for function addEditEvents()
+        // checks if the column being added is for a contact. If so, keeps the numbers appended to the ends of the column names
+        // used to disambiguate multiple contacts
         if (key.includes("contact")) {
             label.setAttribute("id", key.substring(0, key.length));
         } else {
@@ -358,7 +359,15 @@ function populateModalData(responseData) {
 function getUpdateData(column_name){
     let table = tableName(column_name);
     //table id field name
-    let table_id = column_name.substr(0, column_name.indexOf('_')) + "_id";
+    let table_id;
+
+    // checks if the column being updated is column. If so, keeps the numbers appended to the ends of the column names
+    // used to disambiguate multiple contacts
+    if (column_name.includes("contact")) {
+        table_id = column_name.substr(0, column_name.indexOf('_')) + "_id" + column_name.slice(-1);
+    } else {
+        table_id = column_name.substr(0, column_name.indexOf('_')) + "_id";
+    }
     //table id literal
     let id = document.getElementById(table_id).children[0].innerText;
     //data associative array that we are updating, returned as an array for JS
