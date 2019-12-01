@@ -59,6 +59,8 @@ if (!isset($_GET["data_select"])) {
         // displays switch for toggling active vs inactive if dreamer is selected
         if ($_GET["data_select"] == "dreamers") { ?>
             <div class="switch-field">
+                <input type="radio" id="pending-dreamer" name="switch-one" value="Pending"/>
+                <label id="pending-dreamer-label" for="pending-dreamer">Pending</label>
                 <input type="radio" id="active-dreamer" name="switch-one" value="Active" checked/>
                 <label id="active-dreamer-label" for="active-dreamer">Active</label>
                 <input type="radio" id="inactive-dreamer" name="switch-one" value="Inactive" />
