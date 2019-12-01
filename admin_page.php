@@ -58,47 +58,50 @@ if (!isset($_GET["data_select"])) {
 </head>
 <body>
     <input type="hidden" id="anchor">
-    <!-- Admin table logo -->
-    <div class="logo-container">
-        <img src="images/new_admin_logo.png" alt="IDAYDream Logo">
-    </div> <!-- logo-container -->
+    <!-- Admin table logo --> <!-- logo-container -->
 
     <!-- Entire admin tools + table container -->
+    <div class="logo-container">
+        <img src="images/new_admin_logo.png" alt="IDAYDream Logo">
+    </div>
     <div class="entire-container">
-        <!-- Choosing which table summary to look at: None, Dreamer, Volunteer -->
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Summary:</label>
-            </div> <!-- input-group-prepend -->
-            <form action="admin_page.php" id="select-form" method="GET">
-                <select class="custom-select" id="data-select" name="data_select">
-                    <option value="none">None</option>
-                    <option value="dreamers"
-                            id="dreamer-option" <?php if ($_GET["data_select"] == "dreamers") echo "selected"; ?>>Dreamers
-                    </option>
-                    <option value="volunteers"
-                            id="volunteer-option" <?php if ($_GET["data_select"] == "volunteers") echo "selected"; ?>>
-                        Volunteers
-                    </option>
-                </select>
-            </form> <!-- select-form -->
+    <!-- Choosing which table summary to look at: None, Dreamer, Volunteer -->
+    <div class="input-group">
 
-            <!-- Toggle: Active, Inactive, Pending -->
-            <?php
-            // displays switch for toggling active vs inactive if dreamer is selected
-            if ($_GET["data_select"] == "dreamers") { ?>
-                <div class="switch-field">
-                    <input type="radio" id="active-dreamer" name="switch-one" value="Active" checked/>
-                    <label id="active-dreamer-label" for="active-dreamer">Active</label>
-                    <input type="radio" id="inactive-dreamer" name="switch-one" value="Inactive" />
-                    <label id="inactive-dreamer-label" for="inactive-dreamer">Inactive</label>
-                </div>
-            <?php }
-            /*
-             * This is where the three toggle switch will allow the admin to switch between 'inactive', 'active', and
-             * 'pending' for their volunteers and will populate the table according to the member status
-             */
-            else if($_GET['data_select'] == "volunteers") {
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Summary:</label>
+        </div> <!-- input-group-prepend -->
+        <form action="admin_page.php" id="select-form" method="GET">
+            <select class="custom-select" id="data-select" name="data_select">
+                <option value="none">None</option>
+                <option value="dreamers"
+                        id="dreamer-option" <?php if ($_GET["data_select"] == "dreamers") echo "selected"; ?>>Dreamers
+                </option>
+                <option value="volunteers"
+                        id="volunteer-option" <?php if ($_GET["data_select"] == "volunteers") echo "selected"; ?>>
+                    Volunteers
+                </option>
+            </select>
+        </form><!-- select-form -->
+
+        <!-- Toggle: Active, Inactive, Pending -->
+        <?php
+        // displays switch for toggling active vs inactive if dreamer is selected
+        if ($_GET["data_select"] == "dreamers") { ?>
+            <div class="switch-field">
+                <input type="radio" id="pending-dreamer" name="switch-one" value="Pending"/>
+                <label id="pending-dreamer-label" for="pending-dreamer">Pending</label>
+                <input type="radio" id="active-dreamer" name="switch-one" value="Active" checked/>
+                <label id="active-dreamer-label" for="active-dreamer">Active</label>
+                <input type="radio" id="inactive-dreamer" name="switch-one" value="Inactive" />
+                <label id="inactive-dreamer-label" for="inactive-dreamer">Inactive</label>
+            </div>
+        <?php }
+        /*
+         * This is where the three toggle switch will allow the admin to switch between 'inactive', 'active', and
+         * 'pending' for their volunteers and will populate the table according to the member status
+         */
+        else if($_GET['data_select'] == "volunteers") {
                 ?>
                 <div class="switch-field">
                     <input type="radio" id="pending" name="switch-two" value="Pending" />

@@ -163,6 +163,27 @@ document.getElementById("data-select").addEventListener("change", function () {
 }); //addEventListener
 
 $(document).ready(function () {
+    // three toggle switch for Dreamers: Pending
+    $("#pending-dreamer-label").on("click", function () {
+        // make ajax call to update the display of pending volunteers
+        $.ajax({
+            url: 'private/init.php',
+            method: 'post',
+            data: {queryType: "pending_query"},
+            success: function (response) {
+                $("#dreamer-table").html(response);
+            }
+        }); //.ajax
+
+        // need to re-update the click events on the page
+        $(document).ajaxComplete(function () {
+            addClickEvents();
+            $("#dreamer-table").DataTable().destroy();
+            $("#dreamer-table").DataTable();
+        }); //.ajaxComplete
+    }); //.on
+
+    // three toggle switch for Dreamers: Active
     $("#active-dreamer-label").on("click", function () {
         // make ajax call to update the display of pending volunteers
         $.ajax({
@@ -182,6 +203,7 @@ $(document).ready(function () {
         }); //.ajaxComplete
     }); //.on
 
+    // three toggle switch for Dreamers: Inactive
     $("#inactive-dreamer-label").on("click", function () {
         // make ajax call to update the display of pending volunteers
         $.ajax({
@@ -373,14 +395,18 @@ $("#email-send").on("click", function () {
 
                 // we display a failure pop up that notifies the sender that emails we not going through
                 if (emailCount == 0) {
-                    alert("Emails were not able to be sent!");
+                    $("#email-body").val('').end();
+                    $("#email-subject").val('').end();
+                    $('#emailModal').modal('toggle');
+                    alert("Emails were not able to be sent or you have no actives!");
                 }
-
                 // here we know that the emails sent and we can display a
                 // success pop up and close the email modal
                 else {
+                    // clears out the email and body on successful send
+                    $("#email-body").val('').end();
+                    $("#email-subject").val('').end();
                     $('#emailModal').modal('toggle');
-                    // alert(emailCount+" "+dataSelect+" emails were sent!");
                     alert("Active " + dataSelect + ": " + emailCount + " emails were sent!");
                 }
             }

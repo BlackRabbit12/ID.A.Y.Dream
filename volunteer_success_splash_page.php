@@ -78,7 +78,7 @@ if (isset($_POST["availability"])) {
 }
 $volunteer["volunteer_availability"] .= $_POST["availability-explain"];
 
-$volunteer["volunteer_skills"] = $_POST['other-experience'];
+$volunteer["volunteer_skills"] = $_POST['other-skills'];
 $volunteer["volunteer_emailing"] = $_POST['mailing-list'];
 
 $volunteer["volunteer_verified"] = "no";

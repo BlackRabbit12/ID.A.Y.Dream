@@ -264,7 +264,7 @@ require_once "private/init.php";
                 <br> <!-- end of div that holds the toggle for if user needs to explain their youth volunteer experience -->
                 <label for="other-experience">Any other skills or qualifications you would like to list:</label>
                 <div class="input-group">
-                    <textarea class="form-control" id="other-experience" name="other-experience" placeholder=""></textarea>
+                    <textarea class="form-control" id="other-experience" name="other-skills" placeholder=""></textarea>
                 </div> <!-- end of div for user listing any other skills or qualifications that they have -->
             </fieldset> <!-- end of fieldset that contains skills and qualification information -->
 
@@ -390,7 +390,7 @@ require_once "private/init.php";
                         <!--form-check form-check-inline  for div and for input form-check-input  and for label  col-form-label -->
                         <div class="custom-control custom-checkbox">
                             <input class="custom-control-input" type="checkbox" id="information-is-true"
-                                   name="terms-of-service" value="true">
+                                   name="terms-of-service" value="agreed">
                             <label class="custom-control-label" for="information-is-true">I agree to the Terms and
                                 Conditions</label>
                         </div>
