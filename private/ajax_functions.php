@@ -218,9 +218,17 @@ if (isset($_POST['queryType'])) {
 } //end isset($_POST['queryType'])
 
 //mouseup event for user modal 'save' button
-if(isset($_POST['table'])){
+if (isset($_POST['table'])){
+    // checks if the column being updated is column. If so, strips out the numbers used to disambiguate multiple contacts
+    if (strpos($_POST['table_id'], "contact") !== false) {
+        $_POST["table_id"] = substr($_POST['table_id'], 0, strlen($_POST['table_id']) - 1);
+        $_POST["column_name"] = substr($_POST['column_name'], 0, strlen($_POST['column_name']) - 1);
+    }
+
+    // creates associatve key value pair to add to database
     $dataAssociativeArray[$_POST['column_name']] = $_POST['value'];
-    updateData($_POST['table'], $_POST['table_id'], $dataAssociativeArray, $_POST['id']);
+
+    updateData($_POST['table'], $_POST["table_id"], $dataAssociativeArray, $_POST['id']);
 } //end isset($_POST['table'])
 
 //emailType: dataSelect, subject: subject, body: body
