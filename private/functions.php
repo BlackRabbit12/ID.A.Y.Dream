@@ -81,24 +81,24 @@ function buildTable($result, $tableHeadingNames, $result_ids)
 //creates a dropdown menu in the status column on admin table
 function dropDownStatus($value){
     if ($value == 'pending') {
-        return "<select class=\"form-control\" id=\"sel1\">
-        <option selected>pending</option>
-        <option>active</option>
-        <option>inactive</option>
+        return "<select class=\"form-control status-dropdown\">
+        <option value = \"pending\" selected>pending</option>
+        <option value = \"active\">active</option>
+        <option value = \"inactive\">inactive</option>
       </select>";
     }
     else if ($value == 'active') {
-        return "<select class=\"form-control\" id=\"sel1\">
-        <option>pending</option>
-        <option selected>active</option>
-        <option>inactive</option>
+        return "<select class=\"form-control status-dropdown\">
+        <option value = \"pending\">pending</option>
+        <option value = \"active\" selected>active</option>
+        <option value = \"inactive\">inactive</option>
       </select>";
     }
     else if  ($value == 'inactive') {
-        return "<select class=\"form-control\" id=\"sel1\">
-        <option>pending</option>
-        <option>active</option>
-        <option selected>inactive</option>
+        return "<select class=\"form-control status-dropdown\">
+        <option value = \"pending\">pending</option>
+        <option value = \"active\">active</option>
+        <option value = \"inactive\" selected>inactive</option>
       </select>";
     }
 } //end dropDownStatus($value)

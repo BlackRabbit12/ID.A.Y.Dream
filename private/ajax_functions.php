@@ -17,6 +17,22 @@
 
 require_once "init.php";
 
+//updates status via admin tables
+if (isset($_POST['status'])){
+    //get table name (remove end of string to match table)
+    $table = substr($_POST['dataSelect'], 0, strlen($_POST['dataSelect']) -1);
+    //get table id with the table name + id
+    $table_id = $table . "_id";
+    //uppercase table name
+    $table = strtoupper(substr($table, 0, 1)) . substr($table, 1, strlen($table));
+
+    //get id of dreamer OR volunteer
+    $sql = "SELECT $table_id FROM $table WHERE user_id = '{$_POST['id']}';";
+    $result = mysqli_query($db, $sql);
+    $id = mysqli_fetch_assoc($result)[$table_id];
+
+} //end isset($_POST['status'])
+
 //if the admin_page.php <select> <option> is selected (not 'none')
 if (isset($_POST['dataSelect'])) {
 
