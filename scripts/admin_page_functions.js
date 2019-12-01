@@ -389,14 +389,18 @@ $("#email-send").on("click", function () {
 
                 // we display a failure pop up that notifies the sender that emails we not going through
                 if (emailCount == 0) {
-                    alert("Emails were not able to be sent!");
+                    $("#email-body").val('').end();
+                    $("#email-subject").val('').end();
+                    $('#emailModal').modal('toggle');
+                    alert("Emails were not able to be sent or you have no actives!");
                 }
-
                 // here we know that the emails sent and we can display a
                 // success pop up and close the email modal
                 else {
+                    // clears out the email and body on successful send
+                    $("#email-body").val('').end();
+                    $("#email-subject").val('').end();
                     $('#emailModal').modal('toggle');
-                    // alert(emailCount+" "+dataSelect+" emails were sent!");
                     alert("Active " + dataSelect + ": " + emailCount + " emails were sent!");
                 }
             }
