@@ -309,12 +309,22 @@ function populateModalData(responseData) {
 
     //for each data field, displaying 'key' and 'value' paired data into the modal
     $.each(responseData, function (key, value) {
+        console.log(key);
+
         //create a textNode wrapping the field heading (the column's name (aka 'key'))
         let textNode = document.createTextNode(formatHeadings(key) + ":   ");
         //create a <label>
         let label = document.createElement('label');
+
         //assign the database column name to the label, formatting class = "editInput" used for function addEditEvents()
-        label.setAttribute("id", key.substring(0, key.length - 1));
+        if (key.includes("contact")) {
+            label.setAttribute("id", key.substring(0, key.length));
+        } else {
+            label.setAttribute("id", key.substring(0, key.length - 1));
+        }
+
+
+
         // TODO add correct class and display style (dropdown or text field) inside the modal for consistent user experience
         label.classList.add("editInput");
         //append the textNode(with heading) to the <label>

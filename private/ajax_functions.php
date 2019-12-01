@@ -217,10 +217,21 @@ if (isset($_POST['queryType'])) {
 
 } //end isset($_POST['queryType'])
 
+$myfile = fopen("log.txt", "w") or die("Unable to open file!");
+$text = "test";
+fwrite($myfile, $text);
+fclose($myfile);
+
 //mouseup event for user modal 'save' button
-if(isset($_POST['table'])){
+if (isset($_POST['table'])){
     $dataAssociativeArray[$_POST['column_name']] = $_POST['value'];
-    updateData($_POST['table'], $_POST['table_id'], $dataAssociativeArray, $_POST['id']);
+
+    if (strpos($_POST['table_id'], "contact") !== false) {
+        $_POST["table_id"] = substr($_POST['table_id'], 0, $_POST['table_id'].length - 1);
+    }
+
+
+    updateData($_POST['table'], $_POST["table_id"], $dataAssociativeArray, $_POST['id']);
 } //end isset($_POST['table'])
 
 //emailType: dataSelect, subject: subject, body: body
