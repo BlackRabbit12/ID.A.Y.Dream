@@ -63,48 +63,42 @@ function addEditEvents() {
             }); //.addEventListener
 
             $("#save").on("mousedown", function () {
-                    //get user's id
-                    let user_id = document.getElementById("user_id").children[0].innerText;
-                    let key = document.getElementById("input_id").parentElement.getAttribute("id");
-                    let value = document.getElementById("input_id").value;
-                    console.log("user_id " + user_id); //**************************************************************************************
-                    console.log("key " + key);
-                    console.log("value " + value);
-                    //updates the value in the selected field's database equivalent
-                    $.ajax({
-                        url: 'private/init.php',
-                        method: 'post',
-                        data: {user_id: user_id, table: "User", pKName: "user_id", key: key, value: value},
-                        success: function (response) {
-                            //update input with new value
-                            $("#" + key).find("p").html(value);
-                            //update the table data with new value. If user first, add a tags for link styling
-                            if (key === "user_first") {
-                                $("#" + user_id).children("." + key).html("<a href=\'#\'>" + value + "</a>");
-                            } else {
-                                $("#" + user_id).children("." + key).html(value);
-                            }
-                            let firstName = $("#" + user_id).children(".user_first").text();
-                            let lastName = $("#" + user_id).children(".user_last").text();
+                let column_name = document.getElementById("input_id").parentElement.getAttribute("id");
+                //Collects data and values for running an update/edit on #save
+                let data_to_update = getUpdateData(column_name);
 
-                            //Top of modal display full name of member
-                            $("#full-name").html(firstName + " " + lastName);
-                            console.log(response); //************************************************************************************
-                            //populateModalData(response);
+                //updates the value in the selected field's database equivalent
+                $.ajax({
+                    url: 'private/init.php',
+                    method: 'post',
+                    data: {table: data_to_update[0], table_id: data_to_update[1], column_name: data_to_update[2], value: data_to_update[3], id: data_to_update[4]},
+                    success: function (response) {
+                        //update input with new value
+                        $("#" + data_to_update[2]).find("p").html(data_to_update[3]);
+                        //update the table data with new value. If user first, add a tags for link styling
+                        if (data_to_update[2].toString() === "user_first") {
+                            $("#" + data_to_update[4]).children("." + data_to_update[2]).html("<a href=\'#\'>" + data_to_update[3] + "</a>");
+                            console.log("if");
+                        } else {
+                            $("#" + data_to_update[4]).children("." + data_to_update[2]).html(data_to_update[3]);
+                            console.log("else");
                         }
-                    }); //.ajax
-                }
-            ); //.on
-        }
+                        let firstName = $("#" + data_to_update[4]).children(".user_first").text();
+                        let lastName = $("#" + data_to_update[4]).children(".user_last").text();
 
-// else we have already clicked on the field so it has an input_id
+                        //Top of modal display full name of member
+                        $("#full-name").html(firstName + " " + lastName);
+                        console.log(response); //************************************************************************************
+                        //populateModalData(response);
+                    }
+                }); //.ajax
+            }); //.on
+        }
+        // else we have already clicked on the field so it has an input_id
         else {
             console.log("else"); //******************************************************************************************
         }
-    })
-    ; //.on
-
-
+    }); //.on
 } //end function addEditEvents()
 
 function addClickEvents() {
@@ -342,6 +336,35 @@ function populateModalData(responseData) {
         modalB.append(label);
     }); //.each
 } //end populateModalData
+
+/* HELPER METHODS */
+
+/**
+ * Collects data and values for running an update/edit on #save.
+ * @param column_name Column being looked at for which table it comes from.
+ * @returns {[table, table_id, column_name, value, id]} Table name in database, table primary key column name,
+ * name of column, new value to be updated with ajax, table primary key value.
+ */
+function getUpdateData(column_name){
+    let table = tableName(column_name);
+    //table id field name
+    let table_id = column_name.substr(0, column_name.indexOf('_')) + "_id";
+    //table id literal
+    let id = document.getElementById(table_id).children[0].innerText;
+    //data associative array that we are updating, returned as an array for JS
+    let value = document.getElementById("input_id").value;
+    return [table, table_id, column_name, value, id];
+} //end updateData(column_name)
+
+/**
+ * Helper function returns the table name being used.
+ * @param column_name Column being looked at for which table it comes from.
+ * @returns {string} Return name of database table associated with parameter column_name.
+ */
+function tableName(column_name){
+    //upper case first letter and add the rest of the string back on
+    return column_name.charAt(0).toUpperCase() + column_name.substr(1, column_name.indexOf('_') - 1);
+} //end tableName(column_name)
 
 //clears modal body after click away
 $('#myModal').on('hidden.bs.modal', function () {
