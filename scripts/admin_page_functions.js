@@ -157,6 +157,28 @@ function addClickEvents() {
             addEditEvents();
         }); //.ajaxComplete
     }); //.on
+
+    //update member's status via dropdown in admin tables
+    $(".status-dropdown").on("change", function () {
+        //grab the id of user_id
+        let id = this.parentElement.parentElement.getAttribute("id");
+
+        //get the selected table from "select" dropdown
+        let dataSelect = tableSelected();
+
+        //get the changed status of member "inactive, active, pending"
+        let status = $(this).val();
+
+        //make the changed status update in table + database
+        $.ajax({
+            url: 'private/init.php',
+            method: 'post',
+            data: {id: id, dataSelect: dataSelect, status: status},
+            success: function (response) {
+                console.log(response); //****************************************************
+            }
+        }); //.ajax
+    }); //.on
 } //end function addClickEvents()
 
 $(document).ready(function () {
