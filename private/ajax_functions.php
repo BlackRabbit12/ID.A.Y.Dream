@@ -23,8 +23,7 @@ if (isset($_POST['status'])){
     $table = substr($_POST['dataSelect'], 0, strlen($_POST['dataSelect']) -1);
     //get table id with the table name + id
     $table_id = $table . "_id";
-    //TODO change to status when dreamer is updated in database
-    $key = $table . "_active";
+    $key = $table . "_status";
     //uppercase table name
     $table = strtoupper(substr($table, 0, 1)) . substr($table, 1, strlen($table));
 
@@ -148,10 +147,10 @@ if (isset($_POST['queryType'])) {
     if ($_POST['queryType'] == 'inactive_query') {
         global $db;
 
-        $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
+        $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_status, user_date_joined FROM User 
             INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
-            WHERE dreamer_active = 'inactive';";
-        $sql_ids = "SELECT user_id FROM Dreamer WHERE dreamer_active = 'inactive';";
+            WHERE dreamer_status = 'inactive';";
+        $sql_ids = "SELECT user_id FROM Dreamer WHERE dreamer_status = 'inactive';";
 
         $result = mysqli_query($db, $sql);
         $tableHeadingNames = $result->fetch_fields();
@@ -162,10 +161,10 @@ if (isset($_POST['queryType'])) {
         // Selects and returns output string containing table with inactive users
         global $db;
 
-        $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
+        $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_status, user_date_joined FROM User 
                 INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
-                WHERE dreamer_active = 'pending';";
-        $sql_ids = "SELECT user_id FROM Dreamer WHERE dreamer_active = 'pending';";
+                WHERE dreamer_status = 'pending';";
+        $sql_ids = "SELECT user_id FROM Dreamer WHERE dreamer_status = 'pending';";
 
         $result = mysqli_query($db, $sql);
         $tableHeadingNames = $result->fetch_fields();
@@ -176,10 +175,10 @@ if (isset($_POST['queryType'])) {
         // Selects and returns output string containing table with inactive users
         global $db;
 
-        $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
+        $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_status, user_date_joined FROM User 
                 INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
-                WHERE dreamer_active = 'active';";
-        $sql_ids = "SELECT user_id FROM Dreamer WHERE dreamer_active = 'active';";
+                WHERE dreamer_status = 'active';";
+        $sql_ids = "SELECT user_id FROM Dreamer WHERE dreamer_status = 'active';";
 
         $result = mysqli_query($db, $sql);
         $tableHeadingNames = $result->fetch_fields();
@@ -259,7 +258,7 @@ if (isset($_POST['table'])){
 if(isset($_POST["emailType"])) {
     $sql = "";
     if ($_POST["emailType"] == "dreamers") {
-        $sql = "SELECT user_email FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id WHERE dreamer_active = 'active';";
+        $sql = "SELECT user_email FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id WHERE dreamer_status = 'active';";
     } else if ($_POST["emailType"] == "volunteers") {
         $sql = "SELECT user_email FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id WHERE volunteer_status = 'active';";
     } else {

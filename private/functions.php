@@ -58,8 +58,7 @@ function buildTable($result, $tableHeadingNames, $result_ids)
                 if ($tableHeadingNames_array[$i] == "user_phone") {
                     $value = formatSQLPhone($value);
                 }
-                // todo change dreamer_active to dreamer_status
-                if ($tableHeadingNames_array[$i] == "volunteer_status" || $tableHeadingNames_array[$i] == "dreamer_active"){
+                if ($tableHeadingNames_array[$i] == "volunteer_status" || $tableHeadingNames_array[$i] == "dreamer_status"){
                     $value = dropDownStatus($value);
                 }
 

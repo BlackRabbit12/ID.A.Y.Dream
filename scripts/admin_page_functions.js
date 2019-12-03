@@ -91,10 +91,10 @@ function addEditEvents() {
                         //get the status of member "inactive, active, pending"
                         let status;
                         if (dataSelect === "dreamers") {
-                            status = $("#" + data_to_update[4]).children(".dreamer_active").text();
+                            status = $("#" + data_to_update[4]).children(".dreamer_status").text();
                         }
                         else if (dataSelect === "volunteers"){
-                            status = $("#" + data_to_update[4]).children(".volunteer_active").text();
+                            status = $("#" + data_to_update[4]).children(".volunteer_status").text();
                         }
 
                         //Top of modal display full name and status of member
@@ -128,10 +128,11 @@ function addClickEvents() {
         //get the status of member "inactive, active, pending"
         let status;
         if (dataSelect === "dreamers") {
-            status = $("#" + id).children(".dreamer_active").text();
+            //finding the child that contains the selected option for the dreamer's status
+            status = $("#" + id).children(".dreamer_status").children(".status-dropdown").children("option:selected").text();
         }
         else if (dataSelect === "volunteers"){
-            status = $("#" + id).children(".volunteer_active").text();
+            status = $("#" + id).children(".volunteer_status").text();
         }
 
         //to be passed into .ajax

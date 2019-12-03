@@ -130,10 +130,10 @@ if (!isset($_GET["data_select"])) {
         <?php
         //if it's the dreamer table, run $sql for member row + run $sql_ids for user_ids Foreign key
         if ($_GET["data_select"] == "dreamers") {
-            $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_active, user_date_joined FROM User 
+            $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_status, user_date_joined FROM User 
                     INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
-                    WHERE dreamer_active = 'active';";
-            $sql_ids = "SELECT user_id FROM Dreamer WHERE dreamer_active = 'active';";
+                    WHERE dreamer_status = 'active';";
+            $sql_ids = "SELECT user_id FROM Dreamer WHERE dreamer_status = 'active';";
         }
         //if it's the volunteer table, run $sql for member row + run $sql_ids for user_ids Foreign key
         else if ($_GET["data_select"] == "volunteers") {

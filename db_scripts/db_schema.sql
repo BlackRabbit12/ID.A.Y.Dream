@@ -5,7 +5,7 @@
  * @version 1.0
  * 2019-11-09
  * Last Updated: 2019-11-27
- * File name: create_tables.sql
+ * File name: db_schema.sql
  * Associated Files:
  *      admin_page.php
  *      volunteer_form.php
@@ -33,7 +33,6 @@
  *
  *      TODO Delete Sample Data When Live:
  *      Sample Users, Volunteers, Dreamers, Contacts are added for testing purposes only.
-        TODO Dreamer_active to Dreamer_status
  */
 
 CREATE TABLE User
@@ -58,7 +57,7 @@ CREATE TABLE Dreamer
     dreamer_ethnicity       VARCHAR(255) NULL,
     dreamer_food            VARCHAR(255) NULL,
     dreamer_goals           TEXT         NULL,
-    dreamer_active          VARCHAR(255) NULL,
+    dreamer_status          VARCHAR(255) NULL,
     dreamer_notes           TEXT         NULL,
 
     PRIMARY KEY (dreamer_id),
@@ -120,24 +119,6 @@ CREATE TABLE Volunteer_Interest
     PRIMARY KEY (volunteer_id, interest_id),
     FOREIGN KEY (volunteer_id) REFERENCES Volunteer (volunteer_id),
     FOREIGN KEY (interest_id) REFERENCES Interest (interest_id)
-);
-
-CREATE TABLE Chapter
-(
-    chapter_id       INT          NOT NULL AUTO_INCREMENT,
-    chapter_location VARCHAR(255) NULL,
-
-    PRIMARY KEY (chapter_id)
-);
-
-CREATE TABLE User_Chapter
-(
-    user_id    INT NOT NULL,
-    chapter_id INT NOT NULL,
-
-    PRIMARY KEY (user_id, chapter_id),
-    FOREIGN KEY (user_id) REFERENCES User (user_id),
-    FOREIGN KEY (chapter_id) REFERENCES Chapter (chapter_id)
 );
 
 /* Interest descriptions for volunteers */
