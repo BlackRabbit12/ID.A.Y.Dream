@@ -9,7 +9,7 @@
     // if our admin user is not logged in currently then we need to disable them from
     // viewing admin content and redirect to the project splash (home) page
     if(!isset($_SESSION['username'])) {
-        header('location: index.html');
+        header('location: index.php');
     }
 ?>
 <!DOCTYPE html>

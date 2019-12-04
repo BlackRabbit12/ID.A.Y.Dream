@@ -8,7 +8,7 @@
  * 2019-10-29
  * File name: index_styles.css
  * Associated Files:
- *      index.html
+ *      index.php
  *
  * Description:
  *      File contains iD.A.Y.Dream Youth Organization's Admin Login page's Bootstrap overrides and custom styles.
@@ -121,4 +121,10 @@ body, html {
 img {
     max-width: 100%;
     max-height: 100%;
+}
+
+/* admin login modal header to match admin page modals */
+.modal-header {
+    background-color: #36454f;
+    color: white;
 }
