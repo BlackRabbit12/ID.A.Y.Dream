@@ -1,3 +1,17 @@
+<?php
+    // TODO: after final product submitted: remember to turn off error reporting for normal use
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+
+    //Start the session
+    session_start();
+
+    // if our admin user is not logged in currently then we need to disable them from
+    // viewing admin content and redirect to the project splash (home) page
+    if(!isset($_SESSION['username'])) {
+        header('location: index.html');
+    }
+?>
 <!DOCTYPE html>
 <!--
     @author Shayna Jamieson
