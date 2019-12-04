@@ -64,12 +64,12 @@
             <div class="row">
                 <div class="col-md-6 padding">
                     <label for="fname" class="col-form-label"><em>*</em> First</label>
-                    <input type="text" class="form-control" id="fname" name="first-name" placeholder="">
+                    <input type="text" class="form-control" id="fname" name="first-Name" placeholder="">
                     <span id="err-fname" class="d-none">please enter a valid first name</span>
                 </div> <!-- end of  div that holds the first name row -->
                 <div class="col-md-6 padding">
                     <label for="lname" class="col-form-label"><em>*</em> Last</label>
-                    <input type="text" class="form-control" id="lname" name="last-name" placeholder="">
+                    <input type="text" class="form-control" id="lname" name="last-Name" placeholder="">
                     <span id="err-lname" class="d-none">please enter a valid last name</span>
                 </div>
             </div> <!-- end of row that asks for the users first and last names -->
@@ -92,11 +92,11 @@
             <div class="row">
                 <div class="col-md-6 padding">
                     <label for="college-interest" class="col-form-label">College of Interest</label>
-                    <input type="text" class="form-control" id="college-interest" name="college-interest" placeholder="">
+                    <input type="text" class="form-control" id="college-interest" name="college-Interest" placeholder="">
                 </div>
                 <div class="col-md-6 padding">
                     <label for="graduation-year" class="col-form-label"><em>*</em> Graduation Year</label>
-                    <select class="custom-select" id="graduation-year" name="graduation-year">
+                    <select class="custom-select" id="graduation-year" name="graduation-Year">
                         <option selected id="graduation-none" value="">select</option>
                         <?php
                         /**
@@ -161,7 +161,7 @@
             <div id="toggle-ethnicity-other">
                 <label for="ethnicity-other">Please explain</label>
                 <div class="input-group">
-                    <input class="form-control" id="ethnicity-other" name="ethnicity-other" placeholder="">
+                    <input class="form-control" id="ethnicity-other" name="ethnicity-Other" placeholder="">
                 </div>
             </div> <!-- end of row that hides the ethnicity 'other' -->
 
@@ -170,7 +170,7 @@
                 <div class="col-md-12 padding">
                     <label for="fav-snacks" class="col-form-label">What are some of your favorite food/snacks?</label>
                     <div class="input-group">
-                        <textarea class="form-control" id="fav-snacks" name="fav-snacks" placeholder="" rows="3"></textarea>
+                        <textarea class="form-control" id="fav-snacks" name="fav-Snacks" placeholder="" rows="3"></textarea>
                     </div>
                 </div>
             </div> <!-- end of row that has the user list their favorite snacks and foods  -->
@@ -202,7 +202,7 @@
                 </div>
                 <div class="col-md-4 padding">
                     <label for="guardian-relationship" class="col-form-label"><em>*</em> Guardian Relationship</label>
-                    <input type="text" class="form-control" id="guardian-relationship" name="guardian-relationship" placeholder="">
+                    <input type="text" class="form-control" id="guardian-relationship" name="guardian-Relationship" placeholder="">
                     <span id="err-guardian-relationship" class="d-none">please enter a valid guardian relationship</span>
                 </div>
             </div> <!-- end of row that has the guardian first name, last name, and relationship -->
@@ -211,12 +211,12 @@
             <div class="row">
                 <div class="col-md-6 padding">
                     <label for="guardian-email" class="col-form-label"><em>*</em> Guardian Email</label>
-                    <input type="text" class="form-control" id="guardian-email" name="guardian-email" placeholder="">
+                    <input type="text" class="form-control" id="guardian-email" name="guardian-Email" placeholder="">
                     <span id="err-guardian-email" class="d-none">please enter a valid guardian email</span>
                 </div>
                 <div class="col-md-6 padding">
                     <label for="guardian-phone" class="col-form-label"><em>*</em> Guardian Phone</label>
-                    <input type="text" class="form-control" id="guardian-phone" name="guardian-phone" placeholder="">
+                    <input type="text" class="form-control" id="guardian-phone" name="guardian-Phone" placeholder="">
                     <span id="err-guardian-phone" class="d-none">please enter a valid guardian phone</span>
                 </div>
             </div> <!-- end of row that has guardian email and phone -->

@@ -163,7 +163,8 @@ if ($success) {
     <?php
     } //if volunteer did NOT successfully get inserted
     else {
-        echo "it didn't work volunteer";
+        echo "An error occurred while submitting your application, please press the \"back arrow\" and resubmit 
+        your application or try again later. We appreciate your interest in our organization!";
     }
     } ?>
 </div>
