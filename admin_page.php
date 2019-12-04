@@ -76,6 +76,7 @@ if (!isset($_GET["data_select"])) {
 
     <!-- Entire admin tools + table container -->
     <div class="logo-container">
+        <button id="logout-button" class="btn rounded-pill float-right text-white border-light mr-4 mt-4 pr-3 pl-3" href="#loginModal" role="button" data-toggle="modal">LOGOUT</button>
         <img src="images/new_admin_logo.png" alt="IDAYDream Logo">
     </div>
     <div class="entire-container">

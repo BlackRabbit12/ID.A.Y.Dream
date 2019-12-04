@@ -499,3 +499,7 @@ $("#email-send").on("click", function () {
         }); //.ajax
     }
 });
+
+$('#logout-button').on('click', function() {
+    window.location.href = '../private/logout.php';
+});
