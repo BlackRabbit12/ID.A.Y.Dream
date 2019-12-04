@@ -20,6 +20,6 @@
  */
 
 global $loginCreds;
-$loginCreds = array("admin"=>"iD@Dr3@m");
+$loginCreds = array("admin"=>"iD@yDr3@m");
 
 
