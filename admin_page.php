@@ -139,7 +139,7 @@ if (!isset($_GET["data_select"])) {
         else if ($_GET["data_select"] == "volunteers") {
             $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User 
                     INNER JOIN Volunteer ON User.user_id = Volunteer.user_id
-                    WHERE volunteer_status = 'active' WHERE ;";
+                    WHERE volunteer_status = 'active';";
             //******************************************* need to add a WHERE volunteer = active statement ********************
             $sql_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'active';";
         }
