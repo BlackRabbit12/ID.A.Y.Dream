@@ -91,12 +91,12 @@ require_once "private/init.php";
                 <div class="row">
                     <div class="col-md-6 padding">
                         <label for="fname" class="col-form-label"><em>*</em> First</label>
-                        <input type="text" class="form-control" id="fname" name="first-name" placeholder="">
+                        <input type="text" class="form-control" id="fname" name="first-Name" placeholder="">
                         <span id="err-fname" class="d-none">please enter a valid first name</span>
                     </div>
                     <div class="col-md-6 padding">
                         <label for="lname" class="col-form-label"><em>*</em> Last</label>
-                        <input type="text" class="form-control" id="lname" name="last-name" placeholder="">
+                        <input type="text" class="form-control" id="lname" name="last-Name" placeholder="">
                         <span id="err-lname" class="d-none">please enter a valid last name</span>
                     </div>
                 </div> <!-- end of row with full name -->
@@ -195,7 +195,7 @@ require_once "private/init.php";
                             <label for="other-interests-explanation"><em>*</em> Please explain other areas of
                                 interest:</label>
                             <div class="input-group">
-                                <textarea class="form-control" id="other-interests-explanation" name="interests-explain"
+                                <textarea class="form-control" id="other-interests-explanation" name="interests-Explain"
                                           placeholder=""></textarea>
                             </div> <!-- area where the user explains their other interests if chosen other -->
                         </div>
@@ -220,7 +220,7 @@ require_once "private/init.php";
                                 you are available:</label>
                             <div class="input-group">
                                 <textarea class="form-control" id="weekend-availability-explanation"
-                                          name="availability-explain" placeholder=""></textarea>
+                                          name="availability-Explain" placeholder=""></textarea>
                             </div> <!-- area where the user explains their other interests if chosen other -->
                         </div> <!-- end of div that holds the toggle for if user needs to explain their interests -->
                     </div>
@@ -239,32 +239,32 @@ require_once "private/init.php";
                 <span id="err-motivation" class="d-none">please describe your motivation for working with us</span><br>
                 <label for="volunteer-experience">Describe your previous volunteer experience:</label>
                 <div class="input-group">
-                    <textarea class="form-control" id="volunteer-experience" name="volunteer-experience"
+                    <textarea class="form-control" id="volunteer-experience" name="volunteer-Experience"
                               placeholder=""></textarea>
                 </div>
                 <br> <!-- end of text area for if they have previous volunteer experience -->
                 <label>Do you have previous work experience with youth organizations?</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-yes"
+                    <input class="form-check-input" type="radio" name="youth-Experience" id="youth-experience-yes"
                            value="yes">
                     <label class="form-check-label" for="youth-experience-yes">Yes</label>
                 </div> <!-- end of div for checkbox of if they have experience with youth "yes" -->
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="youth-experience" id="youth-experience-no"
+                    <input class="form-check-input" type="radio" name="youth-Experience" id="youth-experience-no"
                            value="no">
                     <label class="form-check-label" for="youth-experience-no">No</label>
                 </div> <!-- end of div for checkbox of if they have experience with youth "no"  -->
                 <div id="toggle-please-explain"><br>
                     <label for="youth-experience-explanation">Please elaborate on your work with youth:</label>
                     <div class="input-group">
-                        <textarea class="form-control" id="youth-experience-explanation" name="youth-experience-explanation"
+                        <textarea class="form-control" id="youth-experience-explanation" name="youth-Experience-Explanation"
                                   placeholder=""></textarea>
                     </div> <!-- area where the user explains the volunteer experience that they have with youth -->
                 </div>
                 <br> <!-- end of div that holds the toggle for if user needs to explain their youth volunteer experience -->
                 <label for="other-experience">Any other skills or qualifications you would like to list:</label>
                 <div class="input-group">
-                    <textarea class="form-control" id="other-experience" name="other-skills" placeholder=""></textarea>
+                    <textarea class="form-control" id="other-experience" name="other-Skills" placeholder=""></textarea>
                 </div> <!-- end of div for user listing any other skills or qualifications that they have -->
             </fieldset> <!-- end of fieldset that contains skills and qualification information -->
 
@@ -278,23 +278,23 @@ require_once "private/init.php";
                     <div class="row">
                         <div class="col-md-6">
                             <label for="ref-name-1" class="col-form-label char-ref-bg1">Full Name</label>
-                            <input type="text" class="form-control" id="ref-name-1" name="reference-name-1" placeholder="">
+                            <input type="text" class="form-control" id="ref-name-1" name="reference-Name-1" placeholder="">
                         </div>
                         <div class="col-md-6">
                             <label for="ref-relationship-1" class="col-form-label char-ref-bg1">Relationship</label>
-                            <input type="text" class="form-control" id="ref-relationship-1" name="reference-relationship-1"
+                            <input type="text" class="form-control" id="ref-relationship-1" name="reference-Relationship-1"
                                    placeholder="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label for="ref-email-1" class="col-form-label char-ref-bg1">Email</label>
-                            <input type="text" class="form-control" id="ref-email-1" name="reference-email-1"
+                            <input type="text" class="form-control" id="ref-email-1" name="reference-Email-1"
                                    placeholder="">
                         </div>
                         <div class="col-md-6">
                             <label for="ref-phone-1" class="col-form-label char-ref-bg1">Phone</label>
-                            <input type="text" class="form-control" id="ref-phone-1" name="reference-phone-1"
+                            <input type="text" class="form-control" id="ref-phone-1" name="reference-Phone-1"
                                    placeholder="">
                         </div>
                     </div>
@@ -305,23 +305,23 @@ require_once "private/init.php";
                     <div class="row">
                         <div class="col-md-6">
                             <label for="ref-name-2" class="col-form-label char-ref-bg2">Full Name</label>
-                            <input type="text" class="form-control" id="ref-name-2" name="reference-name-2" placeholder="">
+                            <input type="text" class="form-control" id="ref-name-2" name="reference-Name-2" placeholder="">
                         </div>
                         <div class="col-md-6">
                             <label for="ref-relationship-2" class="col-form-label char-ref-bg2">Relationship</label>
-                            <input type="text" class="form-control" id="ref-relationship-2" name="reference-relationship-2"
+                            <input type="text" class="form-control" id="ref-relationship-2" name="reference-Relationship-2"
                                    placeholder="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label for="ref-email-2" class="col-form-label char-ref-bg2">Email</label>
-                            <input type="text" class="form-control" id="ref-email-2" name="reference-email-2"
+                            <input type="text" class="form-control" id="ref-email-2" name="reference-Email-2"
                                    placeholder="">
                         </div>
                         <div class="col-md-6">
                             <label for="ref-phone-2" class="col-form-label char-ref-bg2">Phone</label>
-                            <input type="text" class="form-control" id="ref-phone-2" name="reference-phone-2"
+                            <input type="text" class="form-control" id="ref-phone-2" name="reference-Phone-2"
                                    placeholder="">
                         </div>
                     </div>
@@ -332,23 +332,23 @@ require_once "private/init.php";
                     <div class="row">
                         <div class="col-md-6">
                             <label for="ref-name-3" class="col-form-label char-ref-bg3">Full Name</label>
-                            <input type="text" class="form-control" id="ref-name-3" name="reference-name-3" placeholder="">
+                            <input type="text" class="form-control" id="ref-name-3" name="reference-Name-3" placeholder="">
                         </div>
                         <div class="col-md-6">
                             <label for="ref-relationship-3" class="col-form-label char-ref-bg3">Relationship</label>
-                            <input type="text" class="form-control" id="ref-relationship-3" name="reference-relationship-3"
+                            <input type="text" class="form-control" id="ref-relationship-3" name="reference-Relationship-3"
                                    placeholder="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label for="ref-email-3" class="col-form-label char-ref-bg3">Email</label>
-                            <input type="text" class="form-control" id="ref-email-3" name="reference-email-3"
+                            <input type="text" class="form-control" id="ref-email-3" name="reference-Email-3"
                                    placeholder="">
                         </div>
                         <div class="col-md-6">
                             <label for="ref-phone-3" class="col-form-label char-ref-bg3">Phone</label>
-                            <input type="text" class="form-control" id="ref-phone-3" name="reference-phone-3"
+                            <input type="text" class="form-control" id="ref-phone-3" name="reference-Phone-3"
                                    placeholder="">
                         </div>
                     </div>
@@ -362,12 +362,12 @@ require_once "private/init.php";
                 </div>
                 <label>Would you like to be added to our mailing list?</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-yes" value="yes"
+                    <input class="form-check-input" type="radio" name="mailing-List" id="mailing-list-yes" value="yes"
                            checked>
                     <label class="form-check-label" for="mailing-list-yes">Yes</label>
                 </div> <!-- end of div for "yes" to mailing list check -->
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="mailing-list" id="mailing-list-no" value="no">
+                    <input class="form-check-input" type="radio" name="mailing-List" id="mailing-list-no" value="no">
                     <label class="form-check-label" for="mailing-list-no">No</label>
                 </div> <!-- end of div for "no" to mailing list check -->
             </fieldset> <!-- end of fieldset that contains mailing list information -->
@@ -390,7 +390,7 @@ require_once "private/init.php";
                         <!--form-check form-check-inline  for div and for input form-check-input  and for label  col-form-label -->
                         <div class="custom-control custom-checkbox">
                             <input class="custom-control-input" type="checkbox" id="information-is-true"
-                                   name="terms-of-service" value="agreed">
+                                   name="terms-of-Service" value="agreed">
                             <label class="custom-control-label" for="information-is-true">I agree to the Terms and
                                 Conditions</label>
                         </div>

@@ -50,22 +50,22 @@ require_once "private/init.php";
 <?php
 
 // create the user associative array from POST data
-$user["user_first"] = $_POST["first-name"];
-$user["user_last"] = $_POST["last-name"];
+$user["user_first"] = $_POST["first-Name"];
+$user["user_last"] = $_POST["last-Name"];
 $user["user_email"] = $_POST["email"];
 $user["user_phone"] = formatPhone($_POST["phone"]);
 
 // create the dreamer associative array from POST data
-$dreamer["dreamer_college"] = $_POST["college-interest"];
+$dreamer["dreamer_college"] = $_POST["college-Interest"];
 $dreamer["dreamer_date_of_birth"] = formatDOB($_POST["dob"]);
-$dreamer["dreamer_graduation_date"] = $_POST["graduation-year"];
+$dreamer["dreamer_graduation_date"] = $_POST["graduation-Year"];
 $dreamer["dreamer_gender"] = $_POST["gender"];
 $dreamer["dreamer_ethnicity"] = $_POST['ethnicity'];
 // if ethnicity-other is not empty, use the supplied ethnicity instead
-if (!isEmpty($_POST['ethnicity-other'])) {
-    $dreamer["dreamer_ethnicity"] = $_POST['ethnicity-other'];
+if (!isEmpty($_POST['ethnicity-Other'])) {
+    $dreamer["dreamer_ethnicity"] = $_POST['ethnicity-Other'];
 }
-$dreamer["dreamer_food"] = $_POST["fav-snacks"];
+$dreamer["dreamer_food"] = $_POST["fav-Snacks"];
 $dreamer["dreamer_goals"] = $_POST["aspirations"];
 $dreamer["dreamer_status"] = "pending";
 
@@ -73,9 +73,9 @@ $dreamer["dreamer_status"] = "pending";
 $guardianArray = [];
 $guardianArray[] = array(
     "contact_name" => $_POST["guardian-First-Name"] . " " . $_POST['guardian-Last-Name'],
-    "contact_relationship" => $_POST["guardian-relationship"],
-    "contact_email" => $_POST["guardian-email"],
-    "contact_phone" => formatPhone($_POST["guardian-phone"]),
+    "contact_relationship" => $_POST["guardian-Relationship"],
+    "contact_email" => $_POST["guardian-Email"],
+    "contact_phone" => formatPhone($_POST["guardian-Phone"]),
     "contact_type" => "guardian"
 );
 
@@ -113,7 +113,8 @@ if ($success) {
         ?>
     </div>
 <?php } else {
-    echo "it didn't work dreamer";
+    echo "An error occurred while submitting your application, please press the \"back arrow\" and resubmit 
+        your application or try again later. We appreciate your interest in our organization!";
 } ?>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
