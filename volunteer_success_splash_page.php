@@ -52,8 +52,8 @@ require_once "private/init.php";
 
 // declare variables here to use throughout this page & w/ email functionality
 //user
-$user["user_first"] = $_POST['first-name'];
-$user["user_last"] = $_POST['last-name'];
+$user["user_first"] = $_POST['first-Name'];
+$user["user_last"] = $_POST['last-Name'];
 $user["user_email"] = $_POST['email'];
 $user["user_phone"] = formatPhone($_POST["phone"]);
 //volunteer
@@ -64,11 +64,22 @@ $volunteer["volunteer_state"] = $_POST['state'];
 $volunteer["volunteer_tshirt_size"] = $_POST['shirt'];
 $volunteer["volunteer_about_us"] = $_POST['about'];
 $volunteer["volunteer_motivated"] = $_POST['motivation'];
-$volunteer["volunteer_experience"] = $_POST['volunteer-experience'];
+$volunteer["volunteer_experience"] = $_POST['volunteer-Experience'];
 // youth experience
 $volunteer["volunteer_youth_experience"] = "";
-if (isset($_POST['youth-experience']))
-    $volunteer["volunteer_youth_experience"] = $_POST['youth-experience'];
+if (isset($_POST['youth-Experience'])) {
+    if ($_POST['youth-Experience'] == 'yes'){
+        if(isset($_POST['youth-Experience-Explanation']) && trim($_POST['youth-Experience-Explanation']) != ""){
+            $volunteer["volunteer_youth_experience"] = $_POST['youth-Experience-Explanation'];
+        }
+        else {
+            $volunteer["volunteer_youth_experience"] = 'yes';
+        }
+    }
+    else if ($_POST['youth-Experience'] == 'no'){
+        $volunteer["volunteer_youth_experience"] = 'no';
+    }
+}
 //volunteer availability
 $volunteer["volunteer_availability"] = "";
 if (isset($_POST["availability"])) {
@@ -76,10 +87,10 @@ if (isset($_POST["availability"])) {
         $volunteer["volunteer_availability"] .= $value;
     }
 }
-$volunteer["volunteer_availability"] .= $_POST["availability-explain"];
+$volunteer["volunteer_availability"] .= $_POST["availability-Explain"];
 
-$volunteer["volunteer_skills"] = $_POST['other-skills'];
-$volunteer["volunteer_emailing"] = $_POST['mailing-list'];
+$volunteer["volunteer_skills"] = $_POST['other-Skills'];
+$volunteer["volunteer_emailing"] = $_POST['mailing-List'];
 
 $volunteer["volunteer_verified"] = "no";
 $volunteer["volunteer_status"] = "pending";
@@ -90,7 +101,7 @@ if (isset($_POST["events"])) {
     foreach ($_POST["events"] as $value) {
         //special case for other since it isn't in database, check if on other, if yes, assign volunteer other, skip adding to array
         if ($value == "0") {
-            $volunteer["volunteer_interest_other"] = $_POST["interests-explain"];
+            $volunteer["volunteer_interest_other"] = $_POST["interests-Explain"];
         } else {
             $interests[] = $value;
         }
@@ -100,29 +111,29 @@ if (isset($_POST["events"])) {
 // creating the array of associative arrays containing reference data
 $referencesArray = [];
 $referencesArray[] = array(
-    "contact_name" => $_POST['reference-name-1'],
-    "contact_relationship" => $_POST["reference-relationship-1"],
-    "contact_email" => $_POST["reference-email-1"],
-    "contact_phone" => formatPhone($_POST["reference-phone-1"]),
+    "contact_name" => $_POST['reference-Name-1'],
+    "contact_relationship" => $_POST["reference-Relationship-1"],
+    "contact_email" => $_POST["reference-Email-1"],
+    "contact_phone" => formatPhone($_POST["reference-Phone-1"]),
     "contact_type" => "reference"
 );
 $referencesArray[] = array(
-    "contact_name" => $_POST['reference-name-2'],
-    "contact_relationship" => $_POST["reference-relationship-2"],
-    "contact_email" => $_POST["reference-email-2"],
-    "contact_phone" => formatPhone($_POST["reference-phone-2"]),
+    "contact_name" => $_POST['reference-Name-2'],
+    "contact_relationship" => $_POST["reference-Relationship-2"],
+    "contact_email" => $_POST["reference-Email-2"],
+    "contact_phone" => formatPhone($_POST["reference-Phone-2"]),
     "contact_type" => "reference"
 );
 $referencesArray[] = array(
-    "contact_name" => $_POST['reference-name-3'],
-    "contact_relationship" => $_POST["reference-relationship-3"],
-    "contact_email" => $_POST["reference-email-3"],
-    "contact_phone" => formatPhone($_POST["reference-phone-3"]),
+    "contact_name" => $_POST['reference-Name-3'],
+    "contact_relationship" => $_POST["reference-Relationship-3"],
+    "contact_email" => $_POST["reference-Email-3"],
+    "contact_phone" => formatPhone($_POST["reference-Phone-3"]),
     "contact_type" => "reference"
 );
 
 //ensures nothing submits into database if volunteer does not agree to terms of service
-if (!isset($_POST['terms-of-service'])) {
+if (!isset($_POST['terms-of-Service'])) {
     echo "You must accept the terms of service to proceed.";
 } else {
 
@@ -138,7 +149,7 @@ if ($success) {
     <h2>Thank you for your interest in volunteering with iD.A.Y.Dream <?php echo $user["user_first"] ?>. We’re investing in
         an entire region of youth. Youth seeking success through higher education, mentoring, etc.</h2>
     <br>
-    <h3 id="click-to-see-volunteer">Click to see a summary of your information.</h3>
+    <h3 id="click-to-see">Click to see a summary of your information.</h3>
     <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>
 </div>
 
@@ -184,7 +195,7 @@ if ($success) {
         crossorigin="anonymous"></script>
 <!-- jQuery for input validation -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="scripts/volunteer_splash_functions.js"></script>
+<script src="scripts/youth_splash_functions.js"></script>
 </body>
 
 </html>

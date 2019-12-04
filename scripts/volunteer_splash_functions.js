@@ -8,7 +8,6 @@
  * File name: volunteer_splash_functions.js
  * Associated Files:
  *      volunteer_form.php
- *      youth_form.php
  *
  * Description:
  *      File contains **********************************************************************************
