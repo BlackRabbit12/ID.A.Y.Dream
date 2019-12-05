@@ -6,12 +6,6 @@
     // start a session for login functionality
     session_start();
 
-
-    // if the admin user is already logged in we can automatically direct them to admin_page.php
-    if (isset($_SESSION['username'])) {
-        header('location: admin_page.php');
-    }
-
     // if the login form has been 'submitted' -- we need to check if there are valid credentials or not
     // if there are valid credentials then we direct user to admin_page.php
     // if there are NOT valid credentials then we display a login error message for the admin user
@@ -87,7 +81,17 @@
         <!-- admin button -->
         <div class="row float-right">
             <div class="col">
-                <button id="admin-button" class="btn rounded-pill float-right text-dark border-dark mr-4 mt-4 pr-3 pl-3" href="#loginModal" role="button" data-toggle="modal">ADMIN</button>
+                <?
+                // if the admin user is already logged in we can automatically direct them to admin_page.php
+                if (isset($_SESSION['username'])) {
+                    echo "<button id='auto-login-button' class='btn rounded-pill float-right text-dark border-dark mr-4 mt-4 pr-3 pl-3' role='button'>ADMIN</button>";
+
+                }
+                // else we display the button that will bring up our login modal
+                else {
+                    echo "<button id=\"admin-button\" class=\"btn rounded-pill float-right text-dark border-dark mr-4 mt-4 pr-3 pl-3\" href=\"#loginModal\" role=\"button\" data-toggle=\"modal\">ADMIN</button>";
+                }
+                ?>
             </div>
         </div> <!-- end of row that holds the admin button -->
 
@@ -163,5 +167,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="scripts/index_page_functions.js"></script>
 </body>
 </html>
