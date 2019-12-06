@@ -6,14 +6,32 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-02
- * Last Update: 2019-11-12
+ * Last Update: 2019-12-05
  * File name: youth_success_splash.php
  * Associated Files:
- *      volunteer_form.php
  *      youth_form.php
+ *      @link https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css
+ *      css/youth_styles.css
+ *      @link images/apple-touch-icon.png
+ *      @link images/favicon-32x32_title.png
+ *      @link images/favicon-16x16_title.png
+ *      @link images/site.webmanifest_title
+ *      @link https://code.jquery.com/jquery-1.12.4.js
+ *      @link https://code.jquery.com/ui/1.12.1/jquery-ui.js
+ *      @link https://code.jquery.com/jquery-3.3.1.slim.min.js
+ *      @link https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js
+ *      @link https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js
+ *      @link https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
+ *      scripts/success_splash_functions.js
+ *      private/functions.php
+ *      private/validation_functions.php
+ *      private/query_functions.php
  *
  * Description:
- *      File contains **********************************************************************************
+ *      File contains iD.A.Y.Dream Youth Organization's summary of provided dreamer information. The dreamer will
+ *      have filled out a Sign Up form and submitted it to the database. This page displays the information back to the
+ *      dreamer for review and or personal records. This page also serves as an indicator that the dreamer's
+ *      information was successfully inserted into the database.
  */
 
 
@@ -53,10 +71,12 @@ require_once "private/init.php";
 $user["user_first"] = $_POST["first-Name"];
 $user["user_last"] = $_POST["last-Name"];
 $user["user_email"] = $_POST["email"];
+//formatPhone (validation_functions.php)
 $user["user_phone"] = formatPhone($_POST["phone"]);
 
 // create the dreamer associative array from POST data
 $dreamer["dreamer_college"] = $_POST["college-Interest"];
+//formatDOB (validation_functions.php)
 $dreamer["dreamer_date_of_birth"] = formatDOB($_POST["dob"]);
 $dreamer["dreamer_graduation_date"] = $_POST["graduation-Year"];
 $dreamer["dreamer_gender"] = $_POST["gender"];
@@ -71,6 +91,7 @@ $dreamer["dreamer_status"] = "pending";
 
 // creating the array of associative arrays containing guardian data
 $guardianArray = [];
+//formatPhone (validation_functions.php)
 $guardianArray[] = array(
     "contact_name" => $_POST["guardian-First-Name"] . " " . $_POST['guardian-Last-Name'],
     "contact_relationship" => $_POST["guardian-Relationship"],
@@ -79,6 +100,7 @@ $guardianArray[] = array(
     "contact_type" => "guardian"
 );
 
+//insertDreamer (query_functions.php)
 $success = insertDreamer($user, $dreamer, $guardianArray);
 
 //if dreamer successfully INSERTed, complete the success page for dreamer
@@ -101,6 +123,7 @@ if ($success) {
         $email_body = "Youth Information:\r\n\r\n";
         $email_subject = "ID.A.Y.Dream Youth Sign-Up Information";
 
+        //createSummary (functions.php)
         echo createSummary($email_body)[0];
         $email_body .= createSummary($email_body)[1];
 
