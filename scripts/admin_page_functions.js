@@ -16,6 +16,9 @@
 
 function addEditEvents() {
     $(".editInput").on("click", function () {
+        // get the id of the row that is being updated from the modal's user_id
+        let id = $(this).parent().children("#user_id").children("p").first().text();
+        console.log(id);
         //if we have not "set" the input_id by clicking on it, then it's null
         if (document.getElementById("input_id") == null) {
             //set paragraph to text input, use children[0] because we only have one child for each label
@@ -82,19 +85,18 @@ function addEditEvents() {
                             $("#" + data_to_update[4]).children("." + data_to_update[2]).html(data_to_update[3]);
                             console.log("else");
                         }
-                        let firstName = $("#" + data_to_update[4]).children(".user_first").text();
-                        let lastName = $("#" + data_to_update[4]).children(".user_last").text();
+                        let firstName = $("#" + id).children(".user_first").text();
+                        let lastName = $("#" + id).children(".user_last").text();
 
                         //get the selected table from "select" dropdown
                         let dataSelect = tableSelected();
-
                         //get the status of member "inactive, active, pending"
                         let status;
                         if (dataSelect === "dreamers") {
-                            status = $("#" + data_to_update[4]).children(".dreamer_status").text();
+                            status = $("#" + id).children(".dreamer_status").find("option:selected").text();
                         }
                         else if (dataSelect === "volunteers"){
-                            status = $("#" + data_to_update[4]).children(".volunteer_status").text();
+                            status = $("#" + id).children(".volunteer_status").find("option:selected").text();
                         }
 
                         //Top of modal display full name and status of member
@@ -125,14 +127,14 @@ function addClickEvents() {
         //get the selected table from "select" dropdown
         let dataSelect = tableSelected();
 
-        //get the status of member "inactive, active, pending"
+        //get the status of member "inactive, active, pending" from the table
         let status;
         if (dataSelect === "dreamers") {
             //finding the child that contains the selected option for the dreamer's status
             status = $("#" + id).children(".dreamer_status").children(".status-dropdown").children("option:selected").text();
         }
         else if (dataSelect === "volunteers"){
-            status = $("#" + id).children(".volunteer_status").text();
+            status = $("#" + id).children(".volunteer_status").children(".status-dropdown").children("option:selected").text();
         }
 
         //to be passed into .ajax
