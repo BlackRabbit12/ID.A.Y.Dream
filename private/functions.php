@@ -150,7 +150,6 @@ function createSummary($email_body)
             $summary_content .= "<ul>";
             // for each loop displays the events and removes the FK added at the beginning of the value
             foreach ($value as $child_key => $child_value) {
-                $child_value = $child_value;
                 $value_text = htmlspecialchars($child_value);
                 $email_body .= "$value_text \r\n";
                 $summary_content .= "<li>$value_text</li>";

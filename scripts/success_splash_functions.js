@@ -5,18 +5,19 @@
  * @version 1.0
  * 2019-10-29
  * Last Update: 2019-11-12
- * File name: volunteer_splash_functions.js
+ * File name: success_splash_functions.js
  * Associated Files:
  *      volunteer_form.php
+ *      youth_form.php
  *
  * Description:
  *      File contains **********************************************************************************
  */
 
-// on splash page, clicking button displays summary of information to user
+// on click, displays results summary for youth splash page
 document.getElementById("summary-button").onclick = toggleSummary;
 function toggleSummary() {
     document.getElementById("summary-button").style.display = "none";
     document.getElementById("click-to-see").style.display = "none";
     document.getElementById("summary").style.display = "block";
-}
+} 
