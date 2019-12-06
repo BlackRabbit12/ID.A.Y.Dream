@@ -27,6 +27,7 @@
         new_admin_logo.png
         create_tables.sql
         ajax_functions.php
+        private/functions.php
         validation_functions.js
         admin_page_functions.js
         @link https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css
