@@ -1,33 +1,36 @@
+<?php
+/**
+ * @author Shayna Jamieson
+ * @author Bridget Black
+ * @author Keller Flint
+ * @version 1.0
+ * 2019-10-16
+ * Last Update: 2019-12-05
+ * File Name: youth_form.php
+ * Associated Files:
+ *      css/youth_styles.css
+ *      @link https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css
+ *      @link images/apple-touch-icon.png
+ *      @link images/favicon-32x32_title.png
+ *      @link images/favicon-16x16_title.png
+ *      @link images/site.webmanifest_title
+ *      @link https://code.jquery.com/jquery-1.12.4.js
+ *      @link https://code.jquery.com/ui/1.12.1/jquery-ui.js
+ *      @link https://code.jquery.com/jquery-3.3.1.slim.min.js
+ *      @link https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js
+ *      @link https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js
+ *      @link https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
+ *      scripts/validation_functions.js
+ *      scripts/youth_functions.js
+ *
+ * Description:
+ *      File contains iD.A.Y.Dream Youth Organization's Dreamer (aka youth) Sign Up Form. Interested youth fill out
+ *      this form and are entered into the database for admin to contact the potential dreamer's parent/guardian for
+ *      sign up consent, and then 'activate' the dreamer.
+ *      This form collects minimal personal data.
+ */
+?>
 <!DOCTYPE html>
-<!--
-    @author Shayna Jamieson
-    @author Bridget Black
-    @author Keller Flint
-    @version 1.0
-    2019-10-16
-    Last Update: 2019-11-12
-    File Name: youth_form.php
-    Associated Files:
-        youth_styles.css
-        @link https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css
-        @link images/apple-touch-icon.png
-        @link images/favicon-32x32_title.png
-        @link images/favicon-16x16_title.png
-        @link images/site.webmanifest_title
-        @link https://code.jquery.com/jquery-1.12.4.js
-        @link https://code.jquery.com/ui/1.12.1/jquery-ui.js
-        @link https://code.jquery.com/jquery-3.3.1.slim.min.js
-        @link https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js
-        @link https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js
-        @link https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
-        scripts/validation_functions.js
-        scripts/youth_functions.js
-
-    Description:
-        File contains iD.A.Y.Dream Youth Organization's Dreamer (aka youth) Sign Up Form. Interested youth fill out
-        this form and are entered into the database for admin to contact and 'activate' as status: active Dreamers.
-        This form collects minimal personal data.
--->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
