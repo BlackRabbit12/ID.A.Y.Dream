@@ -123,6 +123,11 @@ img {
     max-height: 100%;
 }
 
+#error-login {
+    color: #c16062;
+    font-size: smaller;
+}
+
 /* admin login modal header to match admin page modals */
 .modal-header {
     background-color: #36454f;
