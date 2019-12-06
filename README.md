@@ -41,6 +41,19 @@ Step 5:  Have fun changing and improving upon our work!
 </p>
 </details>
 
+<details>
+  <summary><strong>File Descriptions</strong></summary>
+    <p>Summary of each file and it's function within the application:
+    </p>
+  
+  <details>
+  <summary>volunteer_form.php</summary>
+    <p>File contains iD.A.Y.Dream Youth Organization's Volunteer Sign Up Form. Interested volunteers fill out
+        this form and are entered into the database for admin to contact and 'activate' as status: active Volunteer.
+    </p>
+</details>
+</details>
+
 ## Built With
 * HTML5 + PHP - Scripting Languages of Choice
 * JavaScript + jQuery - Dynamic Scripting Language(s) of Choice
