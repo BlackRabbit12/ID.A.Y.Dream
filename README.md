@@ -76,8 +76,12 @@ Summary of each file and it's function within the application:
 
 <details>
   <summary>success_splash_functions.js</summary>
-    <p>File controls the toggle functionality of the success page for both volunteer sign up and dreamer sign up. The toggle is for the button that allows the summary to be seen or not.
+    <p>File controls the toggle functionality of the success page for both volunteer sign up and dreamer sign up.
     </p>
+  
+  + Functions:
+     + toggleSummary()
+     
 </details>
 </details>
 
