@@ -65,7 +65,7 @@ Summary of each file and it's function within the application:
 </details>
 
 <details>
-  <summary>youth_success_splash_page.php</summary>
+  <summary>youth_success_splash.php</summary>
     <p>File contains iD.A.Y.Dream Youth Organization's summary of provided dreamer information. The dreamer will have filled out a Sign Up form and submitted it to the database. This page displays the information back to the dreamer for review and or personal records. This page also serves as an indicator that the dreamer's information was successfully inserted into the database.
     </p>
 </details>
