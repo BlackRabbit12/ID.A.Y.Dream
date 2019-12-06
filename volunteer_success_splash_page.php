@@ -68,15 +68,13 @@ $volunteer["volunteer_experience"] = $_POST['volunteer-Experience'];
 // youth experience
 $volunteer["volunteer_youth_experience"] = "";
 if (isset($_POST['youth-Experience'])) {
-    if ($_POST['youth-Experience'] == 'yes'){
-        if(isset($_POST['youth-Experience-Explanation']) && trim($_POST['youth-Experience-Explanation']) != ""){
+    if ($_POST['youth-Experience'] == 'yes') {
+        if (isset($_POST['youth-Experience-Explanation']) && trim($_POST['youth-Experience-Explanation']) != "") {
             $volunteer["volunteer_youth_experience"] = $_POST['youth-Experience-Explanation'];
-        }
-        else {
+        } else {
             $volunteer["volunteer_youth_experience"] = 'yes';
         }
-    }
-    else if ($_POST['youth-Experience'] == 'no'){
+    } else if ($_POST['youth-Experience'] == 'no') {
         $volunteer["volunteer_youth_experience"] = 'no';
     }
 }
@@ -95,18 +93,21 @@ $volunteer["volunteer_emailing"] = $_POST['mailing-List'];
 $volunteer["volunteer_verified"] = "no";
 $volunteer["volunteer_status"] = "pending";
 
-// creating the array of interests and storing other interests data
-$interests = [];
+// creating a string storing the volunteers interests
+$volunteer["volunteer_interest"] = "";
 if (isset($_POST["events"])) {
     foreach ($_POST["events"] as $value) {
         //special case for other since it isn't in database, check if on other, if yes, assign volunteer other, skip adding to array
-        if ($value == "0") {
-            $volunteer["volunteer_interest_other"] = $_POST["interests-Explain"];
+        if ($value == "other") {
+            $volunteer["volunteer_interest"] .= "Other: " . $_POST["interests-Explain"] . ',';
         } else {
-            $interests[] = $value;
+            $volunteer["volunteer_interest"] .= "$value, ";
         }
     }
 }
+// removing comma from last element of the interests string
+$volunteer["volunteer_interest"] = substr($volunteer["volunteer_interest"], 0, -1);
+
 
 // creating the array of associative arrays containing reference data
 $referencesArray = [];
@@ -138,15 +139,17 @@ if (!isset($_POST['terms-of-Service'])) {
 } else {
 
 //does validation for user variables, gets back the user id row
-$success = volunteerInsert($user, $volunteer, $interests, $referencesArray);
+$success = volunteerInsert($user, $volunteer, $referencesArray);
 
 //if volunteer successfully inserted, then INSERT references and complete success page for volunteer
 if ($success) {
+
 ?>
 
 <!-- HERE IS WHERE WE NEED TO THANK THEM AND THEN DISPLAY THE INFORMATION THAT THEY SUBMITTED  -->
 <div class="container" id="thank-you-message">
-    <h2>Thank you for your interest in volunteering with iD.A.Y.Dream <?php echo $user["user_first"] ?>. We’re investing in
+    <h2>Thank you for your interest in volunteering with iD.A.Y.Dream <?php echo $user["user_first"] ?>. We’re investing
+        in
         an entire region of youth. Youth seeking success through higher education, mentoring, etc.</h2>
     <br>
     <h3 id="click-to-see">Click to see a summary of your information.</h3>
@@ -179,7 +182,6 @@ if ($success) {
     }
     } ?>
 </div>
-
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- Optional JavaScript -->
@@ -195,7 +197,7 @@ if ($success) {
         crossorigin="anonymous"></script>
 <!-- jQuery for input validation -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="scripts/youth_splash_functions.js"></script>
+<script src="scripts/volunteer_splash_functions.js"></script>
 </body>
 
 </html>

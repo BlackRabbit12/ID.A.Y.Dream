@@ -187,12 +187,14 @@ require_once "private/init.php";
                         <label class="custom-control-label" for="Fundraising">Fundraising</label>
                     </div> <!-- end of div that has the Fundraising check box -->
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="Newsletter Production"
+                        <input class="custom-control-input" type="checkbox" name="events[]"
+                               value="Newsletter Production"
                                id="Newsletter-Production">
                         <label class="custom-control-label" for="Newsletter-Production">Newsletter Production</label>
                     </div> <!-- end of div that has the Newsletter Production check box -->
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="Volunteer Coordination"
+                        <input class="custom-control-input" type="checkbox" name="events[]"
+                               value="Volunteer Coordination"
                                id="Volunteer-Coordination">
                         <label class="custom-control-label" for="Volunteer-Coordination">Volunteer Coordination</label>
                     </div> <!-- end of div that has the Volunteer Coordination check box -->
@@ -202,7 +204,7 @@ require_once "private/init.php";
                         <label class="custom-control-label" for="Mentoring">Mentoring</label>
                     </div> <!-- end of div that has the Mentoring check box -->
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="Other: "
+                        <input class="custom-control-input" type="checkbox" name="events[]" value="other"
                                id="other-interest">
                         <label class="custom-control-label" for="other-interest">Other</label>
                     </div> <!-- end of div that has the other check box -->
