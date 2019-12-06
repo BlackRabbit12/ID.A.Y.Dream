@@ -6,6 +6,10 @@
     // start a session for login functionality
     session_start();
 
+    // variable for validation display of the error span for invalid display
+    $error = '';
+    $showModal = false;
+
     // if the login form has been 'submitted' -- we need to check if there are valid credentials or not
     // if there are valid credentials then we direct user to admin_page.php
     // if there are NOT valid credentials then we display a login error message for the admin user
@@ -32,11 +36,9 @@
             header('location: admin_page.php');
         }
 
-        // TODO: inline error for the user the know that they have entered invalid credentials
         else {
-            echo '<script language="javascript">';
-            echo 'alert("Invalid Login. Please re-try!")';
-            echo '</script>';
+            $showModal = true;
+            $error = 'invalid login credentials, please try again';
         }
     }
 ?>
@@ -85,7 +87,6 @@
                 // if the admin user is already logged in we can automatically direct them to admin_page.php
                 if (isset($_SESSION['username'])) {
                     echo "<button id='auto-login-button' class='btn rounded-pill float-right text-dark border-dark mr-4 mt-4 pr-3 pl-3' role='button'>ADMIN</button>";
-
                 }
                 // else we display the button that will bring up our login modal
                 else {
@@ -146,13 +147,13 @@
                                 <div class="form-group">
                                     <label for="uname1">Username</label>
                                     <input type="text" class="form-control form-control-lg" name="uname1" id="uname1">
-                                    <div class="invalid-feedback">Oops, you missed this one.</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input type="password" class="form-control form-control-lg" name="pwd1" id="pwd1">
-                                    <div class="invalid-feedback">Enter your password too!</div>
                                 </div>
+                                <!-- this displays the error for logging in that we manipulate in the php at the top -->
+                                <span id="error-login"><?= $error; ?></span>
                                 <div class="form-group py-4">
                                     <button type="submit" name="submit" value="Submit" class="btn btn-dark btn-lg float-right" id="btnLogin">Login</button>
                                 </div>
@@ -168,5 +169,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="scripts/index_page_functions.js"></script>
+        <!-- this handles bringing the modal back up when the user enters invalid login credentials -->
+        <!-- since the action happens on post, if you don't do this you will never see the inline error -->
+        <?php if($showModal):?>
+            <script> $('#loginModal').modal('show');</script>
+        <?php endif;?>
 </body>
 </html>
