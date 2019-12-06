@@ -9,13 +9,30 @@
  * Last Update: 2019-11-27
  * File name: functions.php
  * Associated Files:
- *      ************************************************************************************************
+ *      volunteer_success_splash_page.php
+ *      youth_success_splash.php
+ *      admin_page.php
  *
  * Description:
- *      File contains **********************************************************************************
+ *      File contains functions to build the admin table (with appropriate formatting), the dropdown field inside
+ *      the admin table, and to build the summary pages.
+ *      Functions:
+ *          buildTable()
+ *          dropDownStatus()
+ *          formatHeadings()
+ *          formatSQLDate()
+ *          formatSQLPhone()
+ *          createSummary()
  */
 
-// builds and returns a table $output string
+
+/**
+ * Builds the admin table.
+ * @param $result
+ * @param $tableHeadingNames
+ * @param $result_ids
+ * @return string $output is the 'string' of html that builds the table.
+ */
 function buildTable($result, $tableHeadingNames, $result_ids)
 {
     $output = "<thead>";
@@ -75,9 +92,15 @@ function buildTable($result, $tableHeadingNames, $result_ids)
 
     //return built table
     return $output;
-}
+} //end buildTable($result, $tableHeadingNames, $result_ids)
 
-//creates a dropdown menu in the status column on admin table
+
+/**
+ * Creates a dropdown menu in the 'status' column on the admin table.
+ * Dropdown in admin table for easier update on the user's status "active, inactive, pending".
+ * @param $value Current value of the dropdown selection.
+ * @return string HTML of what to display in the dropdown with new selection.
+ */
 function dropDownStatus($value){
     if ($value == 'pending') {
         return "<select class=\"form-control status-dropdown\">
@@ -102,7 +125,12 @@ function dropDownStatus($value){
     }
 } //end dropDownStatus($value)
 
-// formats the heading names retrieved from database for clear user view
+
+/**
+ * Formats the heading names retrieved from database for improved UX.
+ * @param $str String of heading name from database.
+ * @return string|string[] String of heading name for human readability.
+ */
 function formatHeadings($str)
 {
     $str = str_replace("user_", '', $str);
@@ -111,28 +139,41 @@ function formatHeadings($str)
     $str = str_replace("_", ' ', $str);
     $str = ucfirst($str);
     return $str;
-}
+} //end formatHeadings($str)
 
-// formats the SQL date we get back into the MM/DD/YYYY format
+
+/**
+ * Formats the SQL date into MM/DD/YYYY format.
+ * @param $str String date given.
+ * @return string Date formatted.
+ */
 function formatSQLDate($str)
 {
     //SQL return = 2003-04-26
     $str = substr($str, 5, 2) . "/" . substr($str, 8, 2) . "/" . substr($str, 0, 4);
     return $str;
-}
+} //end formatSQLDate($str)
 
-// formats the SQL phone we get back into the (111) 111-1111 format
+
+/**
+ * Formats the SQL phone number into (###) ###-#### format.
+ * @param $str String phone number given.
+ * @return string Phone number formatted.
+ */
 function formatSQLPhone($str)
 {
     //SQL return = 2534411380
     $str = "(" . substr($str, 0, 3) . ") " . substr($str, 4, 3) . "-" . substr($str, 6, 4);
     return $str;
-}
+} //end formatSQLPhone($str)
+
 
 /**
- * Generates a summary of the users information for email and the site
- * @param $email_body string the starting text for the body of the email
- * @return array element 0 contains the html summary format, element 2 contains the email summary format
+ * Generates a summary of the user's information for an admin email and the summary page.
+ * Summaries are created on the volunteer_success_splash_page.php and the youth_success_splash.php, then emailed to
+ * the listed administrator (Brandi Day).
+ * @param $email_body string the text + html elements of the body of the email and summary.
+ * @return array element 0 contains the html summary format, element 2 contains the email summary format.
  */
 function createSummary($email_body)
 {
@@ -169,4 +210,4 @@ function createSummary($email_body)
         }
     }
     return [$summary_content, $email_body];
-}
+} //end createSummary($email_body)

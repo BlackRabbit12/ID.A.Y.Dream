@@ -9,7 +9,7 @@
  * Last Update: 2019-11-12
  * File name: query_functions.php
  * Associated Files:
- *      volunteer_success_splash.php
+ *      volunteer_success_splash_page.php
  *      youth_success_splash.php
  *
  * Description:
