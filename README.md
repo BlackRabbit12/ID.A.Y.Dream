@@ -41,17 +41,33 @@ Step 5:  Have fun changing and improving upon our work!
 </p>
 </details>
 
+## File Descriptions
+Summary of each file and it's function within the application:
+
 <details>
-  <summary><strong>File Descriptions</strong></summary>
-    <p>Summary of each file and it's function within the application:
-    </p>
-  
-  <details>
   <summary>volunteer_form.php</summary>
-    <p>File contains iD.A.Y.Dream Youth Organization's Volunteer Sign Up Form. Interested volunteers fill out
-        this form and are entered into the database for admin to contact and 'activate' as status: active Volunteer.
+    <p>File contains iD.A.Y.Dream Youth Organization's Volunteer Sign Up Form. Interested volunteers fill out this form and are entered into the database for admin to run a background check and then 'activate' the volunteer. This form collects sensitive data and is a consent for background check.
     </p>
 </details>
+
+
+<details>
+  <summary>youth_form.php</summary>
+    <p>File contains iD.A.Y.Dream Youth Organization's Dreamer (aka youth) Sign Up Form. Interested youth fill out this form and are entered into the database for admin to contact the potential dreamer's parent/guardian for sign up consent, and then 'activate' the dreamer. This form collects minimal personal data.
+    </p>
+</details>
+
+
+<details>
+  <summary>volunteer_success_splash_page.php</summary>
+    <p>File contains iD.A.Y.Dream Youth Organization's summary of provided volunteer information. The volunteer will have filled out a Sign Up form and submitted it to the database. This page displays the information back to the volunteer for review and or personal records. This page also serves as an indicator that the volunteer's information was successfully inserted into the database.
+    </p>
+</details>
+
+<details>
+  <summary>youth_success_splash_page.php</summary>
+    <p>File contains iD.A.Y.Dream Youth Organization's summary of provided dreamer information. The dreamer will have filled out a Sign Up form and submitted it to the database. This page displays the information back to the dreamer for review and or personal records. This page also serves as an indicator that the dreamer's information was successfully inserted into the database.
+    </p>
 </details>
 
 ## Built With
