@@ -85,6 +85,27 @@ Summary of each file and it's function within the application:
 </details>
 </details>
 
+
+<details>
+ <summary><em>private</em></summary>
+
+<details>
+  <summary>functions.php</summary>
+    <p>File contains functions to build the admin table (with appropriate formatting), the dropdown field inside the admin  table, and to build the summary pages.
+</p>
+
++ Functions:
+ 	+ buildTable()
+ 	+ dropDownStatus()
+ 	+ formatHeadings()
+ 	+ formatSQLDate()
+ 	+ formatSQLPhone()
+ 	+ createSummary()
+    
+</details>
+
+</details>
+
 ## Built With
 * HTML5 + PHP - Scripting Languages of Choice
 * JavaScript + jQuery - Dynamic Scripting Language(s) of Choice
