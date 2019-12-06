@@ -95,11 +95,10 @@ function insertDreamer($user, $dreamer, $guardian)
  * Inserts a User/Volunteer into the database.
  * @param $user [] associative array of user data
  * @param $volunteer [] associative array of volunteer data
- * @param $interests [] array of names that represent events
  * @param $references [] array of associative arrays containing reference information
  * @return bool for success or failure of insert
  */
-function volunteerInsert($user, $volunteer, $interests, $references)
+function volunteerInsert($user, $volunteer, $references)
 {
     //global declaration
     global $db;
@@ -135,15 +134,8 @@ function volunteerInsert($user, $volunteer, $interests, $references)
                     }
                 }
             }
-
-            // insert interests intro joining table
-            foreach($interests as $value) {
-                $sql = "INSERT INTO Volunteer_Interest (volunteer_id, interest_id) VALUES ($volunteer_id, $value);";
-                mysqli_query($db, $sql);
-            }
-
         } else {
-            echo "Adding dreamer failed.";
+            echo "Adding volunteer failed.";
             return false;
         }
         return true;
@@ -154,33 +146,3 @@ function volunteerInsert($user, $volunteer, $interests, $references)
         }
     }
 } //end volunteerInsert()
-
-// returns the names of all interests
-function findInterests()
-{
-    global $db;
-
-    $sql = "SELECT * FROM Interest;";
-
-    $result = mysqli_query($db, $sql);
-
-    return $result;
-}
-
-/**
- * Finds names of interests given their ids
- * @param $ids array of interest ids to find names of
- * @return array of interest names
- */
-function findInterestNamesByIds($ids) {
-    global $db;
-
-    $results = [];
-
-    foreach($ids as $value) {
-        $sql = "SELECT interest_name_of_interest FROM Interest WHERE interest_id = $value;";
-        $result = mysqli_query($db, $sql);
-        $results[] = mysqli_fetch_assoc($result)["interest_name_of_interest"];
-    }
-    return $results;
-}

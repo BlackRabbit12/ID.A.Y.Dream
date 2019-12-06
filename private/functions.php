@@ -148,10 +148,6 @@ function createSummary($email_body)
             //adding key output to summary
             $summary_content .= "<p><strong>$key_text:</strong></p>";
             $summary_content .= "<ul>";
-            // if the value is the ids of the interests, switch out the ids for the interest names
-            if ($key == "events") {
-                $value = findInterestNamesByIds($value);
-            }
             // for each loop displays the events and removes the FK added at the beginning of the value
             foreach ($value as $child_key => $child_value) {
                 $child_value = $child_value;
