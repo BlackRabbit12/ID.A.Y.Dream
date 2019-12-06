@@ -70,6 +70,17 @@ Summary of each file and it's function within the application:
     </p>
 </details>
 
+
+<details>
+  <summary><em>scripts</em></summary>
+
+<details>
+  <summary>success_splash_functions.js</summary>
+    <p>File controls the toggle functionality of the success page for both volunteer sign up and dreamer sign up. The toggle is for the button that allows the summary to be seen or not.
+    </p>
+</details>
+</details>
+
 ## Built With
 * HTML5 + PHP - Scripting Languages of Choice
 * JavaScript + jQuery - Dynamic Scripting Language(s) of Choice
