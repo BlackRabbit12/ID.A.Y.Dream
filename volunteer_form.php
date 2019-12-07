@@ -377,21 +377,23 @@ require_once "private/init.php";
         </fieldset> <!-- end of fieldset that contains the character references information  -->
 
         <!-- Mailing List -->
-        <fieldset class="form-group">
-            <div class="container legend-container">
-                <h2 class="legend-text">Mailing List</h2>
-            </div>
-            <label>Would you like to be added to our mailing list?</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="mailing-List" id="mailing-list-yes" value="yes"
-                       checked>
-                <label class="form-check-label" for="mailing-list-yes">Yes</label>
-            </div> <!-- end of div for "yes" to mailing list check -->
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="mailing-List" id="mailing-list-no" value="no">
-                <label class="form-check-label" for="mailing-list-no">No</label>
-            </div> <!-- end of div for "no" to mailing list check -->
-        </fieldset> <!-- end of fieldset that contains mailing list information -->
+<!-- HOLDING OFF ON INCLUDING THE YES/NO FOR MAILING LIST -->
+<!-- Brandi doesn't send many news letters so there is no need for this option -->
+<!--        <fieldset class="form-group">-->
+<!--            <div class="container legend-container">-->
+<!--                <h2 class="legend-text">Mailing List</h2>-->
+<!--            </div>-->
+<!--            <label>Would you like to be added to our mailing list?</label>-->
+<!--            <div class="form-check">-->
+<!--                <input class="form-check-input" type="radio" name="mailing-List" id="mailing-list-yes" value="yes"-->
+<!--                       checked>-->
+<!--                <label class="form-check-label" for="mailing-list-yes">Yes</label>-->
+<!--            </div> end of div for "yes" to mailing list check -->
+<!--            <div class="form-check">-->
+<!--                <input class="form-check-input" type="radio" name="mailing-List" id="mailing-list-no" value="no">-->
+<!--                <label class="form-check-label" for="mailing-list-no">No</label>-->
+<!--            </div>  end of div for "no" to mailing list check -->
+<!--        </fieldset>  end of fieldset that contains mailing list information -->
 
         <!-- E-Signature -->
         <fieldset class="form-group">
@@ -400,10 +402,7 @@ require_once "private/init.php";
             </div>
             <div class="row">
                 <div class="col-12">
-                    <label class="col-form-label" id="submit-policy">By submitting this application, I affirm that the
-                        facts set forth in it are true and complete. I understand that if I am accepted as a volunteer,
-                        any false statements, omissions, or other misrepresentations made by me on this application may
-                        result in my immediate dismissal.</label>
+                    <label class="col-form-label" id="submit-policy">By submitting this application, I certify that my statements in this application are true, complete and correct to the best of my knowledge. I further understand that as a part of the volunteer verification and matching process, additional personal information will be required of me. I hereby authorize iD.A.Y.dream to contact the references listed and to conduct a background check to determine if I will be a good fit as a volunteer for the organization. I understand that submitting this application does not guarantee my participation. I also hereby authorize iD.A.Y.dream without limitation, to copy, publish, exhibit or distribute photographs or video tapes of my volunteer activities for the purpose of promoting volunteerism and support. I release and hold harmless from liability any person or organization that provides information. I also agree to hold harmless iD.A.Y.dream and the officers and volunteers thereof.</label>
                 </div>
             </div> <!-- end of row that contains our signature explanation -->
             <div class="row">
@@ -412,8 +411,7 @@ require_once "private/init.php";
                     <div class="custom-control custom-checkbox">
                         <input class="custom-control-input" type="checkbox" id="information-is-true"
                                name="terms-of-Service" value="agreed">
-                        <label class="custom-control-label" for="information-is-true">I agree to the Terms and
-                            Conditions</label>
+                        <label class="custom-control-label" for="information-is-true">I have read and agree to the statement above.</label>
                     </div>
                 </div>
             </div> <!-- end of row that has the checkbox for agreeing to terms and conditions  -->

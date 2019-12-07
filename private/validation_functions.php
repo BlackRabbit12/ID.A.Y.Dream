@@ -319,11 +319,12 @@ function validateVolunteer($volunteer)
     }
 
     //volunteer wants to be on the mailing list
-    if ($volunteer["volunteer_emailing"] == 'yes') {
-        $volunteer_emailing = 1;
-    } else {
-        $volunteer_emailing = 0;
-    }
+    // hiding this per Sprint 4 feedback to take off of the form
+//    if ($volunteer["volunteer_emailing"] == 'yes') {
+//        $volunteer_emailing = 1;
+//    } else {
+//        $volunteer_emailing = 0;
+//    }
 
     return $isValid;
 }
