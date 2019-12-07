@@ -93,10 +93,10 @@ CREATE TABLE Contact
 (
     contact_id           INT          NOT NULL AUTO_INCREMENT,
     user_id              INT          NOT NULL,
-    contact_phone        VARCHAR(255) NULL,
-    contact_email        VARCHAR(255) NULL,
-    contact_relationship VARCHAR(255) NULL,
     contact_name         VARCHAR(255) NULL,
+    contact_relationship VARCHAR(255) NULL,
+    contact_email        VARCHAR(255) NULL,
+    contact_phone        VARCHAR(255) NULL,
     contact_type         VARCHAR(255) NULL,
 
     PRIMARY KEY (contact_id),
@@ -187,23 +187,28 @@ VALUES (6, 12, 'yes', '4523 H St', 98188, 'Kent', 'WA', 'small', 'My kid is a dr
         'active', 'Allergic to cats');
 
 /* Insert sample data for contacts */
+    contact_name         VARCHAR(255) NULL,
+    contact_relationship VARCHAR(255) NULL,
+    contact_email        VARCHAR(255) NULL,
+    contact_phone        VARCHAR(255) NULL,
+    contact_type         VARCHAR(255) NULL,
 INSERT INTO Contact
-VALUES (1, 1, '425-222-2222', 'jamieson.shayna@gmail.com', 'Mother', 'Lynda Flint', 'guardian');
+VALUES (1, 1, 'Lynda Flint', 'Mother', 'jamieson.shayna@gmail.com', '425-222-2222', 'guardian');
 
 INSERT INTO Contact
-VALUES (2, 2, '503-777-7777', 'bridget@beeze.com', 'mom', 'Anne Jamieson', 'guardian');
+VALUES (2, 2, 'Anne Jamieson', 'mom', 'bridget@beeze.com', '503-777-7777', 'guardian');
 
 INSERT INTO Contact
-VALUES (3, 3, '503-798-7921', 'kflint0068@gmail.com', 'step mom', 'Tuna Ostrander', 'guardian');
+VALUES (3, 3, 'Tuna Ostrander', 'step mom', 'kflint0068@gmail.com', '503-798-7921', 'guardian');
 
 INSERT INTO Contact
-VALUES (4, 4, '503-777-3333', 'contact4@email.com', 'dad', 'Jay', 'guardian');
+VALUES (4, 4, 'Jay', 'dad', 'contact4@email.com', '503-777-3333', 'guardian');
 
 INSERT INTO Contact
-VALUES (5, 5, '503-777-6666', 'bridget@beeze.com', 'step-dad', 'Hermin Grenn', 'guardian');
+VALUES (5, 5, 'Hermin Grenn', 'step-dad', 'bridget@beeze.com', '503-777-6666', 'guardian');
 
 INSERT INTO Contact
-VALUES (6, 6, '503-888-7977', 'kflint0068@gmail.com', 'my mom', 'Doreen', 'guardian');
+VALUES (6, 6, 'Doreen', 'my mom', 'kflint0068@gmail.com', '503-888-7977', 'guardian');
 
 INSERT INTO Contact
 VALUES (7, 7, '425-222-1111', 'bridget@beeze.com', 'Friend', 'Emma', 'reference');
