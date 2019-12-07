@@ -54,7 +54,12 @@ Summary of each file and it's function within the application:
 <details>
   <summary>youth_form.php</summary>
     <p>File contains iD.A.Y.Dream Youth Organization's Dreamer (aka youth) Sign Up Form. Interested youth fill out this form and are entered into the database for admin to contact the potential dreamer's parent/guardian for sign up consent, and then 'activate' the dreamer. This form collects minimal personal data.
-    </p>
+  </p>
+      
+  + Quick File Relations:
+     + youth_functions.js - validate form on submit
+     + validation_functions.js - client side validation
+       
 </details>
 
 
@@ -72,6 +77,21 @@ Summary of each file and it's function within the application:
 
 
 <details>
+  <summary>admin_page.php</summary>
+    <p>File contains iD.A.Y.Dream Youth Organization's Administration Page. Admin page is where any persons authorized to be 'admin' will be able to login, then view + edit + delete database entries. This page queries the database and populates tables for the selected member type (volunteer or dreamer), and the selected member status (active, inactive, pending). There is an 'email' button provided after selecting the member type desired, the email button will allow an admin to send an email to all 'active' members of the given type (volunteer or dreamer). When a member's row in the table is selected, the page will also query the database to populate that member's modal, with all of the selected member's information displayed inside. The admin will be allowed to 'edit' or 'delete' the member while viewing this modal. The tables are sort-able via column arrows and/or by the 'search' bar.
+  </p>
+      
++ Quick File Relations:
+ 	+ functions.php - builds the admin table
+ 	+ admin_page_functions.js - populates the admin table user modal
+ 	+ ajax_functions.php - changes the table data based on current status query
+ 	+ validation_functions.js - for validating admin input
+	+ index.php - for validating that the admin has logged in and can stay logged in
+
+</details>
+
+
+<details>
   <summary><em>scripts</em></summary>
 
 <details>
@@ -82,6 +102,59 @@ Summary of each file and it's function within the application:
   + Functions:
      + toggleSummary()
      
+</details>
+
+<details>
+  <summary>validation_functions.js</summary>
+    <p>File contains functions for client side validation for Volunteer and Dreamer forms. If either form is incorrectly filled out, these functions will give the user visual indications where they need to fix their inputs in order to successfully submit their sign up form.
+    </p>
+
++ Functions:
+    + validatePhone
+    + validateEmpty
+    + validateEmail
+    + validateZip
+    + validateTshirt
+    + validateGender
+    + validateEthnicity
+    + validateGraduation
+    + validateDOB
+   + isEmpty
+
+</details>
+
+
+<details>
+  <summary>youth_functions.js</summary>
+    <p>File contains functions for validating the Dreamer Form input client side. When the dreamer submits their form, the form will be validated first, if it passes then the form is submitted, if it does not pass all validation requirements then the form will not be submitted and the dreamer will be allowed to fix their submission mistakes and try again.
+    </p>
+
++ Quick File Relations:
+    + validation_functions.js - provides client side validation on dreamer form
+ 
++ Functions:
+    + validateForm
+
+</details>
+
+
+<details>
+  <summary>volunteer_functions.js</summary>
+    <p>File contains functions for validating the Volunteer Form input client side. When the volunteer submits their form, the form will be validated first, if it passes then the form is submitted, if it does not pass all validation requirements then the form will not be submitted and the volunteer will be allowed to fix their submission mistakes and try again.
+    </p>
+
++ Quick File Relations:
+    + validation_functions.js - provides client side validation on volunteer form
+ 
++ Functions:
+    + displayDecline
+    + displayForm
+    + toggleWeekendExplanation
+    + toggleInterestExplanation
+    + toggleYouthExplanationShow
+    + toggleYouthExplanationHide
+    + validateForm
+
 </details>
 </details>
 
