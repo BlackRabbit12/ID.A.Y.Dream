@@ -139,7 +139,7 @@ $volunteer["volunteer_interest"] = "";
 if (isset($_POST["events"])) {
     foreach ($_POST["events"] as $value) {
         //special case for other since it isn't in database, check if on other, if yes, assign volunteer other, skip adding to array
-        if ($value == "other") {
+        if ($value == "Other") {
             $volunteer["volunteer_interest"] .= "Other: " . $_POST["interests-Explain"] . ',';
         } else {
             $volunteer["volunteer_interest"] .= "$value, ";
