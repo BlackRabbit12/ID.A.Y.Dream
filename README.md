@@ -92,7 +92,7 @@ Summary of each file and it's function within the application:
 
 
 <details>
-  <summary><em>scripts</em></summary>
+	<summary><em><strong>scripts</strong></em></summary>
 
 <details>
   <summary>success_splash_functions.js</summary>
@@ -160,7 +160,7 @@ Summary of each file and it's function within the application:
 
 
 <details>
- <summary><em>private</em></summary>
+	<summary><em><strong>private</strong></em></summary>
 
 <details>
   <summary>functions.php</summary>
@@ -176,7 +176,16 @@ Summary of each file and it's function within the application:
  	+ createSummary()
     
 </details>
+</details>
 
+
+<details>
+	<summary><em><strong>db_scripts</strong></em></summary>
+</details>
+
+
+<details>
+	<summary><em><strong>css</strong></em></summary>
 </details>
 
 ## Built With
