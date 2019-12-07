@@ -102,14 +102,31 @@ $volunteer["volunteer_youth_experience"] = "";
             $volunteer["volunteer_youth_experience"] = 'no';
         }
     }
-//volunteer availability
-$volunteer["volunteer_availability"] = "";
-if (isset($_POST["availability"])) {
-    foreach ($_POST["availability"] as $value) {
-        $volunteer["volunteer_availability"] .= $value;
+
+    // volunteer availability
+    // temp string to concatenate our availabilities and explanations together
+    $availString = "";
+
+    // if availabilities are chosen we add them to a comma separated list
+    if(isset($_POST['availability'])) {
+        foreach($_POST['availability'] as $value) {
+            $availString = $availString . $value . ", ";
+        }
     }
-}
-$volunteer["volunteer_availability"] .= $_POST["availability-Explain"];
+
+    // take off the last comma when done making the list of availabilities
+    $availString = substr($availString, 0, strlen($availString) - 2);
+
+    // if the availability explanation is filled out we add the text explanation to our insert
+    if(isset($_POST['availability-Explain']) && $_POST['availability-Explain'] != "") {
+        nl2br("You will find the \n newlines in this string \r\n on the browser window.");
+        $availString = $availString . ". I am also available: ";
+        $availString = $availString . $_POST['availability-Explain'];
+    }
+
+// save the temp string that holds all availability information into the key volunteer_availability
+$volunteer['volunteer_availability'] = $availString;
+
 
 $volunteer["volunteer_skills"] = $_POST['other-Skills'];
 $volunteer["volunteer_emailing"] = $_POST['mailing-List'];

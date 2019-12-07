@@ -225,12 +225,12 @@ require_once "private/init.php";
                     <label class="col-form-label">My availability is...</label>
                     <span class="hide-me" id="i-can-help">Please select when you can help:</span>
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" value="weekend-availability"
+                        <input class="custom-control-input" type="checkbox" value="Weekends"
                                name="availability[]" id="weekend-availability">
                         <label class="custom-control-label" for="weekend-availability">Weekends</label>
                     </div> <!-- end of div that has the weekend check box -->
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" value="summer-camp" name="availability[]"
+                        <input class="custom-control-input" type="checkbox" value="Summer camp" name="availability[]"
                                id="summer-camp">
                         <label class="custom-control-label" for="summer-camp">Summer Camp (1 week)</label>
                     </div>
