@@ -206,43 +206,43 @@ INSERT INTO Contact
 VALUES (6, 6, 'Doreen', 'my mom', 'kflint0068@gmail.com', '503-888-7977', 'guardian');
 
 INSERT INTO Contact
-VALUES (7, 7, '425-222-1111', 'bridget@beeze.com', 'Friend', 'Emma', 'reference');
+VALUES (7, 7, 'Emma', 'Friend', 'bridget@beeze.com', '425-222-1111', 'reference');
 INSERT INTO Contact
-VALUES (8, 7, '425-222-3333', 'bridget@beeze.com', 'Coworker', 'Mya', 'reference');
+VALUES (8, 7, 'Mya', 'Coworker', 'bridget@beeze.com',  '425-222-3333','reference');
 INSERT INTO Contact
-VALUES (9, 7, '425-222-3333', 'jamieson.shayna@gmail.com', 'Cousin', 'Aaron', 'reference');
+VALUES (9, 7, 'Aaron', 'Cousin', 'jamieson.shayna@gmail.com', '425-222-3333', 'reference');
 
 INSERT INTO Contact
-VALUES (10, 8, '425-222-1111', 'contact1@email.com', 'Friend', 'Emma', 'reference');
+VALUES (10, 8, 'Emma', 'Friend', 'contact1@email.com', '425-222-1111', 'reference');
 INSERT INTO Contact
-VALUES (11, 8, '425-222-3333', 'jamieson.shayna@gmail.com', 'Friend', 'Rose', 'reference');
+VALUES (11, 8, 'Rose', 'Friend', 'jamieson.shayna@gmail.com', '425-222-3333', 'reference');
 INSERT INTO Contact
-VALUES (12, 8, '425-222-3333', 'kflint0068@gmail.com', 'Coworker', 'Aurora', 'reference');
+VALUES (12, 8, 'Aurora', 'Coworker', 'kflint0068@gmail.com', '425-222-3333', 'reference');
 
 INSERT INTO Contact
-VALUES (13, 9, '425-222-1111', 'kflint0068@gmail.com', 'Aunt', 'Ava', 'reference');
+VALUES (13, 9, 'Ava', 'Aunt', 'kflint0068@gmail.com', '425-222-1111', 'reference');
 INSERT INTO Contact
-VALUES (14, 9, '425-222-3333', 'contact2@email.com', 'Friend', 'Novah', 'reference');
+VALUES (14, 9, 'Novah', 'Friend', 'contact2@email.com', '425-222-3333', 'reference');
 INSERT INTO Contact
-VALUES (15, 9, '425-222-3333', 'contact3@email.com', 'Sister', 'Olivia', 'reference');
+VALUES (15, 9, 'Olivia', 'Sister', 'contact3@email.com', '425-222-3333', 'reference');
 
 INSERT INTO Contact
-VALUES (16, 10, '425-222-1111', 'bridget@beeze.com', 'Coworker', 'Archie', 'reference');
+VALUES (16, 10, 'Archie', 'Coworker', 'bridget@beeze.com', '425-222-1111', 'reference');
 INSERT INTO Contact
-VALUES (17, 10, '425-222-3333', 'jamieson.shayna@gmail.com', 'Friend', 'Aaron', 'reference');
+VALUES (17, 10, 'Aaron', 'Friend', 'jamieson.shayna@gmail.com', '425-222-3333', 'reference');
 INSERT INTO Contact
-VALUES (18, 10, '425-222-3333', 'contact3@email.com', 'Friend', 'Erin', 'reference');
+VALUES (18, 10, 'Erin', 'Friend', 'contact3@email.com', '425-222-3333', 'reference');
 
 INSERT INTO Contact
-VALUES (19, 11, '425-222-1111', 'contact1@email.com', 'Friend', 'Evelyn', 'reference');
+VALUES (19, 11, 'Evelyn', 'Friend', 'contact1@email.com',  '425-222-1111','reference');
 INSERT INTO Contact
-VALUES (20, 11, '425-222-3333', 'kflint0068@gmail.com', 'Friend', 'Mia', 'reference');
+VALUES (20, 11, 'Mia', 'Friend', 'kflint0068@gmail.com', '425-222-3333', 'reference');
 INSERT INTO Contact
-VALUES (21, 11, '425-222-3333', 'contact3@email.com', 'Brother', 'Liam', 'reference');
+VALUES (21, 11, 'Liam', 'Brother', 'contact3@email.com', '425-222-3333', 'reference');
 
 INSERT INTO Contact
-VALUES (22, 12, '425-222-1111', 'jamieson.shayna@gmail.com', 'Friend', 'Noah', 'reference');
+VALUES (22, 12, 'Noah', 'Friend', 'jamieson.shayna@gmail.com', '425-222-1111', 'reference');
 INSERT INTO Contact
-VALUES (23, 12, '425-222-3333', 'kflint0068@gmail.com', 'Coworker', 'Benjamin', 'reference');
+VALUES (23, 12, 'Benjamin', 'Coworker', 'kflint0068@gmail.com', '425-222-3333', 'reference');
 INSERT INTO Contact
-VALUES (24, 12, '425-222-3333', 'contact3@email.com', 'Coworker', 'Logan', 'reference');
+VALUES (24, 12, 'Logan', 'Coworker', 'contact3@email.com', '425-222-3333', 'reference');
