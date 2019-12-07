@@ -41,57 +41,42 @@ if (isset($_POST['status'])){
 } //end isset($_POST['status'])
 
 //if the admin_page.php <select> <option> is selected (not 'none')
+// this helps to populate the volunteer or dreamer modal depending on which dataSelect is sent in the AJAX call
 if (isset($_POST['dataSelect'])) {
 
-    //if user is a dreamer
+    // get the user id for the User to use in the sql queries
+    $id = $_POST['id'];
+
+    // if the user is a dreamer then we set the User/Dreamer query for information
     if ($_POST['dataSelect'] == 'dreamers') {
-        //user_id
-        $id = $_POST['id'];
-
-        //Get all of data columns from User table + Dreamer table for this row
-        $result = mysqli_query($db, "SELECT * FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id WHERE User.user_id = '$id';");
-
-        //create associative arrays
-        $data = [];
-        $data = createAssociativeArray($result, $data);
-
-        //if $results is a good call, send associative array back to admin modal
-        if ($result) {
-            echo json_encode($data);
-        }
-    } //end dreamers
-    //if user is a volunteer
-    else if ($_POST['dataSelect'] == 'volunteers') {
-
-        // user_id
-        $id = $_POST['id'];
-
-
-        // here are the queries that go into the multi_query line and into our associative arrays function
-        // the FIRST uses the USER id, the SECOND uses the VOLUNTEER id !!! IMPORTANT
+        $sql = "SELECT * FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id WHERE User.user_id = '$id';";
+    }
+    // if the user is a volunteer then we set the User/Volunteer query for information
+    else {
         $sql = "SELECT * FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id WHERE User.user_id = '$id';";
-        $sql .= "SELECT * FROM Contact WHERE user_id = '$id';";
+    }
 
-        // ALL data that we add to our associative array
-        $data = [];
+    // this select works regardless of if the User is a dreamer or volunteer and get's their references/guardians
+    $sql .= "SELECT * FROM Contact WHERE user_id = '$id';";
 
+    // ALL data that we add to our associative array
+    $data = [];
 
-        if (mysqli_multi_query($db, $sql)) {
-            do {
-                // get the result for each query to perform steps
-                if ($result = mysqli_store_result($db)) {
-                    // keep adding to data with our call to this method
-                    $data = createAssociativeArray($result, $data);
+    if (mysqli_multi_query($db, $sql)) {
+        do {
+            // get the result for each query to perform steps
+            if ($result = mysqli_store_result($db)) {
+                // keep adding to data with our call to this method
+                $data = createAssociativeArray($result, $data);
 
-                    mysqli_free_result($result);
-                }
-            } while (mysqli_more_results($db) && mysqli_next_result($db));
-        }
-        //if $results is a good call, send associative array back to admin modal
-        if ($result) {
-            echo json_encode($data);
-        }
-    } //end volunteers
+                mysqli_free_result($result);
+            }
+        } while (mysqli_more_results($db) && mysqli_next_result($db));
+    }
+    //if $results is a good call, send associative array back to admin modal
+    if ($result) {
+        echo json_encode($data);
+    }
 } //end isset($_POST['dataSelect'])
 
 
