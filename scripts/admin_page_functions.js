@@ -8,6 +8,8 @@
  * File name: admin_page_functions.js
  * Associated Files:
  *      admin_page.php
+ *      private/init.php
+ *      scripts/validation_functions.js
  *
  * Description:
  *      File contains **********************************************************************************
@@ -18,7 +20,7 @@ function addEditEvents() {
     $(".editInput").on("click", function () {
         // get the id of the row that is being updated from the modal's user_id
         let id = $(this).parent().children("#user_id").children("p").first().text();
-        console.log(id);
+        console.log(id); //***************************************************************************************
         //if we have not "set" the input_id by clicking on it, then it's null
         if (document.getElementById("input_id") == null) {
             //set paragraph to text input, use children[0] because we only have one child for each label
@@ -48,7 +50,7 @@ function addEditEvents() {
             //add event listener for when click outside of box to dump changes
             this.children[0].addEventListener("blur", function (event) {
                 event.preventDefault();
-                console.log("blurry");
+                console.log("blurry"); //************************************************************************************
                 // get the <input>'s parent = <label>
                 let parent = this.parentElement;
                 //removes the <input>
@@ -67,7 +69,10 @@ function addEditEvents() {
 
             $("#save").on("mousedown", function () {
                 let column_name = document.getElementById("input_id").parentElement.getAttribute("id");
-                //Collects data and values for running an update/edit on #save
+                /*
+                 * Collects data and values for running an update/edit on #save
+                 * getUpdateData (admin_page_funcitons.js)
+                 */
                 let data_to_update = getUpdateData(column_name);
                 //updates the value in the selected field's database equivalent
                 $.ajax({
@@ -80,15 +85,18 @@ function addEditEvents() {
                         //update the table data with new value. If user first, add a tags for link styling
                         if (data_to_update[2].toString() === "user_first") {
                             $("#" + data_to_update[4]).children("." + data_to_update[2]).html("<a href=\'#\'>" + data_to_update[3] + "</a>");
-                            console.log("if");
+                            console.log("if"); //******************************************************************************
                         } else {
                             $("#" + data_to_update[4]).children("." + data_to_update[2]).html(data_to_update[3]);
-                            console.log("else");
+                            console.log("else"); //*********************************************************************************
                         }
                         let firstName = $("#" + id).children(".user_first").text();
                         let lastName = $("#" + id).children(".user_last").text();
 
-                        //get the selected table from "select" dropdown
+                        /*
+                         * get the selected table from "select" dropdown
+                         * tableSelected (admin_page_functions.js)
+                         */
                         let dataSelect = tableSelected();
                         //get the status of member "inactive, active, pending"
                         let status;
@@ -124,7 +132,10 @@ function addClickEvents() {
         let firstName = $("#" + id).children(".user_first").text();
         let lastName = $("#" + id).children(".user_last").text();
 
-        //get the selected table from "select" dropdown
+        /*
+        * get the selected table from "select" dropdown
+        * tableSelected (admin_page_functions.js)
+        */
         let dataSelect = tableSelected();
 
         //get the status of member "inactive, active, pending" from the table
@@ -152,11 +163,17 @@ function addClickEvents() {
             dataType: 'JSON',
             success: function (response) {
                 console.log(response); //************************************************************************************
+                //populateModalData (admin_page_functions.js)
                 populateModalData(response);
             }
         }); //.ajax
-        //after ajax is done loading, then add the editable events
+
+        /*
+        * after ajax is done loading, then add the editable events
+        * addEditEvents (admin_page_functions.js)
+        */
         $(document).ajaxComplete(function () {
+            //addEditEvents (admin_page_functions.js)
             addEditEvents();
         }); //.ajaxComplete
     }); //.on
@@ -166,7 +183,10 @@ function addClickEvents() {
         //grab the id of user_id
         let id = this.parentElement.parentElement.getAttribute("id");
 
-        //get the selected table from "select" dropdown
+        /*
+        * get the selected table from "select" dropdown
+        * tableSelected (admin_page_functions.js)
+        */
         let dataSelect = tableSelected();
 
         //get the changed status of member "inactive, active, pending"
@@ -188,10 +208,14 @@ $(document).ready(function () {
     $('#dreamer-table').DataTable();
     $('#volunteer-table').DataTable();
 
+    //addClickEvents (admin_page_functions.js)
     addClickEvents();
 
-    // on page load if the user has chosen to look at the volunteers table we want to initialize
-    // the position of the three switch toggle to active to start
+    /*
+     * on page load if the user has chosen to look at the volunteers table we want to initialize
+     * the position of the three switch toggle to active to start
+     * tableSelected (admin_page_functions.js)
+     */
     if (tableSelected() == "volunteers") {
         // change_status("active");
     }
@@ -216,6 +240,7 @@ $(document).ready(function () {
 
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
+            //addClickEvents (admin_page_functions.js)
             addClickEvents();
             $("#dreamer-table").DataTable().destroy();
             $("#dreamer-table").DataTable();
@@ -236,6 +261,7 @@ $(document).ready(function () {
 
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
+            //addClickEvents (admin_page_functions.js)
             addClickEvents();
             $("#dreamer-table").DataTable().destroy();
             $("#dreamer-table").DataTable();
@@ -256,6 +282,7 @@ $(document).ready(function () {
 
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
+            //addClickEvents (admin_page_functions.js)
             addClickEvents();
             $("#dreamer-table").DataTable().destroy();
             $("#dreamer-table").DataTable();
@@ -279,6 +306,7 @@ $(document).ready(function () {
 
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
+            //addClickEvents (admin_page_functions.js)
             addClickEvents();
             $("#dreamer-table").DataTable().destroy();
             $("#dreamer-table").DataTable();
@@ -301,6 +329,7 @@ $(document).ready(function () {
 
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
+            //addClickEvents (admin_page_functions.js)
             addClickEvents();
             $("#dreamer-table").DataTable().destroy();
             $("#dreamer-table").DataTable();
@@ -323,6 +352,7 @@ $(document).ready(function () {
 
         // need to re-update the click events on the page
         $(document).ajaxComplete(function () {
+            //addClickEvents (admin_page_functions.js)
             addClickEvents();
             $("#dreamer-table").DataTable().destroy();
             $("#dreamer-table").DataTable();
@@ -331,14 +361,17 @@ $(document).ready(function () {
 
     // toggle the modal for emailing functionality
     $("#email-button").on("click", function () {
+        //tableSelected (admin_page_functions.js)
         let str = tableSelected();
         str = str[0].toUpperCase() + str.substr(1, str.length);
         $("#email-modal-title").html("Email Active " + str);
         $("#emailModal").modal("toggle");
         $("#email-subject").on("input focus blur", function() {
+            //validateEmpty (validation_functions.js)
             validateEmpty("email-subject");
         });
         $("#email-body").on("input focus blur", function() {
+            //validateEmpty (validation_functions.js)
             validateEmpty("email-body");
         });
     }); //.on
@@ -348,22 +381,26 @@ $(document).ready(function () {
 //appending all children into modal-body
 function populateModalData(responseData) {
 
-    // clear modal data before we populate -- added here as well
-    // because in testing it was not clearing out the modal before re-populating
+    /*
+     * clear modal data before we populate -- added here as well
+     * because in testing it was not clearing out the modal before re-populating
+     */
     $("#modal-body").html("");
 
     //for each data field, displaying 'key' and 'value' paired data into the modal
     $.each(responseData, function (key, value) {
-        console.log(key);
+        console.log(key); //****************************************************************************************************
 
         //create a textNode wrapping the field heading (the column's name (aka 'key'))
         let textNode = document.createTextNode(formatHeadings(key) + ":   ");
         //create a <label>
         let label = document.createElement('label');
 
-        //assign the database column name to the label, formatting class = "editInput" used for function addEditEvents()
-        // checks if the column being added is for a contact. If so, keeps the numbers appended to the ends of the column names
-        // used to disambiguate multiple contacts
+        /*
+         * assign the database column name to the label, formatting class = "editInput" used for function
+         * addEditEvents() checks if the column being added is for a contact. If so, keeps the numbers appended to
+         * the ends of the column names used to disambiguate multiple contacts
+         */
         if (key.includes("contact")) {
             label.setAttribute("id", key.substring(0, key.length));
         } else {
@@ -403,6 +440,7 @@ function populateModalData(responseData) {
  * name of column, new value to be updated with ajax, table primary key value.
  */
 function getUpdateData(column_name){
+    //tableName (admin_page_functions.js)
     let table = tableName(column_name);
     //table id field name
     let table_id;
@@ -465,11 +503,14 @@ $("#email-send").on("click", function () {
     let subject = $("#email-subject").val();
     let body = $("#email-body").val();
 
-    //get the selected table from "select" dropdown
+    /*
+     * get the selected table from "select" dropdown
+     * tableSelected (admin_page_functions.js)
+     */
     let dataSelect = tableSelected();
 
     if (subject.trim() == "" || body.trim() == "") {
-        console.log("failed");
+        console.log("failed"); //********************************************************************************************
     } else {
         // make ajax call to update the display of pending volunteers
         $.ajax({

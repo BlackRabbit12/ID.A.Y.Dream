@@ -8,11 +8,23 @@
  * File name: volunteer_functions.js
  * Associated File:
  *      volunteer_form.php
- *      youth_form.php
  *      validation_functions.js
  *
  * Description:
- *      File contains functions for validating Volunteer and Dreamer Form input client side.
+ *      File contains functions for validating the Volunteer Form input client side. When the volunteer submits
+ *      their form, the form will be validated first, if it passes then the form is submitted, if it does not pass all
+ *      validation requirements then the form will not be submitted and the volunteer will be allowed to fix their
+ *      submission mistakes and try again.
+ *      Quick File Relations:
+ *          validation_functions.js - provides client side validation on volunteer form
+ *      Functions:
+ *          displayDecline
+ *          displayForm
+ *          toggleWeekendExplanation
+ *          toggleInterestExplanation
+ *          toggleYouthExplanationShow
+ *          toggleYouthExplanationHide
+ *          validateForm
  */
 
 /* --- Globals --- */
@@ -165,6 +177,7 @@ $("#volunteer-form").on("submit", validateForm);
 // assign check if empty function on all input elements in validateEmptyArray
 for (let i = 0; i < validateEmptyArray.length; i++) {
     $("#" + validateEmptyArray[i]).on("input focus blur", function () {
+        //validateEmpty (validation_functions.js)
         validateEmpty(validateEmptyArray[i]);
     });
 }
@@ -172,6 +185,7 @@ for (let i = 0; i < validateEmptyArray.length; i++) {
 // assign validate email on all input elements in validateEmailArray
 for (let i = 0; i < validateEmailArray.length; i++) {
     $("#" + validateEmailArray[i]).on("input focus blur", function () {
+        //validateEmpty (validation_functions.js)
         validateEmail(validateEmailArray[i]);
     });
 }
@@ -179,6 +193,7 @@ for (let i = 0; i < validateEmailArray.length; i++) {
 // assign validate phone on all input elements in validatePhoneArray
 for (let i = 0; i < validatePhoneArray.length; i++) {
     $("#" + validatePhoneArray[i]).on("input focus blur", function () {
+        //validateEmpty (validation_functions.js)
         validatePhone(validatePhoneArray[i]);
     });
 }
@@ -207,6 +222,7 @@ function validateForm() {
 
     // checks if input array fields are empty
     for (let i = 0; i < validateEmptyArray.length; i++) {
+        //validateEmpty (validation_functions.js)
         if (!validateEmpty(validateEmptyArray[i])) {
             if (validateEmptyArray[i] == "other-interests-explanation") {
                 // if other interests box is checked, does not need to have data

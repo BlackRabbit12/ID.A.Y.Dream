@@ -10,10 +10,10 @@
  * Associated Files:
  *      css/styles.css
  *      @link https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css
- *      @link images/apple-touch-icon.png
- *      @link images/favicon-32x32_title.png
- *      @link images/favicon-16x16_title.png
- *      @link images/site.webmanifest_title
+ *      images/apple-touch-icon.png
+ *      images/favicon-32x32_title.png
+ *      images/favicon-16x16_title.png
+ *      images/site.webmanifest_title
  *      @link https://code.jquery.com/jquery-1.12.4.js
  *      @link https://code.jquery.com/ui/1.12.1/jquery-ui.js
  *      @link https://code.jquery.com/jquery-3.3.1.slim.min.js

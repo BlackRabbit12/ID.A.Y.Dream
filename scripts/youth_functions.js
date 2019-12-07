@@ -7,12 +7,18 @@
  * Last Updated: 2019-11-27
  * File name: youth_functions.js
  * Associated Files:
- *      validation_functions.js
  *      youth_form.php
- *      volunteer_form.php
+ *      validation_functions.js
  *
  * Description:
- *      File contains functions for validating Volunteer and Dreamer Form input client side.
+ *      File contains functions for validating the Dreamer Form input client side. When the dreamer submits
+ *      their form, the form will be validated first, if it passes then the form is submitted, if it does not pass all
+ *      validation requirements then the form will not be submitted and the dreamer will be allowed to fix their
+ *      submission mistakes and try again.
+ *      Quick File Relations:
+ *          validation_functions.js - provides client side validation on dreamer form
+ *      Functions:
+ *          validateForm
  */
 
 /**
@@ -56,6 +62,7 @@ $("#youth-form").on("submit", validateForm);
  */
 for (let i = 0; i < validateEmptyArray.length; i++) {
     $("#" + validateEmptyArray[i]).on("input focus blur", function () {
+        //validateEmpty (validation_functions.js)
         validateEmpty(validateEmptyArray[i]);
     }); //.on
 }
@@ -108,6 +115,7 @@ function validateForm() {
 
     // checks if input 2D array fields are empty
     for (let i = 0; i < validateEmptyArray.length; i++) {
+        //validateEmpty (validation_functions.js)
         if (!validateEmpty(validateEmptyArray[i])) {
             isValid = false;
         }
