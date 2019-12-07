@@ -8,11 +8,25 @@
  * File name: validation_functions.js
  * Associated Files:
  *      youth_functions.js
+ *      volunteer_functions.js
  *      youth_form.php
  *      volunteer_form.php
  *
  * Description:
- *      File contains functions for validating Volunteer and Dreamer Form input client side.
+ *      File contains functions for client side validation for Volunteer and Dreamer forms. If either form is
+ *      incorrectly filled out, these functions will give the user visual indications where they need to fix their
+ *      inputs in order to successfully submit their sign up form.
+ *      Functions:
+ *          validatePhone
+ *          validateEmpty
+ *          validateEmail
+ *          validateZip
+ *          validateTshirt
+ *          validateGender
+ *          validateEthnicity
+ *          validateGraduation
+ *          validateDOB
+ *          isEmpty
  */
 
 /**
