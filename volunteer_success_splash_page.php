@@ -129,7 +129,8 @@ $volunteer['volunteer_availability'] = $availString;
 
 
 $volunteer["volunteer_skills"] = $_POST['other-Skills'];
-$volunteer["volunteer_emailing"] = $_POST['mailing-List'];
+// hiding mailing list per Sprint 4 feedback
+//$volunteer["volunteer_emailing"] = $_POST['mailing-List'];
 
 $volunteer["volunteer_verified"] = "no";
 $volunteer["volunteer_status"] = "pending";
