@@ -206,7 +206,7 @@ require_once "private/init.php";
                         <label class="custom-control-label" for="Mentoring">Mentoring</label>
                     </div> <!-- end of div that has the Mentoring check box -->
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="events[]" value="other"
+                        <input class="custom-control-input" type="checkbox" name="events[]" value="Other"
                                id="other-interest">
                         <label class="custom-control-label" for="other-interest">Other</label>
                     </div> <!-- end of div that has the other check box -->
