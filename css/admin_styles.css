@@ -237,6 +237,9 @@ tr {
 }
 
 /* hide all id 'keys' + 'values' && status in member modal body  */
-#user_id, #volunteer_id, #dreamer_id, #contact_id0, #contact_id1, #contact_id2, #volunteer_active, #dreamer_status {
+#user_id, #volunteer_id, #dreamer_id,
+#contact_id0, #contact_id1, #contact_id2,
+#contact_type0, #contact_type1, #contact_type2,
+#volunteer_active, #dreamer_status {
     display: none;
 }
