@@ -187,11 +187,6 @@ VALUES (6, 12, 'yes', '4523 H St', 98188, 'Kent', 'WA', 'small', 'My kid is a dr
         'active', 'Allergic to cats');
 
 /* Insert sample data for contacts */
-    contact_name         VARCHAR(255) NULL,
-    contact_relationship VARCHAR(255) NULL,
-    contact_email        VARCHAR(255) NULL,
-    contact_phone        VARCHAR(255) NULL,
-    contact_type         VARCHAR(255) NULL,
 INSERT INTO Contact
 VALUES (1, 1, 'Lynda Flint', 'Mother', 'jamieson.shayna@gmail.com', '425-222-2222', 'guardian');
 
