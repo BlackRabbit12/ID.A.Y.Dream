@@ -78,7 +78,7 @@ $user["user_phone"] = formatPhone($_POST["phone"]);
 $dreamer["dreamer_college"] = $_POST["college-Interest"];
 //formatDOB (validation_functions.php)
 $dreamer["dreamer_date_of_birth"] = formatDOB($_POST["dob"]);
-$dreamer["dreamer_graduation_date"] = $_POST["graduation-Year"];
+$dreamer["dreamer_graduation_year"] = $_POST["graduation-Year"];
 $dreamer["dreamer_gender"] = $_POST["gender"];
 $dreamer["dreamer_ethnicity"] = $_POST['ethnicity'];
 // if ethnicity-other is not empty, use the supplied ethnicity instead

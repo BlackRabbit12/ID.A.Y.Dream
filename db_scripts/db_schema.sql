@@ -52,7 +52,7 @@ CREATE TABLE Dreamer
     user_id                 INT          NOT NULL,
     dreamer_college         VARCHAR(255) NULL,
     dreamer_date_of_birth   DATE         NULL,
-    dreamer_graduation_date YEAR         NULL,
+    dreamer_graduation_year YEAR         NULL,
     dreamer_gender          VARCHAR(255) NULL,
     dreamer_ethnicity       VARCHAR(255) NULL,
     dreamer_food            VARCHAR(255) NULL,
