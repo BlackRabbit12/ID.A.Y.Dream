@@ -19,9 +19,9 @@
 require_once "init.php";
 
 //updates status via admin tables
-if (isset($_POST['status'])){
+if (isset($_POST['status'])) {
     //get table name (remove end of string to match table)
-    $table = substr($_POST['dataSelect'], 0, strlen($_POST['dataSelect']) -1);
+    $table = substr($_POST['dataSelect'], 0, strlen($_POST['dataSelect']) - 1);
     //get table id with the table name + id
     $table_id = $table . "_id";
     $key = $table . "_status";
@@ -50,8 +50,7 @@ if (isset($_POST['dataSelect'])) {
     // if the user is a dreamer then we set the User/Dreamer query for information
     if ($_POST['dataSelect'] == 'dreamers') {
         $sql = "SELECT * FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id WHERE User.user_id = '$id';";
-    }
-    // if the user is a volunteer then we set the User/Volunteer query for information
+    } // if the user is a volunteer then we set the User/Volunteer query for information
     else {
         $sql = "SELECT * FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id WHERE User.user_id = '$id';";
     }
@@ -103,19 +102,16 @@ function createAssociativeArray($result, $data)
     // row_num is appended to fieldname if the while loop runs more than once (which would indicate a multi-row return)
     while ($row = mysqli_fetch_assoc($result)) {
         foreach ($row as $value) {
-            if($row[$fieldNames_array[$i]] == null){
+            if ($row[$fieldNames_array[$i]] == null) {
                 //if 'value' at given 'key' is null, then display empty string instead of null
                 $data[$fieldNames_array[$i] . $row_num] = "";
-            }
-            //if 'key' is "dreamer's date of birth" or "user's date joined" then format them for readability
-            else if ($fieldNames_array[$i] == "dreamer_date_of_birth" || $fieldNames_array[$i]== "user_date_joined") {
-                $data[$fieldNames_array[$i] . $row_num]= formatSQLDate($row[$fieldNames_array[$i]]);
-            }
-            //if 'key' is "user's phone" then format them for readability
+            } //if 'key' is "dreamer's date of birth" or "user's date joined" then format them for readability
+            else if ($fieldNames_array[$i] == "dreamer_date_of_birth" || $fieldNames_array[$i] == "user_date_joined") {
+                $data[$fieldNames_array[$i] . $row_num] = formatSQLDate($row[$fieldNames_array[$i]]);
+            } //if 'key' is "user's phone" then format them for readability
             else if ($fieldNames_array[$i] == "user_phone") {
                 $data[$fieldNames_array[$i] . $row_num] = formatSQLPhone($row[$fieldNames_array[$i]]);
-            }
-            else {
+            } else {
                 //display 'value' at given 'key'
                 $data[$fieldNames_array[$i] . $row_num] = $row[$fieldNames_array[$i]];
             }
@@ -143,7 +139,7 @@ if (isset($_POST['queryType'])) {
         $result_ids = mysqli_query($db, $sql_ids);
 
         echo buildTable($result, $tableHeadingNames, $result_ids);
-    } else if($_POST['queryType'] == 'pending_query') {
+    } else if ($_POST['queryType'] == 'pending_query') {
         // Selects and returns output string containing table with inactive users
         global $db;
 
@@ -171,50 +167,45 @@ if (isset($_POST['queryType'])) {
         $result_ids = mysqli_query($db, $sql_ids);
 
         echo buildTable($result, $tableHeadingNames, $result_ids);
-    }
-    // volunteers query for pending to switch what volunteers we display
-    else if($_POST['queryType'] == "pending_volunteers_query") {
+    } // volunteers query for pending to switch what volunteers we display
+    else if ($_POST['queryType'] == "pending_volunteers_query") {
         global $db;
 
         $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User
                 INNER JOIN Volunteer ON User.user_id = Volunteer.user_id
                 WHERE volunteer_status = 'pending';";
 
-        $sql_ids =  $sql_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'pending';";
+        $sql_ids = $sql_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'pending';";
 
         $result = mysqli_query($db, $sql);
         $tableHeadingNames = $result->fetch_fields();
         $result_ids = mysqli_query($db, $sql_ids);
 
         echo buildTable($result, $tableHeadingNames, $result_ids);
-    }
-
-    // volunteers query for active to switch what volunteers we display
-    else if($_POST['queryType'] == "active_volunteers_query") {
+    } // volunteers query for active to switch what volunteers we display
+    else if ($_POST['queryType'] == "active_volunteers_query") {
         global $db;
 
         $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User
                 INNER JOIN Volunteer ON User.user_id = Volunteer.user_id
                 WHERE volunteer_status = 'active';";
 
-        $sql_ids =  $sql_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'active';";
+        $sql_ids = $sql_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'active';";
 
         $result = mysqli_query($db, $sql);
         $tableHeadingNames = $result->fetch_fields();
         $result_ids = mysqli_query($db, $sql_ids);
 
         echo buildTable($result, $tableHeadingNames, $result_ids);
-    }
-
-    // volunteers query for active to switch what volunteers we display
-    else if($_POST['queryType'] == "inactive_volunteers_query") {
+    } // volunteers query for active to switch what volunteers we display
+    else if ($_POST['queryType'] == "inactive_volunteers_query") {
         global $db;
 
         $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User
                 INNER JOIN Volunteer ON User.user_id = Volunteer.user_id
                 WHERE volunteer_status = 'inactive';";
 
-        $sql_ids =  $sql_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'inactive';";
+        $sql_ids = $sql_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'inactive';";
 
         $result = mysqli_query($db, $sql);
         $tableHeadingNames = $result->fetch_fields();
@@ -226,12 +217,20 @@ if (isset($_POST['queryType'])) {
 } //end isset($_POST['queryType'])
 
 //mouseup event for user modal 'save' button
-if (isset($_POST['table'])){
+if (isset($_POST['table'])) {
     // checks if the column being updated is column. If so, strips out the numbers used to disambiguate multiple contacts
     if (strpos($_POST['table_id'], "contact") !== false) {
         $_POST["table_id"] = substr($_POST['table_id'], 0, strlen($_POST['table_id']) - 1);
         $_POST["column_name"] = substr($_POST['column_name'], 0, strlen($_POST['column_name']) - 1);
     }
+
+    // formatting value if the column being updated is date or phone number
+    if (strpos($_POST['column_name'], 'date') !== false) {
+        $_POST['value'] = formatDOB($_POST['value']);
+    } else if (strpos($_POST['column_name'], 'phone') !== false) {
+        $_POST['value'] = formatPhone($_POST['value']);
+    }
+
 
     // creates associatve key value pair to add to database
     $dataAssociativeArray[$_POST['column_name']] = $_POST['value'];
@@ -241,14 +240,14 @@ if (isset($_POST['table'])){
 
 //emailType: dataSelect, subject: subject, body: body
 
-if(isset($_POST["emailType"])) {
+if (isset($_POST["emailType"])) {
     $sql = "";
     if ($_POST["emailType"] == "dreamers") {
         $sql = "SELECT user_email FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id WHERE dreamer_status = 'active';";
     } else if ($_POST["emailType"] == "volunteers") {
         $sql = "SELECT user_email FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id WHERE volunteer_status = 'active';";
     } else {
-        echo "You shouldn't be here";
+        echo "Invalid email type";
     }
 
     /*
@@ -276,7 +275,7 @@ if(isset($_POST["emailType"])) {
 
     $emailCount = 0;
 
-    while($email = mysqli_fetch_assoc($result)) {
+    while ($email = mysqli_fetch_assoc($result)) {
         // sending email to client
         $sendTo = "{$email['user_email']}";
         $to = $sendTo;
@@ -304,15 +303,4 @@ if(isset($_POST["emailType"])) {
 
     echo json_encode($data);
 
-
 }
-
-
-// //--- debugging log for php during ajax calls ---
-//    $myfile = fopen("log.txt", "w") or die("Unable to open file!");
-//    $text = "";
-//    foreach($log as $item)
-//        $text .= "$item\n";
-//    fwrite($myfile, $text);
-//    fclose($myfile);
-// //--- end debug ---
