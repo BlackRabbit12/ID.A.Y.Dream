@@ -80,6 +80,11 @@ footer {
     margin-top: 5%;
 }
 
+/* hide header text on 600px or larger screens */
+#header-text{
+    display: none;
+}
+
 /* styles for admin_page image: new_admin_logo.png*/
 img {
     width: 52%;
@@ -116,6 +121,14 @@ label {
     margin-bottom: 3%;
     justify-content: center;
     background-color: #6cb1c1;
+}
+
+/* create a dark bar for header */
+#logout-header{
+    width: 100%;
+    height: 60px;
+    background-color: rgb(54, 69, 79);
+    border-bottom: 5px solid #f7aa35;
 }
 
 /* email + member modal body: email message + member information layout styles */
@@ -254,10 +267,33 @@ tr {
         margin-right: 20px;
     }
 
+    /* make the table scrollable on small screens */
     #dreamer-table_wrapper {
-        margin-top: 20px;
+        margin-top: 40px;
         margin-bottom: 20px;
         overflow: scroll;
+    }
+
+    /* display header text */
+    #header-text{
+        display: block;
+        color: white;
+        padding-left: 10px;
+    }
+
+    /* hide the admin page logo */
+    .logo-container{
+        display: none;
+    }
+
+    /* give the header a set height */
+    #logout-header{
+        margin-bottom: 50px;
+    }
+
+    /* take away the image in addition to the logo section */
+    img{
+        display: none;
     }
 }
 

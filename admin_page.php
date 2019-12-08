@@ -91,10 +91,24 @@ if (!isset($_GET["data_select"])) {
     <!-- Admin table logo --> <!-- logo-container -->
 
     <!-- Entire admin tools + table container -->
+    <div id="logout-header">
+        <div class="row">
+            <!-- header text -->
+            <div class="col-8 my-auto">
+                <h6 id="header-text" class="pt-3">iD.A.Y.Dream Admin</h6>
+            </div>
+            <!-- logout button -->
+            <div class="col-4">
+                <button id="logout-button" class="btn rounded-pill float-right text-white border-light mt-2 mr-2 pr-3 pl-3"
+                        href="#loginModal" role="button" data-toggle="modal">LOGOUT</button>
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end logout-header -->
+
     <div class="logo-container">
-        <button id="logout-button" class="btn rounded-pill float-right text-white border-light mr-4 mt-4 pr-3 pl-3" href="#loginModal" role="button" data-toggle="modal">LOGOUT</button>
         <img src="images/new_admin_logo.png" alt="IDAYDream Logo">
     </div>
+
     <div class="entire-container">
     <!-- Choosing which table summary to look at: None, Dreamer, Volunteer -->
     <div class="input-group">
