@@ -172,7 +172,6 @@ p {
 /*For the three toggle switch */
 .switch-field {
     display: flex;
-    /*margin-bottom: 36px;*/
     overflow: hidden;
     margin-left: 20px;
     margin-right: 20px;
@@ -242,4 +241,31 @@ tr {
 #contact_type0, #contact_type1, #contact_type2,
 #volunteer_active, #dreamer_status {
     display: none;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    /*For the three toggle switch */
+    .switch-field {
+        display: flex;
+        overflow: hidden;
+        margin-left: 0px;
+        padding-left: 0px;
+        margin-right: 20px;
+    }
+
+    #dreamer-table_wrapper {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        overflow: scroll;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+    #dreamer-table_wrapper {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        overflow: scroll;
+    }
 }
