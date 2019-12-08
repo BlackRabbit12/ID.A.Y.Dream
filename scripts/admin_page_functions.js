@@ -42,7 +42,8 @@ function addEditEvents() {
             //keep focus on current <input> (because "blur" drops focus)
             //after 'appends' a sibling, "append" a 'save' button to row for when edit is confirmed to send to database
             let saveBtn = "<button type=\"button\" id=\"save\" class=\"pull-left bg-success text-white btn btn-default btn-sm\">Save</button>";
-
+            // reset allowSave to true by default since most inputs don't require validation
+            allowSave = true;
             // check if the item being updated requires special formatting (date and phone number)
             if (this.id.includes("phone")) {
                 // add event listener to format the phone number
