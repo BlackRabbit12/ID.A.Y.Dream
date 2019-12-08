@@ -1,4 +1,7 @@
 @charset "utf-8";
+/* import to use google free fonts */
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
 
 /**
  * @author Shayna Jamieson
@@ -115,12 +118,28 @@ label {
     font-weight: bolder;
 }
 
-/* admin page logo image styles: new_admin_logo.png */
+/* admin page logo image styles */
 .logo-container {
     width: 100%;
     margin-bottom: 3%;
-    justify-content: center;
+    /*justify-content: center;*/
     background-color: #6cb1c1;
+    background-image: url("../images/admin_wall_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 275px;
+    text-align: center;
+    display: table;
+    overflow: hidden;
+}
+
+/* works with .logo-container to vertically + horizontally align text in logo */
+.logo-container > p {
+    display: table-cell;
+    vertical-align: middle;
+    font-family: 'Nunito', sans-serif;
+    font-size: 4vw;
+    font-weight: 500;
 }
 
 /* create a dark bar for header */

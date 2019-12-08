@@ -106,7 +106,7 @@ if (!isset($_GET["data_select"])) {
     </div> <!-- end logout-header -->
 
     <div class="logo-container">
-        <img src="images/new_admin_logo.png" alt="IDAYDream Logo">
+        <p class="text-white">Inspiring Youth to Dream Out Loud</p>
     </div>
 
     <div class="entire-container">
