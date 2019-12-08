@@ -329,7 +329,8 @@ function validateVolunteer($volunteer)
     return $isValid;
 }
 
-function validateContact($contact) {
+function validateContact($contact)
+{
     //global declaration
     global $db;
     //error message array

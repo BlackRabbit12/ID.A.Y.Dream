@@ -46,14 +46,14 @@ function addEditEvents() {
             // check if the item being updated requires special formatting (date and phone number)
             if (this.id.includes("phone")) {
                 // add event listener to format the phone number
-                $("#input_id").on("keydown input focus", function() {
+                $("#input_id").on("keydown input focus", function () {
                     this.value = formatPhone(this.value);
                     allowSave = validatePhone(this.value);
                     console.log(allowSave);
                 });
             } else if (this.id.includes("date")) {
                 // add event listener to format the date
-                $("#input_id").on("keydown input focus", function() {
+                $("#input_id").on("keydown input focus", function () {
                     this.value = formatDate(this.value);
                     allowSave = validateDate(this.value);
                     console.log(allowSave);
@@ -174,8 +174,7 @@ function addClickEvents() {
         if (dataSelect === "dreamers") {
             //finding the child that contains the selected option for the dreamer's status
             status = $("#" + id).children(".dreamer_status").children(".status-dropdown").children("option:selected").text();
-        }
-        else if (dataSelect === "volunteers"){
+        } else if (dataSelect === "volunteers") {
             status = $("#" + id).children(".volunteer_status").children(".status-dropdown").children("option:selected").text();
         }
 
@@ -397,11 +396,11 @@ $(document).ready(function () {
         str = str[0].toUpperCase() + str.substr(1, str.length);
         $("#email-modal-title").html("Email Active " + str);
         $("#emailModal").modal("toggle");
-        $("#email-subject").on("input focus blur", function() {
+        $("#email-subject").on("input focus blur", function () {
             //validateEmpty (validation_functions.js)
             validateEmpty("email-subject");
         });
-        $("#email-body").on("input focus blur", function() {
+        $("#email-body").on("input focus blur", function () {
             //validateEmpty (validation_functions.js)
             validateEmpty("email-body");
         });
@@ -439,7 +438,6 @@ function populateModalData(responseData) {
         }
 
 
-
         // TODO add correct class and display style (dropdown or text field) inside the modal for consistent user experience
         label.classList.add("editInput");
         //append the textNode(with heading) to the <label>
@@ -470,7 +468,7 @@ function populateModalData(responseData) {
  * @returns {[table, table_id, column_name, value, id]} Table name in database, table primary key column name,
  * name of column, new value to be updated with ajax, table primary key value.
  */
-function getUpdateData(column_name){
+function getUpdateData(column_name) {
     //tableName (admin_page_functions.js)
     let table = tableName(column_name);
     //table id field name
@@ -495,7 +493,7 @@ function getUpdateData(column_name){
  * @param column_name Column being looked at for which table it comes from.
  * @returns {string} Return name of database table associated with parameter column_name.
  */
-function tableName(column_name){
+function tableName(column_name) {
     //upper case first letter and add the rest of the string back on
     return column_name.charAt(0).toUpperCase() + column_name.substr(1, column_name.indexOf('_') - 1);
 } //end tableName(column_name)
@@ -574,7 +572,7 @@ $("#email-send").on("click", function () {
     }
 });
 
-$('#logout-button').on('click', function() {
+$('#logout-button').on('click', function () {
     window.location.href = '../private/logout.php';
 });
 
@@ -588,9 +586,9 @@ function formatDate(str) {
     if (str.length < 3) {
         // do nothing
     } else if (str.length < 5) {
-        str = str.substring(0,2) + "/" + str.substring(2,4);
+        str = str.substring(0, 2) + "/" + str.substring(2, 4);
     } else {
-        str = str.substring(0,2) + "/" + str.substring(2,4) + "/" + str.substring(4,8);
+        str = str.substring(0, 2) + "/" + str.substring(2, 4) + "/" + str.substring(4, 8);
     }
 
     return str;
@@ -606,9 +604,9 @@ function formatPhone(str) {
     if (str.length < 4) {
         // do nothing
     } else if (str.length < 7) {
-        str =  "(" + str.substring(0, 3) + ") " + str.substring(3, 6);
+        str = "(" + str.substring(0, 3) + ") " + str.substring(3, 6);
     } else {
-        str =  "(" + str.substring(0, 3) + ") " + str.substring(3, 6) + "-" + str.substring(6, 10);
+        str = "(" + str.substring(0, 3) + ") " + str.substring(3, 6) + "-" + str.substring(6, 10);
     }
 
     return str;
