@@ -15,6 +15,8 @@
  *      File contains **********************************************************************************
  */
 
+// global variable allowSave. Is false when the data the admin is entering is invalid.
+let allowSave = true;
 
 function addEditEvents() {
     $(".editInput").on("click", function () {
@@ -38,9 +40,28 @@ function addEditEvents() {
             //append the new <input> to the <label>
             this.append(inputElement);
             //keep focus on current <input> (because "blur" drops focus)
-            document.getElementById("input_id").focus();
             //after 'appends' a sibling, "append" a 'save' button to row for when edit is confirmed to send to database
             let saveBtn = "<button type=\"button\" id=\"save\" class=\"pull-left bg-success text-white btn btn-default btn-sm\">Save</button>";
+
+            // check if the item being updated requires special formatting (date and phone number)
+            if (this.id.includes("phone")) {
+                // add event listener to format the phone number
+                $("#input_id").on("keydown input focus", function() {
+                    this.value = formatPhone(this.value);
+                    allowSave = validatePhone(this.value);
+                    console.log(allowSave);
+                });
+            } else if (this.id.includes("date")) {
+                // add event listener to format the date
+                $("#input_id").on("keydown input focus", function() {
+                    this.value = formatDate(this.value);
+                    allowSave = validateDate(this.value);
+                    console.log(allowSave);
+                });
+            }
+
+            document.getElementById("input_id").focus();
+
             $(this).append(saveBtn);
 
             // $("#save").on("mousedown", function (event) {
@@ -68,51 +89,61 @@ function addEditEvents() {
             }); //.addEventListener
 
             $("#save").on("mousedown", function () {
-                let column_name = document.getElementById("input_id").parentElement.getAttribute("id");
-                /*
-                 * Collects data and values for running an update/edit on #save
-                 * getUpdateData (admin_page_funcitons.js)
-                 */
-                let data_to_update = getUpdateData(column_name);
-                //updates the value in the selected field's database equivalent
-                $.ajax({
-                    url: 'private/init.php',
-                    method: 'post',
-                    data: {table: data_to_update[0], table_id: data_to_update[1], column_name: data_to_update[2], value: data_to_update[3], id: data_to_update[4]},
-                    success: function (response) {
-                        //update input with new value
-                        $("#" + data_to_update[2]).find("p").html(data_to_update[3]);
-                        //update the table data with new value. If user first, add a tags for link styling
-                        if (data_to_update[2].toString() === "user_first") {
-                            $("#" + data_to_update[4]).children("." + data_to_update[2]).html("<a href=\'#\'>" + data_to_update[3] + "</a>");
-                            console.log("if"); //******************************************************************************
-                        } else {
-                            $("#" + data_to_update[4]).children("." + data_to_update[2]).html(data_to_update[3]);
-                            console.log("else"); //*********************************************************************************
-                        }
-                        let firstName = $("#" + id).children(".user_first").text();
-                        let lastName = $("#" + id).children(".user_last").text();
+                // if data is valid allow the ajax call
+                if (allowSave) {
+                    let column_name = document.getElementById("input_id").parentElement.getAttribute("id");
+                    /*
+                     * Collects data and values for running an update/edit on #save
+                     * getUpdateData (admin_page_funcitons.js)
+                     */
+                    let data_to_update = getUpdateData(column_name);
+                    //updates the value in the selected field's database equivalent
+                    $.ajax({
+                        url: 'private/init.php',
+                        method: 'post',
+                        data: {
+                            table: data_to_update[0],
+                            table_id: data_to_update[1],
+                            column_name: data_to_update[2],
+                            value: data_to_update[3],
+                            id: data_to_update[4]
+                        },
+                        success: function (response) {
+                            //update input with new value
+                            $("#" + data_to_update[2]).find("p").html(data_to_update[3]);
+                            //update the table data with new value. If user first, add a tags for link styling
+                            if (data_to_update[2].toString() === "user_first") {
+                                $("#" + data_to_update[4]).children("." + data_to_update[2]).html("<a href=\'#\'>" + data_to_update[3] + "</a>");
+                                console.log("if"); //******************************************************************************
+                            } else {
+                                $("#" + data_to_update[4]).children("." + data_to_update[2]).html(data_to_update[3]);
+                                console.log("else"); //*********************************************************************************
+                            }
+                            let firstName = $("#" + id).children(".user_first").text();
+                            let lastName = $("#" + id).children(".user_last").text();
 
-                        /*
-                         * get the selected table from "select" dropdown
-                         * tableSelected (admin_page_functions.js)
-                         */
-                        let dataSelect = tableSelected();
-                        //get the status of member "inactive, active, pending"
-                        let status;
-                        if (dataSelect === "dreamers") {
-                            status = $("#" + id).children(".dreamer_status").find("option:selected").text();
-                        }
-                        else if (dataSelect === "volunteers"){
-                            status = $("#" + id).children(".volunteer_status").find("option:selected").text();
-                        }
+                            /*
+                             * get the selected table from "select" dropdown
+                             * tableSelected (admin_page_functions.js)
+                             */
+                            let dataSelect = tableSelected();
+                            //get the status of member "inactive, active, pending"
+                            let status;
+                            if (dataSelect === "dreamers") {
+                                status = $("#" + id).children(".dreamer_status").find("option:selected").text();
+                            } else if (dataSelect === "volunteers") {
+                                status = $("#" + id).children(".volunteer_status").find("option:selected").text();
+                            }
 
-                        //Top of modal display full name and status of member
-                        $("#full-name-status").html(firstName + " " + lastName + " (" + status + ")");
-                        console.log(response); //************************************************************************************
-                        //populateModalData(response);
-                    }
-                }); //.ajax
+                            //Top of modal display full name and status of member
+                            $("#full-name-status").html(firstName + " " + lastName + " (" + status + ")");
+                            console.log(response); //************************************************************************************
+                            //populateModalData(response);
+                        }
+                    }); //.ajax
+                } else {
+                    alert("Save failed. Data was not properly formatted.");
+                }
             }); //.on
         }
         // else we have already clicked on the field so it has an input_id
@@ -546,3 +577,56 @@ $("#email-send").on("click", function () {
 $('#logout-button').on('click', function() {
     window.location.href = '../private/logout.php';
 });
+
+/**
+ * formats the date and provides inline warnings for invalid data when it is updated in the admin page.
+ * @return string the correctly formatted date
+ */
+function formatDate(str) {
+    str = str.replace(/\D/g, "");
+
+    if (str.length < 3) {
+        // do nothing
+    } else if (str.length < 5) {
+        str = str.substring(0,2) + "/" + str.substring(2,4);
+    } else {
+        str = str.substring(0,2) + "/" + str.substring(2,4) + "/" + str.substring(4,8);
+    }
+
+    return str;
+}
+
+/**
+ * formats the phone number and provides inline warnings for invalid data when it is updated in the admin page.
+ * @return string the correctly formatted phone number
+ */
+function formatPhone(str) {
+    str = str.replace(/\D/g, "");
+
+    if (str.length < 4) {
+        // do nothing
+    } else if (str.length < 7) {
+        str =  "(" + str.substring(0, 3) + ") " + str.substring(3, 6);
+    } else {
+        str =  "(" + str.substring(0, 3) + ") " + str.substring(3, 6) + "-" + str.substring(6, 10);
+    }
+
+    return str;
+}
+
+/**
+ * checks if date is valid
+ * @return true if date is valid
+ */
+function validateDate(str) {
+    return str.length === 10;
+}
+
+/**
+ * checks if phone number is valid
+ * @return true if phone number is valid
+ */
+function validatePhone(str) {
+    return str.length === 14;
+
+}
