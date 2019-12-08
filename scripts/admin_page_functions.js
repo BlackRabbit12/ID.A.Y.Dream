@@ -432,9 +432,16 @@ $(document).ready(function () {
                 method: 'post',
                 data: {queryType: "delete", user_id: id},
                 success: function (response) {
-                    console.log($("#" + id));
-                    // removes item from the table TODO doesn't work unless the user is active for some reason
-                    $("#" + id).remove();
+                    // console.log($("#" + id));
+                    // removes item from the table
+                    let table = $("#dreamer-table").DataTable();
+                    table
+                        .row("#" + id)
+                        .remove()
+                        .draw();
+
+                    // close the modal since the user at this point will have been deleted
+                    $("#myModal").modal("toggle");
                 }
             }); //.ajax
         } // end confirm
