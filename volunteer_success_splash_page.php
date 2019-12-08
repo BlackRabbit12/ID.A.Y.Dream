@@ -194,7 +194,7 @@ if ($success) {
 <div class="container" id="thank-you-message">
     <h2>Thank you for your interest in volunteering with iD.A.Y.Dream <?php echo $user["user_first"] ?>. We’re investing
         in
-        an entire region of youth. Youth seeking success through higher education, mentoring, etc.</h2>
+        an entire region of youth. Youth seeking success through higher education, mentoring, and community engagement events.</h2>
     <br>
     <h3 id="click-to-see">Click to see a summary of your information.</h3>
     <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>

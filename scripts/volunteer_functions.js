@@ -48,6 +48,14 @@ function displayDecline() {
     document.getElementById("bg-check-no-container").style.display = "block";
 } //end displayDecline()
 
+/**
+ * Takes the client to the IDAYDream home page if they click the #go-home button
+ * after declining to take the background check.
+ */
+$("#go-home").on("click", function() {
+   window.open("https://www.idaydream.org/", "_blank");
+});
+
 
 /**
  * Displays form if consent to background check is given.
