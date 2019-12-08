@@ -17,7 +17,6 @@
  *      scripts/admin_page_functions.js
  *      private/ajax_functions.php
  *      scripts/validation_functions.js
- *      images/new_admin_logo.png
  *      images/apple-touch-icon.png
  *      images/favicon-32x32_title.png
  *      images/favicon-16x16_title.png
