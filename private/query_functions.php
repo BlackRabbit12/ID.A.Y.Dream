@@ -147,18 +147,22 @@ function volunteerInsert($user, $volunteer, $references)
     }
 } //end volunteerInsert()
 
+/**
+ * Deletes user by id and all data associated with them
+ * @param $user_id int id of the user to delete
+ */
 function deleteUser($user_id) {
     global $db;
 
     $sql = "DELETE FROM Contact WHERE user_id = $user_id;";
-    $result = mysqli_query($db, $sql);
+    mysqli_query($db, $sql);
 
     $sql = "DELETE FROM Dreamer WHERE user_id = $user_id;";
-    $result = mysqli_query($db, $sql);
+    mysqli_query($db, $sql);
 
     $sql = "DELETE FROM Volunteer WHERE user_id = $user_id;";
-    $result = mysqli_query($db, $sql);
+    mysqli_query($db, $sql);
 
     $sql = "DELETE FROM User WHERE user_id = $user_id;";
-    $result = mysqli_query($db, $sql);
+    mysqli_query($db, $sql);
 }
