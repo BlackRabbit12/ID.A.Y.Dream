@@ -157,6 +157,9 @@ function addEditEvents() {
 function addClickEvents() {
     //fills modal on 'click' of member's name
     console.log("click events"); //******************************************************************************************
+    // removes event listeners before reassigning to prevent duplication
+    $(".update").off();
+
     $(".update").on("click", function () {
         console.log("update clicked"); //************************************************************************************
         //get the 'id' of the row (parent of first name clicked)
@@ -208,6 +211,9 @@ function addClickEvents() {
             addEditEvents();
         }); //.ajaxComplete
     }); //.on
+
+    // removes event listeners before reassigning to prevent duplication
+    $(".status-dropdown").off();
 
     //update member's status via dropdown in admin tables
     $(".status-dropdown").on("change", function () {
