@@ -219,7 +219,7 @@ function validateDreamer($dreamer)
     }
 
     //dreamer graduation year
-    if (!validateGrad($dreamer["dreamer_graduation_date"])) {
+    if (!validateGrad($dreamer["dreamer_graduation_year"])) {
         $isValid = false;
         $error[] = 'Graduation';
     }
