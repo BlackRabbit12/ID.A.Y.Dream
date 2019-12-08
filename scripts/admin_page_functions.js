@@ -59,6 +59,13 @@ function addEditEvents() {
                     allowSave = validateDate(this.value);
                     console.log(allowSave);
                 });
+            } else if (this.id.includes("year")) {
+                // add event listener to format the year
+                $("#input_id").on("keydown input focus", function () {
+                    this.value = formatYear(this.value);
+                    allowSave = validateYear(this.value);
+                    console.log(allowSave);
+                });
             }
 
             document.getElementById("input_id").focus();
@@ -418,6 +425,7 @@ $(document).ready(function () {
         // find the user id in the modal
         let id = $(this).parent().parent().find("#user_id").find("p").text();
 
+        // confirm deletion with user, run ajax deletion if true
         if (confirm("Permanently remove user " + $("#full-name-status").html() + " from the system?")) {
             $.ajax({
                 url: 'private/init.php',
@@ -425,7 +433,7 @@ $(document).ready(function () {
                 data: {queryType: "delete", user_id: id},
                 success: function (response) {
                     console.log($("#" + id));
-                    // removes item from the table TODO doesn't work unless the user is active for some reason?
+                    // removes item from the table TODO doesn't work unless the user is active for some reason
                     $("#" + id).remove();
                 }
             }); //.ajax
@@ -624,6 +632,19 @@ function formatDate(str) {
 }
 
 /**
+ *  formats a year to ensure it contains only numbers and is never more than 4 digits
+ * @param str string the year as a string
+ * @returns string the formatted year
+ */
+function formatYear(str) {
+    str = str.replace(/\D/g, "");
+    if (str.length > 4) {
+        return str.substr(0,4);
+    }
+    return str;
+}
+
+/**
  * formats the phone number and provides inline warnings for invalid data when it is updated in the admin page.
  * @return string the correctly formatted phone number
  */
@@ -655,5 +676,12 @@ function validateDate(str) {
  */
 function validatePhone(str) {
     return str.length === 14;
+}
 
+/**
+ * checks if year is valid
+ * @return true if year is valid
+ */
+function validateYear(str) {
+    return str.length === 4;
 }
