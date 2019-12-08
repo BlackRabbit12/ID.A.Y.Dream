@@ -412,6 +412,28 @@ $(document).ready(function () {
             validateEmpty("email-body");
         });
     }); //.on
+
+    // deletes the user for the current modal
+    $("#delete").on("click", function() {
+        // find the user id in the modal
+        let id = $(this).parent().parent().find("#user_id").find("p").text();
+
+        if (confirm("Permanently remove user " + $("#full-name-status").html() + " from the system?")) {
+            $.ajax({
+                url: 'private/init.php',
+                method: 'post',
+                data: {queryType: "delete", user_id: id},
+                success: function (response) {
+                    console.log($("#" + id));
+                    // removes item from the table TODO doesn't work unless the user is active for some reason?
+                    $("#" + id).remove();
+                }
+            }); //.ajax
+        } // end confirm
+
+
+    }); // end delete event listener
+
 }); //.ready
 
 //JSON array

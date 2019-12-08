@@ -304,3 +304,10 @@ if (isset($_POST["emailType"])) {
     echo json_encode($data);
 
 }
+
+// user deletion
+if (isset($_POST["queryType"])) {
+    if ($_POST["queryType"] == "delete") {
+        deleteUser($_POST["user_id"]);
+    }
+}
