@@ -311,7 +311,7 @@ span {
     font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
     /*text-align: center;*/
     display: none;
-    /*border: 3px solid #5b7978;*/
+    border: 3px solid #5b7978;
     padding: 5% !important;
     margin-bottom: 5% !important;
 }
@@ -324,12 +324,9 @@ span {
     color: white !important;
     padding: 10px 20px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
-    margin: 4px 2px;
     cursor: pointer;
     border-radius: 16px;
-    width: 55%;
     letter-spacing: 0.3vw;
 }
 
