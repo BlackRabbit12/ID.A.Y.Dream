@@ -48,7 +48,6 @@ function addEditEvents() {
     $(".editInput").on("click", function () {
         // get the id of the row that is being updated from the modal's user_id
         let id = $(this).parent().children("#user_id").children("p").first().text();
-        console.log(id); //*******************************************************************************************************
         //if we have not "set" the input_id by clicking on it, then it's null
         if (document.getElementById("input_id") == null) {
             //set paragraph to text input, use children[0] because we only have one child for each label
@@ -84,7 +83,6 @@ function addEditEvents() {
                     } else {
                         this.style = "border-color: lightblue";
                     }
-                    console.log(allowSave); //********************************************************************************
                 });
             } else if (this.id.includes("date")) {
                 // add event listener to format the date
@@ -97,7 +95,6 @@ function addEditEvents() {
                     } else {
                         this.style = "border-color: lightblue";
                     }
-                    console.log(allowSave); //********************************************************************************
                 });
             } else if (this.id.includes("year")) {
                 // add event listener to format the year
@@ -110,7 +107,6 @@ function addEditEvents() {
                     } else {
                         this.style = "border-color: lightblue";
                     }
-                    console.log(allowSave); //********************************************************************************
                 });
             }
 
@@ -121,7 +117,6 @@ function addEditEvents() {
             //add event listener for when click outside of box to dump changes
             this.children[0].addEventListener("blur", function (event) {
                 event.preventDefault();
-                console.log("blurry"); //************************************************************************************
                 // get the <input>'s parent = <label>
                 let parent = this.parentElement;
                 //removes the <input>
@@ -164,10 +159,9 @@ function addEditEvents() {
                             //update the table data with new value. If user first, add a tags for link styling
                             if (data_to_update[2].toString() === "user_first") {
                                 $("#" + data_to_update[4]).children("." + data_to_update[2]).html("<a href=\'#\'>" + data_to_update[3] + "</a>");
-                                console.log("if"); //****************************************************************************************************
+
                             } else {
                                 $("#" + data_to_update[4]).children("." + data_to_update[2]).html(data_to_update[3]);
-                                console.log("else"); //**************************************************************************************************
                             }
                             let firstName = $("#" + id).children(".user_first").text();
                             let lastName = $("#" + id).children(".user_last").text();
@@ -196,7 +190,6 @@ function addEditEvents() {
         }
         // else we have already clicked on the field so it has an input_id
         else {
-            console.log("else"); //******************************************************************************************
         }
     }); //.on 'click'
 } //end function addEditEvents()
@@ -208,12 +201,10 @@ function addEditEvents() {
  */
 function addClickEvents() {
     //fills modal on 'click' of member's name
-    console.log("click events"); //******************************************************************************************
     // removes event listeners before reassigning to prevent duplication
     $(".update").off();
 
     $(".update").on("click", function () {
-        console.log("update clicked"); //************************************************************************************
         //get the 'id' of the row (parent of first name clicked)
         let id = this.parentElement.getAttribute("id");
         let firstName = $("#" + id).children(".user_first").text();
@@ -248,7 +239,6 @@ function addClickEvents() {
             data: {id: id, dataSelect: dataSelect},
             dataType: 'JSON',
             success: function (response) {
-                console.log(response); //************************************************************************************
                 //populateModalData (admin_page_functions.js)
                 populateModalData(response);
             }
@@ -287,7 +277,6 @@ function addClickEvents() {
             method: 'post',
             data: {id: id, dataSelect: dataSelect, status: status},
             success: function (response) {
-                console.log(response); //**************************************************************************************
             }
         }); //.ajax
     }); //.on 'change'
@@ -471,7 +460,6 @@ $(document).ready(function () {
                 method: 'post',
                 data: {queryType: "delete", user_id: id},
                 success: function (response) {
-                    // console.log($("#" + id));
                     // removes item from the table
                     let table = $("#dreamer-table").DataTable();
                     table
@@ -503,7 +491,6 @@ function populateModalData(responseData) {
 
     //for each data field, displaying 'key' and 'value' paired data into the modal
     $.each(responseData, function (key, value) {
-        console.log(key); //****************************************************************************************************
 
         //create a textNode wrapping the field heading (the column's name (aka 'key'))
         let textNode = document.createTextNode(formatHeadings(key) + ":   ");
@@ -652,7 +639,6 @@ $("#email-send").on("click", function () {
     let dataSelect = tableSelected();
 
     if (subject.trim() == "" || body.trim() == "") {
-        console.log("failed"); //********************************************************************************************
     }
     else {
         // make ajax call to update the display of pending volunteers
@@ -661,7 +647,6 @@ $("#email-send").on("click", function () {
             method: 'post',
             data: {emailType: dataSelect, subject: subject, body: body},
             success: function (response) {
-                //console.log(response);
                 // get the number of emails sent to choose which modal to populate
                 let emailCount = parseInt(response.substring(14, response.length - 1));
 
