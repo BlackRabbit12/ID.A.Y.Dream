@@ -28,6 +28,18 @@
     border-color: #c16062 !important;
 }
 
+/* styles for contacts inside of the dreamer and volunteer modals */
+#contact_name0, #contact_name1, #contact_name2 {
+    padding-top: 15px;
+    padding-bottom: 18px !important;
+    border-top: 1px solid black !important;
+}
+
+/* styling for notes inside of the dreamer and volunteer modals */
+#dreamer_notes, #volunteer_notes {
+    margin-bottom: 35px !important;
+}
+
 /* email modal's message box*/
 #email-body {
     margin-top: 15px;
@@ -254,7 +266,7 @@ tr {
 #user_id, #volunteer_id, #dreamer_id,
 #contact_id0, #contact_id1, #contact_id2,
 #contact_type0, #contact_type1, #contact_type2,
-#volunteer_active, #dreamer_status {
+#volunteer_status, #dreamer_status {
     display: none;
 }
 
@@ -307,3 +319,4 @@ tr {
         overflow: scroll;
     }
 }
+
