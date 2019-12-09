@@ -411,22 +411,16 @@ When the user navigates away from the modal their username and password inputs a
 	<summary><em><strong>db_scripts</strong></em></summary>
 <details>
   <summary>db_schema.sql</summary>
-    <p>This file contains tables for iD.A.Y.Dream Youth Organization's database. Table interactions are as such: All organization member's basic information is stored in the User table. Volunteers are Users with additional volunteer specific data, stored in the Volunteer table. Dreamers are Users with additional dreamer specific data, stored in the dreamer table. Contacts are either of type 'Reference' (tied to volunteers) or of type 'Guardian' (tied to dreamers).
+    <p>This file contains tables for iD.A.Y.Dream Youth Organization's database. Table interactions are as such: All organization member's basic information is stored in the User table. Volunteers are Users with additional volunteer specific data, stored in the Volunteer table. Dreamers are Users with additional dreamer specific data, stored in the dreamer table. Contacts are either of type 'Reference' (tied to volunteers) or of type 'Guardian' (tied to dreamers) and are stored in the Contact table.
  </p>
 
 + Volunteers have 3 references (required).
  + Dreamers have 1 guardian (1 required).
- 
-<p>Interest are the type of volunteer work a volunteer would like to do for the organization. Options include but are not limited to: 'Activities/Events', 'Fundraising', 'Other'. Volunteer_Interest is a linking table to allow one volunteer to have many interest (one-to-many).
-</p>
 
-+ Currently Unused:
 
-<p>Chapter table will allow Admin to send pertinent information to appropriate volunteers and dreamers when sending 'newsletters', 'emails', 'etc'. User_Chapter is a linking table to allow one volunteer to belong to many chapters (one-to-many). There are 'Interest' descriptions to match interest_id, this allows many interests to be added or deleted for future management. (order corresponds to order listed in volunteer_form.php.
-</p>
+<p>TODO Delete Sample Data When Live:</p>
 
-+ TODO Delete Sample Data When Live:
-	+ Sample Users, Volunteers, Dreamers, Contacts are added for testing purposes only.
++ Sample Users, Volunteers, Dreamers, Contacts are added for testing purposes only.
 
 </details>
 </details>
