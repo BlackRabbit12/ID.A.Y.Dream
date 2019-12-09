@@ -4,11 +4,11 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-29
- * Last Updated: 2019-11-27
+ * Last Updated: 2019-12-08
  * File name: validation_functions.js
  * Associated Files:
- *      youth_functions.js
- *      volunteer_functions.js
+ *      scripts/youth_functions.js
+ *      scripts/volunteer_functions.js
  *      youth_form.php
  *      volunteer_form.php
  *
@@ -16,17 +16,22 @@
  *      File contains functions for client side validation for Volunteer and Dreamer forms. If either form is
  *      incorrectly filled out, these functions will give the user visual indications where they need to fix their
  *      inputs in order to successfully submit their sign up form.
+ *      Quick File Relations:
+ *          youth_functions.js - gets client side validation from validation_functions.js
+ *          volunteer_functions.js - gets client side validation from validation_functions.js
+ *          youth_form.php - gets client side validation from validation_functions.js
+ *          volunteer_form.php - gets client side validation from validation_functions.js
  *      Functions:
- *          validatePhone
- *          validateEmpty
- *          validateEmail
- *          validateZip
- *          validateTshirt
- *          validateGender
- *          validateEthnicity
- *          validateGraduation
- *          validateDOB
- *          isEmpty
+ *          validatePhone(1x)
+ *          validateEmpty(1x)
+ *          validateEmail(1x)
+ *          validateZip()
+ *          validateTshirt()
+ *          validateGender()
+ *          validateEthnicity()
+ *          validateGraduation()
+ *          validateDOB()
+ *          isEmpty(1x)
  */
 
 /**
@@ -221,16 +226,17 @@ function validateDOB() {
         $("#err-dob").addClass("d-none");
         $("#dob").removeClass("red-border-drop");
 
-        // here is where we check to see if the dob for the prospective
-        // dreamer is too young or too old and handle this with alert direction
+        /*
+         * here is where we check to see if the dob for the prospective dreamer is too young or too old and handle
+         * this with alert direction
+         */
         let birthYear = str.substring(6);
         birthYear = parseInt(birthYear);
         let currentYear = new Date();
         currentYear = currentYear.getFullYear();
         let age = currentYear - birthYear;
 
-        // we now have their date of birth and can handle the different options
-        // starting with if the user is too young
+        // we now have their date of birth and can handle the different options starting with if the user is too young
         if (age < 10) {
             // if they choose ok then we redirect them to the home page of Brandi's site
             if(window.confirm("Dreamers must be youth ages 10 - 19. Go back to ID.A.Y.Dream Home Page?")){

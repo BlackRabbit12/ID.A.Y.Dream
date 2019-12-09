@@ -4,11 +4,11 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-29
- * Last Updated: 2019-10-29
+ * Last Updated: 2019-12-08
  * File name: volunteer_functions.js
  * Associated File:
  *      volunteer_form.php
- *      validation_functions.js
+ *      scripts/validation_functions.js
  *
  * Description:
  *      File contains functions for validating the Volunteer Form input client side. When the volunteer submits
@@ -17,14 +17,15 @@
  *      submission mistakes and try again.
  *      Quick File Relations:
  *          validation_functions.js - provides client side validation on volunteer form
+ *          volunteer_form.php - uses client side validation from validation_functions.js
  *      Functions:
- *          displayDecline
- *          displayForm
- *          toggleWeekendExplanation
- *          toggleInterestExplanation
- *          toggleYouthExplanationShow
- *          toggleYouthExplanationHide
- *          validateForm
+ *          displayDecline()
+ *          displayForm()
+ *          toggleWeekendExplanation()
+ *          toggleInterestExplanation()
+ *          toggleYouthExplanationShow()
+ *          toggleYouthExplanationHide()
+ *          validateForm()
  */
 
 /* --- Globals --- */
@@ -210,10 +211,12 @@ for (let i = 0; i < validatePhoneArray.length; i++) {
  * Event listeners for input elements in the form that require immediate validation.
  */
 $("#t-shirt").on("input focus blur", function() {
+    //validateTshirt (validation_functions.js)
     validateTshirt();
 }); //.on
 
 $("#zip").on("input focus blur", function() {
+    //validateZip (validation_functions.js)
     validateZip();
 }); //.on
 
@@ -250,6 +253,7 @@ function validateForm() {
 
     // Checks all phone values on form are valid and formatted
     for (let i = 0; i < validatePhoneArray.length; i++) {
+        //validatePhone (validation_functions.js)
         if (!validatePhone(validatePhoneArray[i])) {
             isValid = false;
         }
@@ -257,15 +261,16 @@ function validateForm() {
 
     // Checks all email values on form are valid
     for (let i = 0; i < validateEmailArray.length; i++) {
+        //validateEmail (validation_functions.js)
         if (!validateEmail(validateEmailArray[i])) {
             isValid = false;
         }
     }
-
+    //validateZip (validation_functions.js)
     if (!validateZip()) {
         isValid = false;
     }
-
+    //validateTshirt (validation_functions.js)
     if (!validateTshirt()) {
         isValid = false;
     }

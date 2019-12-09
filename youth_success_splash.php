@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-02
- * Last Update: 2019-12-05
+ * Last Update: 2019-12-08
  * File name: youth_success_splash.php
  * Associated Files:
  *      youth_form.php
@@ -26,12 +26,21 @@
  *      private/functions.php
  *      private/validation_functions.php
  *      private/query_functions.php
+ *      private/init.php
  *
  * Description:
  *      File contains iD.A.Y.Dream Youth Organization's summary of provided dreamer information. The dreamer will
  *      have filled out a Sign Up form and submitted it to the database. This page displays the information back to the
  *      dreamer for review and or personal records. This page also serves as an indicator that the dreamer's
  *      information was successfully inserted into the database.
+ *      Quick File Relations:
+ *          youth_form.php - on submit form, this page is generated
+ *          youth_styles.css - styles for summary
+ *          success_splash_functions.js - toggle the summary display
+ *          functions.php - create the summary
+ *          validation_functions.php - format select data fields
+ *          query_functions.php - inserts the dreamer into the database
+ *          init.php - all 'require once' files
  */
 
 

@@ -4,7 +4,7 @@
  * @author Bridget Black
  * @version 1.0
  * 2019-11-09
- * Last Updated: 2019-11-27
+ * Last Updated: 2019-12-08
  * File name: db_schema.sql
  * Associated Files:
  *      admin_page.php

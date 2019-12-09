@@ -6,22 +6,33 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-11-09
- * Last Update: 2019-11-12
+ * Last Update: 2019-12-08
  * File name: query_functions.php
  * Associated Files:
  *      volunteer_success_splash_page.php
  *      youth_success_splash.php
+ *      private/ajax_functions.php
+ *      private/validation_functions.php
  *
  * Description:
- *      File contains **********************************************************************************
+ *      File contains functionalism's for updating data in a table, inserting a dreamer and a volunteer into the
+ *      database, deleting a user from the database.
+ *      Quick File Relations:
+ *          ajax_functions.php - uses updateData()
+ *          validation_functions.php - validates User + Volunteer + Dreamer + Contact
+ *      Functions:
+ *          updateData(3x)
+ *          insertDreamer(3x)
+ *          volunteerInsert(3x)
+ *          deleteUser(1x)
  */
 
 /**
- * Adds values of data set to table
- * @param $table string The name of the sql table to update
- * @param $table_id string The primary key field of the table to update
- * @param $data [] Associative array of data to add
- * @param $id int The id of the row we want to add data to
+ * Adds values of data set to table.
+ * @param $table string The name of the sql table to update.
+ * @param $table_id string The primary key field of the table to update.
+ * @param $data [] Associative array of data to add.
+ * @param $id int The id of the row we want to add data to.
  */
 function updateData($table, $table_id, $data, $id)
 {
@@ -33,13 +44,13 @@ function updateData($table, $table_id, $data, $id)
         mysqli_query($db, $sql);
     }
 
-}
+} //end updateData()
 
 /**
  * Inserts a User/Dreamer into the database.
- * @param $user [] associative array of user data
- * @param $dreamer [] associative array of dreamer data
- * @return bool for success or failure of insert
+ * @param $user [] Associative array of user data.
+ * @param $dreamer [] Associative array of dreamer data.
+ * @return bool For success or failure of insert.
  */
 function insertDreamer($user, $dreamer, $guardian)
 {
@@ -48,6 +59,7 @@ function insertDreamer($user, $dreamer, $guardian)
     global $db;
 
     //if all validation is good, add user to database
+    //validateUser + validateDreamer (validation_functions.php)
     if (validateUser($user) && validateDreamer($dreamer)) {
         //insert new user_id into the database
         $sql = "INSERT INTO User (user_id, user_date_joined) VALUES (default, now());";
@@ -61,18 +73,21 @@ function insertDreamer($user, $dreamer, $guardian)
 
         if ($user_result && $dreamer_result) {
             // calls update data on user and dreamer associative arrays
+            //updateData (query_functions.php)
             updateData("User", "user_id", $user, $user_id);
             updateData("Dreamer", "dreamer_id", $dreamer, $dreamer_id);
 
             // calls insert function for guardian
             foreach($guardian as $value) {
                 // checks if each guardian is valid, executes query if true
+                //validateContact (validation_functions.php)
                 if (validateContact($value)) {
                     $sql = "INSERT INTO Contact (contact_id, user_id) VALUES (default, $user_id);";
                     $contact_result = mysqli_query($db, $sql);
                     $contact_id = $db->insert_id;
 
                     if ($contact_result) {
+                        //updateData (query_functions.php)
                         updateData("Contact", "contact_id", $value, $contact_id);
                     }
                 }
@@ -93,10 +108,10 @@ function insertDreamer($user, $dreamer, $guardian)
 
 /**
  * Inserts a User/Volunteer into the database.
- * @param $user [] associative array of user data
- * @param $volunteer [] associative array of volunteer data
- * @param $references [] array of associative arrays containing reference information
- * @return bool for success or failure of insert
+ * @param $user [] Associative array of user data.
+ * @param $volunteer [] Associative array of volunteer data.
+ * @param $references [] Array of associative arrays containing reference information.
+ * @return bool For success or failure of insert.
  */
 function volunteerInsert($user, $volunteer, $references)
 {
@@ -105,6 +120,7 @@ function volunteerInsert($user, $volunteer, $references)
     global $error;
 
     //if validation is good, add volunteer to database
+    //validateUser + validateVolunteer (validation_functions.php)
     if (validateUser($user) && validateVolunteer($volunteer)) {
         //insert new user_id into the database
         $sql = "INSERT INTO User (user_id, user_date_joined) VALUES (default, now());";
@@ -118,18 +134,21 @@ function volunteerInsert($user, $volunteer, $references)
 
         if ($user_result && $volunteer_result) {
             // calls update data on user and volunteer associative arrays
+            //updateData (query_functions.php)
             updateData("User", "user_id", $user, $user_id);
             updateData("Volunteer", "volunteer_id", $volunteer, $volunteer_id);
 
             // calls insert function for references
             foreach($references as $value) {
                 // checks if each reference is valid, executes query if true
+                //validateContact (validation_functions.php)
                 if (validateContact($value)) {
                     $sql = "INSERT INTO Contact (contact_id, user_id) VALUES (default, $user_id);";
                     $contact_result = mysqli_query($db, $sql);
                     $contact_id = $db->insert_id;
 
                     if ($contact_result) {
+                        //updateData (query_functions.php)
                         updateData("Contact", "contact_id", $value, $contact_id);
                     }
                 }
@@ -148,8 +167,8 @@ function volunteerInsert($user, $volunteer, $references)
 } //end volunteerInsert()
 
 /**
- * Deletes user by id and all data associated with them
- * @param $user_id int id of the user to delete
+ * Deletes user by id and all data associated with them.
+ * @param $user_id int Id of the user to delete.
  */
 function deleteUser($user_id) {
     global $db;
@@ -165,4 +184,4 @@ function deleteUser($user_id) {
 
     $sql = "DELETE FROM User WHERE user_id = $user_id;";
     mysqli_query($db, $sql);
-}
+} //end deleteUser()

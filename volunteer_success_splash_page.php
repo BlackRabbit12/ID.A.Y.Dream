@@ -6,12 +6,12 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-02
- * Last Update: 2019-12-05
+ * Last Update: 2019-12-08
  * File name: volunteer_success_splash_page.php
  * Associated Files:
  *      volunteer_form.php
  *      @link https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css
- *      @link css/styles.css
+ *      css/styles.css
  *      images/apple-touch-icon.png
  *      images/favicon-32x32_title.png
  *      images/favicon-16x16_title.png
@@ -26,12 +26,21 @@
  *      private/functions.php
  *      private/validation_functions.php
  *      private/query_functions.php
+ *      private/init.php
  *
  * Description:
  *      File contains iD.A.Y.Dream Youth Organization's summary of provided volunteer information. The volunteer will
  *      have filled out a Sign Up form and submitted it to the database. This page displays the information back to the
  *      volunteer for review and or personal records. This page also serves as an indicator that the volunteer's
  *      information was successfully inserted into the database.
+ *      Quick File Relations:
+ *          volunteer_form.php - on form submit, this page is generated
+ *          styles.css - styles for the summary
+ *          success_splash_functions.js - toggle the summary display
+ *          functions.php - create the summary
+ *          validation_functions.php - format select data fields
+ *          query_functions.php - insert the volunteer into the database
+ *          init.php - all 'required once' files
  */
 
 

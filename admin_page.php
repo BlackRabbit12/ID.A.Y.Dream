@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version: 1.0
  * 2019-10-16
- * Last Update: 2019-12-05
+ * Last Update: 2019-12-08
  * File Name: admin_page.php
  * Associated Files:
  *      private/init.php
@@ -42,7 +42,7 @@
  *      Quick File Relations:
  *          functions.php - builds the admin table
  *          admin_page_functions.js - populates the admin table user modal
- *          ajax_functions.php changes - the table data based on current status query
+ *          ajax_functions.php - changes the table data based on current status query
  *          validation_functions.js - for validating admin input
  *          index.php - for validating that the admin has logged in and can stay logged in
  */

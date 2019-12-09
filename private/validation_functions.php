@@ -6,14 +6,37 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-11-09
- * Last Update: 2019-11-12
+ * Last Update: 2019-12-08
  * File name: validation_functions.php
  * Associated Files:
  *      volunteer_success_splash.php
  *      youth_success_splash.php
  *
  * Description:
- *      File contains **********************************************************************************
+ *      File contains multiple validation functions.
+ *      Quick File Relations:
+ *          volunteer_success_splash_page.php - uses server side validation
+ *          youth_success_splash.php - uses server side validation
+ *      Functions:
+ *          hasLength(3x)
+ *          isEmpty(1x)
+ *          isNumeric(1x)
+ *          requiredInputIsValid(1x)
+ *          requiredTextareaIsValid(1x)
+ *          inputIsValid(1x)
+ *          textareaIsValid(1x)
+ *          emailIsValid(1x)
+ *          zipIsValid(1x)
+ *          formatPhone(1x)
+ *          phoneIsValid(1x)
+ *          validateContact(1x)
+ *          validateVolunteer(1x)
+ *          validateDreamer(1x)
+ *          validateUser(1x)
+ *          validateDOB(1x)
+ *          formatDOB(1x)
+ *          validateGrad(1x)
+ *          genderIsValid(1x)
  */
 
 
@@ -29,9 +52,15 @@ const YEAR_LENGTH = 4;
 const DATE_LENGTH = 8;
 
 /* --- Helper Functions --- */
-// Returns true if string is of required min and max length (inclusive)
-function hasLength($str, $min, $max)
-{
+/**
+ * Returns true if string is of required min and max length (inclusive).
+ * @param $str
+ * @param $min
+ * @param $max
+ * @return bool
+ */
+//TODO finish docs
+function hasLength($str, $min, $max){
     if (strlen($str) < $min) {
         return false;
     }
@@ -41,78 +70,124 @@ function hasLength($str, $min, $max)
     }
 
     return true;
-}
+} //end hasLength($str, $min, $max)
 
-// returns true if string is empty
-function isEmpty($str)
-{
+
+/**
+ * Checks if the given string is empty or not.
+ * @param $str
+ * @return bool Returns true if string is empty, false if it is not empty.
+ */
+//TODO finish docs
+function isEmpty($str){
     return trim($str) == "" || $str == null;
-}
+} //end isEmpty($str)
 
-// returns true if string contains only numbers
-function isNumeric($str)
-{
+
+/**
+ *
+ * @param $str
+ * @return bool Returns true if string contains only numbers.
+ */
+//TODO finish docs
+function isNumeric($str){
     return ctype_digit($str);
-}
+} //end isNumeric($str)
+
+//TODO delete clean up?
 
 // returns true if string contains only letters
-function isAlpha($str)
-{
+function isAlpha($str){
     return ctype_alpha($str);
 }
 
 /* --- Validation Functions --- */
-// returns true if phone number is valid
-function phoneIsValid($str)
-{
+/**
+ *
+ * @param $str
+ * @return bool Returns true if phone number is valid.
+ */
+//TODO finish docs
+function phoneIsValid($str){
     return isNumeric($str) && hasLength($str, PHONE_LENGTH, PHONE_LENGTH);
-}
+} //end phoneIsValid($str)
 
-// formats phone number
-function formatPhone($str)
-{
+
+/**
+ * Formats phone number.
+ * @param $str
+ * @return string|string[]|null
+ */
+function formatPhone($str){
     $str = preg_replace("/[^0-9]/", "", $str);
     return $str;
-}
+} //end formatPhone($str)
 
-// return true if zip is valid
-function zipIsValid($str)
-{
+
+/**
+ *
+ * @param $str
+ * @return bool Return true if zip is valid.
+ */
+//TODO finish docs
+function zipIsValid($str){
     return isNumeric($str) && hasLength($str, ZIP_LENGTH, ZIP_LENGTH);
-}
+} //end zipIsValid($str)
 
-// returns true if email is valid
-function emailIsValid($str)
-{
+/**
+ *
+ * @param $str
+ * @return bool Returns true if email is valid.
+ */
+//TODO finish docs
+function emailIsValid($str){
     if (filter_var($str, FILTER_VALIDATE_EMAIL)) {
         return hasLength($str, 0, VARCHAR_MAX);
     }
     return false;
-}
+} //end emailIsValid($str)
 
-// returns true if textarea is valid
-function textareaIsValid($str)
-{
+/**
+ *
+ * @param $str
+ * @return bool Returns true if textarea is valid.
+ */
+//TODO finish docs
+function textareaIsValid($str){
     return hasLength($str, 0, TEXT_MAX);
-}
+} //end textareaIsValid($str)
 
-// returns true if input is valid
-function inputIsValid($str)
-{
+/**
+ *
+ * @param $str
+ * @return bool Returns true if input is valid.
+ */
+//TODO finish docs
+function inputIsValid($str){
     return hasLength($str, 0, VARCHAR_MAX);
-}
+} //end inputIsValid($str)
 
-// returns true if required textarea is valid
-function requiredTextareaIsValid($str)
-{
+/**
+ *
+ * @param $str
+ * @return bool Returns true if required textarea is valid.
+ */
+//TODO finish docs
+function requiredTextareaIsValid($str){
     return !isEmpty($str) && hasLength($str, 0, TEXT_MAX);
-}
+} //end requiredTextareaIsValid($str)
 
-// returns true if required input is valid
-function requiredInputIsValid($str)
-{
+/**
+ *
+ * @param $str
+ * @return bool Returns true if required input is valid.
+ */
+//TODO finish docs
+function requiredInputIsValid($str){
     return !isEmpty($str) && hasLength($str, 0, VARCHAR_MAX);
-}
+} //end requiredInputIsValid($str)
+
+//TODO delete clean up?
 
 // returns true if year is valid
 function yearIsValid($str)
@@ -120,49 +195,71 @@ function yearIsValid($str)
     return isNumeric($str) && hasLength($str, YEAR_LENGTH, YEAR_LENGTH);
 }
 
+//TODO delete clean up?
+
 // returns true if date is valid
 function dateIsValid($str)
 {
     return isNumeric($str) && hasLength($str, DATE_LENGTH, DATE_LENGTH);
 }
 
-//returns true if gender is valid (could make this rely on database too so she can add more genders)
-function genderIsValid($str)
-{
+/**
+ *
+ * @param $str
+ * @return bool Returns true if gender is valid (could make this rely on database too so she can add more genders).
+ */
+//TODO finish docs
+function genderIsValid($str){
     return $str == "male" || $str == "female" || $str == "other" || $str == "prefer-not-to-say";
-}
+} //end genderIsValid($str)
 
-// returns true if graduation year is valid
-function validateGrad($str)
-{
+/**
+ *
+ * @param $str
+ * @return bool Returns true if graduation year is valid.
+ */
+//TODO finish docs
+function validateGrad($str){
     if (isNumeric($str)) {
         return ((int)$str < date("Y") + 10 && (int)$str >= date("Y"));
     }
     return false;
-}
+} //end validateGrad($str)
 
-// turns date into format for mysql db
-function formatDOB($str)
-{
+/**
+ * Turns date into format for mysql db.
+ * @param $str
+ * @return string
+ */
+//TODO finish docs
+function formatDOB($str){
     $month = substr($str, 0, 2);
     $day = substr($str, 3, 2);
     $year = substr($str, 6, 4);
     return $year . "-" . $month . "-" . $day;
-}
+} //end formatDOB($str)
 
-// returns true if date of birth is valid
-function validateDOB($str)
-{
+/**
+ *
+ * @param $str
+ * @return bool Returns true if date of birth is valid.
+ */
+//TODO finish docs
+function validateDOB($str){
     $sub = substr($str, 0, 4);
     if (isNumeric($sub)) {
         return ((int)$sub <= date("Y") - 10 && (int)$sub >= date("Y") - 20);
     }
     return false;
-}
+} //end validateDOB($str)
 
-// returns true if the user information is valid
-function validateUser($user)
-{
+/**
+ *
+ * @param $user
+ * @return bool Returns true if the user information is valid.
+ */
+//TODO finish docs
+function validateUser($user){
     global $error;
 
     //set isValid to true, change to false if one field fails to pass validation
@@ -193,11 +290,15 @@ function validateUser($user)
     }
 
     return $isValid;
-}
+} //end validateUser($user)
 
-// returns true if the dreamer information is valid
-function validateDreamer($dreamer)
-{
+/**
+ *
+ * @param $dreamer
+ * @return bool Returns true if the dreamer information is valid.
+ */
+//TODO finish docs
+function validateDreamer($dreamer){
     //global declaration
     global $db;
     //error message array
@@ -249,10 +350,16 @@ function validateDreamer($dreamer)
     }
 
     return $isValid;
-}
+} //end validateDreamer($dreamer)
 
-function validateVolunteer($volunteer)
-{
+
+/**
+ *
+ * @param $volunteer
+ * @return bool
+ */
+//TODO finish docs
+function validateVolunteer($volunteer){
 //error message array
     global $error;
 
@@ -327,10 +434,16 @@ function validateVolunteer($volunteer)
 //    }
 
     return $isValid;
-}
+} //end validateVolunteer($volunteer)
 
-function validateContact($contact)
-{
+
+/**
+ *
+ * @param $contact
+ * @return bool
+ */
+//TODO finish docs
+function validateContact($contact){
     //global declaration
     global $db;
     //error message array
@@ -363,4 +476,4 @@ function validateContact($contact)
     }
 
     return $isValid;
-}
+} //end validateContact($contact)

@@ -6,10 +6,14 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-11-09
- * Last Update: 2019-11-12
+ * Last Update: 2019-12-08
  * File name: init.php
  * Associated Files:
- *      ************************************************************************************************
+ *      youth_success_splash.php
+ *      volunteer_form.php
+ *      volunteer_success_splash_page.php
+ *      admin_page.php
+ *      private/ajax_functions.php
  *
  * Description:
  *      File contains required_once files used by associated files.

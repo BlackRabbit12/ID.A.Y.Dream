@@ -4,10 +4,10 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-12-05
- * Last Update: 2019-12-05
+ * Last Update: 2019-12-08
  * File name: index_page_functions.js
  * Associated Files:
- *      index.php
+ *      private/index.php
  *
  * Description:
  *      This file contains the action for the #auto-login-button on click event
@@ -20,6 +20,9 @@
  *      This file also contains code that handles modal closures with sensitive login data.
  *      When the user navigates away from the modal their username and password inputs are deleted
  *      as well as any error texts held in the #error-login span.
+ *
+ *      Quick File Relations:
+ *          index.php - uses index_page_functions events
  */
 
 $('#auto-login-button').on('click', function(){
@@ -31,10 +34,11 @@ $('#loginModal').on('hidden.bs.modal', function () {
     window.location.href = 'index.php';
 });
 
-// this is a helper check that if the admin user hits refresh while they have the
-// login modal open (after they have tried to enter invalid data) -- that the chrome error message
-// does not pop up 'Confirm form resubmission'.
-
+/*
+ * This is a helper check that if the admin user hits refresh while they have the login modal open
+ * (after they have tried to enter invalid data) -- that the chrome error message does not pop up
+ * 'Confirm form resubmission'.
+ */
 // *** with more sensitive data/more users this error check should be commented out ***
 if ( window.history.replaceState ) {
     window.history.replaceState( null, null, window.location.href );
