@@ -4,7 +4,7 @@
  * @author Bridget Black
  * @version 1.0
  * 2019-11-09
- * Last Updated: 2019-12-08
+ * Last Updated: 2019-12-09
  * File name: db_schema.sql
  * Associated Files:
  *      admin_page.php
@@ -19,17 +19,6 @@
  *      Contacts are either of type 'Reference' (tied to volunteers) or of type 'Guardian' (tied to dreamers).
  *          Volunteers have 3 references (required).
  *          Dreamers have 1 guardian (1 required).
- *      Interest are the type of volunteer work a volunteer would like to do for the organization. Options include but
- *          are not limited to: 'Activities/Events', 'Fundraising', 'Other'.
- *      Volunteer_Interest is a linking table to allow one volunteer to have many interest (one-to-many).
- *
- *      ******Currently Unused:
- *      Chapter table will allow Admin to send pertinent information to appropriate volunteers and dreamers when
- *          sending 'newsletters', 'emails', 'etc'.
- *      User_Chapter is a linking table to allow one volunteer to belong to many chapters (one-to-many).
- *
- *      There are 'Interest' descriptions to match interest_id, this allows many interests to be added or deleted for
- *          future management. (order corresponds to order listed in volunteer_form.php.
  *
  *      TODO Delete Sample Data When Live:
  *      Sample Users, Volunteers, Dreamers, Contacts are added for testing purposes only.
