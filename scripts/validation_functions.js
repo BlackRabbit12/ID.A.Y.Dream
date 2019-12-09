@@ -220,6 +220,34 @@ function validateDOB() {
     } else {
         $("#err-dob").addClass("d-none");
         $("#dob").removeClass("red-border-drop");
+
+        // here is where we check to see if the dob for the prospective
+        // dreamer is too young or too old and handle this with alert direction
+        let birthYear = str.substring(6);
+        birthYear = parseInt(birthYear);
+        let currentYear = new Date();
+        currentYear = currentYear.getFullYear();
+        let age = currentYear - birthYear;
+
+        // we now have their date of birth and can handle the different options
+        // starting with if the user is too young
+        if (age < 10) {
+            // if they choose ok then we redirect them to the home page of Brandi's site
+            if(window.confirm("Dreamers must be youth ages 10 - 19. Go back to ID.A.Y.Dream Home Page?")){
+                window.location = "https://www.idaydream.org/";
+            }
+            // if they do not choose ok we reset the dob field and let them stay on the form
+            $("#dob").val("");
+        }
+
+        // second check is if they are too old to be a dreamer
+        else if(age > 19) {
+            if(window.confirm("Dreamers must be youth ages 10 - 19. Go to ID.A.Y.Dream Volunteer Form?")){
+                window.location.href = "volunteer_form.php";
+            }
+            // if they do not choose ok we reset the dob field and let them stay on the form
+            $("#dob").val("");
+        }
         return true;
     }
 } //end validateDOB()

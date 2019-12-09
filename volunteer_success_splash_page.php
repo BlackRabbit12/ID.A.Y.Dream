@@ -119,7 +119,6 @@ $volunteer["volunteer_youth_experience"] = "";
 
     // if the availability explanation is filled out we add the text explanation to our insert
     if(isset($_POST['availability-Explain']) && $_POST['availability-Explain'] != "") {
-        nl2br("You will find the \n newlines in this string \r\n on the browser window.");
         $availString = $availString . ". I am also available: ";
         $availString = $availString . $_POST['availability-Explain'];
     }
