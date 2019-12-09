@@ -178,7 +178,7 @@ if (!isset($_GET["data_select"])) {
             $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_status, user_date_joined FROM User 
                     INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
                     WHERE dreamer_status = 'active';";
-            $sql_ids = "SELECT user_id FROM Dreamer WHERE dreamer_status = 'active';";
+            $user_ids = "SELECT user_id FROM Dreamer WHERE dreamer_status = 'active';";
         }
         //if it's the volunteer table, run $sql for member row + run $sql_ids for user_ids Foreign key
         //SQL statements (db_schema.sql)
@@ -186,7 +186,7 @@ if (!isset($_GET["data_select"])) {
             $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User 
                     INNER JOIN Volunteer ON User.user_id = Volunteer.user_id
                     WHERE volunteer_status = 'active';";
-            $sql_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'active';";
+            $user_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'active';";
         }
         /*
          * If on the dreamer or volunteer table selected, then ensure both database queries executed correctly and
@@ -199,7 +199,7 @@ if (!isset($_GET["data_select"])) {
             //storing column names
             $tableHeadingNames = $result->fetch_fields();
             //storing return data and ensuring query executes correctly
-            $result_ids = mysqli_query($db, $sql_ids);
+            $result_ids = mysqli_query($db, $user_ids);
             ?>
 
             <!--start the building of the table-->

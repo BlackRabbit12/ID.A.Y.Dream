@@ -34,10 +34,10 @@
  * Builds the admin table.
  * @param $result mysqli_result Result of SQL query containing data to build the table.
  * @param $tableHeadingNames array the column names of the SQL query return.
- * @param $result_ids mysqli_result Result of SQL query for the the user ids of each row.
+ * @param $user_ids mysqli_result Result of SQL query for the the user id at each row.
  * @return string $output is the 'string' of html that builds the table.
  */
-function buildTable($result, $tableHeadingNames, $result_ids)
+function buildTable($result, $tableHeadingNames, $user_ids)
 {
     $output = "<thead>";
     $output .= "<tr>";
@@ -53,7 +53,7 @@ function buildTable($result, $tableHeadingNames, $result_ids)
 
     //array of user_id, to capture each row's user_id for updates
     $user_ids_array = [];
-    while ($value = mysqli_fetch_assoc($result_ids)) {
+    while ($value = mysqli_fetch_assoc($user_ids)) {
         $user_ids_array[] = $value['user_id'];
     }
 
