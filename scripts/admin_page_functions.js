@@ -78,6 +78,12 @@ function addEditEvents() {
                 $("#input_id").on("keydown input focus", function () {
                     this.value = formatPhone(this.value);
                     allowSave = validatePhone(this.value);
+                    // coloring the border of the input red for invalid input
+                    if (!allowSave) {
+                        this.style = "border-color: red";
+                    } else {
+                        this.style = "border-color: lightblue";
+                    }
                     console.log(allowSave); //********************************************************************************
                 });
             } else if (this.id.includes("date")) {
@@ -85,6 +91,12 @@ function addEditEvents() {
                 $("#input_id").on("keydown input focus", function () {
                     this.value = formatDate(this.value);
                     allowSave = validateDate(this.value);
+                    // coloring the border of the input red for invalid input
+                    if (!allowSave) {
+                        this.style = "border-color: red";
+                    } else {
+                        this.style = "border-color: lightblue";
+                    }
                     console.log(allowSave); //********************************************************************************
                 });
             } else if (this.id.includes("year")) {
@@ -92,6 +104,12 @@ function addEditEvents() {
                 $("#input_id").on("keydown input focus", function () {
                     this.value = formatYear(this.value);
                     allowSave = validateYear(this.value);
+                    // coloring the border of the input red for invalid input
+                    if (!allowSave) {
+                        this.style = "border-color: red";
+                    } else {
+                        this.style = "border-color: lightblue";
+                    }
                     console.log(allowSave); //********************************************************************************
                 });
             }
