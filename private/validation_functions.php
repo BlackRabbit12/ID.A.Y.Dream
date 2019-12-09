@@ -54,12 +54,11 @@ const DATE_LENGTH = 8;
 /* --- Helper Functions --- */
 /**
  * Returns true if string is of required min and max length (inclusive).
- * @param $str
- * @param $min
- * @param $max
- * @return bool
+ * @param $str string String to check the length of
+ * @param $min int Minimum size of the string
+ * @param $max int Maximum size of the string
+ * @return bool Returns true if string is of required min and max length (inclusive).
  */
-//TODO finish docs
 function hasLength($str, $min, $max){
     if (strlen($str) < $min) {
         return false;
@@ -74,49 +73,39 @@ function hasLength($str, $min, $max){
 
 
 /**
- * Checks if the given string is empty or not.
- * @param $str
+ * Returns true if string is empty.
+ * @param $str string to test.
  * @return bool Returns true if string is empty, false if it is not empty.
  */
-//TODO finish docs
 function isEmpty($str){
     return trim($str) == "" || $str == null;
 } //end isEmpty($str)
 
 
 /**
- *
- * @param $str
+ * Returns true if string contains only numbers.
+ * @param $str string to test.
  * @return bool Returns true if string contains only numbers.
  */
-//TODO finish docs
 function isNumeric($str){
     return ctype_digit($str);
 } //end isNumeric($str)
 
-//TODO delete clean up?
-
-// returns true if string contains only letters
-function isAlpha($str){
-    return ctype_alpha($str);
-}
-
 /* --- Validation Functions --- */
 /**
- *
- * @param $str
+ * Returns true if the phone number is valid.
+ * @param $str phone number string
  * @return bool Returns true if phone number is valid.
  */
-//TODO finish docs
 function phoneIsValid($str){
     return isNumeric($str) && hasLength($str, PHONE_LENGTH, PHONE_LENGTH);
 } //end phoneIsValid($str)
 
 
 /**
- * Formats phone number.
- * @param $str
- * @return string|string[]|null
+ * Formats phone number for entry into database.
+ * @param $str string phone number formatted for the client side.
+ * @return string the formatted phone number string for the database
  */
 function formatPhone($str){
     $str = preg_replace("/[^0-9]/", "", $str);
@@ -125,21 +114,19 @@ function formatPhone($str){
 
 
 /**
- *
- * @param $str
+ * Returns true if zip is valid.
+ * @param $str string the zip to test.
  * @return bool Return true if zip is valid.
  */
-//TODO finish docs
 function zipIsValid($str){
     return isNumeric($str) && hasLength($str, ZIP_LENGTH, ZIP_LENGTH);
 } //end zipIsValid($str)
 
 /**
- *
- * @param $str
+ *Returns true if email is valid.
+ * @param $str string the email to test.
  * @return bool Returns true if email is valid.
  */
-//TODO finish docs
 function emailIsValid($str){
     if (filter_var($str, FILTER_VALIDATE_EMAIL)) {
         return hasLength($str, 0, VARCHAR_MAX);
@@ -148,77 +135,55 @@ function emailIsValid($str){
 } //end emailIsValid($str)
 
 /**
- *
- * @param $str
+ * Returns true if the textarea is valid
+ * @param $str string text to test.
  * @return bool Returns true if textarea is valid.
  */
-//TODO finish docs
 function textareaIsValid($str){
     return hasLength($str, 0, TEXT_MAX);
 } //end textareaIsValid($str)
 
 /**
- *
- * @param $str
+ * Return true if input is valid.
+ * @param $str string to test.
  * @return bool Returns true if input is valid.
  */
-//TODO finish docs
 function inputIsValid($str){
     return hasLength($str, 0, VARCHAR_MAX);
 } //end inputIsValid($str)
 
 /**
- *
- * @param $str
+ * Returns true if required textarea is valid.
+ * @param $str string input text to test.
  * @return bool Returns true if required textarea is valid.
  */
-//TODO finish docs
 function requiredTextareaIsValid($str){
     return !isEmpty($str) && hasLength($str, 0, TEXT_MAX);
 } //end requiredTextareaIsValid($str)
 
 /**
- *
- * @param $str
+ * Returns true if required input is valid.
+ * @param $str string the input text to test.
  * @return bool Returns true if required input is valid.
  */
-//TODO finish docs
 function requiredInputIsValid($str){
     return !isEmpty($str) && hasLength($str, 0, VARCHAR_MAX);
 } //end requiredInputIsValid($str)
 
-//TODO delete clean up?
-
-// returns true if year is valid
-function yearIsValid($str)
-{
-    return isNumeric($str) && hasLength($str, YEAR_LENGTH, YEAR_LENGTH);
-}
-
-//TODO delete clean up?
-
-// returns true if date is valid
-function dateIsValid($str)
-{
-    return isNumeric($str) && hasLength($str, DATE_LENGTH, DATE_LENGTH);
-}
-
 /**
- *
- * @param $str
- * @return bool Returns true if gender is valid (could make this rely on database too so she can add more genders).
+ * Return true if gender is valid.
+ * @param $str string the gender to test.
+ * @return bool Returns true if gender is valid.
  */
-//TODO finish docs
 function genderIsValid($str){
     return $str == "male" || $str == "female" || $str == "other" || $str == "prefer-not-to-say";
 } //end genderIsValid($str)
 
 /**
- *
- * @param $str
+ * Return true if graduation year is valid input and is within the next 10 years.
+ * @param $str string the graduation year to test.
  * @return bool Returns true if graduation year is valid.
  */
-//TODO finish docs
 function validateGrad($str){
     if (isNumeric($str)) {
         return ((int)$str < date("Y") + 10 && (int)$str >= date("Y"));
@@ -227,11 +192,10 @@ function validateGrad($str){
 } //end validateGrad($str)
 
 /**
- * Turns date into format for mysql db.
- * @param $str
- * @return string
+ * Turns date into format for SQL db.
+ * @param $str string MM/DD/YYYY date to format.
+ * @return string returns SQL formatted date.
  */
-//TODO finish docs
 function formatDOB($str){
     $month = substr($str, 0, 2);
     $day = substr($str, 3, 2);
@@ -240,11 +204,10 @@ function formatDOB($str){
 } //end formatDOB($str)
 
 /**
- *
- * @param $str
+ * Returns true if date of birth is valid.
+ * @param $str string date of birth to test.
  * @return bool Returns true if date of birth is valid.
  */
-//TODO finish docs
 function validateDOB($str){
     $sub = substr($str, 0, 4);
     if (isNumeric($sub)) {
@@ -254,11 +217,10 @@ function validateDOB($str){
 } //end validateDOB($str)
 
 /**
- *
- * @param $user
+ * Returns true if the user information is valid.
+ * @param $user array Associative array of user data.
  * @return bool Returns true if the user information is valid.
  */
-//TODO finish docs
 function validateUser($user){
     global $error;
 
@@ -293,11 +255,10 @@ function validateUser($user){
 } //end validateUser($user)
 
 /**
- *
- * @param $dreamer
+ * Returns true if the dreamer information is valid.
+ * @param $dreamer array Associative array of dreamer data.
  * @return bool Returns true if the dreamer information is valid.
  */
-//TODO finish docs
 function validateDreamer($dreamer){
     //global declaration
     global $db;
@@ -354,11 +315,10 @@ function validateDreamer($dreamer){
 
 
 /**
- *
- * @param $volunteer
- * @return bool
+ * Returns true if the volunteer information is valid.
+ * @param $volunteer array Associative array of volunteer data.
+ * @return bool Returns true if the volunteer information is valid.
  */
-//TODO finish docs
 function validateVolunteer($volunteer){
 //error message array
     global $error;
@@ -438,11 +398,10 @@ function validateVolunteer($volunteer){
 
 
 /**
- *
- * @param $contact
- * @return bool
+ * Returns true if the contact information is valid.
+ * @param $contact array Associative array of contact data.
+ * @return bool Returns true if the contact information is valid.
  */
-//TODO finish docs
 function validateContact($contact){
     //global declaration
     global $db;

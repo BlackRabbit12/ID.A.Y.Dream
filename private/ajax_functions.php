@@ -106,12 +106,11 @@ if (isset($_POST['dataSelect'])) {
 
 /* HELPER FUNCTION */
 /**
- * Creates an associative array for ********** .
+ * Creates an associative array of data to be used for JSON return.
  * @param $result $result is the result of each sql query made in (isset($_POST['dataSelect']))
  * @param $data $data is all the data we add to our associative array.
  * @return mixed $data is an object.
  */
-//TODO finish documentation
 function createAssociativeArray($result, $data)
 {
     global $log;
