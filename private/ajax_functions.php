@@ -289,71 +289,41 @@ if (isset($_POST['table'])) {
 
 
 /**
- *
+ * This block is the functionality for emailing either active dreamers or active volunteers.
  */
-//TODO clean up all comments and write docs
 if (isset($_POST["emailType"])) {
     $sql = "";
+    // checks to see whether or not the user is coming from the dreamers or volunteers data table
+    // then determines the query for the user emails dependent on the table
     if ($_POST["emailType"] == "dreamers") {
         $sql = "SELECT user_email FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id WHERE dreamer_status = 'active';";
     } else if ($_POST["emailType"] == "volunteers") {
         $sql = "SELECT user_email FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id WHERE volunteer_status = 'active';";
-    } else {
-        echo "Invalid email type";
     }
 
-    /*
-     * //emailType: dataSelect, subject: subject, body: body
-     *
-     *
-     *
-     *         $email_body = "Youth Information:\r\n\r\n";
-        $email_subject = "ID.A.Y.Dream Youth Sign-Up Information";
-
-        echo createSummary($email_body)[0];
-        $email_body .= createSummary($email_body)[1];
-
-        // sending email to client
-        $sendTo = "Sjamieson2@mail.greenriver.edu";
-        $to = $sendTo;
-        $headers = "From: " . $user["user_email"] . " \r\n";
-        $headers .= "Reply-To: " . $user["user_email"] . "\r\n";
-        $success = mail($to, $email_subject, $email_body, $headers);
-     */
-
+    // build the query to email the list of active users
     $result = mysqli_query($db, $sql);
 
+    // build the email subject and body from the posted information (data)
     $subject = $_POST['subject'];
     $body = $_POST['body'];
 
+    // initialize the email counter to pass back to notify admin user of how many successful emails sent
     $emailCount = 0;
 
+    // for every user that is returned in $result we want to send the built email from above
     while ($email = mysqli_fetch_assoc($result)) {
-        // sending email to client
         $sendTo = "{$email['user_email']}";
         $to = $sendTo;
-        //echo $to;
-        //  $to = "jamieson.shayna@gmail.com";
-        // $headers = "From: " . "kflint0068@gmail.com" . " \r\n";
-        // $headers .= "Reply-To: " . "kflint0068@gmail.com" . "\r\n";
-        //  echo ("to $to, subject {$_POST["subject"]}, body {$_POST["body"]}, ");
-        // $success = mail($to, $_POST["subject"], $_POST["body"], $headers);
-        // if(mail($to, $subject, $body)) {
-        //     echo "success";
-        //     $emailCount++;
-        // } else {
-        //     echo "failure";
-        // }
 
         $success = mail($to, $subject, $body);
-        // echo $success;
         $emailCount = $emailCount + 1;
-
     }
-    //echo $emailCount;
-    $data["emailCount"] = $emailCount;
-    //echo $data["emailCount"];
 
+    // set data associative array for the ending email count
+    $data["emailCount"] = $emailCount;
+
+    // pass back the $data
     echo json_encode($data);
 } //end (isset($_POST["emailType"]))
 
