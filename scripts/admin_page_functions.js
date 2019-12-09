@@ -4,7 +4,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-11-12
- * Last Update: 2019-12-08
+ * Last Update: 2019-12-09
  * File name: admin_page_functions.js
  * Associated Files:
  *      admin_page.php
@@ -118,12 +118,6 @@ function addEditEvents() {
 
             $(this).append(saveBtn);
 
-            //TODO delete or clean up?
-
-            // $("#save").on("mousedown", function (event) {
-            //     console.log("yay");
-            // }); //.on
-
             //add event listener for when click outside of box to dump changes
             this.children[0].addEventListener("blur", function (event) {
                 event.preventDefault();
@@ -193,10 +187,6 @@ function addEditEvents() {
 
                             //Top of modal display full name and status of member
                             $("#full-name-status").html(firstName + " " + lastName + " (" + status + ")");
-                            console.log(response); //************************************************************************************
-                            //TODO delete or clean up?
-
-                            //populateModalData(response);
                         } //end success
                     }); //.ajax
                 } else {
@@ -307,22 +297,12 @@ function addClickEvents() {
 /**
  * Set data tables and add click events the first time page loads.
  */
-//TODO delete whole function? clean up function?
 $(document).ready(function () {
     $('#dreamer-table').DataTable();
     $('#volunteer-table').DataTable();
 
     //addClickEvents (admin_page_functions.js)
     addClickEvents();
-
-    /*
-     * on page load if the user has chosen to look at the volunteers table we want to initialize
-     * the position of the three switch toggle to active to start
-     * tableSelected (admin_page_functions.js)
-     */
-    if (tableSelected() == "volunteers") {
-        // change_status("active");
-    }
 }); //.ready
 
 /**
@@ -552,8 +532,6 @@ function populateModalData(responseData) {
             label.setAttribute("id", key.substring(0, key.length - 1));
         }
 
-
-        // TODO add correct class and display style (dropdown or text field) inside the modal for consistent user experience
         label.classList.add("editInput");
         //append the textNode(with heading) to the <label>
         label.append(textNode);

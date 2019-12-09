@@ -46,7 +46,7 @@ $showModal = false;
  * login error message for the admin user.
  */
 if (isset($_POST['submit'])) {
-    // TODO NEED TO CHANGE TO REQUIRE FROM BEHING PUBLIC DIRECTORY
+    // NEED TO CHANGE TO REQUIRE FROM BEHIND PUBLIC DIRECTORY
     require('private/login_creds.php');
 
 
