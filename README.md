@@ -45,28 +45,6 @@ Step 5:  Have fun changing and improving upon our work!
 Summary of each file and it's function within the application:
 
 <details>
-  <summary>Dockerfile</summary>
-    <p>
-    </p>
-</details>
-
-
-<details>
-  <summary>docker-compose.yml</summary>
-    <p>
-    </p>
-</details>
-
-
-
-<details>
-  <summary>test.php</summary>
-    <p>
-    </p>
-</details>
-
-
-<details>
   <summary>volunteer_form.php</summary>
     <p>File contains iD.A.Y.Dream Youth Organization's Volunteer Sign Up Form. Interested volunteers fill out this form and are entered into the database for admin to run a background check and then 'activate' the volunteer. This form collects sensitive data and is a consent for background check.
     </p>
