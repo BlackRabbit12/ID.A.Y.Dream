@@ -4,11 +4,11 @@
  * @author Keller Flint
  * @version 1.o
  * 2019-10-29
- * Last Updated: 2019-11-27
+ * Last Updated: 2019-12-08
  * File name: youth_functions.js
  * Associated Files:
  *      youth_form.php
- *      validation_functions.js
+ *      script/validation_functions.js
  *
  * Description:
  *      File contains functions for validating the Dreamer Form input client side. When the dreamer submits
@@ -17,8 +17,9 @@
  *      submission mistakes and try again.
  *      Quick File Relations:
  *          validation_functions.js - provides client side validation on dreamer form
+ *          youth_form.php - uses client side validation from youth_functions.js
  *      Functions:
- *          validateForm
+ *          validateForm()
  */
 
 /**

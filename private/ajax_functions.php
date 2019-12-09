@@ -6,19 +6,36 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-29
- * Last Update: 2019-11-27
+ * Last Update: 2019-12-08
  * File name: ajax_functions.php
  * Associated Files:
  *      private/functions.php
- *      ************************************************************************************************
+ *      private/query_functions.php
+ *      private/validation_functions.php
+ *      scripts/admin_page_functions.js
+ *      admin_page.php
+ *      private/init.php
  *
  * Description:
- *      File contains **********************************************************************************
+ *      File contains several helper and stand-alone functionalism's for updating the status of a user via a dropdown
+ *      on the admin tables, changing which status type user being viewed in the table, updates/edits utilizing ajax,
+ *      delete user utilizing ajax, and changing email recipients.
+ *      Quick File Relations:
+ *          functions.php - build table
+ *          query_functions.php - update data + delete users
+ *          validation_functions.php - formatting
+ *          admin_page_functions.js - formatting
+ *          admin_page.php - makes queries that ajax functions responds to (table building)
+ *          init.php - all 'required once' files
+ *      Functions:
+ *          createAssociativeArray(2x)
  */
 
 require_once "init.php";
 
-//updates status via admin tables
+/**
+ * Updates 'status' via admin tables dropdown
+ */
 if (isset($_POST['status'])) {
     //get table name (remove end of string to match table)
     $table = substr($_POST['dataSelect'], 0, strlen($_POST['dataSelect']) - 1);
@@ -37,11 +54,18 @@ if (isset($_POST['status'])) {
     $dataArray[$key] = $_POST['status'];
 
     //update the changes
+    //updateData (query_functions.php)
     updateData($table, $table_id, $dataArray, $id);
 } //end isset($_POST['status'])
 
-//if the admin_page.php <select> <option> is selected (not 'none')
-// this helps to populate the volunteer or dreamer modal depending on which dataSelect is sent in the AJAX call
+
+
+/* HELPER */
+/**
+ * Helps populate the user modal.
+ * If the admin page select tag option tag is 'selected' (not 'none'), then this helps populate the user modal depending
+ * on which dataSelect is sent in the ajax call.
+ */
 if (isset($_POST['dataSelect'])) {
 
     // get the user id for the User to use in the sql queries
@@ -66,6 +90,7 @@ if (isset($_POST['dataSelect'])) {
             // get the result for each query to perform steps
             if ($result = mysqli_store_result($db)) {
                 // keep adding to data with our call to this method
+                //createAssociativeArray (ajax_functions.php)
                 $data = createAssociativeArray($result, $data);
 
                 mysqli_free_result($result);
@@ -79,7 +104,14 @@ if (isset($_POST['dataSelect'])) {
 } //end isset($_POST['dataSelect'])
 
 
-//helper functions
+/* HELPER FUNCTION */
+/**
+ * Creates an associative array for ********** .
+ * @param $result $result is the result of each sql query made in (isset($_POST['dataSelect']))
+ * @param $data $data is all the data we add to our associative array.
+ * @return mixed $data is an object.
+ */
+//TODO finish documentation
 function createAssociativeArray($result, $data)
 {
     global $log;
@@ -92,23 +124,26 @@ function createAssociativeArray($result, $data)
         $fieldNames_array[] = $value->name;
     }
 
-    // use $i to loop through our row and get the correct
-    // field name to insert as a key
+    // use $i to loop through our row and get the correct field name to insert as a key
     $i = 0;
     $row_num = 0;
     $log = [];
 
-    // here we do a generic keys / values add to our $data array for dreamers, some volunteer data, etc.
-    // row_num is appended to fieldname if the while loop runs more than once (which would indicate a multi-row return)
+    /*
+     * here we do a generic keys / values add to our $data array for dreamers, some volunteer data, etc.
+     * row_num is appended to field name if the while loop runs more than once (which would indicate a multi-row return)
+     */
     while ($row = mysqli_fetch_assoc($result)) {
-        foreach ($row as $value) {
+        foreach ($fieldNames_array as $value) {
             if ($row[$fieldNames_array[$i]] == null) {
                 //if 'value' at given 'key' is null, then display empty string instead of null
                 $data[$fieldNames_array[$i] . $row_num] = "";
             } //if 'key' is "dreamer's date of birth" or "user's date joined" then format them for readability
+            //formatSQLDate (functions.php)
             else if ($fieldNames_array[$i] == "dreamer_date_of_birth" || $fieldNames_array[$i] == "user_date_joined") {
                 $data[$fieldNames_array[$i] . $row_num] = formatSQLDate($row[$fieldNames_array[$i]]);
             } //if 'key' is "user's phone" then format them for readability
+            //formatSQLPhone (functions.php)
             else if ($fieldNames_array[$i] == "user_phone") {
                 $data[$fieldNames_array[$i] . $row_num] = formatSQLPhone($row[$fieldNames_array[$i]]);
             } else {
@@ -124,7 +159,10 @@ function createAssociativeArray($result, $data)
     return $data;
 }//end createAssociativeArray()
 
-// Selects and returns output string containing table with inactive users
+
+/**
+ * Selects and returns output string containing table with inactive users.
+ */
 if (isset($_POST['queryType'])) {
     if ($_POST['queryType'] == 'inactive_query') {
         global $db;
@@ -138,6 +176,7 @@ if (isset($_POST['queryType'])) {
         $tableHeadingNames = $result->fetch_fields();
         $result_ids = mysqli_query($db, $sql_ids);
 
+        //buildTable (functions.php)
         echo buildTable($result, $tableHeadingNames, $result_ids);
     } else if ($_POST['queryType'] == 'pending_query') {
         // Selects and returns output string containing table with inactive users
@@ -152,6 +191,7 @@ if (isset($_POST['queryType'])) {
         $tableHeadingNames = $result->fetch_fields();
         $result_ids = mysqli_query($db, $sql_ids);
 
+        //buildTable (functions.php)
         echo buildTable($result, $tableHeadingNames, $result_ids);
     } else if ($_POST['queryType'] == 'active_query') {
         // Selects and returns output string containing table with inactive users
@@ -166,6 +206,7 @@ if (isset($_POST['queryType'])) {
         $tableHeadingNames = $result->fetch_fields();
         $result_ids = mysqli_query($db, $sql_ids);
 
+        //buildTable (functions.php)
         echo buildTable($result, $tableHeadingNames, $result_ids);
     } // volunteers query for pending to switch what volunteers we display
     else if ($_POST['queryType'] == "pending_volunteers_query") {
@@ -181,6 +222,7 @@ if (isset($_POST['queryType'])) {
         $tableHeadingNames = $result->fetch_fields();
         $result_ids = mysqli_query($db, $sql_ids);
 
+        //buildTable (functions.php)
         echo buildTable($result, $tableHeadingNames, $result_ids);
     } // volunteers query for active to switch what volunteers we display
     else if ($_POST['queryType'] == "active_volunteers_query") {
@@ -196,6 +238,7 @@ if (isset($_POST['queryType'])) {
         $tableHeadingNames = $result->fetch_fields();
         $result_ids = mysqli_query($db, $sql_ids);
 
+        //buildTable (functions.php)
         echo buildTable($result, $tableHeadingNames, $result_ids);
     } // volunteers query for active to switch what volunteers we display
     else if ($_POST['queryType'] == "inactive_volunteers_query") {
@@ -211,12 +254,15 @@ if (isset($_POST['queryType'])) {
         $tableHeadingNames = $result->fetch_fields();
         $result_ids = mysqli_query($db, $sql_ids);
 
+        //buildTable (functions.php)
         echo buildTable($result, $tableHeadingNames, $result_ids);
     }
-
 } //end isset($_POST['queryType'])
 
-//mouseup event for user modal 'save' button
+
+/**
+ * Mouseup event for user modal 'save' button.
+ */
 if (isset($_POST['table'])) {
     // checks if the column being updated is column. If so, strips out the numbers used to disambiguate multiple contacts
     if (strpos($_POST['table_id'], "contact") !== false) {
@@ -226,20 +272,27 @@ if (isset($_POST['table'])) {
 
     // formatting value if the column being updated is date or phone number
     if (strpos($_POST['column_name'], 'date') !== false) {
+        //formatDOB (validation_functions.php)
         $_POST['value'] = formatDOB($_POST['value']);
     } else if (strpos($_POST['column_name'], 'phone') !== false) {
+        //formatPhone (admin_page_functions.js)
         $_POST['value'] = formatPhone($_POST['value']);
     }
 
 
-    // creates associatve key value pair to add to database
+    // creates associative key value pair to add to database
     $dataAssociativeArray[$_POST['column_name']] = $_POST['value'];
 
+    //updateData (query_functions.php)
     updateData($_POST['table'], $_POST["table_id"], $dataAssociativeArray, $_POST['id']);
 } //end isset($_POST['table'])
 
-//emailType: dataSelect, subject: subject, body: body
 
+
+/**
+ *
+ */
+//TODO clean up all comments and write docs
 if (isset($_POST["emailType"])) {
     $sql = "";
     if ($_POST["emailType"] == "dreamers") {
@@ -251,6 +304,7 @@ if (isset($_POST["emailType"])) {
     }
 
     /*
+     * //emailType: dataSelect, subject: subject, body: body
      *
      *
      *
@@ -302,12 +356,15 @@ if (isset($_POST["emailType"])) {
     //echo $data["emailCount"];
 
     echo json_encode($data);
+} //end (isset($_POST["emailType"]))
 
-}
 
-// user deletion
+/**
+ * Delete a user.
+ */
 if (isset($_POST["queryType"])) {
     if ($_POST["queryType"] == "delete") {
+        //deleteUser (query_functions.php)
         deleteUser($_POST["user_id"]);
     }
-}
+} //end (isset($_POST["queryType"]))

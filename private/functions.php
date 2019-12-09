@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-29
- * Last Update: 2019-11-27
+ * Last Update: 2019-12-08
  * File name: functions.php
  * Associated Files:
  *      volunteer_success_splash_page.php
@@ -16,13 +16,17 @@
  * Description:
  *      File contains functions to build the admin table (with appropriate formatting), the dropdown field inside
  *      the admin table, and to build the summary pages.
+ *      Quick File Relations:
+ *          volunteer_success_splash_page.php - Uses summary created in functions.php
+ *          youth_success_splash.php - Uses summary created in functions.php
+ *          admin_page.php - Uses tables built in functions.php
  *      Functions:
- *          buildTable()
- *          dropDownStatus()
- *          formatHeadings()
- *          formatSQLDate()
- *          formatSQLPhone()
- *          createSummary()
+ *          buildTable(3x)
+ *          dropDownStatus(1x)
+ *          formatHeadings(1x)
+ *          formatSQLDate(1x)
+ *          formatSQLPhone(1x)
+ *          createSummary(1x)
  */
 
 
@@ -33,6 +37,7 @@
  * @param $result_ids
  * @return string $output is the 'string' of html that builds the table.
  */
+//TODO finish documentation
 function buildTable($result, $tableHeadingNames, $result_ids)
 {
     $output = "<thead>";
@@ -41,6 +46,7 @@ function buildTable($result, $tableHeadingNames, $result_ids)
     //get the table heading names and build the table headers with them
     $tableHeadingNames_array = [];
     foreach ($tableHeadingNames as $value) {
+        //formatHeadings (admin_page_functions.js)
         $heading = formatHeadings($value->name);
         $output .= "<th>$heading</th>";
         $tableHeadingNames_array[] = $value->name;
@@ -70,12 +76,15 @@ function buildTable($result, $tableHeadingNames, $result_ids)
             }
             else {
                 if ($tableHeadingNames_array[$i] == "dreamer_date_of_birth" || $tableHeadingNames_array[$i] == "user_date_joined") {
+                    //formatSQLDate (functions.php)
                     $value = formatSQLDate($value);
                 }
                 if ($tableHeadingNames_array[$i] == "user_phone") {
+                    //formatSQLPhone (functions.php)
                     $value = formatSQLPhone($value);
                 }
                 if ($tableHeadingNames_array[$i] == "volunteer_status" || $tableHeadingNames_array[$i] == "dreamer_status"){
+                    //dropDownStatus (functions.php)
                     $value = dropDownStatus($value);
                 }
 

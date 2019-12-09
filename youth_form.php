@@ -5,7 +5,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-16
- * Last Update: 2019-12-05
+ * Last Update: 2019-12-08
  * File Name: youth_form.php
  * Associated Files:
  *      css/youth_styles.css
@@ -29,6 +29,7 @@
  *      sign up consent, and then 'activate' the dreamer.
  *      This form collects minimal personal data.
  *      Quick File Relations:
+ *          youth_styles.css - styles for form
  *          youth_functions.js - validate form on submit
  *          validation_functions.js - client side validation
  */

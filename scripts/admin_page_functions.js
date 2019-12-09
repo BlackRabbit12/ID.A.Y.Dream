@@ -4,25 +4,51 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-11-12
- * Last Update: 2019-11-24
+ * Last Update: 2019-12-08
  * File name: admin_page_functions.js
  * Associated Files:
  *      admin_page.php
  *      private/init.php
  *      scripts/validation_functions.js
+ *      private/logout.php
  *
  * Description:
- *      File contains **********************************************************************************
+ *      File contains the admin page's main functionality. It adds the clickable events on the page such as opening a
+ *      user modal, updating the user's information, sending emails, toggling between different types and status of
+ *      users.
+ *      Quick File Relations:
+ *          admin_page.php - uses event functions made in admin page funcitons javascript
+ *          validation_functions.js - uses formatting and validation
+ *          logout.php - uses logout button functions
+ *          init.php - all 'required once' files
+ *      Functions:
+ *          addEditEvents()
+ *          addClickEvents()
+ *          populateModalData(1x)
+ *          getUpdateData(1x)
+ *          tableName(1x)
+ *          formatHeadings(1x)
+ *          tableSelected()
+ *          formatDate(1x)
+ *          formatYear(1x)
+ *          formatPhone(1x)
+ *          validateDate(1x)
+ *          validatePhone(1x)
+ *          validateYear(1x)
  */
 
 // global variable allowSave. Is false when the data the admin is entering is invalid.
 let allowSave = true;
 
+
+/**
+ * Allows an admin to edit any field inside the modal.
+ */
 function addEditEvents() {
     $(".editInput").on("click", function () {
         // get the id of the row that is being updated from the modal's user_id
         let id = $(this).parent().children("#user_id").children("p").first().text();
-        console.log(id); //***************************************************************************************
+        console.log(id); //*******************************************************************************************************
         //if we have not "set" the input_id by clicking on it, then it's null
         if (document.getElementById("input_id") == null) {
             //set paragraph to text input, use children[0] because we only have one child for each label
@@ -39,8 +65,10 @@ function addEditEvents() {
             this.removeChild(this.children[0]);
             //append the new <input> to the <label>
             this.append(inputElement);
-            //keep focus on current <input> (because "blur" drops focus)
-            //after 'appends' a sibling, "append" a 'save' button to row for when edit is confirmed to send to database
+            /*
+             * keep focus on current <input> (because "blur" drops focus) after 'appends' a sibling, "append" a 'save'
+             * button to row for when edit is confirmed to send to database
+             */
             let saveBtn = "<button type=\"button\" id=\"save\" class=\"pull-left bg-success text-white btn btn-default btn-sm\">Save</button>";
             // reset allowSave to true by default since most inputs don't require validation
             allowSave = true;
@@ -50,27 +78,29 @@ function addEditEvents() {
                 $("#input_id").on("keydown input focus", function () {
                     this.value = formatPhone(this.value);
                     allowSave = validatePhone(this.value);
-                    console.log(allowSave);
+                    console.log(allowSave); //********************************************************************************
                 });
             } else if (this.id.includes("date")) {
                 // add event listener to format the date
                 $("#input_id").on("keydown input focus", function () {
                     this.value = formatDate(this.value);
                     allowSave = validateDate(this.value);
-                    console.log(allowSave);
+                    console.log(allowSave); //********************************************************************************
                 });
             } else if (this.id.includes("year")) {
                 // add event listener to format the year
                 $("#input_id").on("keydown input focus", function () {
                     this.value = formatYear(this.value);
                     allowSave = validateYear(this.value);
-                    console.log(allowSave);
+                    console.log(allowSave); //********************************************************************************
                 });
             }
 
             document.getElementById("input_id").focus();
 
             $(this).append(saveBtn);
+
+            //TODO delete or clean up?
 
             // $("#save").on("mousedown", function (event) {
             //     console.log("yay");
@@ -102,7 +132,7 @@ function addEditEvents() {
                     let column_name = document.getElementById("input_id").parentElement.getAttribute("id");
                     /*
                      * Collects data and values for running an update/edit on #save
-                     * getUpdateData (admin_page_funcitons.js)
+                     * getUpdateData (admin_page_functions.js)
                      */
                     let data_to_update = getUpdateData(column_name);
                     //updates the value in the selected field's database equivalent
@@ -122,10 +152,10 @@ function addEditEvents() {
                             //update the table data with new value. If user first, add a tags for link styling
                             if (data_to_update[2].toString() === "user_first") {
                                 $("#" + data_to_update[4]).children("." + data_to_update[2]).html("<a href=\'#\'>" + data_to_update[3] + "</a>");
-                                console.log("if"); //******************************************************************************
+                                console.log("if"); //****************************************************************************************************
                             } else {
                                 $("#" + data_to_update[4]).children("." + data_to_update[2]).html(data_to_update[3]);
-                                console.log("else"); //*********************************************************************************
+                                console.log("else"); //**************************************************************************************************
                             }
                             let firstName = $("#" + id).children(".user_first").text();
                             let lastName = $("#" + id).children(".user_last").text();
@@ -146,21 +176,28 @@ function addEditEvents() {
                             //Top of modal display full name and status of member
                             $("#full-name-status").html(firstName + " " + lastName + " (" + status + ")");
                             console.log(response); //************************************************************************************
+                            //TODO delete or clean up?
+
                             //populateModalData(response);
-                        }
+                        } //end success
                     }); //.ajax
                 } else {
                     alert("Save failed. Data was not properly formatted.");
                 }
-            }); //.on
+            }); //.on 'mousedown'
         }
         // else we have already clicked on the field so it has an input_id
         else {
             console.log("else"); //******************************************************************************************
         }
-    }); //.on
+    }); //.on 'click'
 } //end function addEditEvents()
 
+
+/**
+ * Fills a modal when the user is selected in the table.
+ * Makes the fields populate with proper data and makes the fields edit-able.
+ */
 function addClickEvents() {
     //fills modal on 'click' of member's name
     console.log("click events"); //******************************************************************************************
@@ -217,7 +254,7 @@ function addClickEvents() {
             //addEditEvents (admin_page_functions.js)
             addEditEvents();
         }); //.ajaxComplete
-    }); //.on
+    }); //.on 'click'
 
     // removes event listeners before reassigning to prevent duplication
     $(".status-dropdown").off();
@@ -242,12 +279,17 @@ function addClickEvents() {
             method: 'post',
             data: {id: id, dataSelect: dataSelect, status: status},
             success: function (response) {
-                console.log(response); //****************************************************
+                console.log(response); //**************************************************************************************
             }
         }); //.ajax
-    }); //.on
-} //end function addClickEvents()
+    }); //.on 'change'
+} //end addClickEvents()
 
+
+/**
+ * Set data tables and add click events the first time page loads.
+ */
+//TODO delete whole function? clean up function?
 $(document).ready(function () {
     $('#dreamer-table').DataTable();
     $('#volunteer-table').DataTable();
@@ -265,10 +307,16 @@ $(document).ready(function () {
     }
 }); //.ready
 
+/**
+ * Set data tables and add click events.
+ */
 document.getElementById("data-select").addEventListener("change", function () {
     this.form.submit();
 }); //addEventListener
 
+/**
+ * Set the three-way-toggle for Dreamers + Volunteers, Toggles Email 'To' List, Delete user in current modal.
+ */
 $(document).ready(function () {
     // three toggle switch for Dreamers: Pending
     $("#pending-dreamer-label").on("click", function () {
@@ -289,7 +337,7 @@ $(document).ready(function () {
             $("#dreamer-table").DataTable().destroy();
             $("#dreamer-table").DataTable();
         }); //.ajaxComplete
-    }); //.on
+    }); //.on 'click'
 
     // three toggle switch for Dreamers: Active
     $("#active-dreamer-label").on("click", function () {
@@ -310,7 +358,7 @@ $(document).ready(function () {
             $("#dreamer-table").DataTable().destroy();
             $("#dreamer-table").DataTable();
         }); //.ajaxComplete
-    }); //.on
+    }); //.on 'click'
 
     // three toggle switch for Dreamers: Inactive
     $("#inactive-dreamer-label").on("click", function () {
@@ -331,12 +379,9 @@ $(document).ready(function () {
             $("#dreamer-table").DataTable().destroy();
             $("#dreamer-table").DataTable();
         }); //.ajaxComplete
-    }); //.on
+    }); //.on 'click'
 
-    // the code here allows us to update/change the display of volunteers for active,
-    // pending, and inactive. We have to make separate calls to update the table and use ajaxComplete()
-    // NEW STUFF *************************************************************************************
-    // ($("#toggle-inactive").is(":checked"))
+    // three toggle switch for Volunteers: Pending
     $("#pending-label").on("click", function () {
         // make ajax call to update the display of pending volunteers
         $.ajax({
@@ -355,12 +400,10 @@ $(document).ready(function () {
             $("#dreamer-table").DataTable().destroy();
             $("#dreamer-table").DataTable();
         }); //.ajaxComplete
-    }); //.on
+    }); //.on 'click'
 
-    // for displaying ONLY active volunteers
+    // three toggle switch for Volunteers: Active
     $("#active-label").on("click", function () {
-        //change_status("active");
-
         // make ajax call to update the display of pending volunteers
         $.ajax({
             url: 'private/init.php',
@@ -378,12 +421,10 @@ $(document).ready(function () {
             $("#dreamer-table").DataTable().destroy();
             $("#dreamer-table").DataTable();
         }); //.ajaxComplete
-    }); //.on
+    }); //.on 'click'
 
-    // for displaying ONLY inactive volunteers
+    // three toggle switch for Volunteers: Inactive
     $("#inactive-label").on("click", function () {
-        //change_status("inactive");
-
         // make ajax call to update the display of pending volunteers
         $.ajax({
             url: 'private/init.php',
@@ -401,7 +442,7 @@ $(document).ready(function () {
             $("#dreamer-table").DataTable().destroy();
             $("#dreamer-table").DataTable();
         }); //.ajaxComplete
-    }); //.on
+    }); //.on 'click'
 
     // toggle the modal for emailing functionality
     $("#email-button").on("click", function () {
@@ -413,12 +454,12 @@ $(document).ready(function () {
         $("#email-subject").on("input focus blur", function () {
             //validateEmpty (validation_functions.js)
             validateEmpty("email-subject");
-        });
+        }); //end .on 'input focus blur'
         $("#email-body").on("input focus blur", function () {
             //validateEmpty (validation_functions.js)
             validateEmpty("email-body");
-        });
-    }); //.on
+        }); //end .on 'input focus blur'
+    }); //.on 'click'
 
     // deletes the user for the current modal
     $("#delete").on("click", function() {
@@ -442,19 +483,20 @@ $(document).ready(function () {
 
                     // close the modal since the user at this point will have been deleted
                     $("#myModal").modal("toggle");
-                }
+                } //end success
             }); //.ajax
-        } // end confirm
-
-
+        }
     }); // end delete event listener
-
 }); //.ready
 
-//JSON array
-//appending all children into modal-body
-function populateModalData(responseData) {
 
+
+/**
+ * Populates modal with selected user's information from database.
+ * Appends all children into modal-body. JSON array.
+ * @param responseData From addClickEvents() ajax success.
+ */
+function populateModalData(responseData) {
     /*
      * clear modal data before we populate -- added here as well
      * because in testing it was not clearing out the modal before re-populating
@@ -504,8 +546,9 @@ function populateModalData(responseData) {
     }); //.each
 } //end populateModalData
 
-/* HELPER METHODS */
 
+
+/* HELPER METHODS */
 /**
  * Collects data and values for running an update/edit on #save.
  * @param column_name Column being looked at for which table it comes from.
@@ -518,8 +561,10 @@ function getUpdateData(column_name) {
     //table id field name
     let table_id;
 
-    // checks if the column being updated is column. If so, keeps the numbers appended to the ends of the column names
-    // used to disambiguate multiple contacts
+    /*
+     * checks if the column being updated is column. If so, keeps the numbers appended to the ends of the column names
+     * used to disambiguate multiple contacts
+     */
     if (column_name.includes("contact")) {
         table_id = column_name.substr(0, column_name.indexOf('_')) + "_id" + column_name.slice(-1);
     } else {
@@ -532,6 +577,7 @@ function getUpdateData(column_name) {
     return [table, table_id, column_name, value, id];
 } //end updateData(column_name)
 
+
 /**
  * Helper function returns the table name being used.
  * @param column_name Column being looked at for which table it comes from.
@@ -542,12 +588,19 @@ function tableName(column_name) {
     return column_name.charAt(0).toUpperCase() + column_name.substr(1, column_name.indexOf('_') - 1);
 } //end tableName(column_name)
 
-//clears modal body after click away
+/**
+ * Clears modal body after click away.
+ */
 $('#myModal').on('hidden.bs.modal', function () {
     $("#modal-body").html("");
-}); //.on
+}); //.on 'hidden.bs.modal'
 
-// formats the heading names retrieved from database for clear user view
+
+/**
+ * Formats the heading names retrieved from database for clear user view.
+ * @param str Column name retrieved from database.
+ * @returns {string} Table Heading formatted for easy admin viewing.
+ */
 function formatHeadings(str) {
     str = str.replace(/\d+/g, '');
     str = str.replace(/_/g, " ");
@@ -561,6 +614,11 @@ function formatHeadings(str) {
     return str;
 } //function formatHeadings(str)
 
+
+/**
+ * Finds which table is currently selected.
+ * @returns {string} Table name selected.
+ */
 function tableSelected() {
     // get the selected table from "select" dropdown
     let dataSelect;
@@ -572,6 +630,10 @@ function tableSelected() {
     return dataSelect;
 } //function tableSelected()
 
+
+/**
+ * Send email to selected table's active member list.
+ */
 $("#email-send").on("click", function () {
     let subject = $("#email-subject").val();
     let body = $("#email-body").val();
@@ -584,7 +646,8 @@ $("#email-send").on("click", function () {
 
     if (subject.trim() == "" || body.trim() == "") {
         console.log("failed"); //********************************************************************************************
-    } else {
+    }
+    else {
         // make ajax call to update the display of pending volunteers
         $.ajax({
             url: 'private/init.php',
@@ -602,8 +665,7 @@ $("#email-send").on("click", function () {
                     $('#emailModal').modal('toggle');
                     alert("Emails were not able to be sent or you have no actives!");
                 }
-                // here we know that the emails sent and we can display a
-                // success pop up and close the email modal
+                //here we know that the emails sent and we can display a success pop up and close the email modal
                 else {
                     // clears out the email and body on successful send
                     $("#email-body").val('').end();
@@ -611,18 +673,23 @@ $("#email-send").on("click", function () {
                     $('#emailModal').modal('toggle');
                     alert("Active " + dataSelect + ": " + emailCount + " emails were sent!");
                 }
-            }
+            } //end success
         }); //.ajax
     }
-});
+}); //end .on 'click'
 
-$('#logout-button').on('click', function () {
-    window.location.href = '../private/logout.php';
-});
 
 /**
- * formats the date and provides inline warnings for invalid data when it is updated in the admin page.
- * @return string the correctly formatted date
+ * Log out button for admin.
+ * Destroys credentials and forces admin to log back in on next page visit.
+ */
+$('#logout-button').on('click', function () {
+    window.location.href = '../private/logout.php';
+}); //end .on 'click'
+
+/**
+ * Formats the date and provides inline warnings for invalid data when it is updated in the admin page.
+ * @return string The correctly formatted date.
  */
 function formatDate(str) {
     str = str.replace(/\D/g, "");
@@ -636,12 +703,12 @@ function formatDate(str) {
     }
 
     return str;
-}
+} //end formatDate()
 
 /**
- *  formats a year to ensure it contains only numbers and is never more than 4 digits
- * @param str string the year as a string
- * @returns string the formatted year
+ * Formats a year to ensure it contains only numbers and is never more than 4 digits.
+ * @param str String the year as a string.
+ * @returns string The formatted year.
  */
 function formatYear(str) {
     str = str.replace(/\D/g, "");
@@ -649,11 +716,11 @@ function formatYear(str) {
         return str.substr(0,4);
     }
     return str;
-}
+} //end formatYear()
 
 /**
- * formats the phone number and provides inline warnings for invalid data when it is updated in the admin page.
- * @return string the correctly formatted phone number
+ * Formats the phone number and provides inline warnings for invalid data when it is updated in the admin page.
+ * @return string The correctly formatted phone number.
  */
 function formatPhone(str) {
     str = str.replace(/\D/g, "");
@@ -667,28 +734,28 @@ function formatPhone(str) {
     }
 
     return str;
-}
+} //end formatPhone()
 
 /**
- * checks if date is valid
- * @return true if date is valid
+ * Checks if date is valid.
+ * @return True/False if date is/is not valid.
  */
 function validateDate(str) {
     return str.length === 10;
-}
+} //end validateDate()
 
 /**
- * checks if phone number is valid
- * @return true if phone number is valid
+ * Checks if phone number is valid.
+ * @return True/False if phone number is/is not valid.
  */
 function validatePhone(str) {
     return str.length === 14;
-}
+} //end validatePhone()
 
 /**
- * checks if year is valid
- * @return true if year is valid
+ * Checks if year is valid.
+ * @return True/False if year is/is not valid.
  */
 function validateYear(str) {
     return str.length === 4;
-}
+} //end validateYear()

@@ -5,7 +5,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-02
- * Last Updated: 2019-12-05
+ * Last Updated: 2019-12-08
  * File Name: volunteer_form.php
  * Associated Files:
  *      css/styles.css
@@ -22,12 +22,18 @@
  *      scripts/validation_functions.js
  *      scripts/volunteer_functions.js
  *      @link https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
+ *      private/init.php
  *
  * Description:
  *      File contains iD.A.Y.Dream Youth Organization's Volunteer Sign Up Form. Interested volunteers fill out
  *      this form and are entered into the database for admin to run a background check and then 'activate' the
  *      volunteer.
  *      This form collects sensitive data and is a consent for background check.
+ *      Quick File Relations:
+ *          styles.css - styles for form
+ *          validation_functions.js - client side validation
+ *          volunteer_functions.js - validate form on submit
+ *          init.php - all 'require once' files
  */
 require_once "private/init.php";
 ?>

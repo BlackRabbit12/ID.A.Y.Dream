@@ -6,11 +6,15 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-11-09
- * Last Updated: 2019-11-12
+ * Last Updated: 2019-12-08
  * File name: db_connect.php
+ * Associated Files:
+ *      private/init.php
  *
  * Description:
  *      Database connection file.
+ *      Quick File Relations:
+ *          init.php - allows other files to connect with db_connect.php
  */
 
 $username = 'root';

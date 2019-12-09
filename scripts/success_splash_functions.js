@@ -4,7 +4,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-29
- * Last Update: 2019-12-05
+ * Last Update: 2019-12-08
  * File name: success_splash_functions.js
  * Associated Files:
  *      volunteer_success_splash_page.php
@@ -12,6 +12,9 @@
  *
  * Description:
  *      File controls the toggle functionality of the success page for both volunteer sign up and dreamer sign up.
+ *      Quick File Relations:
+ *          volunteer_success_splash_page.php - uses the function for toggle the summary view
+ *          youth_success_splash.php - uses the function for toggle the summary view
  *      Functions:
  *          toggleSummary()
  */
