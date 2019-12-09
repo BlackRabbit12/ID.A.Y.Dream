@@ -1,7 +1,7 @@
 @charset "utf-8";
+
 /* import to use google free fonts */
 @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
-
 
 /**
  * @author Shayna Jamieson
@@ -28,6 +28,12 @@
     border-color: #c16062 !important;
 }
 
+/* email modal's message box*/
+#email-body {
+    margin-top: 15px;
+    min-width: 100%;
+}
+
 /* email modal button styles */
 #email-button {
     background-color: #f7aa35 !important;
@@ -39,27 +45,20 @@
     padding: 6px 12px;
     margin-bottom: 10px;
     font-size: 16px;
-    font-width: 400;
     font-weight: bold;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-}
-
-/* email modal's message box*/
-#email-body {
-    margin-top: 15px;
-    min-width: 100%;
-}
-
-/* make email modal's subject box dark */
-#email-subject-background > span {
-    background-color: #36454f;
 }
 
 /* make email modal's send button dark */
 #email-send {
     background-color: #36454f;
     border-color: #36454f;
+}
+
+/* make email modal's subject box dark */
+#email-subject-background > span {
+    background-color: #36454f;
 }
 
 /* spacing for container containing Table Select Dropdown + Status Toggle + Email Button + Tables */
@@ -76,26 +75,11 @@
     margin-bottom: 0;
 }
 
-footer {
-    height: 150px;
-    width: auto;
-    background-color: #202020 !important;
-    margin-top: 5%;
-}
-
 /* hide header text on 600px or larger screens */
 #header-text{
     display: none;
 }
 
-img {
-    width: 52%;
-    height: 275px;
-    display:block;
-    margin:auto;
-    /*background-size: cover;*/
-    /*background: no-repeat;*/
-}
 /* Used for admin_page.php, volunteer_form.php, youth_form.php */
 .input-group {
     margin-bottom: 2%;

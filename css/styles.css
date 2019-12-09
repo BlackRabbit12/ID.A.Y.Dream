@@ -15,13 +15,14 @@
  *      File contains iD.A.Y.Dream Youth Organization's associated files Bootstrap overrides and custom styles.
  */
 
-
+/* style for the volunteer background check yes and no buttons */
 #background-check-buttons {
     margin-top: 10%;
     font-family: Avantgarde, "Tex Gyre Adventor", "URW Gothic L", sans-serif;
     letter-spacing: 0.3vw !important;
 }
 
+/* style for the background check container */
 #background-check-container {
     margin-top: 5% !important;
     text-align: center;
@@ -29,6 +30,7 @@
     color: #202020 !important;
 }
 
+/* border for when the user checks no to background check and we display the error */
 #bg-check-explain-no {
     border: 2px solid #c16062;
     border-radius: 5px;
@@ -36,6 +38,7 @@
     background-color: rgba(193, 96, 98, 0.2);
 }
 
+/* style for the background check no error message display */
 #bg-check-no-container {
     margin-top: 5%;
     display: none;
@@ -43,20 +46,24 @@
     font-family: Avantgarde, "Tex Gyre Adventor", "URW Gothic L", sans-serif;
 }
 
+/* margin to background check question */
 #bgc-sentence1 {
     margin-bottom: 3%;
 }
 
+/* styles all buttons on the volunteer page */
 button[type="button"] {
     text-decoration: none !important;
     color: white !important;
     font-size: larger;
 }
 
+/* style for all volunteer buttons on active and hover events */
 button[type="button"]:active, button[type="button"]:hover {
     text-decoration: underline !important;
 }
 
+/* styling for background check buttons to switch between black and white text */
 #bg-check-btn-no, #bg-check-btn-no:active, #bg-check-btn-no:hover, #bg-check-btn-yes, #bg-check-btn-yes:active, #bg-check-btn-yes:hover, .btn-go-home, .btn-go-home:active, .btn-go-home:hover {
     background-color: #5b7978;
     color: white;
@@ -73,15 +80,18 @@ button[type="button"]:active, button[type="button"]:hover {
     letter-spacing: 0.3vw;
 }
 
+/* styling for background check buttons to switch between black and white text */
 #bg-check-btn-yes:active, #bg-check-btn-yes:hover, #bg-check-btn-no:active, #bg-check-btn-no:hover, .btn-go-home:active, .btn-go-home:hover  {
     color: black !important;
 }
 
+/* styling for the background check no button to redirect to IDAYDream web page */
 .btn-go-home, .btn-go-home:active, .btn-go-home:hover  {
     margin-top: 4%;
     width: 50%;
 }
 
+/* styles for the volunteer form submit button */
 button[type="submit"] {
     background-color: #5b7978;
     color: white;
@@ -98,22 +108,12 @@ button[type="submit"] {
     letter-spacing: 0.3vw;
 }
 
-.card-body {
-    border-top: none !important;
-    border-left: 1px solid black !important;
-    border-right: 1px solid black !important;
-    border-bottom: none !important;
-}
-
-.card-header {
-    background-color: #5b7978 !important;
-    border: none !important;
-}
-
+/* clear references button styles for hover and active */
 .clear-reference:hover, .clear-reference:active {
     border-bottom: 1px solid black;
 }
 
+/* container borders for the three character references */
 #container-for-ref-1, #container-for-ref-2, #container-for-ref-3 {
     border: 2px solid lightslategray;
     border-radius: 3px;
@@ -130,10 +130,12 @@ Using custom checkbox classes here and in the HTML allowed us to change the colo
     border-color: #5b7978;
 }
 
+/* styles the em stars that show required fields on the form */
 em {
     color: #c16062;
 }
 
+/* starts the volunteer form as display none until the user chooses yes or no on background check */
 #entire-form-container {
     display: none;
 }
@@ -143,10 +145,12 @@ em {
     display: block;
 }
 
+/* takes normal border styling off of field sets throughout the form */
 fieldset {
     border: 0;
 }
 
+/* styles for the volunteer form footer */
 footer {
     height: 150px;
     width: auto;
@@ -155,6 +159,7 @@ footer {
     margin-top: 7% !important;
 }
 
+/* styles for hidden spans that will toggle */
 .hide-me {
     color: red;
     font-size: smaller;
@@ -202,6 +207,7 @@ input[type='radio']:checked:before {
     background: #5b7978;
 }
 
+/* styles for the text inputs to have no text box and just an underline */
 input[type="text"] {
     background: transparent;
     border: none;
@@ -211,10 +217,12 @@ input[type="text"] {
     border-radius: 0;
 }
 
+/* styles for text boxes on focus */
 input[type="text"]:focus {
     -webkit-box-shadow: none;
 }
 
+/* styles for text boxes web kit */
 input[type="text"]::-webkit-validation-bubble-arrow {
     background: white;
     border-color: #444;
@@ -233,6 +241,7 @@ input[type="textarea"]::-webkit-resizer{
     display: none;
 }
 
+/* styles for the volunteer form jumbotron */
 .jumbotron {
     background-image: url("../images/VOLUNTEER_LOGO.png");
     background-size: cover;
@@ -245,23 +254,28 @@ input[type="textarea"]::-webkit-resizer{
     z-index: 0;
 }
 
+/* label font color throughout volunteer form */
 label {
     color: #202020;
 }
 
-label:-ms-input-placeholder { /* Internet Explorer 10-11  */
+/* Internet Explorer 10-11  */
+label:-ms-input-placeholder {
     color: black;
 }
 
-label::-ms-input-placeholder { /* Microsoft Edge */
+/* Microsoft Edge */
+label::-ms-input-placeholder {
     color: black;
 }
 
-label::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+/* Chrome, Firefox, Opera, Safari 10.1+ */
+label::placeholder {
     color: black;
     opacity: 1; /* Firefox */
 }
 
+/* styles the font within the section legend headers */
 .legend-text {
     text-align: center !important;
     font-size: 2em !important;
@@ -270,6 +284,7 @@ label::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     letter-spacing: 0.1vw;
 }
 
+/* styles the legend header containers */
 .legend-container {
     background-color: #5b7978;
     border-radius: 3px;
@@ -280,6 +295,7 @@ label::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     padding-bottom: 10px;
 }
 
+/* adds bottom padding to all padding classes throughout the volunteer form */
 .padding {
     margin-bottom: 3% !important;
 }
@@ -289,33 +305,38 @@ label::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     border-bottom: 1px solid #c16062 !important;
 }
 
+/* colors the individual reference section headers */
 .ref-title {
     color: #5b7978;
 }
 
+/* gives bottom padding to all row classes*/
 .row {
     margin-bottom: 2% !important;
 }
 
+/* styles the error spans for invalid form fields */
 span {
     color: #c16062;
     font-size: smaller;
 }
 
+/* styles the submit policy at the bottom to be smaller font */
 #submit-policy {
     font-size: smaller;
 }
 
+/* styles the summary for the page */
 #summary {
     margin-top: 5% !important;
     font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
-    /*text-align: center;*/
     display: none;
     border: 3px solid #5b7978;
     padding: 5% !important;
     margin-bottom: 5% !important;
 }
 
+/* styles the summary button on the success splash page */
 #summary-button {
     width: 45% !important;
     margin-top: 3% !important;
@@ -330,29 +351,36 @@ span {
     letter-spacing: 0.3vw;
 }
 
+/* styles the summary button on the success splash page*/
 #summary-button:hover, #summary-button:active {
     color: black !important;
     text-decoration: none !important;
 }
 
+/* styles thank you message on success splash page */
 #thank-you-message {
     margin-top: 2% !important;
     text-align: center !important;
     font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
 }
 
+/* styles for hidden toggles */
 #toggle-other-interests {
     display: none;
 }
+
+/* styles for hidden toggles */
 
 #toggle-please-explain {
     display: none;
 }
 
+/* styles for hidden toggles */
 #toggle-weekend-availability {
     display: none;
 }
 
+/* styles the font for the volunteer legend containers */
 #volunteer-title {
     color: white;
     text-align: center !important;
