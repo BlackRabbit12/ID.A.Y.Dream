@@ -504,17 +504,6 @@ function populateModalData(responseData) {
          */
         if (key.includes("contact")) {
             label.setAttribute("id", key.substring(0, key.length));
-            // handle adding a space before the contact ref or guardian sections
-            if(key.includes("contact_name0")) {
-                let linebreak = document.createElement("br");
-                label.prepend(linebreak);
-            } else if(key.includes("contact_name1")) {
-                let linebreak = document.createElement("br");
-                label.prepend(linebreak);
-            } else if(key.includes("contact_name2")) {
-                let linebreak = document.createElement("br");
-                label.prepend(linebreak);
-            }
         } else {
             label.setAttribute("id", key.substring(0, key.length - 1));
         }
