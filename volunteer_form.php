@@ -16,7 +16,6 @@
  *      images/site.webmanifest_title
  *      @link https://code.jquery.com/jquery-1.12.4.js
  *      @link https://code.jquery.com/ui/1.12.1/jquery-ui.js
- *      @link https://code.jquery.com/jquery-3.3.1.slim.min.js
  *      @link https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js
  *      @link https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js
  *      scripts/validation_functions.js
