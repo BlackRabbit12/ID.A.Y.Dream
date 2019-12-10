@@ -722,7 +722,14 @@ function formatPhone(str) {
  * @return True/False if date is/is not valid.
  */
 function validateDate(str) {
-    return str.length === 10;
+    if (str.length === 10) {
+        // check if date exists
+        let month = parseInt(str.substring(0,2));
+        let day = parseInt(str.substring(3,5));
+        let year = parseInt(str.substring(6,10));
+        let dateObj = new Date(year, month, day);
+        return dateObj.getFullYear() === year && dateObj.getMonth() === month && dateObj.getDate() === day;
+    }
 } //end validateDate()
 
 /**

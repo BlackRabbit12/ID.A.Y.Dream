@@ -211,11 +211,29 @@ function formatDOB($str){
  * @return bool Returns true if date of birth is valid.
  */
 function validateDOB($str){
-    $sub = substr($str, 0, 4);
-    if (isNumeric($sub)) {
-        return ((int)$sub <= date("Y") - 10 && (int)$sub >= date("Y") - 20);
+    $isValid = true;
+    $year = substr($str, 0, 4);
+    $month = substr($str, 5, 2);
+    $day = substr($str, 8, 2);
+    // checking if not numeric, casting to ints if numeric
+    if (!isNumeric($year) || !isNumeric($month) || !isNumeric($day)) {
+        $isValid = false;
+    } else {
+        $year = (int) substr($str, 0, 4);
+        $month = (int) substr($str, 5, 2);
+        $day = (int) substr($str, 8, 2);
     }
-    return false;
+    // dreamer age is between 10 and 20
+    if ((int)$year > date("Y") - 10 || (int)$year < date("Y") - 20) {
+        $isValid = false;
+    }
+
+    // checking if date exists
+    if (!checkdate($month, $day, $year)) {
+        $isValid = false;
+    }
+
+    return $isValid;
 } //end validateDOB($str)
 
 /**
@@ -232,25 +250,25 @@ function validateUser($user){
     //user first name
     if (!requiredInputIsValid($user["user_first"])) {
         $isValid = false;
-        $error[] = 'First name';
+        $error[] = 'First name is invalid';
     }
 
     //user last name
     if (!requiredInputIsValid($user["user_last"])) {
         $isValid = false;
-        $error[] = 'Last name';
+        $error[] = 'Last name is invalid';
     }
 
     //user email
     if (!emailIsValid($user["user_email"])) {
         $isValid = false;
-        $error[] = 'Email';
+        $error[] = 'Email is invalid';
     }
 
     //user phone number
     if (!phoneIsValid($user["user_phone"])) {
         $isValid = false;
-        $error[] = 'Phone number';
+        $error[] = 'Phone number is invalid';
     }
 
     return $isValid;
@@ -272,44 +290,44 @@ function validateDreamer($dreamer){
     //dreamer college of interest
     if (!inputIsValid($dreamer["dreamer_college"])) {
         $isValid = false;
-        $error[] = 'College';
+        $error[] = 'College is invalid';
     }
 
     //dreamer date of birth
     //$dreamer_dob = formatDOB($dreamer_dob);
     if (!validateDOB($dreamer["dreamer_date_of_birth"])) {
         $isValid = false;
-        $error[] = 'Date of Birth';
+        $error[] = 'Date of Birth is invalid';
     }
 
     //dreamer graduation year
     if (!validateGrad($dreamer["dreamer_graduation_year"])) {
         $isValid = false;
-        $error[] = 'Graduation';
+        $error[] = 'Graduation is invalid';
     }
 
     //dreamer gender
     if (!genderIsValid($dreamer["dreamer_gender"])) {
         $isValid = false;
-        $error[] = 'Gender';
+        $error[] = 'Gender is invalid';
     }
 
     //dreamer ethnicity
     if (!requiredInputIsValid($dreamer["dreamer_ethnicity"])) {
         $isValid = false;
-        $error[] = 'Ethnicity';
+        $error[] = 'Ethnicity is invalid';
     }
 
     //dreamer favorite snacks
     if (!textareaIsValid($dreamer["dreamer_food"])) {
         $isValid = false;
-        $error[] = 'Food';
+        $error[] = 'Food is invalid';
     }
 
     //dreamer goals-aspirations
     if (!textareaIsValid($dreamer["dreamer_goals"])) {
         $isValid = false;
-        $error[] = 'Goals';
+        $error[] = 'Goals is invalid';
     }
 
     return $isValid;
@@ -330,70 +348,62 @@ function validateVolunteer($volunteer){
     //volunteer address
     if (!requiredInputIsValid($volunteer["volunteer_street_address"])) {
         $isValid = false;
-        $error[] = 'Address';
+        $error[] = 'Address is invalid';
     }
 
     //volunteer zipcode
     if (!zipIsValid($volunteer["volunteer_zip"])) {
         $isValid = false;
-        $error[] = 'Zip';
+        $error[] = 'Zip is invalid';
     }
 
     //volunteer city
     if (!requiredInputIsValid($volunteer["volunteer_city"])) {
         $isValid = false;
-        $error[] = 'City';
+        $error[] = 'City is invalid';
     }
 
     //volunteer state
     if (!inputIsValid($volunteer["volunteer_state"])) {
         $isValid = false;
-        $error[] = 'State';
+        $error[] = 'State is invalid';
     }
 
     //volunteer t-shirt size
     if (!inputIsValid($volunteer["volunteer_tshirt_size"])) {
         $isValid = false;
-        $error[] = 'T-shirt';
+        $error[] = 'T-shirt is invalid';
     }
 
     //volunteer about us
     if (!textareaIsValid($volunteer["volunteer_about_us"])) {
         $isValid = false;
-        $error[] = 'About Us';
+        $error[] = 'About Us is invalid';
     }
 
     //volunteer motivations to work with ID.A.Y.Dream
     if (!requiredTextareaIsValid($volunteer["volunteer_motivated"])) {
         $isValid = false;
-        $error[] = 'Motivated';
+        $error[] = 'Motivated is invalid';
     }
 
     //volunteer previous volunteer experience
     if (!textareaIsValid($volunteer["volunteer_experience"])) {
         $isValid = false;
-        $error[] = 'Volunteer Experience';
+        $error[] = 'Volunteer Experience is invalid';
     }
 
     //volunteer previous volunteer experience with youth organizations
     if (!textareaIsValid($volunteer["volunteer_youth_experience"])) {
         $isValid = false;
-        $error[] = 'Dreamer Experience';
+        $error[] = 'Dreamer Experience is invalid';
     }
 
     //volunteer's applicable skills
     if (!textareaIsValid($volunteer["volunteer_skills"])) {
         $isValid = false;
-        $error[] = 'Skills';
+        $error[] = 'Skills are invalid';
     }
-
-    //volunteer wants to be on the mailing list
-    // hiding this per Sprint 4 feedback to take off of the form
-//    if ($volunteer["volunteer_emailing"] == 'yes') {
-//        $volunteer_emailing = 1;
-//    } else {
-//        $volunteer_emailing = 0;
-//    }
 
     return $isValid;
 } //end validateVolunteer($volunteer)
@@ -415,25 +425,25 @@ function validateContact($contact){
     //Reference phone number
     if (!phoneIsValid($contact["contact_phone"])) {
         $isValid = false;
-        $error[] = 'Contact Phone';
+        $error[] = 'Contact Phone is invalid';
     }
 
     //Reference email
     if (!emailIsValid($contact["contact_email"])) {
         $isValid = false;
-        $error[] = 'Contact Email';
+        $error[] = 'Contact Email is invalid';
     }
 
     //Reference relationship to volunteer
     if (!requiredInputIsValid($contact["contact_relationship"])) {
         $isValid = false;
-        $error[] = 'Contact Relationship';
+        $error[] = 'Contact Relationship is invalid';
     }
 
     //Reference name
     if (!requiredInputIsValid($contact["contact_name"])) {
         $isValid = false;
-        $error[] = 'Contact Name';
+        $error[] = 'Contact Name is invalid';
     }
 
     return $isValid;
