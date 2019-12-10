@@ -728,7 +728,7 @@ function validateDate(str) {
         let day = parseInt(str.substring(3,5));
         let year = parseInt(str.substring(6,10));
         let dateObj = new Date(year, month, day);
-        return dateObj.getFullYear() === year && dateObj.getMonth() === month && dateObj.getDate() === day;
+        return dateObj.getTime() === dateObj.getTime();
     }
 } //end validateDate()
 
