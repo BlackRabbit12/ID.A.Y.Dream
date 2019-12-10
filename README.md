@@ -143,9 +143,6 @@ Summary of each file and it's function within the application:
 
 
 
-
-<details>
-	<summary><em><strong>scripts</strong></em></summary>
 <details>
   <summary>success_splash_functions.js</summary>
     <p>File controls the toggle functionality of the success page for both volunteer sign up and dreamer sign up.
@@ -265,7 +262,6 @@ When the user navigates away from the modal their username and password inputs a
  	+ validatePhone(1x)
  	+ validateYear(1x)
 
-</details>
 </details>
 
 
