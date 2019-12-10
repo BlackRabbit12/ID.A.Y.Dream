@@ -420,8 +420,6 @@ When the user navigates away from the modal their username and password inputs a
 
 
 <details>
-	<summary><em><strong>css</strong></em></summary>
-<details>
   <summary>youth_styles.css</summary>
     <p>File contains iD.A.Y.Dream Youth Organization's associated files Bootstrap overrides and custom styles.
     </p>
@@ -448,7 +446,6 @@ When the user navigates away from the modal their username and password inputs a
   <summary>admin_styles.css</summary>
     <p>File contains CSS for the Admin Page's Bootstrap Overrides and custom styles.
     </p>
-</details>
 </details>
 
 
