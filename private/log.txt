@@ -1,1 +1,0 @@
-UPDATE User SET user_last = 'SSSSS' WHERE user_id = 7
