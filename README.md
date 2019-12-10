@@ -403,8 +403,6 @@ When the user navigates away from the modal their username and password inputs a
 
 
 <details>
-	<summary><em><strong>db_scripts</strong></em></summary>
-<details>
   <summary>db_schema.sql</summary>
     <p>This file contains tables for iD.A.Y.Dream Youth Organization's database. Table interactions are as such: All organization member's basic information is stored in the User table. Volunteers are Users with additional volunteer specific data, stored in the Volunteer table. Dreamers are Users with additional dreamer specific data, stored in the dreamer table. Contacts are either of type 'Reference' (tied to volunteers) or of type 'Guardian' (tied to dreamers) and are stored in the Contact table.
  </p>
@@ -417,7 +415,6 @@ When the user navigates away from the modal their username and password inputs a
 
 + Sample Users, Volunteers, Dreamers, Contacts are added for testing purposes only.
 
-</details>
 </details>
 
 
