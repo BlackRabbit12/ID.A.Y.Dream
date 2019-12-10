@@ -125,7 +125,7 @@
                         <div class="col-md-6 padding">
                             <label for="dob" class="col-form-label"><em>*</em> Date of Birth</label>
                             <input type="text" class="form-control" id="dob" name="dob" placeholder="MM/DD/YYYY">
-                            <span id="err-dob" class="d-none">please enter your date of birth</span>
+                            <span id="err-dob" class="d-none">invalid date of birth</span>
                         </div>
                         <div class="col-md-6 padding">
                             <label for="gender" class="col-form-label"><em>*</em> Gender</label>
@@ -165,7 +165,7 @@
 
             <!-- Ethnicity 'Other' toggle, hidden to start -->
             <div id="toggle-ethnicity-other">
-                <label for="ethnicity-other">Please explain</label>
+                <label for="ethnicity-other">Ethnicity Other: please explain</label>
                 <div class="input-group">
                     <input class="form-control" id="ethnicity-other" name="ethnicity-Other" placeholder="">
                 </div>
