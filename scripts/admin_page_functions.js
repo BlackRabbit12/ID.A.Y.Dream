@@ -159,9 +159,8 @@ function addEditEvents() {
                             //update the table data with new value. If user first, add a tags for link styling
                             if (data_to_update[2].toString() === "user_first") {
                                 $("#" + data_to_update[4]).children("." + data_to_update[2]).html("<a href=\'#\'>" + data_to_update[3] + "</a>");
-
                             } else {
-                                $("#" + data_to_update[4]).children("." + data_to_update[2]).html(data_to_update[3]);
+                                $("#" + id).children("." + data_to_update[2]).html(data_to_update[3]);
                             }
                             let firstName = $("#" + id).children(".user_first").text();
                             let lastName = $("#" + id).children(".user_last").text();
