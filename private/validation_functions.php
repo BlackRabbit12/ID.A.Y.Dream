@@ -211,11 +211,29 @@ function formatDOB($str){
  * @return bool Returns true if date of birth is valid.
  */
 function validateDOB($str){
-    $sub = substr($str, 0, 4);
-    if (isNumeric($sub)) {
-        return ((int)$sub <= date("Y") - 10 && (int)$sub >= date("Y") - 20);
+    $isValid = true;
+    $year = substr($str, 0, 4);
+    $month = substr($str, 5, 2);
+    $day = substr($str, 8, 2);
+    // checking if not numeric, casting to ints if numeric
+    if (!isNumeric($year) || !isNumeric($month) || !isNumeric($day)) {
+        $isValid = false;
+    } else {
+        $year = (int) substr($str, 0, 4);
+        $month = (int) substr($str, 5, 2);
+        $day = (int) substr($str, 8, 2);
     }
-    return false;
+    // dreamer age is between 10 and 20
+    if ((int)$year > date("Y") - 10 || (int)$year < date("Y") - 20) {
+        $isValid = false;
+    }
+
+    // checking if date exists
+    if (!checkdate($month, $day, $year)) {
+        $isValid = false;
+    }
+
+    return $isValid;
 } //end validateDOB($str)
 
 /**
