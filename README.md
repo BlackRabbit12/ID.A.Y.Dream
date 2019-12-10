@@ -267,8 +267,6 @@ When the user navigates away from the modal their username and password inputs a
 
 
 <details>
-	<summary><em><strong>private</strong></em></summary>
-<details>
   <summary>functions.php</summary>
     <p>File contains functions to build the admin table (with appropriate formatting), the dropdown field inside the admin table, and to build the summary pages.
 </p>
@@ -400,7 +398,6 @@ When the user navigates away from the modal their username and password inputs a
 + Functions:
 	+ createAssociativeArray(2x)
 
-</details>
 </details>
 
 
