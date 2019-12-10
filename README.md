@@ -1,6 +1,8 @@
 # :blue_heart: iD.A.Y.Dream :blue_heart: #
 iD.A.Y.Dream is a non-profit Youth Organization that focuses on helping at risk youth self-actualize, to become their potentialities, through strong community bonds and resources. For more information about, or to become part of, the organization and the communities they are helping, please visit [idaydream.org](https://www.idaydream.org/).
 
+This repository is how we created two sign up forms (volunteers and youth members, aka ‘dreamers’), a database, and an interface for iD.A.Y.Dream admin to interact with their database.
+
 ## Authors
 * Keller Flint-Blanchard - Github: https://github.com/kellerflint :trollface:
 * Shayna Jamieson - Github: https://github.com/jamiesonshayna :sparkles:
