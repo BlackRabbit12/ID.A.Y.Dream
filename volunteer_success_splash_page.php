@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-02
- * Last Update: 2019-12-08
+ * Last Update: 2019-12-09
  * File name: volunteer_success_splash_page.php
  * Associated Files:
  *      volunteer_form.php

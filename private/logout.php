@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-12-04
- * Last Update: 2019-12-08
+ * Last Update: 2019-12-09
  * File name: logout.php
  * Associated Files:
  *      scripts/admin_page_functions.js

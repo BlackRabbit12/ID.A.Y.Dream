@@ -4,7 +4,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-12-05
- * Last Update: 2019-12-08
+ * Last Update: 2019-12-09
  * File name: index_page_functions.js
  * Associated Files:
  *      private/index.php

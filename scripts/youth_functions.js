@@ -4,7 +4,7 @@
  * @author Keller Flint
  * @version 1.o
  * 2019-10-29
- * Last Updated: 2019-12-08
+ * Last Updated: 2019-12-09
  * File name: youth_functions.js
  * Associated Files:
  *      youth_form.php

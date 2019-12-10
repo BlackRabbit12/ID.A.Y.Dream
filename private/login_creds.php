@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-12-04
- * Last Update: 2019-12-08
+ * Last Update: 2019-12-09
  * File name: login_creds.php
  * Associated Files:
  *      index.php

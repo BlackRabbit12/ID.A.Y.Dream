@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-11-09
- * Last Updated: 2019-12-08
+ * Last Updated: 2019-12-09
  * File name: db_connect.php
  * Associated Files:
  *      private/init.php
