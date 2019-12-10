@@ -294,12 +294,14 @@ $(document).ready(function () {
     addClickEvents();
 }); //.ready
 
+
 /**
  * Set data tables and add click events.
  */
 document.getElementById("data-select").addEventListener("change", function () {
     this.form.submit();
 }); //addEventListener
+
 
 /**
  * Set the three-way-toggle for Dreamers + Volunteers, Toggles Email 'To' List, Delete user in current modal.
@@ -474,7 +476,6 @@ $(document).ready(function () {
         }
     }); // end delete event listener
 }); //.ready
-
 
 
 /**

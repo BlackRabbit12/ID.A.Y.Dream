@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-02
- * Last Update: 2019-12-08
+ * Last Update: 2019-12-09
  * File name: youth_success_splash.php
  * Associated Files:
  *      youth_form.php

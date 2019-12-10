@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version 1.o
  * 2019-10-30
- * Last Update: 2019-12-08
+ * Last Update: 2019-12-09
  * File Name: index.php
  * Associated Files:
  *      css/index_styles.css
@@ -28,9 +28,9 @@
  *          admin_page.php - if credentials are good, redirect admin to admin_page
  */
 
-// TODO: after final product submitted: remember to turn off error reporting for normal use
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+//TODO remove error report when live
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 
 // start a session for login functionality
 session_start();

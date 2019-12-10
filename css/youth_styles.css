@@ -6,10 +6,11 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-29
- * Last Update: 2019-12-08
+ * Last Update: 2019-12-09
  * File name: youth_styles.css
  * Associated Files:
  *      youth_form.php
+ *      youth_success_splash.php
  *
  * Description:
  *      File contains iD.A.Y.Dream Youth Organization's associated files Bootstrap overrides and custom styles.
@@ -22,6 +23,7 @@
     }
 }
 
+/* submit + summary buttons */
 .btn {
     background-color: #6cb1c1;
     border: none;
@@ -37,6 +39,7 @@
     letter-spacing: 0.3vw;
 }
 
+/* sign up banner over jumbotron */
 #container-form-intro {
     background-color: #6cb1c1;
     margin-top: -4% !important;
@@ -47,6 +50,7 @@
     max-width: 80vw;
 }
 
+/* asterisk on require field names */
 em {
     color: #c16062;
 }
@@ -57,12 +61,14 @@ footer {
     background-color: #202020 !important;
 }
 
+/* entire form container */
 #form-container {
     margin-top: 5%;
     margin-bottom: 6%;
     color: #202020 !important;
 }
 
+/* in banner over jumbotron */
 .form-intro {
     text-align: center !important;
     font-size: 1em !important;
@@ -71,14 +77,17 @@ footer {
     letter-spacing: 0.1vw;
 }
 
+/* in banner over jumbotron */
 #form-intro-1 {
     padding-top: 8px !important;
 }
 
+/* in banner over jumbotron */
 #form-intro-2 {
     padding-bottom: 8px !important;
 }
 
+/* form input fields */
 input[type="text"] {
     background: transparent;
     border: none;
@@ -88,10 +97,12 @@ input[type="text"] {
     border-radius: 0;
 }
 
+/* form input fields */
 input[type="text"]:focus {
     -webkit-box-shadow: none;
 }
 
+/* Jumbotron */
 .jumbotron {
     background-image: url("../images/IDAYDREAM YOUTH_LOGO.png");
     background-size: cover;
@@ -104,6 +115,7 @@ input[type="text"]:focus {
     z-index: 0;
 }
 
+/* padding on each form field */
 .padding {
     margin-bottom: 3% !important;
 }
@@ -112,15 +124,18 @@ input[type="text"]:focus {
     border-bottom: 1px solid #c16062 !important;
 }
 
+/* submit button */
 #row-holds-submit-button {
     margin-top: 5% !important;
 }
 
+/* error spans */
 span {
     color: #c16062;
     font-size: smaller;
 }
 
+/* summary container */
 #summary {
     margin-top: 5% !important;
     font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
@@ -131,17 +146,20 @@ span {
     margin-bottom: 5% !important;
 }
 
+/* summary toggle button */
 #summary-button {
     width: 45% !important;
     margin-top: 4% !important;
 }
 
+/* thank you message container */
 #thank-you-message {
     margin-top: 2% !important;
     text-align: center !important;
     font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
 }
 
+/* text in jumbotron */
 #youth-volunteer-title {
     color: white;
     text-align: center !important;

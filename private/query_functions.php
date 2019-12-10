@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-11-09
- * Last Update: 2019-12-08
+ * Last Update: 2019-12-09
  * File name: query_functions.php
  * Associated Files:
  *      volunteer_success_splash_page.php

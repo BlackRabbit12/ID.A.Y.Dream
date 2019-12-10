@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-29
- * Last Updated: 2019-12-08
+ * Last Updated: 2019-12-09
  * File name: styles.css
  * Associated files:
  *      volunteer_form.php
@@ -121,9 +121,9 @@ button[type="submit"] {
 }
 
 /*
-http://www.okler.net/forums/topic/check-box-change-color/
-Followed some setup and class selection from a post by Jonas at the above link.
-Using custom checkbox classes here and in the HTML allowed us to change the color of a checked box.
+ * http://www.okler.net/forums/topic/check-box-change-color/
+ * Followed some setup and class selection from a post by Jonas at the above link.
+ * Using custom checkbox classes here and in the HTML allowed us to change the color of a checked box.
 */
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #5b7978;
@@ -177,9 +177,9 @@ input[data-state="invalid"] {
 }
 
 /*
-https://stackoverflow.com/questions/22406661/how-to-make-one-circle-inside-of-another-using-css
-Used logic from misterManSam on Stack overflow to put smaller circle inside of larger circle to override
-browser rendering of radio buttons.
+ * https://stackoverflow.com/questions/22406661/how-to-make-one-circle-inside-of-another-using-css
+ * Used logic from misterManSam on Stack overflow to put smaller circle inside of larger circle to override
+ * browser rendering of radio buttons.
 */
 input[type="radio"] {
     -webkit-appearance: none;

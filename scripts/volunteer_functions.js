@@ -4,7 +4,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-29
- * Last Updated: 2019-12-08
+ * Last Updated: 2019-12-09
  * File name: volunteer_functions.js
  * Associated File:
  *      volunteer_form.php
@@ -110,6 +110,7 @@ function toggleInterestExplanation() {
     }
 } //end toggleInterestExplanation()
 
+
 /**
  * Displays the youth explanation textarea.
  */
@@ -117,6 +118,7 @@ function toggleYouthExplanationShow() {
     let youthDisplay = document.getElementById("toggle-please-explain");
     youthDisplay.style.display = "block";
 } //end toggleYouthExplanationShow()
+
 
 /**
  * Hides the youth explanation text area.

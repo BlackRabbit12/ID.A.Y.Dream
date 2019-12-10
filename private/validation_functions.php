@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-11-09
- * Last Update: 2019-12-08
+ * Last Update: 2019-12-09
  * File name: validation_functions.php
  * Associated Files:
  *      volunteer_success_splash.php
@@ -90,6 +90,8 @@ function isEmpty($str){
 function isNumeric($str){
     return ctype_digit($str);
 } //end isNumeric($str)
+
+
 
 /* --- Validation Functions --- */
 /**

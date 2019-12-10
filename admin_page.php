@@ -6,7 +6,7 @@
  * @author Keller Flint
  * @version: 1.0
  * 2019-10-16
- * Last Update: 2019-12-08
+ * Last Update: 2019-12-09
  * File Name: admin_page.php
  * Associated Files:
  *      private/init.php
@@ -47,9 +47,9 @@
  *          index.php - for validating that the admin has logged in and can stay logged in
  */
 
-    // TODO: after final product submitted: remember to turn off error reporting for normal use
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
+    //TODO remove error report when live
+//    ini_set('display_errors', 1);
+//    error_reporting(E_ALL);
 
     //Start the session
     session_start();

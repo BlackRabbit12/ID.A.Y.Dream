@@ -4,7 +4,7 @@
  * @author Keller Flint
  * @version 1.0
  * 2019-10-29
- * Last Updated: 2019-12-08
+ * Last Updated: 2019-12-09
  * File name: validation_functions.js
  * Associated Files:
  *      scripts/youth_functions.js
@@ -144,9 +144,9 @@ function validateTshirt() {
     }
 } //end validateTshirt()
 
-// Displays errors if gender has invalid input
+
 /**
- * Checks for valid Gender data.
+ * Displays errors if gender has invalid input.
  * @returns {boolean} True or False if the gender is valid or not.
  */
 function validateGender() {
