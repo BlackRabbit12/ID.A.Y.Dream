@@ -223,8 +223,17 @@ function validateDOB() {
         $("#dob").addClass("red-border-drop");
         return false;
     } else {
-        $("#err-dob").addClass("d-none");
-        $("#dob").removeClass("red-border-drop");
+        // check if date exists
+        let month = parseInt(str.substring(0,2));
+        let day = parseInt(str.substring(3,5));
+        let year = parseInt(str.substring(6,10));
+        let dateObj = new Date(year, month, day);
+        if (dateObj.getFullYear() === year && dateObj.getMonth() === month && dateObj.getDate() === day) {
+            $("#err-dob").addClass("d-none");
+            $("#dob").removeClass("red-border-drop");
+        } else {
+            return false;
+        }
 
         /*
          * here is where we check to see if the dob for the prospective dreamer is too young or too old and handle
