@@ -449,6 +449,27 @@ When the user navigates away from the modal their username and password inputs a
 </details>
 
 
+<details>
+	<summary>Thumbnails</summary>
+	
+#### Volunteer Sign Up Form
+<img src="/images/volunteer_form_1.png" alt="Volunteer Sign Up Form Thumbnail"/>
+	
+#### Dreamer (youth) Sign Up Form
+<img src="/images/youth_form_1.png" alt="Youth Sign Up Form Thumbnail"/>
+	
+#### Admin Login
+<img src="/images/index_1.png" alt="Admin Login Thumbnail"/>
+
+#### Admin Database Interface, Tables
+<img src="/images/admin_1.png" alt="Admin Tables Thumbnail"/>
+
+#### Admin Database Interface, Modal
+<img src="/images/modal_1.png" alt="Admin Modal Thumbnail"/>
+	
+</details>
+
+
 ## Built With
 * HTML5 + PHP - Scripting Languages of Choice
 * JavaScript + jQuery - Dynamic Scripting Language(s) of Choice
