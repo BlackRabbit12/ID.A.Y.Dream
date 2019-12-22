@@ -120,7 +120,9 @@ if ($success) {
 
         echo "<h2>Thank you for your submission {$user["user_first"]}!</h2>"
         ?>
-        <h3 id="click-to-see">Click to see a summary of your information.</h3>
+        <h3 id="click-for-events">Check out some of our upcoming events</h3>
+        <button class="btn btn-lg" type="button" id="events-button">ID.A.Y.DREAM EVENTS</button>
+        <h3 id="click-to-see">View a summary of your information</h3>
         <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>
     </div>
 

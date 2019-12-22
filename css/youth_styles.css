@@ -39,6 +39,16 @@
     letter-spacing: 0.3vw;
 }
 
+/* add spacing on the success splash page between sections */
+#click-to-see {
+    margin-top: 3% !important;
+}
+
+/* add spacing on the success splash page between sections */
+#click-for-events {
+    margin-top: 6% !important;
+}
+
 /* sign up banner over jumbotron */
 #container-form-intro {
     background-color: #6cb1c1;
@@ -147,9 +157,14 @@ span {
 }
 
 /* summary toggle button */
-#summary-button {
+#summary-button, #events-button {
     width: 45% !important;
-    margin-top: 4% !important;
+    margin-top: 2% !important;
+}
+
+/* give bottom area spacing for summary button */
+#summary-button {
+    margin-bottom: 8% !important;
 }
 
 /* thank you message container */
