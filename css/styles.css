@@ -108,6 +108,16 @@ button[type="submit"] {
     letter-spacing: 0.3vw;
 }
 
+/* add spacing on the success splash page between sections */
+#click-for-events {
+    margin-top: 4% !important;
+}
+
+/* add spacing on the success splash page between sections */
+#click-to-see {
+    margin-top: 6% !important;
+}
+
 /* clear references button styles for hover and active */
 .clear-reference:hover, .clear-reference:active {
     border-bottom: 1px solid black;
@@ -337,9 +347,9 @@ span {
 }
 
 /* styles the summary button on the success splash page */
-#summary-button {
+#summary-button, #events-button {
     width: 45% !important;
-    margin-top: 3% !important;
+    margin-top: 2% !important;
     text-decoration: none;
     background-color: #5b7978;
     color: white !important;
@@ -351,8 +361,13 @@ span {
     letter-spacing: 0.3vw;
 }
 
+/* give spacing below the summary button */
+#summary-button {
+    margin-bottom: 8% !important;
+}
+
 /* styles the summary button on the success splash page*/
-#summary-button:hover, #summary-button:active {
+#summary-button:hover, #summary-button:active, #events-button:hover, #events-button:active {
     color: black !important;
     text-decoration: none !important;
 }

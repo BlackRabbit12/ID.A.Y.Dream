@@ -19,6 +19,13 @@
  *          toggleSummary()
  */
 
+/**
+ * if the user clicks on the events button they are taken to Brandi's events page
+ */
+$("#events-button").on("click", function() {
+    window.open("https://www.idaydream.org/events", "_blank");
+});
+
 // on click, displays results summary for youth splash page
 document.getElementById("summary-button").onclick = toggleSummary;
 
