@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Home - iD.A.Y.Dream</title>
+    <title>Admin - iD.A.Y.Dream</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index_styles.css" type="text/css">
     <!-- https://favicon.io/emoji-favicons/blue-heart/ -->
@@ -119,7 +119,7 @@ if (isset($_POST['submit'])) {
         <div class="row" id="body-text-row">
             <div class="col-sm-9 col-md-5">
                 <div class="container">
-                    <p id="description-text">We strive to motivate and inspire our dreamers to become leaders in their communities. Through educational programming, one on one mentorship, and community engagement events, we make sure that all youth have the confidence to dream out loud.</p>
+                    <p id="description-text">We strive to motivate and inspire our dreamers to become leaders in their communities through educational programming, one on one mentorship, and community engagement events. We make sure that all youth have the confidence to dream out loud.</p>
                 </div>
             </div>
             <div class="col-sm-3 col-md-7"></div>
@@ -149,7 +149,7 @@ if (isset($_POST['submit'])) {
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3>Admin Login</h3>
+                        <h3>Login</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <form method="post" action="">

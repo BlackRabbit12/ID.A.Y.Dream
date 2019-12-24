@@ -42,7 +42,7 @@ require_once "private/init.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Volunteer - iD.A.Y.Dream</title>
+    <title>Volunteer Sign-Up - iD.A.Y.Dream</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
@@ -56,14 +56,14 @@ require_once "private/init.php";
 <!-- Jumbotron -->
 <div class="jumbotron d-flex align-items-center">
     <div class="container">
-        <h1 id="volunteer-title">VOLUNTEER</h1>
+        <h1 id="volunteer-title">VOLUNTEER SIGN-UP</h1>
     </div>
 </div> <!-- ending section for the jumbotron -->
 
 <!-- Background Check Container -->
 <div class="container" id="background-check-container">
-    <h3 id="bgc-sentence1">To volunteer with iD.A.Y.DREAM you must undergo a background check.</h3>
-    <h4>Are you willing to have a background check?</h4>
+    <h3 id="bgc-sentence1">To volunteer with iD.A.Y.Dream you must undergo a background check.</h3>
+    <h4>Are you willing to complete a background check?</h4>
     <!-- Background Check Buttons -->
     <div class="row" id="background-check-buttons">
         <div class="col-6 text-center">
@@ -77,11 +77,11 @@ require_once "private/init.php";
 
 <!-- Background Check 'No' Container -->
 <div class="container" id="bg-check-no-container">
-    <h2 id="bg-check-explain-no">Because of our values as an organization and out of the safety of the youth we serve it
+    <h2 id="bg-check-explain-no">Because of our values as an organization and out of the safety of the youth we serve, it
         is a requirement that a background check must be submitted. You have chosen to decline. Thank you for your
         consideration in volunteering with iD.A.Y.Dream, at this time we are unable to move forward with your
         submission.<br>Please do visit us again!</h2>
-    <button class="btn btn-go-home" id="go-home" href="#">I D.A.Y. DREAM HOME PAGE</button>
+    <button class="btn btn-go-home" id="go-home">I D.A.Y. DREAM HOME PAGE</button>
 </div> <!-- end of container that holds the information for if user selects no to background check -->
 
 <!-- Form Container -->
@@ -118,14 +118,14 @@ require_once "private/init.php";
             <!-- Zip, City, State -->
             <div class="row">
                 <div class="col-md-4 padding">
-                    <label for="zip" class="col-form-label"><em>*</em> ZIP</label>
+                    <label for="zip" class="col-form-label"><em>*</em> Zip Code</label>
                     <input type="text" class="form-control" id="zip" name="zip" placeholder="">
                     <span id="err-zip" class="d-none">please enter a valid zip code</span>
                 </div> <!-- end of column with zip information -->
                 <div class="col-md-4 padding">
                     <label for="city" class="col-form-label"><em>*</em> City</label>
                     <input type="text" class="form-control" name="city" id="city" placeholder="">
-                    <span id="err-city" class="d-none">please enter a valid city name</span>
+                    <span id="err-city" class="d-none">please enter a valid city</span>
                 </div> <!-- end of column with city information -->
                 <div class="col-md-4 padding">
                     <label for="state" class="col-form-label"><em>*</em> State</label>
@@ -192,7 +192,7 @@ require_once "private/init.php";
                     <span id="err-email" class="d-none">please enter a valid email</span>
                 </div>
                 <div class="col-md-4 padding">
-                    <label for="phone" class="col-form-label"><em>*</em> Phone</label>
+                    <label for="phone" class="col-form-label"><em>*</em> Phone Number</label>
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="">
                     <span id="err-phone" class="d-none">please enter a valid phone number</span>
                 </div>
@@ -205,6 +205,7 @@ require_once "private/init.php";
                         <option value="large">Large</option>
                         <option value="xLarge">X-Large</option>
                     </select>
+                    <span id="err-t-shirt" class="d-none">please select a t-shirt size</span>
                 </div>
             </div> <!-- end of row with phone number entry and email -->
 
@@ -229,7 +230,7 @@ require_once "private/init.php";
             <!-- Interests and Available times -->
             <div class="row">
                 <div class="col-md-6">
-                    <label class="col-form-label">I would like to help...</label>
+                    <label class="col-form-label">I would like to be involved with:</label>
                     <span class="hide-me" id="where-to-help">Please select one of the ways you'd like to help:</span>
                     <div class="custom-control custom-checkbox">
                         <input class="custom-control-input" type="checkbox" name="events[]" value="Events/Activities"
@@ -271,30 +272,32 @@ require_once "private/init.php";
                                 <textarea class="form-control" id="other-interests-explanation" name="interests-Explain"
                                           placeholder=""></textarea>
                         </div> <!-- area where the user explains their other interests if chosen other -->
+                        <span id="err-other-interests-explanation" class="d-none">please describe other areas of interest</span>
                     </div>
                     <br> <!-- end of div that holds the toggle for if user needs to explain their interests -->
                 </div> <!-- end of row that holds the events and activities check boxes -->
                 <div class="col-md-6">
-                    <label class="col-form-label">My availability is...</label>
+                    <label class="col-form-label">I am available for:</label>
                     <span class="hide-me" id="i-can-help">Please select when you can help:</span>
                     <div class="custom-control custom-checkbox">
                         <input class="custom-control-input" type="checkbox" value="Weekends"
                                name="availability[]" id="weekend-availability">
-                        <label class="custom-control-label" for="weekend-availability">Weekends</label>
+                        <label class="custom-control-label" for="weekend-availability">Weekend Events</label>
                     </div> <!-- end of div that has the weekend check box -->
                     <div class="custom-control custom-checkbox">
                         <input class="custom-control-input" type="checkbox" value="Summer camp" name="availability[]"
                                id="summer-camp">
-                        <label class="custom-control-label" for="summer-camp">Summer Camp (1 week)</label>
+                        <label class="custom-control-label" for="summer-camp">Summer Camp (1 week durations)</label>
                     </div>
                     <br> <!-- end of div that has the summer camp check box -->
                     <div id="toggle-weekend-availability">
-                        <label for="weekend-availability-explanation"><em>*</em> Please list weekend dates/times that
+                        <label for="weekend-availability-explanation"><em>*</em> Please list weekend dates and times that
                             you are available:</label>
                         <div class="input-group">
                                 <textarea class="form-control" id="weekend-availability-explanation"
                                           name="availability-Explain" placeholder=""></textarea>
                         </div> <!-- area where the user explains their other interests if chosen other -->
+                        <span id="err-weekend-availability-explanation" class="d-none">please enter at least 1 weekend availability</span>
                     </div> <!-- end of div that holds the toggle for if user needs to explain their interests -->
                 </div>
             </div> <!-- end of row that holds the columns for choosing availability and areas of interest -->
@@ -310,7 +313,7 @@ require_once "private/init.php";
                 <textarea class="form-control" id="motivation" name="motivation" placeholder=""></textarea>
             </div> <!-- end of text area for why they are motivated to work for us -->
             <span id="err-motivation" class="d-none">please describe your motivation for working with us</span><br>
-            <label for="volunteer-experience">Describe your previous volunteer experience:</label>
+            <label for="volunteer-experience">Describe any previous volunteer experience:</label>
             <div class="input-group">
                     <textarea class="form-control" id="volunteer-experience" name="volunteer-Experience"
                               placeholder=""></textarea>
@@ -328,7 +331,7 @@ require_once "private/init.php";
                 <label class="form-check-label" for="youth-experience-no">No</label>
             </div> <!-- end of div for checkbox of if they have experience with youth "no"  -->
             <div id="toggle-please-explain"><br>
-                <label for="youth-experience-explanation">Please elaborate on your work with youth:</label>
+                <label for="youth-experience-explanation">Please elaborate on your work with youth organizations:</label>
                 <div class="input-group">
                         <textarea class="form-control" id="youth-experience-explanation"
                                   name="youth-Experience-Explanation"
@@ -336,7 +339,7 @@ require_once "private/init.php";
                 </div> <!-- area where the user explains the volunteer experience that they have with youth -->
             </div>
             <br> <!-- end of div that holds the toggle for if user needs to explain their youth volunteer experience -->
-            <label for="other-experience">Any other skills or qualifications you would like to list:</label>
+            <label for="other-experience">Other skills or qualifications that you would like us to be aware of:</label>
             <div class="input-group">
                 <textarea class="form-control" id="other-experience" name="other-Skills" placeholder=""></textarea>
             </div> <!-- end of div for user listing any other skills or qualifications that they have -->
@@ -353,11 +356,13 @@ require_once "private/init.php";
                     <div class="col-md-6">
                         <label for="ref-name-1" class="col-form-label char-ref-bg1">Full Name</label>
                         <input type="text" class="form-control" id="ref-name-1" name="reference-Name-1" placeholder="">
+                        <span id="err-ref-name-1" class="d-none">please enter a valid reference name</span>
                     </div>
                     <div class="col-md-6">
                         <label for="ref-relationship-1" class="col-form-label char-ref-bg1">Relationship</label>
                         <input type="text" class="form-control" id="ref-relationship-1" name="reference-Relationship-1"
                                placeholder="">
+                        <span id="err-ref-relationship-1" class="d-none">please enter a valid reference relationship</span>
                     </div>
                 </div>
                 <div class="row">
@@ -365,11 +370,13 @@ require_once "private/init.php";
                         <label for="ref-email-1" class="col-form-label char-ref-bg1">Email</label>
                         <input type="text" class="form-control" id="ref-email-1" name="reference-Email-1"
                                placeholder="">
+                        <span id="err-ref-email-1" class="d-none">please enter a valid reference email</span>
                     </div>
                     <div class="col-md-6">
-                        <label for="ref-phone-1" class="col-form-label char-ref-bg1">Phone</label>
+                        <label for="ref-phone-1" class="col-form-label char-ref-bg1">Phone Number</label>
                         <input type="text" class="form-control" id="ref-phone-1" name="reference-Phone-1"
                                placeholder="">
+                        <span id="err-ref-phone-1" class="d-none">please enter a valid reference phone number</span>
                     </div>
                 </div>
             </div>
@@ -380,11 +387,13 @@ require_once "private/init.php";
                     <div class="col-md-6">
                         <label for="ref-name-2" class="col-form-label char-ref-bg2">Full Name</label>
                         <input type="text" class="form-control" id="ref-name-2" name="reference-Name-2" placeholder="">
+                        <span id="err-ref-name-2" class="d-none">please enter a valid reference name</span>
                     </div>
                     <div class="col-md-6">
                         <label for="ref-relationship-2" class="col-form-label char-ref-bg2">Relationship</label>
                         <input type="text" class="form-control" id="ref-relationship-2" name="reference-Relationship-2"
                                placeholder="">
+                        <span id="err-ref-relationship-2" class="d-none">please enter a valid reference relationship</span>
                     </div>
                 </div>
                 <div class="row">
@@ -392,11 +401,13 @@ require_once "private/init.php";
                         <label for="ref-email-2" class="col-form-label char-ref-bg2">Email</label>
                         <input type="text" class="form-control" id="ref-email-2" name="reference-Email-2"
                                placeholder="">
+                        <span id="err-ref-email-2" class="d-none">please enter a valid reference email</span>
                     </div>
                     <div class="col-md-6">
-                        <label for="ref-phone-2" class="col-form-label char-ref-bg2">Phone</label>
+                        <label for="ref-phone-2" class="col-form-label char-ref-bg2">Phone Number</label>
                         <input type="text" class="form-control" id="ref-phone-2" name="reference-Phone-2"
                                placeholder="">
+                        <span id="err-ref-phone-2" class="d-none">please enter a valid reference phone number</span>
                     </div>
                 </div>
             </div>
@@ -407,11 +418,13 @@ require_once "private/init.php";
                     <div class="col-md-6">
                         <label for="ref-name-3" class="col-form-label char-ref-bg3">Full Name</label>
                         <input type="text" class="form-control" id="ref-name-3" name="reference-Name-3" placeholder="">
+                        <span id="err-ref-name-3" class="d-none">please enter a valid reference name</span>
                     </div>
                     <div class="col-md-6">
                         <label for="ref-relationship-3" class="col-form-label char-ref-bg3">Relationship</label>
                         <input type="text" class="form-control" id="ref-relationship-3" name="reference-Relationship-3"
                                placeholder="">
+                        <span id="err-ref-relationship-3" class="d-none">please enter a valid reference relationship</span>
                     </div>
                 </div>
                 <div class="row">
@@ -419,11 +432,13 @@ require_once "private/init.php";
                         <label for="ref-email-3" class="col-form-label char-ref-bg3">Email</label>
                         <input type="text" class="form-control" id="ref-email-3" name="reference-Email-3"
                                placeholder="">
+                        <span id="err-ref-email-3" class="d-none">please enter a valid reference email</span>
                     </div>
                     <div class="col-md-6">
-                        <label for="ref-phone-3" class="col-form-label char-ref-bg3">Phone</label>
+                        <label for="ref-phone-3" class="col-form-label char-ref-bg3">Phone Number</label>
                         <input type="text" class="form-control" id="ref-phone-3" name="reference-Phone-3"
                                placeholder="">
+                        <span id="err-ref-phone-3" class="d-none">please enter a valid reference phone number</span>
                     </div>
                 </div>
             </div> <!--  end of a single char reference-->

@@ -65,6 +65,12 @@ em {
     color: #c16062;
 }
 
+/* style for explanation of dreamers choosing a college */
+#college-dream {
+    color: grey !important;
+    font-size: smaller !important;
+}
+
 footer {
     height: 150px;
     width: auto;
@@ -172,6 +178,13 @@ span {
     margin-top: 2% !important;
     text-align: center !important;
     font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif;
+}
+
+/* make youth age explanation smaller */
+#youth-age {
+    font-size: smaller;
+    color: grey;
+    margin-top: 7px;
 }
 
 /* text in jumbotron */
