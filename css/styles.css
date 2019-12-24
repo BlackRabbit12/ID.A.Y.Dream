@@ -169,6 +169,11 @@ footer {
     margin-top: 7% !important;
 }
 
+/* style to add some bottom area to background check no answer */
+#go-home {
+    margin-bottom: 5% !important;
+}
+
 /* styles for hidden spans that will toggle */
 .hide-me {
     color: red;
@@ -405,6 +410,10 @@ span {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+    #submit-policy {
+        font-size: xx-small;
+    }
+
     #volunteer-title {
         font-size: 10vw !important;
     }

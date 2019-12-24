@@ -53,7 +53,7 @@ require_once "private/init.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Youth - iD.A.Y.Dream</title>
+    <title>Dreamer Sign-Up - iD.A.Y.Dream</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -69,7 +69,7 @@ require_once "private/init.php";
 <!--<div class="jumbotron jumbotron-fluid">-->
 <div class="jumbotron d-flex align-items-center">
     <div class="container">
-        <h1 id="youth-volunteer-title">YOUTH SIGN-UP</h1>
+        <h1 id="youth-volunteer-title">DREAMER SIGN-UP</h1>
     </div>
 </div> <!-- ending section for the jumbotron -->
 
@@ -118,10 +118,10 @@ if ($success) {
     <div class="container" id="thank-you-message">
         <?php
 
-        echo "<h2>Thank you for your submission {$user["user_first"]}!</h2>"
+        echo "<h2>Thank you for your submission {$user["user_first"]}! <br>Our team will be in contact with you soon.</h2>"
         ?>
         <h3 id="click-for-events">Check out some of our upcoming events</h3>
-        <button class="btn btn-lg" type="button" id="events-button">ID.A.Y.DREAM EVENTS</button>
+        <button class="btn btn-lg" type="button" id="events-button">EVENTS</button>
         <h3 id="click-to-see">View a summary of your information</h3>
         <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>
     </div>

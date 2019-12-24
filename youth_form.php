@@ -38,7 +38,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Youth - iD.A.Y.Dream</title>
+    <title>Dreamer Sign-Up - iD.A.Y.Dream</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/youth_styles.css" type="text/css">
@@ -52,7 +52,7 @@
     <!-- Jumbotron -->
     <div class="jumbotron d-flex align-items-center">
         <div class="container">
-            <h1 id="youth-volunteer-title">YOUTH SIGN-UP</h1>
+            <h1 id="youth-volunteer-title">DREAMER SIGN-UP</h1>
         </div>
     </div> <!-- ending section for the jumbotron -->
 
@@ -84,12 +84,12 @@
             <div class="row">
                 <div class="col-md-6 padding">
                     <label for="email" class="col-form-label"><em>*</em> Email</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="someone@example.com">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="">
                     <span id="err-email" class="d-none">please enter a valid email</span>
                 </div>
                 <div class="col-md-6 padding">
                     <label for="phone" class="col-form-label"><em>*</em> Phone Number</label>
-                    <input type="text" class="form-control" id="phone" name="phone" placeholder="(123) 456-7890">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="">
                     <span id="err-phone" class="d-none">please enter a valid phone number</span>
                 </div>
             </div> <!-- end of row that asks for the users email and phone number -->
@@ -97,11 +97,11 @@
             <!-- College and Graduation Year -->
             <div class="row">
                 <div class="col-md-6 padding">
-                    <label for="college-interest" class="col-form-label">College of Interest</label>
+                    <label for="college-interest" class="col-form-label">College of Interest <span id="college-dream">- Dream big!</span></label>
                     <input type="text" class="form-control" id="college-interest" name="college-Interest" placeholder="">
                 </div>
                 <div class="col-md-6 padding">
-                    <label for="graduation-year" class="col-form-label"><em>*</em> Graduation Year</label>
+                    <label for="graduation-year" class="col-form-label"><em>*</em> High School Graduation Year</label>
                     <select class="custom-select" id="graduation-year" name="graduation-Year">
                         <option selected id="graduation-none" value="">select</option>
                         <?php
@@ -114,6 +114,7 @@
                         }
                         ?>
                     </select>
+                    <span id="err-graduation-year" class="d-none">please select a graduation year</span>
                 </div>
             </div> <!-- end of row that asks for the users college of interest and graduation year  -->
 
@@ -125,7 +126,8 @@
                         <div class="col-md-6 padding">
                             <label for="dob" class="col-form-label"><em>*</em> Date of Birth</label>
                             <input type="text" class="form-control" id="dob" name="dob" placeholder="MM/DD/YYYY">
-                            <span id="err-dob" class="d-none">invalid date of birth</span>
+                            <p id="youth-age">Youth members must be ages 10-19</p>
+                            <span id="err-dob" class="d-none">please enter a valid date of birth</span>
                         </div>
                         <div class="col-md-6 padding">
                             <label for="gender" class="col-form-label"><em>*</em> Gender</label>
@@ -136,7 +138,7 @@
                                 <option value="other">Other</option>
                                 <option value="prefer-not-to-say">Prefer Not to Say</option>
                             </select>
-                            <span id="err-gender" class="d-none">please select an option</span>
+                            <span id="err-gender" class="d-none">please select a gender</span>
                         </div>
                     </div> <!--   end of inception row that contains the birthday and gender selections -->
                 </div>
@@ -159,7 +161,7 @@
                         <option value="Other" id="select-ethnicity-other">Other</option>
                         <option value="Prefer Not to Say">Prefer Not to Say</option>
                     </select>
-                    <span id="err-ethnicity" class="d-none">please select an option</span>
+                    <span id="err-ethnicity" class="d-none">please select an ethnicity</span>
                 </div> <!-- end of row that asks for the user's  and ethnicity -->
             </div> <!-- end of row that asks for the user's birth date, gender, and ethnicity -->
 
@@ -174,7 +176,7 @@
             <!-- Favorite Snacks -->
             <div class="row">
                 <div class="col-md-12 padding">
-                    <label for="fav-snacks" class="col-form-label">What are some of your favorite food/snacks?</label>
+                    <label for="fav-snacks" class="col-form-label">What are some of your favorite foods and snacks?</label>
                     <div class="input-group">
                         <textarea class="form-control" id="fav-snacks" name="fav-Snacks" placeholder="" rows="3"></textarea>
                     </div>
@@ -184,7 +186,7 @@
             <!-- Career Aspirations -->
             <div class="row">
                 <div class="col-md-12 padding">
-                    <label for="aspirations" class="col-form-label">What are your career aspirations and goals?</label>
+                    <label for="aspirations" class="col-form-label">What are your dream careers and future goals?</label>
                     <div class="input-group">
                         <textarea class="form-control" id="aspirations" name="aspirations" placeholder=""
                                   rows="3"></textarea>
@@ -221,7 +223,7 @@
                     <span id="err-guardian-email" class="d-none">please enter a valid guardian email</span>
                 </div>
                 <div class="col-md-6 padding">
-                    <label for="guardian-phone" class="col-form-label"><em>*</em> Guardian Phone</label>
+                    <label for="guardian-phone" class="col-form-label"><em>*</em> Guardian Phone Number</label>
                     <input type="text" class="form-control" id="guardian-phone" name="guardian-Phone" placeholder="">
                     <span id="err-guardian-phone" class="d-none">please enter a valid guardian phone</span>
                 </div>

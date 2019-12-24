@@ -257,7 +257,7 @@ function validateDOB() {
 
         // second check is if they are too old to be a dreamer
         else if(age > 19) {
-            if(window.confirm("Dreamers must be youth ages 10 - 19. Go to ID.A.Y.Dream Volunteer Form?")){
+            if(window.confirm("Dreamers must be youth ages 10 - 19. Become a volunteer instead?")){
                 window.location.href = "volunteer_form.php";
             }
             // if they do not choose ok we reset the dob field and let them stay on the form

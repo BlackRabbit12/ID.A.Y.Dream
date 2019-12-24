@@ -54,7 +54,7 @@ require_once "private/init.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Volunteer - iD.A.Y.Dream</title>
+    <title>Volunteer Sign-Up - iD.A.Y.Dream</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -70,7 +70,7 @@ require_once "private/init.php";
 <body>
 <div class="jumbotron d-flex align-items-center">
     <div class="container">
-        <h1 id="volunteer-title">VOLUNTEER</h1>
+        <h1 id="volunteer-title">VOLUNTEER SIGN-UP</h1>
     </div>
 </div> <!-- ending section for the jumbotron -->
 
@@ -204,7 +204,7 @@ if ($success) {
         an entire region of youth. Youth seeking success through higher education, mentoring, and community engagement events.</h2>
     <br>
     <h3 id="click-for-events">Check out some of our upcoming events</h3>
-    <button class="btn btn-lg" type="button" id="events-button">ID.A.Y.DREAM EVENTS</button>
+    <button class="btn btn-lg" type="button" id="events-button">EVENTS</button>
     <h3 id="click-to-see">View a summary of your information</h3>
     <button class="btn btn-lg" type="button" id="summary-button">SUMMARY</button>
 </div>
