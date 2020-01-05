@@ -432,21 +432,29 @@ $(document).ready(function () {
         }); //.ajaxComplete
     }); //.on 'click'
 
-    // toggle the modal for emailing functionality
+
+    /**
+     * This button brings up the email modal on the dreamer or volunteer page
+     * and populates the email body section with the current active users for the respective pages.
+     */
     $("#email-button").on("click", function () {
         //tableSelected (admin_page_functions.js)
         let str = tableSelected();
         str = str[0].toUpperCase() + str.substr(1, str.length);
+
         $("#email-modal-title").html("Email Active " + str);
+
         $("#emailModal").modal("toggle");
-        $("#email-subject").on("input focus blur", function () {
-            //validateEmpty (validation_functions.js)
-            validateEmpty("email-subject");
-        }); //end .on 'input focus blur'
-        $("#email-body").on("input focus blur", function () {
-            //validateEmpty (validation_functions.js)
-            validateEmpty("email-body");
-        }); //end .on 'input focus blur'
+
+        // make ajax call to query the database
+        $.ajax({
+            url: 'private/init.php',
+            method: 'post',
+            data: {emailType: tableSelected()}, // get the table
+            success: function (response) {
+                $('#email-body').html(response);
+            }
+        }); //.ajax
     }); //.on 'click'
 
     // deletes the user for the current modal
@@ -613,52 +621,21 @@ function tableSelected() {
     return dataSelect;
 } //function tableSelected()
 
-
 /**
- * Send email to selected table's active member list.
+ * This fires when the user clicks on the copy button on the email modal.
+ * This will copy all of the emails into the clipboard so that the user
+ * can paste them into their mailer.
  */
-$("#email-send").on("click", function () {
-    let subject = $("#email-subject").val();
-    let body = $("#email-body").val();
+$('#email-send').on('click', function() {
+    // get the emails from the email-body
+    let data = $('#email-body');
 
-    /*
-     * get the selected table from "select" dropdown
-     * tableSelected (admin_page_functions.js)
-     */
-    let dataSelect = tableSelected();
+    // select the data
+    data.select();
 
-    if (subject.trim() == "" || body.trim() == "") {
-    }
-    else {
-        // make ajax call to update the display of pending volunteers
-        $.ajax({
-            url: 'private/init.php',
-            method: 'post',
-            data: {emailType: dataSelect, subject: subject, body: body},
-            success: function (response) {
-                // get the number of emails sent to choose which modal to populate
-                let emailCount = parseInt(response.substring(14, response.length - 1));
-
-                // we display a failure pop up that notifies the sender that emails we not going through
-                if (emailCount == 0) {
-                    $("#email-body").val('').end();
-                    $("#email-subject").val('').end();
-                    $('#emailModal').modal('toggle');
-                    alert("Emails were not able to be sent or you have no actives!");
-                }
-                //here we know that the emails sent and we can display a success pop up and close the email modal
-                else {
-                    // clears out the email and body on successful send
-                    $("#email-body").val('').end();
-                    $("#email-subject").val('').end();
-                    $('#emailModal').modal('toggle');
-                    alert("Active " + dataSelect + ": " + emailCount + " emails were sent!");
-                }
-            } //end success
-        }); //.ajax
-    }
-}); //end .on 'click'
-
+    // copy to the clipboard
+    document.execCommand('copy');
+});
 
 /**
  * Log out button for admin.
