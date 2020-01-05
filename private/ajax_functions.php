@@ -287,45 +287,66 @@ if (isset($_POST['table'])) {
 } //end isset($_POST['table'])
 
 
-
-/**
- * This block is the functionality for emailing either active dreamers or active volunteers.
- */
-if (isset($_POST["emailType"])) {
+if(isset($_POST['emailType'])) {
     $sql = "";
-    // checks to see whether or not the user is coming from the dreamers or volunteers data table
-    // then determines the query for the user emails dependent on the table
+
     if ($_POST["emailType"] == "dreamers") {
         $sql = "SELECT user_email FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id WHERE dreamer_status = 'active';";
     } else if ($_POST["emailType"] == "volunteers") {
         $sql = "SELECT user_email FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id WHERE volunteer_status = 'active';";
     }
 
-    // build the query to email the list of active users
     $result = mysqli_query($db, $sql);
 
-    // build the email subject and body from the posted information (data)
-    $subject = $_POST['subject'];
-    $body = $_POST['body'];
+    $emailList = '';
 
-    // initialize the email counter to pass back to notify admin user of how many successful emails sent
-    $emailCount = 0;
-
-    // for every user that is returned in $result we want to send the built email from above
-    while ($email = mysqli_fetch_assoc($result)) {
-        $sendTo = "{$email['user_email']}";
-        $to = $sendTo;
-
-        $success = mail($to, $subject, $body);
-        $emailCount = $emailCount + 1;
+    while($emails = mysqli_fetch_assoc($result)) {
+        $emailList .= $emails['user_email'].'; ';
     }
 
-    // set data associative array for the ending email count
-    $data["emailCount"] = $emailCount;
+    echo $emailList;
 
-    // pass back the $data
-    echo json_encode($data);
-} //end (isset($_POST["emailType"]))
+}
+
+// TODO : DELETE
+///**
+// * This block is the functionality for emailing either active dreamers or active volunteers.
+// */
+//if (isset($_POST["emailType"])) {
+//    $sql = "";
+//    // checks to see whether or not the user is coming from the dreamers or volunteers data table
+//    // then determines the query for the user emails dependent on the table
+//    if ($_POST["emailType"] == "dreamers") {
+//        $sql = "SELECT user_email FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id WHERE dreamer_status = 'active';";
+//    } else if ($_POST["emailType"] == "volunteers") {
+//        $sql = "SELECT user_email FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id WHERE volunteer_status = 'active';";
+//    }
+//
+//    // build the query to email the list of active users
+//    $result = mysqli_query($db, $sql);
+//
+//    // build the email subject and body from the posted information (data)
+//    $subject = $_POST['subject'];
+//    $body = $_POST['body'];
+//
+//    // initialize the email counter to pass back to notify admin user of how many successful emails sent
+//    $emailCount = 0;
+//
+//    // for every user that is returned in $result we want to send the built email from above
+//    while ($email = mysqli_fetch_assoc($result)) {
+//        $sendTo = "{$email['user_email']}";
+//        $to = $sendTo;
+//
+//        $success = mail($to, $subject, $body);
+//        $emailCount = $emailCount + 1;
+//    }
+//
+//    // set data associative array for the ending email count
+//    $data["emailCount"] = $emailCount;
+//
+//    // pass back the $data
+//    echo json_encode($data);
+//} //end (isset($_POST["emailType"]))
 
 
 /**

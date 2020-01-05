@@ -247,18 +247,10 @@ if (!isset($_GET["data_select"])) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="input-group">
-                        <div class="input-group-prepend" id="email-subject-background">
-                            <span class="input-group-text" id="basic-addon3">Subject</span>
-                        </div>
-                        <input type="text" class="form-control" id="email-subject" aria-describedby="basic-addon3">
-                    </div> <!-- end of subject line code -->
-                    <span id="err-email-subject" class="d-none">Subject must not be blank</span>
                     <textarea id="email-body" rows="13"></textarea>
-                    <span id="err-email-body" class="d-none">Email must not be blank</span>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="email-send" class="btn btn-lg btn-primary">Send</button>
+                    <button type="button" id="email-send" class="btn btn-lg btn-primary">Copy</button>
                 </div>
             </div>
         </div>
