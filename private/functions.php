@@ -35,9 +35,10 @@
  * @param $result mysqli_result Result of SQL query containing data to build the table.
  * @param $tableHeadingNames array the column names of the SQL query return.
  * @param $user_ids mysqli_result Result of SQL query for the the user id at each row.
+ * @param $excel int 1 if formatting for excel export, 0 otherwise
  * @return string $output is the 'string' of html that builds the table.
  */
-function buildTable($result, $tableHeadingNames, $user_ids)
+function buildTable($result, $tableHeadingNames, $user_ids, $excel)
 {
     $output = "<thead>";
     $output .= "<tr>";
@@ -83,7 +84,9 @@ function buildTable($result, $tableHeadingNames, $user_ids)
                 }
                 if ($tableHeadingNames_array[$i] == "volunteer_status" || $tableHeadingNames_array[$i] == "dreamer_status"){
                     //dropDownStatus (functions.php)
-                    $value = dropDownStatus($value);
+                    if ($excel == 0) {
+                        $value = dropDownStatus($value);
+                    }
                 }
 
                 $output .= "<td class = '$tableHeadingNames_array[$i]'>$value</td>";

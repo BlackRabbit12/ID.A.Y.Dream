@@ -176,7 +176,7 @@ if (isset($_POST['queryType'])) {
         $result_ids = mysqli_query($db, $sql_ids);
 
         //buildTable (functions.php)
-        echo buildTable($result, $tableHeadingNames, $result_ids);
+        echo buildTable($result, $tableHeadingNames, $result_ids, 0);
     } else if ($_POST['queryType'] == 'pending_query') {
         // Selects and returns output string containing table with inactive users
         global $db;
@@ -191,7 +191,7 @@ if (isset($_POST['queryType'])) {
         $result_ids = mysqli_query($db, $sql_ids);
 
         //buildTable (functions.php)
-        echo buildTable($result, $tableHeadingNames, $result_ids);
+        echo buildTable($result, $tableHeadingNames, $result_ids, 0);
     } else if ($_POST['queryType'] == 'active_query') {
         // Selects and returns output string containing table with inactive users
         global $db;
@@ -206,7 +206,7 @@ if (isset($_POST['queryType'])) {
         $result_ids = mysqli_query($db, $sql_ids);
 
         //buildTable (functions.php)
-        echo buildTable($result, $tableHeadingNames, $result_ids);
+        echo buildTable($result, $tableHeadingNames, $result_ids, 0);
     } // volunteers query for pending to switch what volunteers we display
     else if ($_POST['queryType'] == "pending_volunteers_query") {
         global $db;
@@ -222,7 +222,7 @@ if (isset($_POST['queryType'])) {
         $result_ids = mysqli_query($db, $sql_ids);
 
         //buildTable (functions.php)
-        echo buildTable($result, $tableHeadingNames, $result_ids);
+        echo buildTable($result, $tableHeadingNames, $result_ids, 0);
     } // volunteers query for active to switch what volunteers we display
     else if ($_POST['queryType'] == "active_volunteers_query") {
         global $db;
@@ -238,7 +238,7 @@ if (isset($_POST['queryType'])) {
         $result_ids = mysqli_query($db, $sql_ids);
 
         //buildTable (functions.php)
-        echo buildTable($result, $tableHeadingNames, $result_ids);
+        echo buildTable($result, $tableHeadingNames, $result_ids, 0);
     } // volunteers query for active to switch what volunteers we display
     else if ($_POST['queryType'] == "inactive_volunteers_query") {
         global $db;
@@ -254,7 +254,7 @@ if (isset($_POST['queryType'])) {
         $result_ids = mysqli_query($db, $sql_ids);
 
         //buildTable (functions.php)
-        echo buildTable($result, $tableHeadingNames, $result_ids);
+        echo buildTable($result, $tableHeadingNames, $result_ids, 0);
     }
 } //end isset($_POST['queryType'])
 
@@ -286,7 +286,10 @@ if (isset($_POST['table'])) {
     updateData($_POST['table'], $_POST["table_id"], $dataAssociativeArray, $_POST['id']);
 } //end isset($_POST['table'])
 
-
+/**
+ * Queries the database to get all active volunteers and dreamers.
+ * Send the list of emails back via a semicolon separated String.
+ */
 if(isset($_POST['emailType'])) {
     $sql = "";
 
@@ -305,49 +308,7 @@ if(isset($_POST['emailType'])) {
     }
 
     echo $emailList;
-
-}
-
-// TODO : DELETE
-///**
-// * This block is the functionality for emailing either active dreamers or active volunteers.
-// */
-//if (isset($_POST["emailType"])) {
-//    $sql = "";
-//    // checks to see whether or not the user is coming from the dreamers or volunteers data table
-//    // then determines the query for the user emails dependent on the table
-//    if ($_POST["emailType"] == "dreamers") {
-//        $sql = "SELECT user_email FROM User INNER JOIN Dreamer ON User.user_id = Dreamer.user_id WHERE dreamer_status = 'active';";
-//    } else if ($_POST["emailType"] == "volunteers") {
-//        $sql = "SELECT user_email FROM User INNER JOIN Volunteer ON User.user_id = Volunteer.user_id WHERE volunteer_status = 'active';";
-//    }
-//
-//    // build the query to email the list of active users
-//    $result = mysqli_query($db, $sql);
-//
-//    // build the email subject and body from the posted information (data)
-//    $subject = $_POST['subject'];
-//    $body = $_POST['body'];
-//
-//    // initialize the email counter to pass back to notify admin user of how many successful emails sent
-//    $emailCount = 0;
-//
-//    // for every user that is returned in $result we want to send the built email from above
-//    while ($email = mysqli_fetch_assoc($result)) {
-//        $sendTo = "{$email['user_email']}";
-//        $to = $sendTo;
-//
-//        $success = mail($to, $subject, $body);
-//        $emailCount = $emailCount + 1;
-//    }
-//
-//    // set data associative array for the ending email count
-//    $data["emailCount"] = $emailCount;
-//
-//    // pass back the $data
-//    echo json_encode($data);
-//} //end (isset($_POST["emailType"]))
-
+} //end if(isset($_POST['emailType']))
 
 /**
  * Delete a user.

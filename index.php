@@ -28,10 +28,6 @@
  *          admin_page.php - if credentials are good, redirect admin to admin_page
  */
 
-//TODO remove error report when live
-//ini_set('display_errors', 1);
-//error_reporting(E_ALL);
-
 // start a session for login functionality
 session_start();
 
