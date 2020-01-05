@@ -17,7 +17,7 @@
  *      user modal, updating the user's information, sending emails, toggling between different types and status of
  *      users.
  *      Quick File Relations:
- *          admin_page.php - uses event functions made in admin page funcitons javascript
+ *          admin_page.php - uses event functions made in admin page functions javascript
  *          validation_functions.js - uses formatting and validation
  *          logout.php - uses logout button functions
  *          init.php - all 'required once' files
@@ -620,6 +620,15 @@ function tableSelected() {
     }
     return dataSelect;
 } //function tableSelected()
+
+/**
+ * Open a full table for exporting to excel.
+ * The function opens a new tab in the browser and uses the tableSeleced() function to finish the
+ * URL, allowing use of table type to be passed to the new page.
+ */
+$("#excel-button").on("click", function() {
+    window.open("excel.php?data_select=" + tableSelected(), "_blank");
+});
 
 /**
  * This fires when the user clicks on the copy button on the email modal.

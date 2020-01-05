@@ -17,6 +17,7 @@
  *      scripts/admin_page_functions.js
  *      private/ajax_functions.php
  *      scripts/validation_functions.js
+ *      excel.php
  *      images/apple-touch-icon.png
  *      images/favicon-32x32_title.png
  *      images/favicon-16x16_title.png
@@ -27,6 +28,7 @@
  *      @link https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js
  *      @link https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js
  *      @link //cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js
+ *      @link https://excel.php
  *
  * Description:
  *      File contains iD.A.Y.Dream Youth Organization's Administration Page. Admin page is where any persons
@@ -35,6 +37,8 @@
  *      the selected member status (active, inactive, pending).
  *      There is an 'email' button provided after selecting the member type desired, the email button will allow an
  *      admin to send an email to all 'active' members of the given type (volunteer or dreamer).
+ *      There is an 'excel' button provided after selecting the member type desired, the excel button will allow an
+ *      admin to export the current datatable to excel.
  *      When a member's row in the table is selected, the page will also query the database to populate that member's
  *      modal, with all of the selected member's information displayed inside. The admin will be allowed to 'edit' or
  *      'delete' the member while viewing this modal.
@@ -44,12 +48,9 @@
  *          admin_page_functions.js - populates the admin table user modal
  *          ajax_functions.php - changes the table data based on current status query
  *          validation_functions.js - for validating admin input
+ *          excel.php - for exporting admin datatables to excel sheet
  *          index.php - for validating that the admin has logged in and can stay logged in
  */
-
-    //TODO remove error report when live
-//    ini_set('display_errors', 1);
-//    error_reporting(E_ALL);
 
     //Start the session
     session_start();
@@ -165,6 +166,9 @@ if (!isset($_GET["data_select"])) {
             ?>
             <!-- Email for all active users of table type -->
             <button id="email-button" type="button" class="btn btn-lg text-white">Email</button>
+
+            <!-- Excel for all active users of table type -->
+            <button id="excel-button" type="button" class="btn btn-lg text-white">Excel</button>
         </div> <!-- input-group -->
         <?php
         }
@@ -207,7 +211,7 @@ if (!isset($_GET["data_select"])) {
                    class="display">
                 <?php
                 //buildTable (functions.php)
-                echo buildTable($result, $tableHeadingNames, $result_ids); ?>
+                echo buildTable($result, $tableHeadingNames, $result_ids, 0); ?>
             </table>
             <?php
         } //closing if statement
