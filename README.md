@@ -8,6 +8,29 @@ This repository is how we created two sign up forms (volunteers and youth member
 * Shayna Jamieson - Github: https://github.com/jamiesonshayna :sparkles:
 * Bridget Black - Github: https://github.com/BlackRabbit12 :rabbit2:
 
+## Page Views
+
+<details>
+	<summary>Thumbnails</summary>
+	
+#### Volunteer Sign Up Form
+<img src="/images/volunteer_form_1.png" alt="Volunteer Sign Up Form Thumbnail"/>
+	
+#### Dreamer (youth) Sign Up Form
+<img src="/images/youth_form_1.png" alt="Youth Sign Up Form Thumbnail"/>
+	
+#### Admin Login
+<img src="/images/index_1.png" alt="Admin Login Thumbnail"/>
+
+#### Admin Database Interface, Tables
+<img src="/images/admin_1.png" alt="Admin Tables Thumbnail"/>
+
+#### Admin Database Interface, Modal
+<img src="/images/modal_1.png" alt="Admin Modal Thumbnail"/>
+	
+</details>
+
+
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes only, you will not have access to iD.A.Y.Dream's internal database or organization details.
 See deployment for notes on how to deploy a skeleton version of the project on a live system.
@@ -448,26 +471,6 @@ When the user navigates away from the modal their username and password inputs a
     </p>
 </details>
 
-
-<details>
-	<summary>Thumbnails</summary>
-	
-#### Volunteer Sign Up Form
-<img src="/images/volunteer_form_1.png" alt="Volunteer Sign Up Form Thumbnail"/>
-	
-#### Dreamer (youth) Sign Up Form
-<img src="/images/youth_form_1.png" alt="Youth Sign Up Form Thumbnail"/>
-	
-#### Admin Login
-<img src="/images/index_1.png" alt="Admin Login Thumbnail"/>
-
-#### Admin Database Interface, Tables
-<img src="/images/admin_1.png" alt="Admin Tables Thumbnail"/>
-
-#### Admin Database Interface, Modal
-<img src="/images/modal_1.png" alt="Admin Modal Thumbnail"/>
-	
-</details>
 
 
 ## Built With
