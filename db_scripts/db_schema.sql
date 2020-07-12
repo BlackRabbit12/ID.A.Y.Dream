@@ -64,6 +64,7 @@ CREATE TABLE Volunteer
     volunteer_interest         TEXT         NULL,
     volunteer_relocating       VARCHAR(3)   NULL,
     volunteer_minimum          VARCHAR(3)   NULL,
+    volunteer_annual           VARCHAR(3)   NULL,
     volunteer_availability     TEXT         NULL,
     volunteer_motivated        TEXT         NULL,
     volunteer_experience       TEXT         NULL,
