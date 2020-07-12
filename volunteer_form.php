@@ -484,6 +484,22 @@ require_once "private/init.php";
                     </div>
                 </div>
             </div> <!-- end of row that has the checkbox for agreeing to terms and conditions  -->
+            <!-- consent radio -->
+            <label for="consent-yes">Are you being forced to complete this application by anyone?</label>
+            <div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="consent" id="consent-no" value="no">
+                    <label class="form-check-label" for="consent-no">
+                        No
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="consent" id="consent-yes" value="yes">
+                    <label class="form-check-label" for="consent-yes">
+                        Yes
+                    </label>
+                </div>
+            </div>
             <div class="row" id="row-holds-submit-button">
                 <div class="col text-center">
                     <button class="btn btn-lg" type="submit" id="submit-btn">SUBMIT</button>

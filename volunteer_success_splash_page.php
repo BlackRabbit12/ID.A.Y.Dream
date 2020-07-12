@@ -183,6 +183,8 @@ $referencesArray[] = array(
     "contact_type" => "reference"
 );
 
+$volunteer["volunteer_consent"] = $_POST["consent"];
+
 //ensures nothing submits into database if volunteer does not agree to terms of service
 if (!isset($_POST['terms-of-Service'])) {
     echo "You must accept the terms of service to proceed.";
@@ -191,6 +193,8 @@ if (!isset($_POST['terms-of-Service'])) {
 //does validation for user variables, gets back the user id row
 //volunteerInsert (query_functions.php)
 $success = volunteerInsert($user, $volunteer, $referencesArray);
+
+
 
 //if volunteer successfully inserted, then INSERT references and complete success page for volunteer
 if ($success) {

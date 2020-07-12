@@ -71,6 +71,7 @@ CREATE TABLE Volunteer
 -- hiding the emailing list right now per Sprint 4 feedback
     volunteer_status           VARCHAR(255) NULL,
     volunteer_notes            TEXT         NULL,
+    volunteer_consent          VARCHAR(3)   NULL,
 
     PRIMARY KEY (volunteer_id),
     FOREIGN KEY (user_id) REFERENCES User (user_id)

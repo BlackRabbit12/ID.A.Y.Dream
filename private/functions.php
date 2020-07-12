@@ -209,14 +209,17 @@ function createSummary($email_body)
             $summary_content .= "</ul>";
             // As long as the value isn't empty, display results and add to email
         } else if ($value != "") {
-            // formatting keys and values for output to summary
-            $key_text = htmlspecialchars($key);
-            $key_text = ucfirst($key_text);
-            $value_text = htmlspecialchars($value);
-            $key_text = str_replace("-", " ", $key_text);
-            //adding key and value output to summaries
-            $email_body .= "$key_text: $value_text \r\n";
-            $summary_content .= "<p><strong>$key_text:</strong> $value_text</p>";
+            // skip displaying consent
+            if ($key != "consent") {
+                // formatting keys and values for output to summary
+                $key_text = htmlspecialchars($key);
+                $key_text = ucfirst($key_text);
+                $value_text = htmlspecialchars($value);
+                $key_text = str_replace("-", " ", $key_text);
+                //adding key and value output to summaries
+                $email_body .= "$key_text: $value_text \r\n";
+                $summary_content .= "<p><strong>$key_text:</strong> $value_text</p>";
+            }
         }
     }
     return [$summary_content, $email_body];
