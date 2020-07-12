@@ -134,6 +134,7 @@ $volunteer["volunteer_youth_experience"] = "";
 // save the temp string that holds all availability information into the key volunteer_availability
 $volunteer['volunteer_availability'] = $availString;
 $volunteer["volunteer_minimum"] = $_POST['minimum-hours'];
+$volunteer["volunteer_relocating"] = $_POST['relocating'];
 
 //test
 $volunteer["volunteer_skills"] = $_POST['other-Skills'];

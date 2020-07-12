@@ -317,6 +317,23 @@ require_once "private/init.php";
                     </label>
                 </div>
             </div>
+            <br/>
+            <!--Relocating -->
+            <label for="relocating-yes">Do you see yourself relocating in the next four years?</label>
+            <div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="relocating" id="relocating-no" value="no">
+                    <label class="form-check-label" for="relocating-no">
+                        No
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="relocating-hours" id="relocating-yes" value="yes">
+                    <label class="form-check-label" for="relocating-yes">
+                        Yes
+                    </label>
+                </div>
+            </div>
         </fieldset> <!-- end of fieldset that contains Interests section -->
 
         <!-- Skills & Qualifications -->
