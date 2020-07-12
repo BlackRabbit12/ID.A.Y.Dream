@@ -133,6 +133,7 @@ $volunteer["volunteer_youth_experience"] = "";
 
 // save the temp string that holds all availability information into the key volunteer_availability
 $volunteer['volunteer_availability'] = $availString;
+$volunteer["volunteer_minimum"] = $_POST['minimum-hours'];
 
 
 $volunteer["volunteer_skills"] = $_POST['other-Skills'];
@@ -235,7 +236,7 @@ if ($success) {
     <?php
     } //if volunteer did NOT successfully get inserted
     else {
-        echo "An error occurred while submitting your application, please press the \"back arrow\" and resubmit 
+        echo "An error occurred while submitting your application, please press the \"back arrow\" and resubmit
         your application or try again later. We appreciate your interest in our organization!";
     }
     } ?>

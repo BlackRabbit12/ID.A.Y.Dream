@@ -301,6 +301,22 @@ require_once "private/init.php";
                     </div> <!-- end of div that holds the toggle for if user needs to explain their interests -->
                 </div>
             </div> <!-- end of row that holds the columns for choosing availability and areas of interest -->
+            <!--Minimum Hours -->
+            <label for="minimum-yes">Are you willing to complete a minimum of 20 volunteer hours a year?</label>
+            <div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="minimum-hours" id="minimum-no" value="no">
+                    <label class="form-check-label" for="minimum-no">
+                        No
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="minimum-hours" id="minimum-yes" value="yes">
+                    <label class="form-check-label" for="minimum-yes">
+                        Yes
+                    </label>
+                </div>
+            </div>
         </fieldset> <!-- end of fieldset that contains Interests section -->
 
         <!-- Skills & Qualifications -->
