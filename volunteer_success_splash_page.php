@@ -135,7 +135,7 @@ $volunteer["volunteer_youth_experience"] = "";
 $volunteer['volunteer_availability'] = $availString;
 $volunteer["volunteer_minimum"] = $_POST['minimum-hours'];
 
-
+//test
 $volunteer["volunteer_skills"] = $_POST['other-Skills'];
 // hiding mailing list per Sprint 4 feedback
 //$volunteer["volunteer_emailing"] = $_POST['mailing-List'];
