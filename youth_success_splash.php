@@ -105,7 +105,11 @@ $guardianArray[] = array(
     "contact_relationship" => $_POST["guardian-Relationship"],
     "contact_email" => $_POST["guardian-Email"],
     "contact_phone" => formatPhone($_POST["guardian-Phone"]),
-    "contact_type" => "guardian"
+    "contact_type" => "guardian",
+    "contact_address" => $_POST["address"],
+    "contact_zip" => $_POST["zip"],
+    "contact_city" => $_POST["city"],
+    "contact_state" => $_POST["state"]
 );
 
 //insertDreamer (query_functions.php)

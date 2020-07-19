@@ -56,9 +56,9 @@ CREATE TABLE Volunteer
     user_id                    INT          NOT NULL,
     volunteer_verified         VARCHAR(255) NULL,
     volunteer_street_address   VARCHAR(255) NULL,
-    volunteer_zip              INT          NULL,
+    volunteer_zip              VARCHAR(255) NULL,
     volunteer_city             VARCHAR(255) NULL,
-    volunteer_state            VARCHAR(255) NULL,
+    volunteer_state            VARCHAR(2) NULL,
     volunteer_tshirt_size      VARCHAR(255) NULL,
     volunteer_about_us         TEXT         NULL,
     volunteer_interest         TEXT         NULL,
@@ -89,6 +89,10 @@ CREATE TABLE Contact
     contact_email        VARCHAR(255) NULL,
     contact_phone        VARCHAR(255) NULL,
     contact_type         VARCHAR(255) NULL,
+    contact_address      VARCHAR(255) NULL,
+    contact_zip          VARCHAR(255) NULL,
+    contact_city         VARCHAR(255) NULL,
+    contact_state        VARCHAR(2)   NULL,
 
     PRIMARY KEY (contact_id),
     FOREIGN KEY (user_id) references User (user_id)

@@ -446,5 +446,32 @@ function validateContact($contact){
         $error[] = 'Contact Name is invalid';
     }
 
+    // checking address is valid for guardians
+    if ($contact["contact_type"] == "guardian") {
+        //contact address
+        if (!requiredInputIsValid($contact["contact_address"])) {
+            $isValid = false;
+            $error[] = 'Address is invalid';
+        }
+
+        //contact zipcode
+        if (!zipIsValid($contact["contact_zip"])) {
+            $isValid = false;
+            $error[] = 'Zip is invalid';
+        }
+
+        //contact city
+        if (!requiredInputIsValid($contact["contact_city"])) {
+            $isValid = false;
+            $error[] = 'City is invalid';
+        }
+
+        //contact state
+        if (!inputIsValid($contact["contact_state"])) {
+            $isValid = false;
+            $error[] = 'State is invalid';
+        }
+    }
+
     return $isValid;
 } //end validateContact($contact)

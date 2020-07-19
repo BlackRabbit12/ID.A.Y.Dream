@@ -37,7 +37,6 @@
 function updateData($table, $table_id, $data, $id)
 {
     global $db;
-
     foreach ($data as $key => $value) {
         $value = mysqli_real_escape_string($db, $value);
         $sql = "UPDATE $table SET $key = '$value' WHERE $table_id = $id";

@@ -39,13 +39,17 @@ document.getElementById("ethnicity").addEventListener("change", function() {
 }); //.addEventListener
 
 
-//2D funcion array holds input element ids, used in function 'validateForm' (youth_functions.js)
+// function array holds input element ids, used in function 'validateForm' (youth_functions.js)
 let validateEmptyArray = [
     "fname",
     "lname",
     "guardian-fName",
     "guardian-lName",
-    "guardian-relationship"
+    "guardian-relationship",
+    "street-address",
+    "zip",
+    "city",
+    "state"
 ];
 
 
@@ -104,6 +108,11 @@ $("#graduation-year").on("input focus blur", function() {
     validateGraduation();
 }); //.on
 
+$("#zip").on("input focus blur", function() {
+    //validateZip (validation_functions.js)
+    validateZip();
+}); //.on
+
 /**
  * If 'youth_form.php' is 'submitted', validateForm ensures all data passed from the form is valid.
  * ValidateForm checks each data field submitted and enforces formatting on some to ensure validity, uses functions
@@ -154,6 +163,10 @@ function validateForm() {
     }
 
     if (!validateEmail("guardian-email")) {
+        isValid = false;
+    }
+
+    if (!validateZip()) {
         isValid = false;
     }
 
