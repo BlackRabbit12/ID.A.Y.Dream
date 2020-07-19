@@ -45,6 +45,7 @@ CREATE TABLE Dreamer
     dreamer_goals           TEXT         NULL,
     dreamer_status          VARCHAR(255) NULL,
     dreamer_notes           TEXT         NULL,
+    dreamer_allergies       VARCHAR(5000) NULL,
 
     PRIMARY KEY (dreamer_id),
     FOREIGN KEY (user_id) REFERENCES User (user_id)
@@ -94,7 +95,6 @@ CREATE TABLE Contact
     contact_city         VARCHAR(255) NULL,
     contact_state        VARCHAR(2)   NULL,
     contact_education    VARCHAR(255) NULL,
-
 
     PRIMARY KEY (contact_id),
     FOREIGN KEY (user_id) references User (user_id)

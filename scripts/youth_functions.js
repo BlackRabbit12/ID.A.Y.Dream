@@ -38,6 +38,28 @@ document.getElementById("ethnicity").addEventListener("change", function() {
     }
 }); //.addEventListener
 
+/**Add allergy toggling*/
+let studentAllergiesYes = document.getElementById("student-allergies-yes");
+let studentAllergiesNo = document.getElementById("student-allergies-no");
+studentAllergiesYes.onchange = toggleAllergyExplanationShow;
+studentAllergiesNo.onchange = toggleAllergyExplanationHide;
+/**
+ * Displays the allergy explanation textarea.
+ */
+function toggleAllergyExplanationShow() {
+    let allergyDisplay = document.getElementById("toggle-allergy-explain");
+    allergyDisplay.style.display = "block";
+} //end toggleAllergyExplanationShow()
+
+
+/**
+ * Hides the allergy explanation text area.
+ */
+function toggleAllergyExplanationHide() {
+    let allergyDisplay = document.getElementById("toggle-allergy-explain");
+    allergyDisplay.style.display = "none";
+} //end toggleAllergyExplanationHide()
+
 
 // function array holds input element ids, used in function 'validateForm' (youth_functions.js)
 let validateEmptyArray = [

@@ -96,7 +96,16 @@ if (!isEmpty($_POST['ethnicity-Other'])) {
 $dreamer["dreamer_food"] = $_POST["fav-Snacks"];
 $dreamer["dreamer_goals"] = $_POST["aspirations"];
 $dreamer["dreamer_status"] = "pending";
+$dreamer["dreamer_allergies"] = $_POST["student-allergies-explanation"];
 
+
+if ($_POST['student-allergies']=='no') {
+    $dreamer["dreamer_allergies"]='no';
+}
+
+if ($_POST['student-allergies']=='yes' && isEmpty($dreamer["dreamer_allergies"])) {
+    $dreamer["dreamer_allergies"]='yes';
+}
 // creating the array of associative arrays containing guardian data
 $guardianArray = [];
 //formatPhone (validation_functions.php)
@@ -110,7 +119,7 @@ $guardianArray[] = array(
     "contact_zip" => $_POST["zip"],
     "contact_city" => $_POST["city"],
     "contact_state" => $_POST["state"],
-    "contact_education" => $_POST["highest-education"]
+    "contact_education" => $_POST["highest-education"],
 );
 
 //insertDreamer (query_functions.php)

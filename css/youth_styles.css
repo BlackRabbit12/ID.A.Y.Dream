@@ -194,3 +194,8 @@ span {
     font-size: 5vw !important;
     white-space: nowrap;
 }
+
+/* styles for hidden toggles */
+#toggle-allergy-explain {
+    display: none;
+}
