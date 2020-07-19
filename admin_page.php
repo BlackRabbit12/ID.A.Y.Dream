@@ -179,7 +179,7 @@ if (!isset($_GET["data_select"])) {
         //if it's the dreamer table, run $sql for member row + run $sql_ids for user_ids Foreign key
         //SQL statements (db_schema.sql)
         if ($_GET["data_select"] == "dreamers") {
-            $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_status, user_date_joined FROM User 
+            $sql = "SELECT user_first, user_last, user_email, user_phone, dreamer_date_of_birth, dreamer_status, user_date_joined FROM User
                     INNER JOIN Dreamer ON User.user_id = Dreamer.user_id
                     WHERE dreamer_status = 'active';";
             $user_ids = "SELECT user_id FROM Dreamer WHERE dreamer_status = 'active';";
@@ -187,7 +187,7 @@ if (!isset($_GET["data_select"])) {
         //if it's the volunteer table, run $sql for member row + run $sql_ids for user_ids Foreign key
         //SQL statements (db_schema.sql)
         else if ($_GET["data_select"] == "volunteers") {
-            $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User 
+            $sql = "SELECT user_first, user_last, user_email, user_phone, volunteer_verified, volunteer_status, user_date_joined FROM User
                     INNER JOIN Volunteer ON User.user_id = Volunteer.user_id
                     WHERE volunteer_status = 'active';";
             $user_ids = "SELECT user_id FROM Volunteer WHERE volunteer_status = 'active';";

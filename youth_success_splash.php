@@ -109,7 +109,8 @@ $guardianArray[] = array(
     "contact_address" => $_POST["address"],
     "contact_zip" => $_POST["zip"],
     "contact_city" => $_POST["city"],
-    "contact_state" => $_POST["state"]
+    "contact_state" => $_POST["state"],
+    "contact_education" => $_POST["highest-education"]
 );
 
 //insertDreamer (query_functions.php)
@@ -150,7 +151,7 @@ if ($success) {
         ?>
     </div>
 <?php } else {
-    echo "An error occurred while submitting your application, please press the \"back arrow\" and resubmit 
+    echo "An error occurred while submitting your application, please press the \"back arrow\" and resubmit
         your application or try again later. We appreciate your interest in our organization!";
 } ?>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
