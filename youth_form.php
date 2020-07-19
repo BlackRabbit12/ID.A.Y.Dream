@@ -306,7 +306,20 @@
                     </select>
                 </div> <!-- end of column with state information -->
             </div> <!-- end of row with zip, city, state content -->
-
+            <div class="col-md-6 padding">
+                <label for="highest-education" class="col-form-label"><em>*</em> Highest Education</label>
+                <select class="custom-select" id="highest-education" name="highest-education">
+                    <option selected value="" id="highest-none">select</option>
+                    <option value="High School or Equivalent">High School or Equivalent</option>
+                    <option value="Some College">Some College</option>
+                    <option value="Associate Degree">Associate Degree</option>
+                    <option value="Bachelor Degree">Bachelor Degree</option>
+                    <option value="Master Degree">Master Degree</option>
+                    <option value="Doctorate Degree">Doctorate Degree</option>
+                    <option value="Prefer Not to Say">Prefer Not to Say</option>
+                </select>
+                <span id="err-education" class="d-none">please select highest education</span>
+            </div>
             <!-- Submit button -->
             <div class="row" id="row-holds-submit-button">
                 <div class="col text-center">

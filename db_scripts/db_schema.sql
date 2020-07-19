@@ -93,6 +93,8 @@ CREATE TABLE Contact
     contact_zip          VARCHAR(255) NULL,
     contact_city         VARCHAR(255) NULL,
     contact_state        VARCHAR(2)   NULL,
+    contact_education    VARCHAR(255) NULL,
+
 
     PRIMARY KEY (contact_id),
     FOREIGN KEY (user_id) references User (user_id)
