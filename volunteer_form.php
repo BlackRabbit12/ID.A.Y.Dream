@@ -317,6 +317,40 @@ require_once "private/init.php";
                     </label>
                 </div>
             </div>
+            <br/>
+            <!--Relocating -->
+            <label for="relocating-yes">Do you see yourself relocating in the next four years?</label>
+            <div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="relocating" id="relocating-no" value="no">
+                    <label class="form-check-label" for="relocating-no">
+                        No
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="relocating" id="relocating-yes" value="yes">
+                    <label class="form-check-label" for="relocating-yes">
+                        Yes
+                    </label>
+                </div>
+            </div>
+            <br/>
+            <!--Annual Event -->
+            <label for="annual-yes">Are you willing to participate in our Annual Speed Mentoring event during Christmas break?</label>
+            <div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="annual-event" id="annual-no" value="no">
+                    <label class="form-check-label" for="annual-no">
+                        No
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="annual-event" id="annual-yes" value="yes">
+                    <label class="form-check-label" for="annual-yes">
+                        Yes
+                    </label>
+                </div>
+            </div>
         </fieldset> <!-- end of fieldset that contains Interests section -->
 
         <!-- Skills & Qualifications -->
