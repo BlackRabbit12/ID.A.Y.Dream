@@ -306,7 +306,7 @@
                     </select>
                 </div> <!-- end of column with state information -->
             </div> <!-- end of row with zip, city, state content -->
-            <div class="col-md-6 padding">
+            <div>
                 <label for="highest-education" class="col-form-label"><em>*</em> Highest Education</label>
                 <select class="custom-select" id="highest-education" name="highest-education">
                     <option selected value="" id="highest-none">select</option>
@@ -320,6 +320,27 @@
                 </select>
                 <span id="err-education" class="d-none">please select highest education</span>
             </div>
+            <br>
+            <label>Does the student have any allergies?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="student-allergies" id="student-allergies-yes"
+                       value="yes">
+                <label class="form-check-label" for="student-allergies-yes">Yes</label>
+            </div> <!-- end of div for checkbox of if student have allergies "yes" -->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="student-allergies" id="student-allergies-no"
+                       value="no">
+                <label class="form-check-label" for="student-allergies-no">No</label>
+            </div> <!-- end of div for checkbox of if student have allergies "no"  -->
+            <div id="toggle-allergy-explain"><br>
+                <label for="student-allergies-explanation">Please list student's allergies:</label>
+                <div class="input-group">
+                        <textarea class="form-control" id="student-allergies-explanation"
+                                  name="student-allergies-explanation"
+                                  placeholder=""></textarea>
+                </div> <!-- area where the user explains the student allergies -->
+            </div>
+
             <!-- Submit button -->
             <div class="row" id="row-holds-submit-button">
                 <div class="col text-center">
