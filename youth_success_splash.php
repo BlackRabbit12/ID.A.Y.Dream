@@ -97,7 +97,9 @@ $dreamer["dreamer_food"] = $_POST["fav-Snacks"];
 $dreamer["dreamer_goals"] = $_POST["aspirations"];
 $dreamer["dreamer_status"] = "pending";
 $dreamer["dreamer_allergies"] = $_POST["student-allergies-explanation"];
-
+$dreamer["dreamer_transportation"] = $_POST["student-transportation"];
+$dreamer["dreamer_events"] = $_POST["participate-events"];
+$dreamer["dreamer_relocating"] = $_POST["family-relocating"];
 
 if ($_POST['student-allergies']=='no') {
     $dreamer["dreamer_allergies"]='no';

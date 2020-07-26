@@ -46,6 +46,9 @@ CREATE TABLE Dreamer
     dreamer_status          VARCHAR(255) NULL,
     dreamer_notes           TEXT         NULL,
     dreamer_allergies       VARCHAR(5000) NULL,
+    dreamer_transportation  VARCHAR(3) NULL,
+    dreamer_events          VARCHAR(3) NULL,
+    dreamer_relocating      VARCHAR(3) NULL,
 
     PRIMARY KEY (dreamer_id),
     FOREIGN KEY (user_id) REFERENCES User (user_id)
