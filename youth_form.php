@@ -354,7 +354,7 @@
             </div> <!-- end of div for checkbox of if student have transportation "no"  -->
 
             <br>
-            <label>Are you willing to participate in Family schedule events?</label>
+            <label>Are you willing to participate in family schedule events?</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="participate-events" id="participate-events-yes"
                        value="yes">

@@ -305,15 +305,15 @@ require_once "private/init.php";
             <label for="minimum-yes">Are you willing to complete a minimum of 20 volunteer hours a year?</label>
             <div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="minimum-hours" id="minimum-no" value="no">
-                    <label class="form-check-label" for="minimum-no">
-                        No
-                    </label>
-                </div>
-                <div class="form-check">
                     <input class="form-check-input" type="radio" name="minimum-hours" id="minimum-yes" value="yes">
                     <label class="form-check-label" for="minimum-yes">
                         Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="minimum-hours" id="minimum-no" value="no">
+                    <label class="form-check-label" for="minimum-no">
+                        No
                     </label>
                 </div>
             </div>
@@ -322,15 +322,15 @@ require_once "private/init.php";
             <label for="relocating-yes">Do you see yourself relocating in the next four years?</label>
             <div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="relocating" id="relocating-no" value="no">
-                    <label class="form-check-label" for="relocating-no">
-                        No
-                    </label>
-                </div>
-                <div class="form-check">
                     <input class="form-check-input" type="radio" name="relocating" id="relocating-yes" value="yes">
                     <label class="form-check-label" for="relocating-yes">
                         Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="relocating" id="relocating-no" value="no">
+                    <label class="form-check-label" for="relocating-no">
+                        No
                     </label>
                 </div>
             </div>
@@ -339,15 +339,15 @@ require_once "private/init.php";
             <label for="annual-yes">Are you willing to participate in our Annual Speed Mentoring event during Christmas break?</label>
             <div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="annual-event" id="annual-no" value="no">
-                    <label class="form-check-label" for="annual-no">
-                        No
-                    </label>
-                </div>
-                <div class="form-check">
                     <input class="form-check-input" type="radio" name="annual-event" id="annual-yes" value="yes">
                     <label class="form-check-label" for="annual-yes">
                         Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="annual-event" id="annual-no" value="no">
+                    <label class="form-check-label" for="annual-no">
+                        No
                     </label>
                 </div>
             </div>
@@ -538,15 +538,15 @@ require_once "private/init.php";
             <label for="consent-yes">Are you being forced to complete this application by anyone?</label>
             <div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="consent" id="consent-no" value="no">
-                    <label class="form-check-label" for="consent-no">
-                        No
-                    </label>
-                </div>
-                <div class="form-check">
                     <input class="form-check-input" type="radio" name="consent" id="consent-yes" value="yes">
                     <label class="form-check-label" for="consent-yes">
                         Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="consent" id="consent-no" value="no">
+                    <label class="form-check-label" for="consent-no">
+                        No
                     </label>
                 </div>
             </div>
