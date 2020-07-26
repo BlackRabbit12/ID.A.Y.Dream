@@ -340,6 +340,44 @@
                                   placeholder=""></textarea>
                 </div> <!-- area where the user explains the student allergies -->
             </div>
+            <br>
+            <label>Will the student have reliable transportation for mandated events?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="student-transportation" id="student-transportation-yes"
+                       value="yes">
+                <label class="form-check-label" for="student-transportation-yes">Yes</label>
+            </div> <!-- end of div for checkbox of if student have transportation "yes" -->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="student-transportation" id="student-allergies-no"
+                       value="no">
+                <label class="form-check-label" for="student-transportation-no">No</label>
+            </div> <!-- end of div for checkbox of if student have transportation "no"  -->
+
+            <br>
+            <label>Are you willing to participate in Family schedule events?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="participate-events" id="participate-events-yes"
+                       value="yes">
+                <label class="form-check-label" for="participate-events-yes">Yes</label>
+            </div> <!-- end of div for checkbox of if willing to participate in events "yes" -->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="participate-events" id="participate-events-no"
+                       value="no">
+                <label class="form-check-label" for="participate-events-no">No</label>
+            </div> <!-- end of div for checkbox of if willing to participate in events "no" -->
+
+            <br>
+            <label>Do you see your family relocating in the next four years?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="family-relocating" id="family-relocating-yes"
+                       value="yes">
+                <label class="form-check-label" for="family-relocating-yes">Yes</label>
+            </div> <!-- end of div for checkbox if family relocating in next 4 years "yes" -->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="family-relocating" id="family-relocating-no"
+                       value="no">
+                <label class="form-check-label" for="family-relocating-no">No</label>
+            </div> <!-- end of div for checkbox if family relocating in next 4 years"no" -->
 
             <!-- Submit button -->
             <div class="row" id="row-holds-submit-button">
