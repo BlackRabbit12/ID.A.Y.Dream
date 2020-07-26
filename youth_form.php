@@ -348,7 +348,7 @@
                 <label class="form-check-label" for="student-transportation-yes">Yes</label>
             </div> <!-- end of div for checkbox of if student have transportation "yes" -->
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="student-transportation" id="student-allergies-no"
+                <input class="form-check-input" type="radio" name="student-transportation" id="student-transportation-no"
                        value="no">
                 <label class="form-check-label" for="student-transportation-no">No</label>
             </div> <!-- end of div for checkbox of if student have transportation "no"  -->
